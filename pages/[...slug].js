@@ -77,11 +77,9 @@ export async function getStaticProps({ ...ctx }) {
 	const content = await import(`../posts/${slug}.md`);
 	const data = matter(content.default);
 
-	let title = router.asPath
+	let title = slug
 		.split("/")
-		[router.asPath.split("/").length - 1].replace(/-(.)/g, (e) =>
-			e[1].toUpperCase()
-		)
+		[slug.split("/").length - 1].replace(/-(.)/g, (e) => e[1].toUpperCase())
 		.replace("-", " ");
 	title = title[0].toUpperCase() + title.slice(1);
 
