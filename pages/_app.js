@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
-import { ThemeProvider } from "@material-ui/core/styles";
-import theme from "../src/theme";
 import CustomDrawer from "../src/CustomDrawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -11,6 +9,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import Brightness7 from "@material-ui/icons/Brightness7";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { Brightness4 } from "@material-ui/icons";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -18,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 	appBar: {
 		zIndex: theme.zIndex.drawer + 1,
-		backgroundColor: "#373b42",
+		// backgroundColor: "#373b42",
+		background: "linear-gradient(120deg, #7289da, #66a6ff)",
 	},
 	content: {
 		flexGrow: 1,
@@ -32,15 +35,46 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+const themeObject = {
+	palette: {
+		type: "dark",
+		background: {
+			default: "#282b30",
+		},
+		white: "#f3f3f3",
+	},
+};
+
+const useDarkMode = () => {
+	const [theme, setTheme] = React.useState(themeObject);
+
+	const {
+		palette: { type },
+	} = theme;
+	const toggleDarkMode = () => {
+		const updatedTheme = {
+			...theme,
+			palette: {
+				...theme.palette,
+				type: type === "dark" ? "light" : "dark",
+				background: {
+					default: type === "dark" ? "#f3f3f3" : "#282b30",
+				},
+			},
+		};
+		setTheme(updatedTheme);
+	};
+	return [theme, toggleDarkMode];
+};
+
+const appBarTheme = createMuiTheme(themeObject);
+
 export default function MyApp(props) {
 	const classes = useStyles();
-	const [state, setState] = React.useState(true);
+	const [theme, toggleDarkMode] = useDarkMode();
 
-	const handleChange = (event) => {
-		setState(!state);
-		theme.palette.type = theme.palette.type === "darK" ? "light" : "dark";
-	};
 	const { Component, pageProps } = props;
+	const themeConfig = createMuiTheme(theme);
 
 	React.useEffect(() => {
 		// Remove the server-side injected CSS.
@@ -50,28 +84,53 @@ export default function MyApp(props) {
 		}
 	}, []);
 
+	const router = useRouter();
+	let title = router.asPath
+		.split("/")
+		[router.asPath.split("/").length - 1].replace(/-(.)/g, (e) =>
+			e[1].toUpperCase()
+		)
+		.replace("-", " ");
+	if (title) title = title[0].toUpperCase() + title.slice(1);
+
 	return (
 		<React.Fragment>
 			<Head>
-				<title>Minehut.xyz</title>
+				<title>{"Minehut.xyz" + (title ? " | " + title : "")}</title>
 				<meta
 					name="viewport"
 					content="minimum-scale=1, initial-scale=1, width=device-width"
 				/>
 			</Head>
-			<ThemeProvider theme={theme}>
+			<ThemeProvider theme={themeConfig}>
 				<div className={classes.root}>
 					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 					<CssBaseline />
 					<AppBar position="fixed" className={classes.appBar}>
-						<Toolbar>
-							<Typography variant="h6" className={classes.title}>
-								Minehut
-							</Typography>
-							<IconButton onClick={handleChange}>
-								<Brightness7 />
-							</IconButton>
-						</Toolbar>
+						<ThemeProvider theme={appBarTheme}>
+							<Toolbar>
+								<Typography
+									variant="h6"
+									className={classes.title}
+								>
+									Minehut.xyz
+								</Typography>
+								<IconButton
+									className={classes.themeIcon}
+									onClick={toggleDarkMode}
+								>
+									{theme.palette.type === "dark" ? (
+										<Brightness7
+											className={classes.themeIcon}
+										/>
+									) : (
+										<Brightness4
+											className={classes.themeIcon}
+										/>
+									)}
+								</IconButton>
+							</Toolbar>
+						</ThemeProvider>
 					</AppBar>
 					<CustomDrawer />
 					<main className={classes.content}>

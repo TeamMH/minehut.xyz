@@ -12,25 +12,23 @@ import Link from "../src/Link";
 import MailIcon from "@material-ui/icons/Mail";
 import InboxIcon from "@material-ui/icons/Inbox";
 import { makeStyles } from "@material-ui/core/styles";
-import theme from "./theme";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import Router from "next/dist/next-server/server/router";
 
 const drawerWidth = 350;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	drawer: {
 		width: drawerWidth,
 		flexShrink: 0,
 		textAlign: "right",
-		color: "white !important",
 	},
 	drawerPaper: {
 		width: drawerWidth,
 		// backgroundColor: theme.palette.type === "dark" ? "#303030" : "#eeeeee",
 		//background: "linear-gradient(120deg, #7289da, #66a6ff)",
-		backgroundColor: "#2e3238",
+		backgroundColor: theme.palette.type === "dark" ? "#2e3238" : "#f3f3f3",
 	},
 	drawerContainer: {
 		overflowY: "auto",
@@ -41,10 +39,10 @@ const useStyles = makeStyles({
 		marginLeft: theme.spacing(3),
 	},
 	category: {
-		color: "#999999",
+		color: theme.palette.text.disabled,
 		marginTop: theme.spacing(3),
 	},
-});
+}));
 
 export default function CustomDrawer() {
 	const routes = {
