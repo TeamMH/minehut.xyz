@@ -7,6 +7,7 @@ import {
 	ListItemText,
 	Collapse,
 	Hidden,
+	SwipeableDrawer,
 } from "@material-ui/core";
 import Link from "../src/Link";
 import { makeStyles } from "@material-ui/core/styles";
@@ -174,7 +175,7 @@ export default function CustomDrawer({ open, setOpen }) {
 				</Drawer>
 			</Hidden>
 			<Hidden mdUp>
-				<Drawer
+				<SwipeableDrawer
 					className={classes.drawer}
 					variant="temporary"
 					open={open}
@@ -185,7 +186,7 @@ export default function CustomDrawer({ open, setOpen }) {
 					anchor="left"
 				>
 					{drawer}
-				</Drawer>
+				</SwipeableDrawer>
 			</Hidden>
 		</>
 	);
