@@ -4,28 +4,37 @@ import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import Head from "next/head";
 const glob = require("glob");
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		fontSize: "18px",
 		"& a": {
-			color: "#00aaff",
+			color:
+				theme.palette.type === "dark"
+					? theme.palette.info.light
+					: theme.palette.info.dark,
 			"text-decoration": "none",
 		},
 		"& table": {
 			"border-spacing": "5px",
 		},
 		"& th": {
-			"border-bottom":
-				theme.palette.type === "dark"
-					? "3px solid #f3f3f3"
-					: "3px solid black",
+			"border-bottom": "1.5px solid " + theme.palette.text.disabled,
+		},
+		"& h2": {
+			marginTop: theme.spacing(3),
+			paddingTop: theme.spacing(3),
+			borderTop: "1px solid " + theme.palette.text.disabled,
+		},
+		"& pre, & code": {
+			whiteSpace: "normal",
 		},
 	},
 }));
 
-export default function Slug({ frontmatter, markdownBody, siteTitle }) {
+export default function Slug({ frontmatter, markdownBody, title }) {
 	function reformatDate(fullDate) {
 		const date = new Date(fullDate);
 		return date.toDateString().slice(4);
@@ -43,6 +52,16 @@ export default function Slug({ frontmatter, markdownBody, siteTitle }) {
 
 	return (
 		<Container maxWidth="md">
+			<Head>
+				<meta content={title} property="og:title" />
+
+				<meta
+					content={frontmatter.description}
+					property="og:description"
+				/>
+
+				<meta content="minehut.xyz" property="og:site_name" />
+			</Head>
 			<ReactMarkdown
 				className={classes.root}
 				plugins={[gfm]}
@@ -56,14 +75,21 @@ export async function getStaticProps({ ...ctx }) {
 	let { slug } = ctx.params;
 	if (Array.isArray(slug)) slug = slug.join("/");
 	const content = await import(`../posts/${slug}.md`);
-	const config = await import(`../data/config.json`);
 	const data = matter(content.default);
+
+	let title = router.asPath
+		.split("/")
+		[router.asPath.split("/").length - 1].replace(/-(.)/g, (e) =>
+			e[1].toUpperCase()
+		)
+		.replace("-", " ");
+	title = title[0].toUpperCase() + title.slice(1);
 
 	return {
 		props: {
-			siteTitle: config.title,
 			frontmatter: data.data,
 			markdownBody: data.content,
+			title,
 		},
 	};
 }

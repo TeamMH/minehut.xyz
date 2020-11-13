@@ -4,51 +4,51 @@ import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
+import Head from "next/head";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		fontSize: "18px",
 		"& a": {
-			color: "#00aaff",
+			color:
+				theme.palette.type === "dark"
+					? theme.palette.info.light
+					: theme.palette.info.dark,
 			"text-decoration": "none",
 		},
 		"& table": {
 			"border-spacing": "5px",
 		},
 		"& th": {
-			"border-bottom":
-				theme.palette.type === "dark"
-					? "3px solid #f3f3f3"
-					: "3px solid black",
+			"border-bottom": "1.5px solid " + theme.palette.text.disabled,
+		},
+		"& h2": {
+			marginTop: theme.spacing(3),
+			paddingTop: theme.spacing(3),
+			borderTop: "1px solid " + theme.palette.text.disabled,
 		},
 	},
 }));
-
-const drawerWidth = 240;
 
 export default function Home({ markdownBody }) {
 	const classes = useStyles();
 	return (
 		<Container maxWidth="md">
+			<Head>
+				<meta content="Home" property="og:title" />
+
+				<meta
+					content="Welcome to minehut.xyz"
+					property="og:description"
+				/>
+
+				<meta content="minehut.xyz" property="og:site_name" />
+			</Head>
 			<ReactMarkdown
 				className={classes.root}
 				plugins={[gfm]}
 				source={markdownBody}
 			/>
-			{/* <style jsx global>
-				{`
-					a {
-						color: #00aaff;
-						text-decoration: none;
-					}
-					table {
-						border-spacing: 5px;
-					}
-					th {
-						border-bottom: 3px solid white;
-					}
-				`}
-			</style> */}
 		</Container>
 	);
 }
