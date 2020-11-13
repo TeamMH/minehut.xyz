@@ -13,7 +13,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { Brightness4 } from "@material-ui/icons";
 import { useRouter } from "next/router";
-import { Hidden } from "@material-ui/core";
+import { Hidden, Tooltip } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles((theme) => ({
@@ -74,7 +74,7 @@ const useDarkMode = () => {
 
 const appBarTheme = createMuiTheme(themeObject);
 
-export default function MyApp(props) {
+export default function MinehutXYZ(props) {
 	const classes = useStyles();
 	const [theme, toggleDarkMode] = useDarkMode();
 
@@ -130,20 +130,22 @@ export default function MyApp(props) {
 								>
 									minehut.xyz
 								</Typography>
-								<IconButton
-									className={classes.themeIcon}
-									onClick={toggleDarkMode}
-								>
-									{theme.palette.type === "dark" ? (
-										<Brightness7
-											className={classes.themeIcon}
-										/>
-									) : (
-										<Brightness4
-											className={classes.themeIcon}
-										/>
-									)}
-								</IconButton>
+								<Tooltip title="Toggle light/dark theme">
+									<IconButton
+										className={classes.themeIcon}
+										onClick={toggleDarkMode}
+									>
+										{theme.palette.type === "dark" ? (
+											<Brightness7
+												className={classes.themeIcon}
+											/>
+										) : (
+											<Brightness4
+												className={classes.themeIcon}
+											/>
+										)}
+									</IconButton>
+								</Tooltip>
 							</Toolbar>
 						</ThemeProvider>
 					</AppBar>
@@ -158,7 +160,7 @@ export default function MyApp(props) {
 	);
 }
 
-MyApp.propTypes = {
+MinehutXYZ.propTypes = {
 	Component: PropTypes.elementType.isRequired,
 	pageProps: PropTypes.object.isRequired,
 };
