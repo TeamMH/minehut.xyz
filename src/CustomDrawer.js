@@ -4,9 +4,9 @@ import {
 	Toolbar,
 	List,
 	ListItem,
-	ListItemIcon,
 	ListItemText,
 	Collapse,
+	Hidden,
 } from "@material-ui/core";
 import Link from "../src/Link";
 import MailIcon from "@material-ui/icons/Mail";
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function CustomDrawer() {
+export default function CustomDrawer({ open, setOpen }) {
 	const routes = {
 		Home: "/",
 		Contribute: "/contribute",
@@ -88,6 +88,7 @@ export default function CustomDrawer() {
 						href={routes[route]}
 						key={routes[route]}
 						selected={router.asPath === routes[route]}
+						onClick={() => setOpen(false)}
 					>
 						<ListItemText
 							style={{
@@ -151,19 +152,41 @@ export default function CustomDrawer() {
 
 	const classes = useStyles();
 
+	const drawer = (
+		<div className={classes.drawerContainer}>
+			<List>{mapRoutes(routes, 0)}</List>
+		</div>
+	);
+
 	return (
-		<Drawer
-			className={classes.drawer}
-			variant="permanent"
-			classes={{
-				paper: classes.drawerPaper,
-			}}
-			anchor="left"
-		>
-			<Toolbar />
-			<div className={classes.drawerContainer}>
-				<List>{mapRoutes(routes, 0)}</List>
-			</div>
-		</Drawer>
+		<>
+			<Hidden smDown>
+				<Drawer
+					className={classes.drawer}
+					variant="permanent"
+					classes={{
+						paper: classes.drawerPaper,
+					}}
+					anchor="left"
+				>
+					<Toolbar />
+					{drawer}
+				</Drawer>
+			</Hidden>
+			<Hidden mdUp>
+				<Drawer
+					className={classes.drawer}
+					variant="temporary"
+					open={open}
+					onClose={() => setOpen(false)}
+					classes={{
+						paper: classes.drawerPaper,
+					}}
+					anchor="left"
+				>
+					{drawer}
+				</Drawer>
+			</Hidden>
+		</>
 	);
 }

@@ -13,10 +13,15 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { Brightness4 } from "@material-ui/icons";
 import { useRouter } from "next/router";
+import { Hidden } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: "flex",
+	},
+	menuButton: {
+		marginRight: theme.spacing(2),
 	},
 	appBar: {
 		zIndex: theme.zIndex.drawer + 1,
@@ -76,6 +81,8 @@ export default function MyApp(props) {
 	const { Component, pageProps } = props;
 	const themeConfig = createMuiTheme(theme);
 
+	const [open, setOpen] = React.useState(false);
+
 	React.useEffect(() => {
 		// Remove the server-side injected CSS.
 		const jssStyles = document.querySelector("#jss-server-side");
@@ -96,7 +103,7 @@ export default function MyApp(props) {
 	return (
 		<React.Fragment>
 			<Head>
-				<title>{"Minehut.xyz" + (title ? " | " + title : "")}</title>
+				<title>{"minehut.xyz" + (title ? " | " + title : "")}</title>
 				<meta
 					name="viewport"
 					content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -109,11 +116,19 @@ export default function MyApp(props) {
 					<AppBar position="fixed" className={classes.appBar}>
 						<ThemeProvider theme={appBarTheme}>
 							<Toolbar>
+								<Hidden mdUp>
+									<IconButton
+										onClick={() => setOpen(!open)}
+										className={classes.menuButton}
+									>
+										<MenuIcon />
+									</IconButton>
+								</Hidden>
 								<Typography
 									variant="h6"
 									className={classes.title}
 								>
-									Minehut.xyz
+									minehut.xyz
 								</Typography>
 								<IconButton
 									className={classes.themeIcon}
@@ -132,7 +147,7 @@ export default function MyApp(props) {
 							</Toolbar>
 						</ThemeProvider>
 					</AppBar>
-					<CustomDrawer />
+					<CustomDrawer open={open} setOpen={setOpen} />
 					<main className={classes.content}>
 						<Toolbar />
 						<Component {...pageProps} />
