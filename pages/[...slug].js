@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 const glob = require("glob");
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		fontSize: "18px",
 		"& a": {
@@ -17,12 +17,15 @@ const useStyles = makeStyles({
 			"border-spacing": "5px",
 		},
 		"& th": {
-			"border-bottom": "3px solid white",
+			"border-bottom":
+				theme.palette.type === "dark"
+					? "3px solid #f3f3f3"
+					: "3px solid black",
 		},
 	},
-});
+}));
 
-export default function BlogTemplate({ frontmatter, markdownBody, siteTitle }) {
+export default function Slug({ frontmatter, markdownBody, siteTitle }) {
 	function reformatDate(fullDate) {
 		const date = new Date(fullDate);
 		return date.toDateString().slice(4);

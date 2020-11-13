@@ -5,7 +5,7 @@ import gfm from "remark-gfm";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		fontSize: "18px",
 		"& a": {
@@ -16,14 +16,17 @@ const useStyles = makeStyles({
 			"border-spacing": "5px",
 		},
 		"& th": {
-			"border-bottom": "3px solid white",
+			"border-bottom":
+				theme.palette.type === "dark"
+					? "3px solid #f3f3f3"
+					: "3px solid black",
 		},
 	},
-});
+}));
 
 const drawerWidth = 240;
 
-export default function PermanentDrawerLeft({ markdownBody }) {
+export default function Home({ markdownBody }) {
 	const classes = useStyles();
 	return (
 		<Container maxWidth="md">
