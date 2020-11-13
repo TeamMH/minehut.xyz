@@ -9,7 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import Brightness7 from "@material-ui/icons/Brightness7";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { Brightness4 } from "@material-ui/icons";
 import { useRouter } from "next/router";

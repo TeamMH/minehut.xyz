@@ -9,23 +9,22 @@ import {
 	Hidden,
 } from "@material-ui/core";
 import Link from "../src/Link";
-import MailIcon from "@material-ui/icons/Mail";
-import InboxIcon from "@material-ui/icons/Inbox";
 import { makeStyles } from "@material-ui/core/styles";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { useRouter } from "next/router";
-import Router from "next/dist/next-server/server/router";
 
 const drawerWidth = 350;
 
 const useStyles = makeStyles((theme) => ({
 	drawer: {
 		width: drawerWidth,
+		maxWidth: "100%",
 		flexShrink: 0,
 		textAlign: "right",
 	},
 	drawerPaper: {
 		width: drawerWidth,
+		maxWidth: "100%",
 		// backgroundColor: theme.palette.type === "dark" ? "#303030" : "#eeeeee",
 		//background: "linear-gradient(120deg, #7289da, #66a6ff)",
 		backgroundColor: theme.palette.type === "dark" ? "#2e3238" : "#f3f3f3",
