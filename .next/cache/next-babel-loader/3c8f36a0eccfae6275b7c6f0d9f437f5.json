@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { createMuiTheme } from \"@material-ui/core/styles\"; // Create a theme instance.\n\nconst theme = createMuiTheme({\n  palette: {\n    type: \"dark\",\n    background: {\n      default: \"#282b30\"\n    }\n  }\n});\nexport default theme;","map":null,"metadata":{},"sourceType":"module"}
