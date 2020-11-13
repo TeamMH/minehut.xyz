@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport React from \"react\";\nvar drawerWidth = 240;\nexport default function PermanentDrawerLeft() {\n  return /*#__PURE__*/_jsx(\"h1\", {\n    children: \"hello\"\n  });\n}","map":null,"metadata":{},"sourceType":"module"}
