@@ -48,6 +48,7 @@ export default function CustomDrawer({ open, setOpen }) {
 		Home: "/",
 		Contribute: "/contribute",
 		Partnerships: "/partnerships",
+		"Plugin List": "/plugin-list",
 		"Plugin Tutorials": {
 			"Recommended Plugins": "/plugin-tutorials/recommended-plugins",
 		},
@@ -101,18 +102,18 @@ export default function CustomDrawer({ open, setOpen }) {
 			} else {
 				if (i === 0)
 					return (
-						<>
+						<div key={route + "-div"}>
 							<ListItem key={route} className={classes.category}>
 								<ListItemText>
 									<strong>{route.toUpperCase()}</strong>
 								</ListItemText>
 							</ListItem>
 							{mapRoutes(routes[route], i + 1)}
-						</>
+						</div>
 					);
 				else
 					return (
-						<>
+						<div key={route + "-div"}>
 							<ListItem
 								button
 								onClick={() => {
@@ -143,7 +144,7 @@ export default function CustomDrawer({ open, setOpen }) {
 							>
 								{mapRoutes(routes[route], i + 1)}
 							</Collapse>
-						</>
+						</div>
 					);
 			}
 		});

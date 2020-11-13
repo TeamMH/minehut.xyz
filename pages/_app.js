@@ -12,7 +12,7 @@ import Brightness7 from "@material-ui/icons/Brightness7";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { Brightness4 } from "@material-ui/icons";
 import { useRouter } from "next/router";
-import { Hidden, Tooltip } from "@material-ui/core";
+import { Fab, Hidden, Link, Tooltip } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles((theme) => ({
@@ -37,6 +37,13 @@ const useStyles = makeStyles((theme) => ({
 	title: {
 		flexGrow: 1,
 	},
+	discordFab: {
+		position: "fixed",
+		bottom: theme.spacing(2),
+		right: theme.spacing(2),
+		fontSize: 26,
+		color: "white",
+	},
 }));
 
 const themeObject = {
@@ -45,7 +52,11 @@ const themeObject = {
 		background: {
 			default: "#282b30",
 		},
-		white: "#f3f3f3",
+		secondary: {
+			main: "#7289DA",
+			dark: "#7289DA",
+			light: "#7289DA",
+		},
 	},
 };
 
@@ -107,6 +118,10 @@ export default function MinehutXYZ(props) {
 					name="viewport"
 					content="minimum-scale=1, initial-scale=1, width=device-width"
 				/>
+				<script
+					src="https://kit.fontawesome.com/9a67ea5597.js"
+					crossOrigin="anonymous"
+				></script>
 			</Head>
 			<ThemeProvider theme={themeConfig}>
 				<div className={classes.root}>
@@ -153,6 +168,17 @@ export default function MinehutXYZ(props) {
 						<Toolbar />
 						<Component {...pageProps} />
 					</main>
+					<Fab
+						component={Link}
+						href="https://discord.gg/bS6FMMCVyg"
+						underline="none"
+						color="secondary"
+						className={classes.discordFab}
+						rel="noreferrer"
+						target="_blank"
+					>
+						<i className="fab fa-discord" />
+					</Fab>
 				</div>
 			</ThemeProvider>
 		</React.Fragment>

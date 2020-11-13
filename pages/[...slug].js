@@ -5,6 +5,8 @@ import gfm from "remark-gfm";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Head from "next/head";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 const glob = require("glob");
 
 const useStyles = makeStyles((theme) => ({
@@ -29,17 +31,13 @@ const useStyles = makeStyles((theme) => ({
 			borderTop: "1px solid " + theme.palette.text.disabled,
 		},
 		"& pre, & code": {
-			whiteSpace: "normal",
+			whiteSpace: "pre-line !important",
 		},
 	},
 }));
 
 export default function Slug({ frontmatter, markdownBody, title }) {
-	function reformatDate(fullDate) {
-		const date = new Date(fullDate);
-		return date.toDateString().slice(4);
-	}
-
+	console.log(markdownBody);
 	const classes = useStyles();
 
 	/*
@@ -49,6 +47,18 @@ export default function Slug({ frontmatter, markdownBody, title }) {
 	 */
 
 	if (!frontmatter) return <></>;
+
+	const renderers = {
+		code({ language, value }) {
+			return (
+				<SyntaxHighlighter
+					style={atomDark}
+					language={language}
+					children={value}
+				/>
+			);
+		},
+	};
 
 	return (
 		<Container maxWidth="md">
@@ -66,6 +76,7 @@ export default function Slug({ frontmatter, markdownBody, title }) {
 				className={classes.root}
 				plugins={[gfm]}
 				source={markdownBody}
+				renderers={renderers}
 			/>
 		</Container>
 	);

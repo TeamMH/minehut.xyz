@@ -20,7 +20,7 @@ From here, you can edit the file. [_**Here's**_](https://raw.githubusercontent.c
 
 This is an example page, and this is the source:
 
-```text
+```md
 ---
 description: Description
 ---
@@ -42,7 +42,7 @@ Text
 
 To add a **description** to your page, add:
 
-```text
+```md
 ---
 description: Description for your page!
 ---
@@ -50,13 +50,13 @@ description: Description for your page!
 
 To add a **title** to your page, add:
 
-```text
+```md
 # title for your page
 ```
 
 To add separate sections for your page, add:
 
-```text
+```md
 ## Section
 
 Put text here

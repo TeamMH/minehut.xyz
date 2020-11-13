@@ -5,6 +5,8 @@ import gfm from "remark-gfm";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
 import Head from "next/head";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -27,18 +29,34 @@ const useStyles = makeStyles((theme) => ({
 			paddingTop: theme.spacing(3),
 			borderTop: "1px solid " + theme.palette.text.disabled,
 		},
+		"& pre, & code": {
+			whiteSpace: "pre-line !important",
+		},
 	},
 }));
 
-export default function Home({ markdownBody }) {
+export default function Home({ markdownBody, frontmatter }) {
 	const classes = useStyles();
+
+	const renderers = {
+		code({ language, value }) {
+			return (
+				<SyntaxHighlighter
+					style={atomDark}
+					language={language}
+					children={value}
+				/>
+			);
+		},
+	};
+
 	return (
 		<Container maxWidth="md">
 			<Head>
 				<meta content="Home" property="og:title" />
 
 				<meta
-					content="Welcome to minehut.xyz"
+					content={frontmatter.description}
 					property="og:description"
 				/>
 
@@ -48,6 +66,7 @@ export default function Home({ markdownBody }) {
 				className={classes.root}
 				plugins={[gfm]}
 				source={markdownBody}
+				renderers={renderers}
 			/>
 		</Container>
 	);
@@ -60,7 +79,6 @@ export async function getStaticProps() {
 
 	return {
 		props: {
-			siteTitle: config.title,
 			frontmatter: data.data,
 			markdownBody: data.content,
 		},
