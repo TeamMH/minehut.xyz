@@ -24,5 +24,8 @@
 		"dev": "next",
 		"build": "next build",
 		"start": "next start -p $PORT"
-	}
+	},
+	"cacheDirectories": [
+		".next/cache"
+	]
 }

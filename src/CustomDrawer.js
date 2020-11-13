@@ -40,6 +40,10 @@ const useStyles = makeStyles({
 	nestedText: {
 		marginLeft: theme.spacing(3),
 	},
+	category: {
+		color: "#999999",
+		marginTop: theme.spacing(3),
+	},
 });
 
 export default function CustomDrawer() {
@@ -47,24 +51,31 @@ export default function CustomDrawer() {
 		Home: "/",
 		Contribute: "/contribute",
 		Partnerships: "/partnerships",
-		FAQ: {
-			Skript: "/faq/skript",
+		"Plugin Tutorials": {
+			"Recommended Plugins": "/plugin-tutorials/recommended-plugins",
 		},
-		Plugins: {
-			"Plugin List": "/plugins/plugin-list",
-			"Recommended Plugins": "/plugins/recommended-plugins",
+		Skript: {
+			Skript: "/skript/skript",
+			Tutorials: {
+				Test: "/skript/tutorials/test",
+			},
 		},
 	};
 
 	const dropdowns = {};
 
-	Object.keys(routes).forEach((route) => {
-		if (typeof routes[route] !== "object") return;
-		const [open, setOpen] = React.useState(false);
-		dropdowns[route] = {};
-		dropdowns[route].open = open;
-		dropdowns[route].setOpen = setOpen;
-	});
+	function setStates(routes) {
+		Object.keys(routes).forEach((route) => {
+			if (typeof routes[route] !== "object") return;
+			const [open, setOpen] = React.useState(false);
+			dropdowns[route] = {};
+			dropdowns[route].open = open;
+			dropdowns[route].setOpen = setOpen;
+			setStates(routes[route]);
+		});
+	}
+
+	setStates(routes);
 
 	const router = useRouter();
 
@@ -80,40 +91,62 @@ export default function CustomDrawer() {
 						key={routes[route]}
 						selected={router.asPath === routes[route]}
 					>
-						<ListItemText style={{ marginLeft: `${i * 32}px` }}>
+						<ListItemText
+							style={{
+								marginLeft: `${Math.max(i - 1, 0) * 32}px`,
+							}}
+						>
 							{route}
 						</ListItemText>
 					</ListItem>
 				);
 			} else {
-				return (
-					<>
-						<ListItem
-							button
-							onClick={() => {
-								dropdowns[route].setOpen(
-									!dropdowns[route].open
-								);
-							}}
-							key={route}
-						>
-							<ListItemText style={{ marginLeft: `${i * 16}px` }}>
-								{route}
-							</ListItemText>
-							{dropdowns[route].open ? (
-								<ExpandLess />
-							) : (
-								<ExpandMore />
-							)}
-						</ListItem>
-						<Collapse
-							key={route + "-dropdown"}
-							in={dropdowns[route].open}
-						>
+				if (i === 0)
+					return (
+						<>
+							<ListItem key={route} className={classes.category}>
+								<ListItemText>
+									<strong>{route.toUpperCase()}</strong>
+								</ListItemText>
+							</ListItem>
 							{mapRoutes(routes[route], i + 1)}
-						</Collapse>
-					</>
-				);
+						</>
+					);
+				else
+					return (
+						<>
+							<ListItem
+								button
+								onClick={() => {
+									dropdowns[route].setOpen(
+										!dropdowns[route].open
+									);
+								}}
+								key={route}
+							>
+								<ListItemText
+									style={{
+										marginLeft: `${
+											Math.max(i - 1, 0) * 32
+										}px`,
+									}}
+								>
+									{route}
+								</ListItemText>
+								{dropdowns[route].open ? (
+									<ExpandLess />
+								) : (
+									<ExpandMore />
+								)}
+							</ListItem>
+							<Collapse
+								key={route + "-dropdown"}
+								in={dropdowns[route].open}
+							>
+								{mapRoutes(routes[route], i + 1)}
+							</Collapse>
+						</>
+					);
 			}
 		});
 	}
@@ -131,7 +164,7 @@ export default function CustomDrawer() {
 		>
 			<Toolbar />
 			<div className={classes.drawerContainer}>
-				<List dense>{mapRoutes(routes, 0)}</List>
+				<List>{mapRoutes(routes, 0)}</List>
 			</div>
 		</Drawer>
 	);
