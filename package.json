@@ -20,7 +20,7 @@
 	"scripts": {
 		"dev": "next",
 		"build": "next build",
-		"start": "next start -p $PORT",
+		"start": "next start -p 80",
 		"post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
 	}
 }
