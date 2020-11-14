@@ -15,6 +15,7 @@
 		"prop-types": "latest",
 		"raw-loader": "^4.0.2",
 		"react": "latest",
+		"react-cookie": "^4.0.3",
 		"react-dom": "latest",
 		"react-file-reader": "^1.1.4",
 		"react-markdown": "^5.0.2",

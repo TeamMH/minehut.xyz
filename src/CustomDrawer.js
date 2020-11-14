@@ -180,6 +180,7 @@ export default function CustomDrawer({ open, setOpen }) {
 					variant="temporary"
 					open={open}
 					onClose={() => setOpen(false)}
+					onOpen={() => setOpen(true)}
 					classes={{
 						paper: classes.drawerPaper,
 					}}

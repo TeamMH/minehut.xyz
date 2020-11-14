@@ -8,12 +8,12 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
-import Brightness7 from "@material-ui/icons/Brightness7";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { Brightness4 } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import { Fab, Hidden, Link, Tooltip } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import { CookiesProvider, useCookies } from "react-cookie";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -60,7 +60,7 @@ const themeObject = {
 	},
 };
 
-const useDarkMode = () => {
+const useDarkMode = (setCookie) => {
 	const [theme, setTheme] = React.useState(themeObject);
 
 	const {
@@ -77,6 +77,7 @@ const useDarkMode = () => {
 				},
 			},
 		};
+		setCookie("theme", type === "dark" ? "light" : "dark");
 		setTheme(updatedTheme);
 	};
 	return [theme, toggleDarkMode];
@@ -85,8 +86,13 @@ const useDarkMode = () => {
 const appBarTheme = createMuiTheme(themeObject);
 
 export default function MinehutXYZ(props) {
+	const [cookies, setCookie] = useCookies(["theme"]);
 	const classes = useStyles();
-	const [theme, toggleDarkMode] = useDarkMode();
+	themeObject.palette.type = cookies.theme;
+	themeObject.palette.background.default =
+		themeObject.palette.type === "light" ? "#f3f3f3" : "#282b30";
+
+	const [theme, toggleDarkMode] = useDarkMode(setCookie);
 
 	const { Component, pageProps } = props;
 	const themeConfig = createMuiTheme(theme);
@@ -111,77 +117,75 @@ export default function MinehutXYZ(props) {
 	if (title) title = title[0].toUpperCase() + title.slice(1);
 
 	return (
-		<React.Fragment>
-			<Head>
-				<title>{"minehut.xyz" + (title ? " | " + title : "")}</title>
-				<meta
-					name="viewport"
-					content="minimum-scale=1, initial-scale=1, width=device-width"
-				/>
-				<script
-					src="https://kit.fontawesome.com/9a67ea5597.js"
-					crossOrigin="anonymous"
-				></script>
-			</Head>
-			<ThemeProvider theme={themeConfig}>
-				<div className={classes.root}>
-					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-					<CssBaseline />
-					<AppBar position="fixed" className={classes.appBar}>
-						<ThemeProvider theme={appBarTheme}>
-							<Toolbar>
-								<Hidden mdUp>
-									<IconButton
-										onClick={() => setOpen(!open)}
-										className={classes.menuButton}
+		<CookiesProvider>
+			<React.Fragment>
+				<Head>
+					<title>
+						{"minehut.xyz" + (title ? " | " + title : "")}
+					</title>
+					<meta
+						name="viewport"
+						content="minimum-scale=1, initial-scale=1, width=device-width"
+					/>
+					<script
+						src="https://kit.fontawesome.com/9a67ea5597.js"
+						crossOrigin="anonymous"
+					></script>
+				</Head>
+				<ThemeProvider theme={themeConfig}>
+					<div className={classes.root}>
+						{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+						<CssBaseline />
+						<AppBar position="fixed" className={classes.appBar}>
+							<ThemeProvider theme={appBarTheme}>
+								<Toolbar>
+									<Hidden mdUp>
+										<IconButton
+											onClick={() => setOpen(!open)}
+											className={classes.menuButton}
+										>
+											<MenuIcon />
+										</IconButton>
+									</Hidden>
+									<Typography
+										variant="h6"
+										className={classes.title}
 									>
-										<MenuIcon />
-									</IconButton>
-								</Hidden>
-								<Typography
-									variant="h6"
-									className={classes.title}
-								>
-									minehut.xyz
-								</Typography>
-								<Tooltip title="Toggle light/dark theme">
-									<IconButton
-										className={classes.themeIcon}
-										onClick={toggleDarkMode}
-									>
-										{theme.palette.type === "dark" ? (
-											<Brightness7
-												className={classes.themeIcon}
-											/>
-										) : (
-											<Brightness4
-												className={classes.themeIcon}
-											/>
-										)}
-									</IconButton>
-								</Tooltip>
-							</Toolbar>
-						</ThemeProvider>
-					</AppBar>
-					<CustomDrawer open={open} setOpen={setOpen} />
-					<main className={classes.content}>
-						<Toolbar />
-						<Component {...pageProps} />
-					</main>
-					<Fab
-						component={Link}
-						href="https://discord.gg/bS6FMMCVyg"
-						underline="none"
-						color="secondary"
-						className={classes.discordFab}
-						rel="noreferrer"
-						target="_blank"
-					>
-						<i className="fab fa-discord" />
-					</Fab>
-				</div>
-			</ThemeProvider>
-		</React.Fragment>
+										minehut.xyz
+									</Typography>
+									<Tooltip title="Toggle light/dark theme">
+										<IconButton
+											className={classes.themeIcon}
+											onClick={toggleDarkMode}
+										>
+											<Brightness4 />
+										</IconButton>
+									</Tooltip>
+								</Toolbar>
+							</ThemeProvider>
+						</AppBar>
+						<CustomDrawer open={open} setOpen={setOpen} />
+						<main className={classes.content}>
+							<Toolbar />
+							<Component {...pageProps} />
+						</main>
+						<Tooltip title="Join us on Discord!">
+							<Fab
+								component={Link}
+								href="https://discord.gg/bS6FMMCVyg"
+								underline="none"
+								color="secondary"
+								className={classes.discordFab}
+								rel="noreferrer"
+								target="_blank"
+							>
+								<i aria-hidden className="fab fa-discord" />
+							</Fab>
+						</Tooltip>
+					</div>
+				</ThemeProvider>
+			</React.Fragment>
+		</CookiesProvider>
 	);
 }
 
