@@ -88,6 +88,7 @@ const appBarTheme = createMuiTheme(themeObject);
 export default function MinehutXYZ(props) {
 	const [cookies, setCookie] = useCookies(["theme"]);
 	const classes = useStyles();
+	if (!cookies.theme) setCookie("theme", "dark");
 	themeObject.palette.type = cookies.theme || "dark";
 	themeObject.palette.background.default =
 		themeObject.palette.type === "light" ? "#f3f3f3" : "#282b30";
