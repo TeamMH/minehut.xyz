@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Slug({ frontmatter, markdownBody, title }) {
-	console.log(markdownBody);
 	const classes = useStyles();
 
 	/*

@@ -71,7 +71,7 @@ const useDarkMode = (setCookie) => {
 			...theme,
 			palette: {
 				...theme.palette,
-				type: type === "dark" ? "light" : "dark",
+				type: type === "light" ? "dark" : "light",
 				background: {
 					default: type === "dark" ? "#f3f3f3" : "#282b30",
 				},
@@ -88,7 +88,7 @@ const appBarTheme = createMuiTheme(themeObject);
 export default function MinehutXYZ(props) {
 	const [cookies, setCookie] = useCookies(["theme"]);
 	const classes = useStyles();
-	themeObject.palette.type = cookies.theme;
+	themeObject.palette.type = cookies.theme || "dark";
 	themeObject.palette.background.default =
 		themeObject.palette.type === "light" ? "#f3f3f3" : "#282b30";
 
