@@ -4,7 +4,7 @@ description: Learn how to contribute to Minehut.xyz
 
 # Contribute
 
-## How to Contribute
+## How to contribute
 
 You can contribute to minehut.xyz by making a [pull request at our GitHub](https://github.com/TeamMH/minehutxyz). You will need a GitHub account for this.
 

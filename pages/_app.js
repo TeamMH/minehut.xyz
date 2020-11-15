@@ -3,39 +3,27 @@ import PropTypes from "prop-types";
 import Head from "next/head";
 import CustomDrawer from "../src/CustomDrawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { Brightness4 } from "@material-ui/icons";
 import { useRouter } from "next/router";
-import { Fab, Hidden, Link, Tooltip } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import { Fab, Link, Tooltip } from "@material-ui/core";
 import { CookiesProvider, useCookies } from "react-cookie";
+import CustomAppBar from "../src/CustomAppBar";
+
+const keywords = [];
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: "flex",
 	},
-	menuButton: {
-		marginRight: theme.spacing(2),
-	},
-	appBar: {
-		zIndex: theme.zIndex.drawer + 1,
-		// backgroundColor: "#373b42",
-		background: "linear-gradient(120deg, #7289da, #66a6ff)",
-	},
+
 	content: {
 		flexGrow: 1,
 		padding: theme.spacing(3),
 	},
 	navTheme: {
 		marginRight: theme.spacing(1),
-	},
-	title: {
-		flexGrow: 1,
 	},
 	discordFab: {
 		position: "fixed",
@@ -137,34 +125,13 @@ export default function MinehutXYZ(props) {
 					<div className={classes.root}>
 						{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 						<CssBaseline />
-						<AppBar position="fixed" className={classes.appBar}>
-							<ThemeProvider theme={appBarTheme}>
-								<Toolbar>
-									<Hidden mdUp>
-										<IconButton
-											onClick={() => setOpen(!open)}
-											className={classes.menuButton}
-										>
-											<MenuIcon />
-										</IconButton>
-									</Hidden>
-									<Typography
-										variant="h6"
-										className={classes.title}
-									>
-										minehut.xyz
-									</Typography>
-									<Tooltip title="Toggle light/dark theme">
-										<IconButton
-											className={classes.themeIcon}
-											onClick={toggleDarkMode}
-										>
-											<Brightness4 />
-										</IconButton>
-									</Tooltip>
-								</Toolbar>
-							</ThemeProvider>
-						</AppBar>
+						<CustomAppBar
+							useDarkMode={useDarkMode}
+							appBarTheme={appBarTheme}
+							setOpen={setOpen}
+							open={open}
+							toggleDarkMode={toggleDarkMode}
+						/>
 						<CustomDrawer open={open} setOpen={setOpen} />
 						<main className={classes.content}>
 							<Toolbar />

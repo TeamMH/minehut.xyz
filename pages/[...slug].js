@@ -7,11 +7,13 @@ import Container from "@material-ui/core/Container";
 import Head from "next/head";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { Divider, IconButton, Link, Typography } from "@material-ui/core";
+import FileCopyIcon from "@material-ui/icons/FileCopy";
 const glob = require("glob");
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		fontSize: "18px",
+		fontSize: 16,
 		"& a": {
 			color:
 				theme.palette.type === "dark"
@@ -25,14 +27,13 @@ const useStyles = makeStyles((theme) => ({
 		"& th": {
 			"border-bottom": "1.5px solid " + theme.palette.text.disabled,
 		},
-		"& h2": {
-			marginTop: theme.spacing(3),
-			paddingTop: theme.spacing(3),
-			borderTop: "1px solid " + theme.palette.text.disabled,
-		},
 		"& pre, & code": {
 			whiteSpace: "pre-line !important",
 		},
+	},
+	heading: {
+		marginTop: theme.spacing(2),
+		paddingTop: theme.spacing(2),
 	},
 }));
 
@@ -57,7 +58,53 @@ export default function Slug({ frontmatter, markdownBody, title }) {
 				/>
 			);
 		},
+		heading(props) {
+			return (
+				<>
+					{props.level === 2 ? <Divider /> : null}
+					<Typography
+						className={classes.heading}
+						{...getCoreProps(props)}
+						id={
+							props.children[0].props &&
+							props.children[0].props.value
+								? props.children[0].props.value
+										.toLowerCase()
+										.replace(/ +/g, "-")
+								: null
+						}
+						variant={
+							props.level < 5
+								? `h${props.level + 2}`
+								: `subtitle${props.level - 2}`
+						}
+						component={`h${props.level}`}
+						paragraph
+					>
+						{props.children}
+					</Typography>
+				</>
+			);
+		},
+		paragraph(props) {
+			return (
+				<Typography
+					component="p"
+					variant="body1"
+					{...getCoreProps(props)}
+					paragraph
+				>
+					{props.children}
+				</Typography>
+			);
+		},
 	};
+
+	function getCoreProps(props) {
+		const source = props["data-sourcepos"];
+		/* istanbul ignore next - nodes from plugins w/o position */
+		return source ? { "data-sourcepos": source } : {};
+	}
 
 	return (
 		<Container maxWidth="md">
@@ -104,23 +151,23 @@ export async function getStaticProps({ ...ctx }) {
 
 export async function getStaticPaths() {
 	//get all .md files in the posts dir
-	const blogs = glob.sync("posts/**/*.md");
+	const posts = glob.sync("posts/**/*.md");
+
+	const fs = await import("fs");
 
 	//remove path and extension to leave filename only
-	const blogSlugs = blogs.map((file) => {
-		const f = file
+	const postSlugs = posts.map((file) =>
+		file
 			.split("/")
 			.slice(1, file.split("/").length)
 			.join("/")
 			.replace(/ /g, "-")
 			.slice(0, -3)
-			.trim();
-		//console.log(file, f);
-		return f;
-	});
+			.trim()
+	);
 
 	// create paths with `slug` param
-	const paths = blogSlugs.map((slug) => `/${slug}`);
+	const paths = postSlugs.map((slug) => `/${slug}`);
 	return {
 		paths,
 		fallback: false,

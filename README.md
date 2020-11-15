@@ -4,7 +4,7 @@ description: The leading Minehut support website.
 
 # Home
 
-## WELCOME... TO MINEHUT.XYZ
+## Welcome... to minehut.xyz
 
 Minehut.xyz is home to the best Minehut-related support you'll find on the web. We aim to provide top quality [Minehut tutorials](https://minehut.xyz/faq/panel), [Plugin tutorials](https://minehut.xyz/plugin/popular), and [Skript tutorials](https://minehut.xyz/skript/basics). Our site is [community driven](contribute.md), and we will continue to make it better and better.
 
@@ -12,19 +12,19 @@ Minehut.xyz is home to the best Minehut-related support you'll find on the web. 
 Utilise our **Search** function at the top righthand corner of the site, it's so helpful to find your question within our site.
 {% endhint %}
 
-## EVERY QUESTION EVER, ANSWERED.
+## Every question ever, answered.
 
 **We know Minehut**. We've integrated out knowledge into a **Popular Questions** section, which directed towards questions that are frequently asked. For example ["How do I allow 1.8 clients to join?"](https://minehut.xyz/faq/other-questions/server-version), and ["How do I give my players a permission"](faq/ingame/permissions.md). [\[Submit a post\]](contribute.md)
 
-## OUR PLUGIN KNOW-HOW
+## Our plugin know-how
 
 Our team consists of avid server creators, meaning we know all about the plugins players use most. Our helpful **Plugin Tutorials** section gives users top-notch and informative knowledge on the most used and best plugins out there. [\[Submit a post\]](contribute.md)
 
-## DEVELOPERS
+## Developers
 
 Minehut's Skripting community has continued to grow throughout the years, so we've adapted our website to help the developers as much as we can. We've teamed up with some of the best Skript developers out there to write the best tutorials and examples we can. \[Submit a post\]\]\(contribute.md\)
 
-## THE TEAM
+## The team
 
 | Name              | Position                                                     |
 | :---------------- | :----------------------------------------------------------- |
@@ -40,7 +40,7 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 | **Rqdioqctive**   | **Writer**                                                   |
 | **Citeful**       | **Writer**                                                   |
 
-## ABOUT US
+## About us
 
 Minehut.xyz was founded on _**August 4th, 2020**_ by two members of the Minehut Community, **Tarna** _\(Senior Support @ Minehut\)_ & **Minehut** _\(Adam, Former Senior Support @ Minehut\)_.
 

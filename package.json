@@ -8,6 +8,7 @@
 	"dependencies": {
 		"@material-ui/core": "latest",
 		"@material-ui/icons": "^4.9.1",
+		"@material-ui/lab": "^4.0.0-alpha.56",
 		"clsx": "latest",
 		"glob": "^7.1.6",
 		"gray-matter": "^4.0.2",
