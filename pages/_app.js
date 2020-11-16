@@ -7,32 +7,63 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
-import { Fab, Link, Tooltip } from "@material-ui/core";
+import {
+	Container,
+	Divider,
+	Fab,
+	Link,
+	Paper,
+	Table,
+	TableBody,
+	TableCell,
+	TableContainer,
+	TableHead,
+	TableRow,
+	Tooltip,
+	Typography,
+} from "@material-ui/core";
 import { CookiesProvider, useCookies } from "react-cookie";
 import CustomAppBar from "../src/CustomAppBar";
+import { MDXProvider } from "@mdx-js/react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import materialLight from "react-syntax-highlighter/dist/cjs/styles/prism/material-light";
 
-const keywords = [];
-
-const useStyles = makeStyles((theme) => ({
-	root: {
-		display: "flex",
-	},
-
-	content: {
-		flexGrow: 1,
-		padding: theme.spacing(3),
-	},
-	navTheme: {
-		marginRight: theme.spacing(1),
-	},
-	discordFab: {
-		position: "fixed",
-		bottom: theme.spacing(2),
-		right: theme.spacing(2),
-		fontSize: 26,
-		color: "white",
-	},
-}));
+const useStyles = makeStyles((theme) => {
+	return {
+		root: {
+			display: "flex",
+			fontSize: 16,
+		},
+		content: {
+			flexGrow: 1,
+			padding: theme.spacing(3, 0),
+		},
+		navTheme: {
+			marginRight: theme.spacing(1),
+		},
+		discordFab: {
+			position: "fixed",
+			bottom: theme.spacing(2),
+			right: theme.spacing(2),
+			fontSize: 26,
+			color: "white",
+		},
+		link: {
+			color: theme.palette.info.main,
+		},
+		heading: {
+			marginTop: theme.spacing(3),
+			marginBottom: theme.spacing(3),
+		},
+		code: {
+			whiteSpace: "pre-line !important",
+			"& code": {
+				whiteSpace: "pre-line !important",
+			},
+		},
+	};
+});
 
 const themeObject = {
 	palette: {
@@ -74,8 +105,9 @@ const useDarkMode = (setCookie) => {
 const appBarTheme = createMuiTheme(themeObject);
 
 export default function MinehutXYZ(props) {
-	const [cookies, setCookie] = useCookies(["theme"]);
 	const classes = useStyles();
+
+	const [cookies, setCookie] = useCookies(["theme"]);
 	if (!cookies.theme) setCookie("theme", "dark");
 	themeObject.palette.type = cookies.theme || "dark";
 	themeObject.palette.background.default =
@@ -88,8 +120,118 @@ export default function MinehutXYZ(props) {
 
 	const [open, setOpen] = React.useState(false);
 
+	const components = {
+		h1(props) {
+			return (
+				<Typography
+					className={classes.heading}
+					{...props}
+					variant="h3"
+				/>
+			);
+		},
+		h2(props) {
+			return (
+				<>
+					<Divider />
+					<Typography
+						className={classes.heading}
+						{...props}
+						variant="h4"
+					/>
+				</>
+			);
+		},
+		h3(props) {
+			return (
+				<Typography
+					className={classes.heading}
+					{...props}
+					variant="h5"
+				/>
+			);
+		},
+		h4(props) {
+			return (
+				<Typography
+					className={classes.heading}
+					{...props}
+					variant="h6"
+				/>
+			);
+		},
+		h5(props) {
+			return (
+				<Typography
+					className={classes.heading}
+					{...props}
+					variant="subtitle1"
+				/>
+			);
+		},
+		h6(props) {
+			return (
+				<Typography
+					className={classes.heading}
+					{...props}
+					variant="subtitle2"
+				/>
+			);
+		},
+		p(props) {
+			return <Typography {...props} variant="body1" paragraph />;
+		},
+		a(props) {
+			return <Link {...props} className={classes.link} />;
+		},
+		table(props) {
+			return (
+				<TableContainer
+					style={{
+						background:
+							themeConfig.palette.type === "dark"
+								? "#30343a"
+								: "#eeeeee",
+						marginBottom: themeConfig.spacing(3),
+					}}
+					component={Paper}
+				>
+					<Table {...props} />
+				</TableContainer>
+			);
+		},
+		thead(props) {
+			return <TableHead {...props} />;
+		},
+		tbody(props) {
+			return <TableBody {...props} />;
+		},
+		tr(props) {
+			return <TableRow {...props} />;
+		},
+		th(props) {
+			return <TableCell {...props} />;
+		},
+		td(props) {
+			return <TableCell {...props} />;
+		},
+		code(props) {
+			return (
+				<SyntaxHighlighter
+					language={props.className.replace("language-", "")}
+					children={props.children}
+					style={
+						themeConfig.palette.type === "dark"
+							? atomDark
+							: materialLight
+					}
+					className={classes.code}
+				/>
+			);
+		},
+	};
+
 	React.useEffect(() => {
-		// Remove the server-side injected CSS.
 		const jssStyles = document.querySelector("#jss-server-side");
 		if (jssStyles) {
 			jssStyles.parentElement.removeChild(jssStyles);
@@ -99,8 +241,9 @@ export default function MinehutXYZ(props) {
 	const router = useRouter();
 	let title = router.asPath
 		.split("/")
-		[router.asPath.split("/").length - 1].replace(/-(.)/g, (e) =>
-			e[1].toUpperCase()
+		[router.asPath.split("/").length - 1].replace(
+			/-(.)/g,
+			(e) => ` ${e[1].toUpperCase()}`
 		)
 		.replace("-", " ");
 	if (title) title = title[0].toUpperCase() + title.slice(1);
@@ -135,7 +278,11 @@ export default function MinehutXYZ(props) {
 						<CustomDrawer open={open} setOpen={setOpen} />
 						<main className={classes.content}>
 							<Toolbar />
-							<Component {...pageProps} />
+							<Container maxWidth="md">
+								<MDXProvider components={components}>
+									<Component {...pageProps} />
+								</MDXProvider>
+							</Container>
 						</main>
 						<Tooltip title="Join us on Discord!">
 							<Fab

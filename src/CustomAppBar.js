@@ -1,5 +1,6 @@
 import {
 	makeStyles,
+	fade,
 	AppBar,
 	ThemeProvider,
 	Hidden,
@@ -9,14 +10,19 @@ import {
 	Tooltip,
 	TextField,
 	InputBase,
+	Paper,
+	ListItemText,
+	List,
+	ListItem,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Brightness4 from "@material-ui/icons/Brightness4";
-import { Autocomplete } from "@material-ui/lab";
+import SearchIcon from "@material-ui/icons/Search";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
 // const glob = require("glob");
 // const fs = require("fs");
-
-const keywords = [];
 
 const useStyles = makeStyles((theme) => ({
 	menuButton: {
@@ -30,6 +36,53 @@ const useStyles = makeStyles((theme) => ({
 	title: {
 		flexGrow: 1,
 	},
+	search: {
+		position: "relative",
+		borderRadius: theme.shape.borderRadius,
+		backgroundColor: fade(theme.palette.common.white, 0.15),
+		"&:hover": {
+			backgroundColor: fade(theme.palette.common.white, 0.25),
+		},
+		marginLeft: 0,
+		marginRight: theme.spacing(2),
+		width: "100%",
+		[theme.breakpoints.up("sm")]: {
+			marginLeft: theme.spacing(1),
+			width: "auto",
+		},
+	},
+	searchIcon: {
+		padding: theme.spacing(0, 2),
+		height: "100%",
+		position: "absolute",
+		pointerEvents: "none",
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	inputRoot: {
+		color: "inherit",
+	},
+	inputInput: {
+		padding: theme.spacing(1, 1, 1, 0),
+		// vertical padding + font size from searchIcon
+		paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+		transition: theme.transitions.create("width"),
+		width: "100%",
+		[theme.breakpoints.up("sm")]: {
+			width: "12ch",
+			"&:focus": {
+				width: "20ch",
+			},
+		},
+	},
+	paper: {
+		position: "absolute",
+		right: 0,
+		left: 0,
+		top: 35,
+		height: 200,
+	},
 }));
 
 export default function CustomAppBar({
@@ -39,26 +92,7 @@ export default function CustomAppBar({
 	open,
 }) {
 	const classes = useStyles();
-
-	let searchbar;
-
-	if (typeof window === "undefined") {
-		(async () => {
-			const glob = await import("glob");
-			const fs = await import("fs");
-			const posts = glob.sync("posts/**/*.md");
-			posts.forEach((post) => {
-				const content = fs
-					.readFileSync(post, { encoding: "utf-8" })
-					.replace(/\[(.*)\]\(.*\)/g, (s, e) => e);
-				keywords.push(
-					...content
-						.match(/##? .+/g)
-						.map((c) => c.replace(/##? /, ""))
-				);
-			});
-		})();
-	}
+	const [searching, setSearching] = useState(false);
 
 	return (
 		<AppBar position="fixed" className={classes.appBar}>
@@ -75,39 +109,30 @@ export default function CustomAppBar({
 					<Typography variant="h6" className={classes.title}>
 						minehut.xyz
 					</Typography>
-					{/* <Autocomplete
-						renderInput={(params) => (
-							<InputBase
-								{...params}
-								freeSolo
-								disableClearable
-								placeholder="search"
-								options={["hello"]}
-								InputProps={{
-									...params.InputProps,
-									type: "search",
-								}}
-							/>
-						)}
-					/> */}
-					<Autocomplete
-						freeSolo
-						id="free-solo-2-demo"
-						disableClearable
-						options={["hello"]}
-						renderInput={(params) => (
-							<InputBase
-								{...params}
-								label="Search input"
-								margin="normal"
-								variant="outlined"
-								InputProps={{
-									...params.InputProps,
-									type: "search",
-								}}
-							/>
-						)}
-					/>
+					<div className={classes.search}>
+						<div className={classes.searchIcon}>
+							<SearchIcon />
+						</div>
+						<InputBase
+							placeholder="Search…"
+							classes={{
+								root: classes.inputRoot,
+								input: classes.inputInput,
+							}}
+							onChange={() => {
+								setSearching(true);
+							}}
+							onBlur={() => setSearching(false)}
+						/>
+						<Paper
+							className={classes.paper}
+							style={{
+								display: searching ? "inline-block" : "none",
+							}}
+						>
+							<List></List>
+						</Paper>
+					</div>
 					<Tooltip title="Toggle light/dark theme">
 						<IconButton onClick={toggleDarkMode}>
 							<Brightness4 />

@@ -28,15 +28,12 @@ const useStyles = makeStyles((theme) => ({
 		maxWidth: "100%",
 		// backgroundColor: theme.palette.type === "dark" ? "#303030" : "#eeeeee",
 		//background: "linear-gradient(120deg, #7289da, #66a6ff)",
-		backgroundColor: theme.palette.type === "dark" ? "#2e3238" : "#f3f3f3",
+		backgroundColor: theme.palette.type === "dark" ? "#2e3238" : "#eeeeee",
 	},
 	drawerContainer: {
 		overflowY: "auto",
 		overflowX: "hidden",
 		marginTop: theme.spacing(4),
-	},
-	nestedText: {
-		marginLeft: theme.spacing(3),
 	},
 	category: {
 		color: theme.palette.text.disabled,
@@ -93,7 +90,7 @@ export default function CustomDrawer({ open, setOpen }) {
 					>
 						<ListItemText
 							style={{
-								marginLeft: `${Math.max(i - 1, 0) * 32}px`,
+								marginLeft: `${Math.max(i - 1, 0) * 32 + 8}px`,
 							}}
 						>
 							{route}
@@ -105,7 +102,7 @@ export default function CustomDrawer({ open, setOpen }) {
 					return (
 						<div key={route + "-div"}>
 							<ListItem key={route} className={classes.category}>
-								<ListItemText>
+								<ListItemText style={{ marginLeft: 8 }}>
 									<strong>{route.toUpperCase()}</strong>
 								</ListItemText>
 							</ListItem>
@@ -127,7 +124,7 @@ export default function CustomDrawer({ open, setOpen }) {
 								<ListItemText
 									style={{
 										marginLeft: `${
-											Math.max(i - 1, 0) * 32
+											Math.max(i - 1, 0) * 32 + 8
 										}px`,
 									}}
 								>

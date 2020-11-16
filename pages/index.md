@@ -26,19 +26,22 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 
 ## The team
 
-| Name              | Position                                                     |
-| :---------------- | :----------------------------------------------------------- |
-| **Adam**          | **Founder** and **Senior Writer**                            |
-| ---               | ---                                                          |
-| **Tarna**         | **Founder**, **General Manager** and **Writer**              |
-| **Goose**         | **GitHub Manager** and **Writer**                            |
-| **Lukas**         | **Staff Manager**, **Project Manager** and **Senior Writer** |
-| ---               | ---                                                          |
-| **Conutik**       | **Writer**                                                   |
-| **Houlton**       | **Writer**                                                   |
-| **Smelly Burger** | **Writer**                                                   |
-| **Rqdioqctive**   | **Writer**                                                   |
-| **Citeful**       | **Writer**                                                   |
+| Name                            | Position                                         |
+| :------------------------------ | :----------------------------------------------- |
+| Adam                            | Founder and Senior Writer                        |
+| ---                             | ---                                              |
+| Tarna                           | Founder General Manager and Writer               |
+| Goose GitHub Manager and Writer |
+| Lukas                           | Staff Manager, Project Manager and Senior Writer |
+| ---                             | ---                                              |
+| Kiko                            | Site Developer                                   |
+| Wandose                         | Site Developer                                   |
+| ---                             |                                                  |
+| Conutik                         | Writer                                           |
+| Houlton                         | Writer                                           |
+| Smelly Burger                   | Writer                                           |
+| Rqdioqctive                     | Writer                                           |
+| Citeful                         | Writer                                           |
 
 ## About us
 
