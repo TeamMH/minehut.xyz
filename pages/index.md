@@ -2,15 +2,17 @@
 description: The leading Minehut support website.
 ---
 
+import Hint from "../src/Hint"
+
 # Home
 
 ## Welcome... to minehut.xyz
 
 Minehut.xyz is home to the best Minehut-related support you'll find on the web. We aim to provide top quality [Minehut tutorials](https://minehut.xyz/faq/panel), [Plugin tutorials](https://minehut.xyz/plugin/popular), and [Skript tutorials](https://minehut.xyz/skript/basics). Our site is [community driven](contribute.md), and we will continue to make it better and better.
 
-{% hint style="info" %}
-Utilise our **Search** function at the top righthand corner of the site, it's so helpful to find your question within our site.
-{% endhint %}
+<Hint style="success">
+Utilise our <strong>Search</strong> function at the top righthand corner of the site, it's so helpful to find your question within our site.
+</Hint>
 
 ## Every question ever, answered.
 
@@ -49,6 +51,6 @@ Minehut.xyz was founded on _**August 4th, 2020**_ by two members of the Minehut 
 
 We realised there was no dedicated place for Minehut tutorials where the community can easily upload their own tutorials, so we made one!
 
-{% hint style="success" %}
-Join our [**Discord**](https://discord.gg/TYhH5bK) to become an **official writer**, **site updates**, and **much more**.
-{% endhint %}
+<Hint>
+Join our <a href="https://discord.gg/TYhH5bK">Discord</a> to beddddddddddddddddddddddddd dddcome an <strong>official writer</strong>, <strong>site updates</strong>, and <strong>much more</strong>
+</Hint>
