@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => {
 	return {
 		root: {
 			display: "flex",
-			fontSize: 16,
+			fontSize: "1rem",
 		},
 		content: {
 			flexGrow: 1,
@@ -69,12 +69,13 @@ const themeObject = {
 	palette: {
 		type: "dark",
 		background: {
-			default: "#282b30",
+			default: "#1f2835",
+			paper: "#273142",
 		},
 		secondary: {
 			main: "#7289DA",
-			dark: "#7289DA",
 			light: "#7289DA",
+			dark: "#7289DA",
 		},
 	},
 };
@@ -92,7 +93,8 @@ const useDarkMode = (setCookie) => {
 				...theme.palette,
 				type: type === "light" ? "dark" : "light",
 				background: {
-					default: type === "dark" ? "#f3f3f3" : "#282b30",
+					default: type === "dark" ? "#f3f3f3" : "#1f2835",
+					paper: type === "dark" ? "#eeeeee" : "#273142",
 				},
 			},
 		};
@@ -111,7 +113,9 @@ export default function MinehutXYZ(props) {
 	if (!cookies.theme) setCookie("theme", "dark");
 	themeObject.palette.type = cookies.theme || "dark";
 	themeObject.palette.background.default =
-		themeObject.palette.type === "light" ? "#f3f3f3" : "#282b30";
+		themeObject.palette.type === "light" ? "#f3f3f3" : "#1f2835";
+	themeObject.palette.background.paper =
+		themeObject.palette.type === "light" ? "#eeeeee" : "#273142";
 
 	const [theme, toggleDarkMode] = useDarkMode(setCookie);
 
@@ -188,10 +192,6 @@ export default function MinehutXYZ(props) {
 			return (
 				<TableContainer
 					style={{
-						background:
-							themeConfig.palette.type === "dark"
-								? "#30343a"
-								: "#eeeeee",
 						marginBottom: themeConfig.spacing(3),
 					}}
 					component={Paper}

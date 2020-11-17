@@ -14,12 +14,16 @@ import {
 	ListItemText,
 	List,
 	ListItem,
+	SvgIcon,
+	Grid,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Brightness4 from "@material-ui/icons/Brightness4";
 import SearchIcon from "@material-ui/icons/Search";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Minehut from "../public/minehut.svg";
+import Link from "./Link";
 
 // const glob = require("glob");
 // const fs = require("fs");
@@ -31,10 +35,15 @@ const useStyles = makeStyles((theme) => ({
 	appBar: {
 		zIndex: theme.zIndex.drawer + 1,
 		// backgroundColor: "#373b42",
-		background: "linear-gradient(120deg, #7289da, #66a6ff)",
+		background:
+			theme.palette.type === "dark"
+				? "linear-gradient(120deg, #1f3166, #203659)"
+				: "linear-gradient(120deg, #7289da, #66a6ff)",
 	},
 	title: {
 		flexGrow: 1,
+		color: "white",
+		textDecoration: "none",
 	},
 	search: {
 		position: "relative",
@@ -83,6 +92,10 @@ const useStyles = makeStyles((theme) => ({
 		top: 35,
 		height: 200,
 	},
+	logo: {
+		transform: "translateY(7px)",
+		fontSize: "50px",
+	},
 }));
 
 export default function CustomAppBar({
@@ -106,10 +119,23 @@ export default function CustomAppBar({
 							<MenuIcon />
 						</IconButton>
 					</Hidden>
-					<Typography variant="h6" className={classes.title}>
-						minehut.xyz
-					</Typography>
-					<div className={classes.search}>
+					<Link href="/" className={classes.title} naked>
+						<Grid container alignItems="center">
+							<Grid item xs={1}>
+								<SvgIcon
+									className={classes.logo}
+									component={Minehut}
+									viewBox="0 0 600 476.6"
+								/>
+							</Grid>
+							<Grid item xs={11}>
+								<Typography variant="h6">
+									minehut.xyz
+								</Typography>
+							</Grid>
+						</Grid>
+					</Link>
+					{/* <div className={classes.search}>
 						<div className={classes.searchIcon}>
 							<SearchIcon />
 						</div>
@@ -132,7 +158,7 @@ export default function CustomAppBar({
 						>
 							<List></List>
 						</Paper>
-					</div>
+					</div> */}
 					<Tooltip title="Toggle light/dark theme">
 						<IconButton onClick={toggleDarkMode}>
 							<Brightness4 />

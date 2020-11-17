@@ -11,16 +11,20 @@ const useStyles = makeStyles((theme) => ({
 		width: "100%",
 		padding: theme.spacing(4),
 		marginBottom: theme.spacing(3),
-		backgroundColor: theme.palette.type === "dark" ? "#2e3238" : "#eeeeee",
+		backgroundColor: theme.palette.background.paper,
 	},
 	icon: {
 		//margin: theme.spacing(1),
-		display: "inline",
-		fontSize: "2rem",
+		display: "inline-block",
+		//fontSize: "2rem",
+		width: "100%",
+		minWidth: "35px",
+		height: "35px",
 		transform: "translateY(3px)",
 	},
 	text: {
 		overflowWrap: "anywhere",
+		whiteSpace: "pre-wrap",
 	},
 }));
 
@@ -51,14 +55,14 @@ export default function Hint(props) {
 		<Paper elevation={0} className={classes.root}>
 			<Grid
 				container
-				spacing={6}
+				spacing={3}
 				alignItems="center"
 				justify="space-between"
 			>
-				<Grid xs={1} item>
+				<Grid xs={2} md={1} item>
 					{icon}
 				</Grid>
-				<Grid xs={11} item>
+				<Grid xs={10} md={11} item>
 					<Typography className={classes.text}>
 						{props.children}
 					</Typography>

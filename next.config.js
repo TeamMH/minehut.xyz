@@ -14,6 +14,10 @@ module.exports = withMDX({
 					r.test.toString().includes("mdx")
 			)[0]
 			.use.push(path.join(__dirname, "./lib/fm-loader.js"));
+		config.module.rules.push({
+			test: /\.svg$/,
+			use: ["@svgr/webpack"],
+		});
 		return config;
 	},
 });

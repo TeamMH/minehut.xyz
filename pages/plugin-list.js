@@ -1,43 +1,80 @@
+import React from "react";
 import {
 	Accordion,
 	AccordionDetails,
 	AccordionSummary,
 	Grid,
+	Hidden,
 	Typography,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/styles";
 const useStyles = makeStyles((theme) => ({
-	accordion: {
+	root: {
 		width: "100%",
-		background: theme.palette.type === "dark" ? "#30343a" : "#eeeeee",
+		fontSize: "1rem",
+	},
+	accordion: {
+		background: theme.palette.type === "dark" ? "#273142" : "#eeeeee",
+		overflowWrap: "break-word !important",
+		wordBreak: "break-word !important",
+		whiteSpace: "pre-wrap !important",
+		fontSize: "0.5rem !important",
+		maxWidth: "100%",
 	},
 	accordionDetails: {
+		fontSize: "0.5rem !important",
 		display: "block",
 	},
 }));
 
 export default function PluginList(props) {
 	const classes = useStyles();
-	const plugins = props.plugins.map((plugin) => {
+
+	const [open, setOpen] = React.useState(-1);
+
+	console.log(props.plugins.length - props.plugins.map((p) => p.match));
+
+	const plugins = props.plugins.map((plugin, i) => {
 		return (
-			<Accordion key={plugin._id} className={classes.accordion}>
-				<AccordionSummary expandIcon={<ExpandMoreIcon />}>
+			<Accordion
+				TransitionProps={{ unmountOnExit: true }}
+				key={plugin._id}
+				className={classes.accordion}
+				onChange={(e, isExpanded) => setOpen(isExpanded ? i : -1)}
+				expanded={open === i}
+			>
+				<AccordionSummary
+					key={plugin._id}
+					expandIcon={<ExpandMoreIcon />}
+				>
 					<Grid
 						container
-						spacing={2}
+						spacing={3}
 						justify="space-between"
 						alignItems="center"
 					>
-						<Grid item>
+						<Grid xs={12} sm={9} item>
 							<Typography variant="h6">{plugin.name}</Typography>
 						</Grid>
-						<Grid item>
-							<Typography>{plugin.version}</Typography>
+						<Grid xs={12} sm={3} item>
+							<Hidden xsDown>
+								<Typography variant="body1" align="right">
+									{plugin.version}
+								</Typography>
+							</Hidden>
+							<Hidden smUp>
+								<Typography variant="body1">
+									{plugin.version}
+								</Typography>
+							</Hidden>
 						</Grid>
 					</Grid>
 				</AccordionSummary>
-				<AccordionDetails className={classes.accordionDetails}>
+				<AccordionDetails
+					key={plugin._id}
+					className={classes.accordionDetails}
+				>
 					{plugin.desc_extended.split("\n").map((d) => (
 						<Typography paragraph>{d}</Typography>
 					))}
@@ -50,7 +87,7 @@ export default function PluginList(props) {
 			</Accordion>
 		);
 	});
-	return <>{plugins}</>;
+	return <div className={classes.root}>{plugins}</div>;
 }
 
 export async function getStaticProps() {

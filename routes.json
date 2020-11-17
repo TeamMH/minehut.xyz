@@ -1,0 +1,15 @@
+{
+	"Home": "/",
+	"Contribute": "/contribute",
+	"Partnerships": "/partnerships",
+	"Plugin List": "/plugin-list",
+	"Plugin Tutorials": {
+		"Recommended Plugins": "/plugin-tutorials/recommended-plugins"
+	},
+	"Skript": {
+		"Skript": "/skript/skript",
+		"Tutorials": {
+			"Test": "/skript/tutorials/test"
+		}
+	}
+}

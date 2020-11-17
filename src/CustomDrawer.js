@@ -13,6 +13,7 @@ import Link from "../src/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { useRouter } from "next/router";
+import routes from "../routes.json";
 
 const drawerWidth = 350;
 
@@ -26,9 +27,6 @@ const useStyles = makeStyles((theme) => ({
 	drawerPaper: {
 		width: drawerWidth,
 		maxWidth: "100%",
-		// backgroundColor: theme.palette.type === "dark" ? "#303030" : "#eeeeee",
-		//background: "linear-gradient(120deg, #7289da, #66a6ff)",
-		backgroundColor: theme.palette.type === "dark" ? "#2e3238" : "#eeeeee",
 	},
 	drawerContainer: {
 		overflowY: "auto",
@@ -42,22 +40,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CustomDrawer({ open, setOpen }) {
-	const routes = {
-		Home: "/",
-		Contribute: "/contribute",
-		Partnerships: "/partnerships",
-		"Plugin List": "/plugin-list",
-		"Plugin Tutorials": {
-			"Recommended Plugins": "/plugin-tutorials/recommended-plugins",
-		},
-		Skript: {
-			Skript: "/skript/skript",
-			Tutorials: {
-				Test: "/skript/tutorials/test",
-			},
-		},
-	};
-
 	const dropdowns = {};
 
 	function setStates(routes) {

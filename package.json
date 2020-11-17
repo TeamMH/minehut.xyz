@@ -11,6 +11,8 @@
 		"@mdx-js/loader": "^1.6.21",
 		"@mdx-js/react": "^1.6.21",
 		"@next/mdx": "^10.0.1",
+		"@svgr/core": "^5.5.0",
+		"@svgr/webpack": "^5.5.0",
 		"clsx": "latest",
 		"gray-matter": "^4.0.2",
 		"next": "latest",
@@ -18,8 +20,7 @@
 		"react": "latest",
 		"react-cookie": "^4.0.3",
 		"react-dom": "latest",
-		"react-syntax-highlighter": "^15.3.0",
-		"remark-gfm": "^1.0.0"
+		"react-syntax-highlighter": "^15.3.0"
 	},
 	"scripts": {
 		"dev": "next",

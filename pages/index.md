@@ -10,8 +10,8 @@ import Hint from "../src/Hint"
 
 Minehut.xyz is home to the best Minehut-related support you'll find on the web. We aim to provide top quality [Minehut tutorials](https://minehut.xyz/faq/panel), [Plugin tutorials](https://minehut.xyz/plugin/popular), and [Skript tutorials](https://minehut.xyz/skript/basics). Our site is [community driven](contribute.md), and we will continue to make it better and better.
 
-<Hint style="success">
-Utilise our <strong>Search</strong> function at the top righthand corner of the site, it's so helpful to find your question within our site.
+<Hint style="info">
+Utilise our Search function at the top righthand corner of the site, it's so helpful to find your question within our site.
 </Hint>
 
 ## Every question ever, answered.
@@ -38,7 +38,7 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 | ---                             | ---                                              |
 | Kiko                            | Site Developer                                   |
 | Wandose                         | Site Developer                                   |
-| ---                             |                                                  |
+| ---                             | ---                                              |
 | Conutik                         | Writer                                           |
 | Houlton                         | Writer                                           |
 | Smelly Burger                   | Writer                                           |
@@ -52,5 +52,5 @@ Minehut.xyz was founded on _**August 4th, 2020**_ by two members of the Minehut 
 We realised there was no dedicated place for Minehut tutorials where the community can easily upload their own tutorials, so we made one!
 
 <Hint>
-Join our <a href="https://discord.gg/TYhH5bK">Discord</a> to beddddddddddddddddddddddddd dddcome an <strong>official writer</strong>, <strong>site updates</strong>, and <strong>much more</strong>
+Join our <a href="https://discord.gg/TYhH5bK">Discord</a> to become an <strong>official writer</strong>, <strong>site updates</strong>, and <strong>much more</strong>
 </Hint>
