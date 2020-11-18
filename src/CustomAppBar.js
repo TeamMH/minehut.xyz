@@ -43,6 +43,12 @@ const useStyles = makeStyles((theme) => ({
 	title: {
 		color: "white",
 		textDecoration: "none",
+		textAlign: "center",
+		[theme.breakpoints.down("xs")]: {
+			position: "absolute",
+			left: "50%",
+			transform: "translateX(-50%)",
+		},
 	},
 	empty: {
 		flexGrow: 1,
@@ -98,6 +104,12 @@ const useStyles = makeStyles((theme) => ({
 		transform: "translateY(7px)",
 		fontSize: "50px",
 	},
+	themeButton: {
+		[theme.breakpoints.down("xs")]: {
+			position: "absolute",
+			right: theme.spacing(2),
+		},
+	},
 }));
 
 export default function CustomAppBar({
@@ -128,7 +140,9 @@ export default function CustomAppBar({
 							viewBox="0 0 600 476.6"
 						/>
 					</Link>
-					<div className={classes.empty} />
+					<Hidden xsDown>
+						<div className={classes.empty} />
+					</Hidden>
 					{/* <div className={classes.search}>
 						<div className={classes.searchIcon}>
 							<SearchIcon />
@@ -154,7 +168,10 @@ export default function CustomAppBar({
 						</Paper>
 					</div> */}
 					<Tooltip title="Toggle light/dark theme">
-						<IconButton onClick={toggleDarkMode}>
+						<IconButton
+							className={classes.themeButton}
+							onClick={toggleDarkMode}
+						>
 							<Brightness4 />
 						</IconButton>
 					</Tooltip>

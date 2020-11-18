@@ -33,8 +33,6 @@ export default function PluginList(props) {
 
 	const [open, setOpen] = React.useState(-1);
 
-	console.log(props.plugins.length - props.plugins.map((p) => p.match));
-
 	const plugins = props.plugins.map((plugin, i) => {
 		return (
 			<Accordion

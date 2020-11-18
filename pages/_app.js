@@ -24,11 +24,27 @@ import {
 } from "@material-ui/core";
 import { CookiesProvider, useCookies } from "react-cookie";
 import CustomAppBar from "../src/CustomAppBar";
-import { MDXProvider } from "@mdx-js/react";
+import { mdx, MDXProvider } from "@mdx-js/react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import materialLight from "react-syntax-highlighter/dist/cjs/styles/prism/material-light";
 import colors from "../colors.json";
+
+const themeObject = {
+	palette: {
+		type: "dark",
+		background: {
+			default: colors.dark.default,
+			paper: colors.dark.default,
+		},
+		secondary: {
+			main: "#7289DA",
+			light: "#7289DA",
+			dark: "#7289DA",
+		},
+		divider: "rgba(255 255 255 / 12%)",
+	},
+};
 
 const useStyles = makeStyles((theme) => {
 	return {
@@ -66,21 +82,6 @@ const useStyles = makeStyles((theme) => {
 	};
 });
 
-const themeObject = {
-	palette: {
-		type: "dark",
-		background: {
-			default: colors.dark.default,
-			paper: colors.dark.default,
-		},
-		secondary: {
-			main: "#7289DA",
-			light: "#7289DA",
-			dark: "#7289DA",
-		},
-	},
-};
-
 const useDarkMode = (setCookie) => {
 	const [theme, setTheme] = React.useState(themeObject);
 
@@ -97,6 +98,10 @@ const useDarkMode = (setCookie) => {
 					default: type === "dark" ? "#f3f3f3" : "#1f2835",
 					paper: type === "dark" ? "#eeeeee" : "#273142",
 				},
+				divider:
+					themeObject.palette.type === "light"
+						? "rgba(0, 0, 0, .12)"
+						: "rgba(255, 255, 255, .12)",
 			},
 		};
 		setCookie("theme", type === "dark" ? "light" : "dark");
@@ -121,6 +126,10 @@ export default function MinehutXYZ(props) {
 		themeObject.palette.type === "light"
 			? colors.light.paper
 			: colors.dark.paper;
+	themeObject.palette.divider =
+		themeObject.palette.type === "light"
+			? "rgba(0, 0, 0, .12)"
+			: "rgba(255, 255, 255, .12)";
 
 	const [theme, toggleDarkMode] = useDarkMode(setCookie);
 
@@ -132,11 +141,11 @@ export default function MinehutXYZ(props) {
 	const components = {
 		h1(props) {
 			return (
-				<Typography
-					className={classes.heading}
-					{...props}
-					variant="h3"
-				/>
+				<Typography className={classes.heading} {...props} variant="h4">
+					{typeof props.children === "string"
+						? props.children.toUpperCase()
+						: props.children}
+				</Typography>
 			);
 		},
 		h2(props) {
@@ -146,8 +155,12 @@ export default function MinehutXYZ(props) {
 					<Typography
 						className={classes.heading}
 						{...props}
-						variant="h4"
-					/>
+						variant="h5"
+					>
+						{typeof props.children === "string"
+							? props.children.toUpperCase()
+							: props.children}
+					</Typography>
 				</>
 			);
 		},
@@ -156,7 +169,7 @@ export default function MinehutXYZ(props) {
 				<Typography
 					className={classes.heading}
 					{...props}
-					variant="h5"
+					variant="h6"
 				/>
 			);
 		},
@@ -165,7 +178,7 @@ export default function MinehutXYZ(props) {
 				<Typography
 					className={classes.heading}
 					{...props}
-					variant="h6"
+					variant="subtitle1"
 				/>
 			);
 		},
@@ -174,7 +187,7 @@ export default function MinehutXYZ(props) {
 				<Typography
 					className={classes.heading}
 					{...props}
-					variant="subtitle1"
+					variant="subtitle2"
 				/>
 			);
 		},
@@ -183,7 +196,7 @@ export default function MinehutXYZ(props) {
 				<Typography
 					className={classes.heading}
 					{...props}
-					variant="subtitle2"
+					variant="body1"
 				/>
 			);
 		},
@@ -215,21 +228,39 @@ export default function MinehutXYZ(props) {
 			return <TableRow {...props} />;
 		},
 		th(props) {
-			return <TableCell {...props} />;
+			return (
+				<TableCell
+					style={{
+						borderBottom:
+							"1px solid " +
+							(themeConfig.palette.type === "light"
+								? "rgba(0, 0, 0, .12)"
+								: "rgba(255, 255, 255, .12)"),
+					}}
+					{...props}
+				/>
+			);
 		},
 		td(props) {
-			return <TableCell {...props} />;
+			return (
+				<TableCell
+					style={{
+						borderBottom:
+							"1px solid " + themeConfig.palette.divider,
+					}}
+					{...props}
+				/>
+			);
 		},
 		code(props) {
 			return (
 				<SyntaxHighlighter
 					language={props.className.replace("language-", "")}
 					children={props.children}
-					style={
-						themeConfig.palette.type === "dark"
-							? atomDark
-							: materialLight
-					}
+					style={{
+						borderBottom:
+							"1px solid " + themeConfig.palette.divider,
+					}}
 					className={classes.code}
 				/>
 			);

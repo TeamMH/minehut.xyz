@@ -1,4 +1,4 @@
-import { Grid, makeStyles, Paper, Typography } from "@material-ui/core";
+import { Box, Grid, makeStyles, Paper, Typography } from "@material-ui/core";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import InfoIcon from "@material-ui/icons/Info";
 import EmojiObjectsIcon from "@material-ui/icons/EmojiObjects";
@@ -9,20 +9,18 @@ const useStyles = makeStyles((theme) => ({
 		borderLeft: (props) =>
 			"5px solid " + theme.palette[props.style || "success"].main,
 		width: "100%",
-		padding: theme.spacing(4),
+		padding: theme.spacing(3, 1),
 		marginBottom: theme.spacing(3),
 		backgroundColor: theme.palette.background.paper,
 	},
 	icon: {
-		//margin: theme.spacing(1),
-		display: "inline-block",
-		//fontSize: "2rem",
-		width: "100%",
-		minWidth: "35px",
+		width: "35px",
 		height: "35px",
 		transform: "translateY(3px)",
+		margin: theme.spacing(0, 1),
 	},
 	text: {
+		margin: theme.spacing(0, 1),
 		overflowWrap: "anywhere",
 		whiteSpace: "pre-wrap",
 	},
@@ -53,21 +51,12 @@ export default function Hint(props) {
 
 	return (
 		<Paper elevation={0} className={classes.root}>
-			<Grid
-				container
-				spacing={3}
-				alignItems="center"
-				justify="space-between"
-			>
-				<Grid xs={2} md={1} item>
-					{icon}
-				</Grid>
-				<Grid xs={10} md={11} item>
-					<Typography className={classes.text}>
-						{props.children}
-					</Typography>
-				</Grid>
-			</Grid>
+			<Box display="flex" alignItems="center">
+				{icon}
+				<Typography className={classes.text}>
+					{props.children}
+				</Typography>
+			</Box>
 		</Paper>
 	);
 }
