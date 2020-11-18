@@ -41,9 +41,11 @@ const useStyles = makeStyles((theme) => ({
 				: "linear-gradient(120deg, #7289da, #66a6ff)",
 	},
 	title: {
-		flexGrow: 1,
 		color: "white",
 		textDecoration: "none",
+	},
+	empty: {
+		flexGrow: 1,
 	},
 	search: {
 		position: "relative",
@@ -120,21 +122,13 @@ export default function CustomAppBar({
 						</IconButton>
 					</Hidden>
 					<Link href="/" className={classes.title} naked>
-						<Grid container alignItems="center">
-							<Grid item xs={1}>
-								<SvgIcon
-									className={classes.logo}
-									component={Minehut}
-									viewBox="0 0 600 476.6"
-								/>
-							</Grid>
-							<Grid item xs={11}>
-								<Typography variant="h6">
-									minehut.xyz
-								</Typography>
-							</Grid>
-						</Grid>
+						<SvgIcon
+							className={classes.logo}
+							component={Minehut}
+							viewBox="0 0 600 476.6"
+						/>
 					</Link>
+					<div className={classes.empty} />
 					{/* <div className={classes.search}>
 						<div className={classes.searchIcon}>
 							<SearchIcon />

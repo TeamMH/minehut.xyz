@@ -28,6 +28,7 @@ import { MDXProvider } from "@mdx-js/react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import materialLight from "react-syntax-highlighter/dist/cjs/styles/prism/material-light";
+import colors from "../colors.json";
 
 const useStyles = makeStyles((theme) => {
 	return {
@@ -69,8 +70,8 @@ const themeObject = {
 	palette: {
 		type: "dark",
 		background: {
-			default: "#1f2835",
-			paper: "#273142",
+			default: colors.dark.default,
+			paper: colors.dark.default,
 		},
 		secondary: {
 			main: "#7289DA",
@@ -113,9 +114,13 @@ export default function MinehutXYZ(props) {
 	if (!cookies.theme) setCookie("theme", "dark");
 	themeObject.palette.type = cookies.theme || "dark";
 	themeObject.palette.background.default =
-		themeObject.palette.type === "light" ? "#f3f3f3" : "#1f2835";
+		themeObject.palette.type === "light"
+			? colors.light.default
+			: colors.dark.default;
 	themeObject.palette.background.paper =
-		themeObject.palette.type === "light" ? "#eeeeee" : "#273142";
+		themeObject.palette.type === "light"
+			? colors.light.paper
+			: colors.dark.paper;
 
 	const [theme, toggleDarkMode] = useDarkMode(setCookie);
 

@@ -1,0 +1,10 @@
+{
+	"dark": {
+		"default": "#1f2835",
+		"paper": "#273142"
+	},
+	"light": {
+		"default": "#f3f3f3",
+		"paper": "#eeeeee"
+	}
+}
