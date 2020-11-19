@@ -1,9 +1,11 @@
 import React from "react";
 import {
 	Accordion,
+	AccordionActions,
 	AccordionDetails,
 	AccordionSummary,
 	Box,
+	Button,
 	Divider,
 	Grid,
 	Hidden,
@@ -15,6 +17,7 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/styles";
 import { Pagination } from "@material-ui/lab";
+import Link from "../src/Link";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		width: "100%",
@@ -95,6 +98,13 @@ export default function PluginList(props) {
 			<div>
 				{plugins.map((plugin, i) => {
 					if (Math.floor(i / rowsPerPage) !== page) return;
+
+					const regex = /Link:\n*(https?:\/\/.+)$/g;
+					const regex2 = /\n*(https?:\/\/.+$)/g;
+					let link = regex.exec(plugin.desc_extended);
+					if (!link || link.length === 0)
+						link = regex2.exec(plugin.desc_extended);
+
 					return (
 						<Accordion
 							TransitionProps={{ unmountOnExit: true }}
@@ -141,17 +151,37 @@ export default function PluginList(props) {
 								key={plugin._id}
 								className={classes.accordionDetails}
 							>
-								{plugin.desc_extended.split("\n").map((d) => (
-									<Typography paragraph>{d}</Typography>
+								{plugin.desc.split("\n").map((d) => (
+									<Typography paragraph>
+										<strong>Description | </strong>
+										{d}
+									</Typography>
 								))}
-								<br />
-								<Typography variant="body2">
-									Last updated:{" "}
+								<Typography paragraph>
+									<strong>Version | </strong>
+									{plugin.version}
+								</Typography>
+								<Typography paragraph>
+									<strong>Last updated | </strong>{" "}
 									{new Date(
 										plugin.last_updated
 									).toLocaleDateString()}
 								</Typography>
 							</AccordionDetails>
+							<Divider />
+							<AccordionActions>
+								<Button
+									disabled={!link || link.length === 0}
+									href={
+										link && link.length > 0 ? link[1] : null
+									}
+									variant="contained"
+									color="primary"
+									target="_blank"
+								>
+									Visit Plugin Website
+								</Button>
+							</AccordionActions>
 						</Accordion>
 					);
 				})}
