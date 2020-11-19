@@ -50,7 +50,7 @@ export default function Hint(props) {
 	}
 
 	return (
-		<Paper elevation={0} className={classes.root}>
+		<Paper className={classes.root}>
 			<Box display="flex" alignItems="center">
 				{icon}
 				<Typography className={classes.text}>

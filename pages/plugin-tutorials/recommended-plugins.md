@@ -62,7 +62,3 @@ Most SMP's don't need many plugins, and can be pretty light-weight compared to m
 
 -   `Item Editor` Allows admins to create items wth over the top enchatments and cool names.
 -   `Holographic Displays` Create floating text in your server.
-
-{% hint style="success" %}
-Join our [**Discord**](https://discord.gg/TYhH5bK) to become an **official writer**, **site updates**, and **much more**.
-{% endhint %}

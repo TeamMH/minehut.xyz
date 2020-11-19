@@ -3,19 +3,24 @@ import {
 	Accordion,
 	AccordionDetails,
 	AccordionSummary,
+	Box,
+	Divider,
 	Grid,
 	Hidden,
+	Paper,
+	TablePagination,
+	TextField,
 	Typography,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/styles";
+import { Pagination } from "@material-ui/lab";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		width: "100%",
 		fontSize: "1rem",
 	},
 	accordion: {
-		background: theme.palette.type === "dark" ? "#273142" : "#eeeeee",
 		overflowWrap: "break-word !important",
 		wordBreak: "break-word !important",
 		whiteSpace: "pre-wrap !important",
@@ -26,66 +31,142 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: "0.5rem !important",
 		display: "block",
 	},
+	input: {
+		width: "100%",
+	},
+	paper: {
+		margin: theme.spacing(2, 0),
+		padding: theme.spacing(2),
+	},
+	text: {
+		margin: theme.spacing(3, 0),
+	},
 }));
 
 export default function PluginList(props) {
 	const classes = useStyles();
 
 	const [open, setOpen] = React.useState(-1);
+	const [page, setPage] = React.useState(0);
+	const [rowsPerPage, setRowsPerPage] = React.useState(25);
 
-	const plugins = props.plugins.map((plugin, i) => {
-		return (
-			<Accordion
-				TransitionProps={{ unmountOnExit: true }}
-				key={plugin._id}
-				className={classes.accordion}
-				onChange={(e, isExpanded) => setOpen(isExpanded ? i : -1)}
-				expanded={open === i}
-			>
-				<AccordionSummary
-					key={plugin._id}
-					expandIcon={<ExpandMoreIcon />}
-				>
-					<Grid
-						container
-						spacing={3}
-						justify="space-between"
-						alignItems="center"
-					>
-						<Grid xs={12} sm={9} item>
-							<Typography variant="h6">{plugin.name}</Typography>
-						</Grid>
-						<Grid xs={12} sm={3} item>
-							<Hidden xsDown>
-								<Typography variant="body1" align="right">
-									{plugin.version}
+	const handleChangeRowsPerPage = (event) => {
+		setRowsPerPage(parseInt(event.target.value, 10));
+		setPage(0);
+	};
+
+	const [plugins, setPlugins] = React.useState(props.plugins);
+
+	return (
+		<div className={classes.root}>
+			<Typography variant="h4" className={classes.text}>
+				PLUGIN LIST
+			</Typography>
+			<Divider />
+			<Typography className={classes.text}>
+				Look up all available plugins on Minehut!
+			</Typography>
+			<Paper className={classes.paper}>
+				<TextField
+					className={classes.input}
+					label="Search for plugins"
+					onChange={(e) => {
+						if (!e.target.value) setPlugins(props.plugins);
+						else
+							setPlugins(
+								props.plugins.filter((p) =>
+									p.name
+										.toLowerCase()
+										.includes(e.target.value.toLowerCase())
+								)
+							);
+					}}
+				/>
+				<TablePagination
+					component="div"
+					count={plugins.length}
+					page={page}
+					onChangePage={(e, v) => setPage(v)}
+					rowsPerPage={rowsPerPage}
+					onChangeRowsPerPage={handleChangeRowsPerPage}
+					className={classes.pagination}
+				/>
+			</Paper>
+			<div>
+				{plugins.map((plugin, i) => {
+					if (Math.floor(i / rowsPerPage) !== page) return;
+					return (
+						<Accordion
+							TransitionProps={{ unmountOnExit: true }}
+							key={plugin._id}
+							className={classes.accordion}
+							onChange={(e, isExpanded) =>
+								setOpen(isExpanded ? i : -1)
+							}
+							expanded={open === i}
+						>
+							<AccordionSummary
+								key={plugin._id}
+								expandIcon={<ExpandMoreIcon />}
+							>
+								<Grid
+									container
+									spacing={3}
+									justify="space-between"
+									alignItems="center"
+								>
+									<Grid xs={12} sm={9} item>
+										<Typography variant="h6">
+											{plugin.name}
+										</Typography>
+									</Grid>
+									<Grid xs={12} sm={3} item>
+										<Hidden xsDown>
+											<Typography
+												variant="body1"
+												align="right"
+											>
+												{plugin.version}
+											</Typography>
+										</Hidden>
+										<Hidden smUp>
+											<Typography variant="body1">
+												{plugin.version}
+											</Typography>
+										</Hidden>
+									</Grid>
+								</Grid>
+							</AccordionSummary>
+							<AccordionDetails
+								key={plugin._id}
+								className={classes.accordionDetails}
+							>
+								{plugin.desc_extended.split("\n").map((d) => (
+									<Typography paragraph>{d}</Typography>
+								))}
+								<br />
+								<Typography variant="body2">
+									Last updated:{" "}
+									{new Date(
+										plugin.last_updated
+									).toLocaleDateString()}
 								</Typography>
-							</Hidden>
-							<Hidden smUp>
-								<Typography variant="body1">
-									{plugin.version}
-								</Typography>
-							</Hidden>
-						</Grid>
-					</Grid>
-				</AccordionSummary>
-				<AccordionDetails
-					key={plugin._id}
-					className={classes.accordionDetails}
-				>
-					{plugin.desc_extended.split("\n").map((d) => (
-						<Typography paragraph>{d}</Typography>
-					))}
-					<br />
-					<Typography variant="body2">
-						Last updated:{" "}
-						{new Date(plugin.last_updated).toLocaleDateString()}
-					</Typography>
-				</AccordionDetails>
-			</Accordion>
-		);
-	});
-	return <div className={classes.root}>{plugins}</div>;
+							</AccordionDetails>
+						</Accordion>
+					);
+				})}
+			</div>
+			<TablePagination
+				component={Paper}
+				count={plugins.length}
+				page={page}
+				onChangePage={(e, v) => setPage(v)}
+				rowsPerPage={rowsPerPage}
+				onChangeRowsPerPage={handleChangeRowsPerPage}
+				className={classes.paper}
+			/>
+		</div>
+	);
 }
 
 export async function getStaticProps() {

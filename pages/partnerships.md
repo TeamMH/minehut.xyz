@@ -31,9 +31,3 @@ description: View our partnerships.
 ## [Oictr](https://discord.gg/GPyc8Z2)
 
 > **Oitcr** is a fair one in the chamber style pvp server! The focus is to create something fun whilst eliminating the use of pay to win and unfair gear.
-
-<!-- {% hint style="success" %} -->
-
-Join our [**Discord**](https://discord.gg/TYhH5bK) to become an **official writer**, **site updates**, and **much more**.
-
-<!-- {% endhint %} -->

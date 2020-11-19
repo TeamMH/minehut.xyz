@@ -50,7 +50,3 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 Minehut.xyz was founded on _**August 4th, 2020**_ by two members of the Minehut Community, **Tarna** _\(Senior Support @ Minehut\)_ & **Minehut** _\(Adam, Former Senior Support @ Minehut\)_.
 
 We realised there was no dedicated place for Minehut tutorials where the community can easily upload their own tutorials, so we made one!
-
-<Hint>
-Join our <a href="https://discord.gg/TYhH5bK">Discord</a> to become an <strong>official writer</strong>, <strong>site updates</strong>, and <strong>much more</strong>
-</Hint>

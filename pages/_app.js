@@ -29,6 +29,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import materialLight from "react-syntax-highlighter/dist/cjs/styles/prism/material-light";
 import colors from "../colors.json";
+import Hint from "../src/Hint";
 
 const themeObject = {
 	palette: {
@@ -36,6 +37,11 @@ const themeObject = {
 		background: {
 			default: colors.dark.default,
 			paper: colors.dark.default,
+		},
+		primary: {
+			main: "#2196f3",
+			light: "#64b5f6",
+			dark: "#1976d2",
 		},
 		secondary: {
 			main: "#7289DA",
@@ -66,12 +72,8 @@ const useStyles = makeStyles((theme) => {
 			fontSize: 26,
 			color: "white",
 		},
-		link: {
-			color: theme.palette.info.main,
-		},
 		heading: {
-			marginTop: theme.spacing(3),
-			marginBottom: theme.spacing(3),
+			margin: theme.spacing(3, 0),
 		},
 		code: {
 			whiteSpace: "pre-line !important",
@@ -95,11 +97,17 @@ const useDarkMode = (setCookie) => {
 				...theme.palette,
 				type: type === "light" ? "dark" : "light",
 				background: {
-					default: type === "dark" ? "#f3f3f3" : "#1f2835",
-					paper: type === "dark" ? "#eeeeee" : "#273142",
+					default:
+						type === "dark"
+							? colors.light.default
+							: colors.dark.default,
+					paper:
+						type === "dark"
+							? colors.light.paper
+							: colors.dark.paper,
 				},
 				divider:
-					themeObject.palette.type === "light"
+					themeObject.palette.type === "dark"
 						? "rgba(0, 0, 0, .12)"
 						: "rgba(255, 255, 255, .12)",
 			},
@@ -166,11 +174,11 @@ export default function MinehutXYZ(props) {
 		},
 		h3(props) {
 			return (
-				<Typography
-					className={classes.heading}
-					{...props}
-					variant="h6"
-				/>
+				<Typography className={classes.heading} {...props} variant="h6">
+					{typeof props.children === "string"
+						? props.children.toUpperCase()
+						: props.children}
+				</Typography>
 			);
 		},
 		h4(props) {
@@ -179,7 +187,11 @@ export default function MinehutXYZ(props) {
 					className={classes.heading}
 					{...props}
 					variant="subtitle1"
-				/>
+				>
+					{typeof props.children === "string"
+						? props.children.toUpperCase()
+						: props.children}
+				</Typography>
 			);
 		},
 		h5(props) {
@@ -188,7 +200,11 @@ export default function MinehutXYZ(props) {
 					className={classes.heading}
 					{...props}
 					variant="subtitle2"
-				/>
+				>
+					{typeof props.children === "string"
+						? props.children.toUpperCase()
+						: props.children}
+				</Typography>
 			);
 		},
 		h6(props) {
@@ -196,15 +212,19 @@ export default function MinehutXYZ(props) {
 				<Typography
 					className={classes.heading}
 					{...props}
-					variant="body1"
-				/>
+					variant="button"
+				>
+					{typeof props.children === "string"
+						? props.children.toUpperCase()
+						: props.children}
+				</Typography>
 			);
 		},
 		p(props) {
 			return <Typography {...props} variant="body1" paragraph />;
 		},
 		a(props) {
-			return <Link {...props} className={classes.link} />;
+			return <Link {...props} />;
 		},
 		table(props) {
 			return (
@@ -318,6 +338,16 @@ export default function MinehutXYZ(props) {
 								<MDXProvider components={components}>
 									<Component {...pageProps} />
 								</MDXProvider>
+								<Hint>
+									Join our{" "}
+									<Link href="https://discord.gg/TYhH5bK">
+										Discord
+									</Link>{" "}
+									to become an{" "}
+									<strong>official writer</strong>,{" "}
+									<strong>site updates</strong>, and{" "}
+									<strong>much more</strong>
+								</Hint>
 							</Container>
 						</main>
 						<Tooltip title="Join us on Discord!">

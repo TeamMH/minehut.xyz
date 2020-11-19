@@ -8,6 +8,7 @@
 	"dependencies": {
 		"@material-ui/core": "latest",
 		"@material-ui/icons": "^4.9.1",
+		"@material-ui/lab": "^4.0.0-alpha.56",
 		"@mdx-js/loader": "^1.6.21",
 		"@mdx-js/react": "^1.6.21",
 		"@next/mdx": "^10.0.1",
