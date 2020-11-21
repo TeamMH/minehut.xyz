@@ -18,6 +18,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/styles";
 import { Pagination } from "@material-ui/lab";
 import Link from "../src/Link";
+import Head from "next/head";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		width: "100%",
@@ -62,6 +63,12 @@ export default function PluginList(props) {
 
 	return (
 		<div className={classes.root}>
+			<Head>
+				<meta
+					content="Look up all available plugins on Minehut"
+					property="og:description"
+				/>
+			</Head>
 			<Typography variant="h4" className={classes.text}>
 				PLUGIN LIST
 			</Typography>

@@ -304,9 +304,11 @@ export default function MinehutXYZ(props) {
 		.replace("-", " ");
 	if (title) title = title[0].toUpperCase() + title.slice(1);
 
-	const description = frontMatter.find(
-		(f) => f.name === router.asPath.slice(1)
-	).description;
+	const fm = frontMatter.find((f) => f.name === router.asPath.slice(1));
+
+	const meta = fm ? (
+		<meta content={fm.description} property="og:description" />
+	) : null;
 
 	return (
 		<CookiesProvider>
@@ -316,7 +318,7 @@ export default function MinehutXYZ(props) {
 						content={"minehut.xyz" + (title ? " | " + title : "")}
 						property="og:title"
 					/>
-					<meta content={description} property="og:description" />
+
 					<meta content="minehut.xyz" property="og:site_name" />
 					<meta
 						content="https://app.gitbook.com/share/space/thumbnail/-MDvLUELAt3CwagRrh51.png"
