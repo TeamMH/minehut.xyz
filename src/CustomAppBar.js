@@ -25,9 +25,6 @@ import { useRouter } from "next/router";
 import Minehut from "../public/minehut.svg";
 import Link from "./Link";
 
-// const glob = require("glob");
-// const fs = require("fs");
-
 const useStyles = makeStyles((theme) => ({
 	menuButton: {
 		marginRight: theme.spacing(2),

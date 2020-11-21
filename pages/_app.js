@@ -13,6 +13,7 @@ import {
 	Fab,
 	Link,
 	Paper,
+	SvgIcon,
 	Table,
 	TableBody,
 	TableCell,
@@ -31,6 +32,7 @@ import materialLight from "react-syntax-highlighter/dist/cjs/styles/prism/materi
 import colors from "../colors.json";
 import { Alert } from "@material-ui/lab";
 import { frontMatter } from "./**/*.md";
+import Discord from "../public/discord.svg";
 
 const themeObject = {
 	palette: {
@@ -331,10 +333,6 @@ export default function MinehutXYZ(props) {
 						name="viewport"
 						content="minimum-scale=1, initial-scale=1, width=device-width"
 					/>
-					<script
-						src="https://kit.fontawesome.com/9a67ea5597.js"
-						crossOrigin="anonymous"
-					></script>
 				</Head>
 				<ThemeProvider theme={themeConfig}>
 					<div className={classes.root}>
@@ -376,7 +374,10 @@ export default function MinehutXYZ(props) {
 								rel="noreferrer"
 								target="_blank"
 							>
-								<i aria-hidden className="fab fa-discord" />
+								<SvgIcon
+									component={Discord}
+									viewBox="0 0 245 240"
+								/>
 							</Fab>
 						</Tooltip>
 					</div>
