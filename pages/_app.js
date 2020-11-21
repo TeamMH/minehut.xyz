@@ -318,7 +318,7 @@ export default function MinehutXYZ(props) {
 						content={"minehut.xyz" + (title ? " | " + title : "")}
 						property="og:title"
 					/>
-
+					{meta}
 					<meta content="minehut.xyz" property="og:site_name" />
 					<meta
 						content="https://app.gitbook.com/share/space/thumbnail/-MDvLUELAt3CwagRrh51.png"
