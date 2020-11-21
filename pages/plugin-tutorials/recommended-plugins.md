@@ -3,6 +3,7 @@ description: >-
     Find the best, high quality plugins for your server. This document incudes as
     little bias as possible, mostly sticking to preformance metrics and general
     community input.
+name: "plugin-tutorials/recommended-plugins"
 ---
 
 # Recommended Plugins

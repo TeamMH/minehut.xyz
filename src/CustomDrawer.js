@@ -8,6 +8,7 @@ import {
 	Collapse,
 	Hidden,
 	SwipeableDrawer,
+	ListSubheader,
 } from "@material-ui/core";
 import Link from "../src/Link";
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,14 +16,13 @@ import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import routes from "../routes.json";
 
-const drawerWidth = 350;
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
 	drawer: {
 		width: drawerWidth,
 		maxWidth: "100%",
 		flexShrink: 0,
-		textAlign: "right",
 	},
 	drawerPaper: {
 		width: drawerWidth,
@@ -32,10 +32,6 @@ const useStyles = makeStyles((theme) => ({
 		overflowY: "auto",
 		overflowX: "hidden",
 		marginTop: theme.spacing(4),
-	},
-	category: {
-		color: theme.palette.text.disabled,
-		marginTop: theme.spacing(3),
 	},
 }));
 
@@ -83,11 +79,12 @@ export default function CustomDrawer({ open, setOpen }) {
 				if (i === 0)
 					return (
 						<div key={route + "-div"}>
-							<ListItem key={route} className={classes.category}>
-								<ListItemText style={{ marginLeft: 8 }}>
-									<strong>{route.toUpperCase()}</strong>
-								</ListItemText>
-							</ListItem>
+							<ListSubheader
+								style={{ margin: "16px 0 0 8px" }}
+								key={route}
+							>
+								<strong>{route.toUpperCase()}</strong>
+							</ListSubheader>
 							{mapRoutes(routes[route], i + 1)}
 						</div>
 					);
@@ -140,7 +137,7 @@ export default function CustomDrawer({ open, setOpen }) {
 
 	return (
 		<>
-			<Hidden smDown>
+			<Hidden mdDown>
 				<Drawer
 					className={classes.drawer}
 					variant="permanent"
@@ -153,7 +150,7 @@ export default function CustomDrawer({ open, setOpen }) {
 					{drawer}
 				</Drawer>
 			</Hidden>
-			<Hidden mdUp>
+			<Hidden lgUp>
 				<SwipeableDrawer
 					className={classes.drawer}
 					variant="temporary"

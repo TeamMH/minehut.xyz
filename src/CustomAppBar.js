@@ -122,7 +122,7 @@ export default function CustomAppBar({
 		<AppBar position="fixed" className={classes.appBar}>
 			<ThemeProvider theme={appBarTheme}>
 				<Toolbar>
-					<Hidden mdUp>
+					<Hidden lgUp>
 						<IconButton
 							onClick={() => setOpen(!open)}
 							className={classes.menuButton}

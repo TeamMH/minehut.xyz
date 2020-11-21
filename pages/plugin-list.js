@@ -81,6 +81,7 @@ export default function PluginList(props) {
 					className={classes.input}
 					label="Search for plugins"
 					onChange={(e) => {
+						setPage(0);
 						if (!e.target.value) setPlugins(props.plugins);
 						else
 							setPlugins(

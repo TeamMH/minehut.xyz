@@ -10,8 +10,15 @@ import { useRouter } from "next/router";
 import {
 	Container,
 	Divider,
+	Drawer,
 	Fab,
+	Grid,
+	Hidden,
 	Link,
+	List,
+	ListItem,
+	ListItemText,
+	ListSubheader,
 	Paper,
 	SvgIcon,
 	Table,
@@ -84,6 +91,34 @@ const useStyles = makeStyles((theme) => {
 				whiteSpace: "pre-line !important",
 			},
 		},
+		toc: {
+			// [theme.breakpoints.up("md")]: {
+			// 	position: "fixed",
+			// 	right: "0",
+			// 	width: "calc(25% - 20.83px)",
+			// },
+			// [theme.breakpoints.up("lg")]: {
+			// 	position: "fixed",
+			// 	right: "0",
+			// 	width: "calc(16.66% - 20.83px)",
+			// },
+		},
+		drawer: {
+			width: 250,
+			maxWidth: "100%",
+			flexShrink: 0,
+		},
+		drawerPaper: {
+			width: 250,
+			maxWidth: "100%",
+			background: "none",
+			border: "none",
+		},
+		drawerContainer: {
+			overflowY: "auto",
+			overflowX: "hidden",
+			marginTop: theme.spacing(4),
+		},
 	};
 });
 
@@ -152,7 +187,12 @@ export default function MinehutXYZ(props) {
 	const components = {
 		h1(props) {
 			return (
-				<Typography className={classes.heading} {...props} variant="h4">
+				<Typography
+					className={classes.heading}
+					id={getString(props).toLowerCase().replace(/ +/g, "-")}
+					{...props}
+					variant="h4"
+				>
 					{typeof props.children === "string"
 						? props.children.toUpperCase()
 						: props.children}
@@ -167,6 +207,7 @@ export default function MinehutXYZ(props) {
 						className={classes.heading}
 						{...props}
 						variant="h5"
+						id={getString(props).toLowerCase().replace(/ +/g, "-")}
 					>
 						{typeof props.children === "string"
 							? props.children.toUpperCase()
@@ -312,6 +353,42 @@ export default function MinehutXYZ(props) {
 		<meta content={fm.description} property="og:description" />
 	) : null;
 
+	console.log(fm);
+
+	const tableOfContents = fm ? (
+		<List dense className={classes.toc}>
+			<ListSubheader disableSticky>TABLE OF CONTENTS</ListSubheader>
+			{fm.contents.map((c, i) => (
+				<ListItem
+					onClick={() => {
+						window.scrollTo(
+							0,
+							document.getElementById(
+								c
+									.replace(/(^|\n)##? /, "")
+									.toLowerCase()
+									.replace(/ +/g, "-")
+							).offsetTop - 112
+						);
+					}}
+					button
+					key={c}
+					color="inherit"
+				>
+					<ListItemText
+						style={{
+							marginLeft: themeConfig.spacing(
+								c.match(/(^|\n)##/) ? 2 : 0
+							),
+						}}
+					>
+						{c.replace(/(^|\n)##? /, "").toUpperCase()}
+					</ListItemText>
+				</ListItem>
+			))}
+		</List>
+	) : null;
+
 	return (
 		<CookiesProvider>
 			<React.Fragment>
@@ -348,6 +425,7 @@ export default function MinehutXYZ(props) {
 						<CustomDrawer open={open} setOpen={setOpen} />
 						<main className={classes.content}>
 							<Toolbar />
+							<Hidden smUp>{tableOfContents}</Hidden>
 							<Container maxWidth="md">
 								<MDXProvider components={components}>
 									<Component {...pageProps} />
@@ -364,6 +442,19 @@ export default function MinehutXYZ(props) {
 								</Alert>
 							</Container>
 						</main>
+						<Hidden xsDown>
+							<Drawer
+								className={classes.drawer}
+								variant="permanent"
+								classes={{
+									paper: classes.drawerPaper,
+								}}
+								anchor="right"
+							>
+								<Toolbar />
+								{tableOfContents}
+							</Drawer>
+						</Hidden>
 						<Tooltip title="Join us on Discord!">
 							<Fab
 								component={Link}
@@ -391,3 +482,14 @@ MinehutXYZ.propTypes = {
 	Component: PropTypes.elementType.isRequired,
 	pageProps: PropTypes.object.isRequired,
 };
+
+function getString(props) {
+	if (typeof props.children === "string") return props.children;
+	else {
+		if (Array.isArray(props.children)) {
+			let string = props.children
+				.map((c) => (typeof c === "string" ? c : getString(c.props)))
+				.join("");
+		} else return getString(props.children.props);
+	}
+}
