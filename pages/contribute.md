@@ -1,5 +1,6 @@
 ---
 description: Learn how to contribute to Minehut.xyz
+name: contribute
 ---
 
 # Contribute
@@ -25,11 +26,13 @@ This is an example page, and this is the source:
 description: Description
 ---
 
+import Alert from "@material-ui/lab/Alert";
+
 # Title
 
-{% hint style="info" %}
-This tutorial was made by < name >. Lean how to contribute [here](/contribute.md).
-{% endhint %}
+<Alert severity="success">
+This tutorial was made by < name >. Lean how to contribute <a href="#">here</a>.
+</Alert>
 
 ## Section 1
 

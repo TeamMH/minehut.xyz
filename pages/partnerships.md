@@ -1,5 +1,6 @@
 ---
 description: View our partnerships.
+name: partnerships
 ---
 
 # Partners

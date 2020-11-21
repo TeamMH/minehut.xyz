@@ -24,12 +24,13 @@ import {
 } from "@material-ui/core";
 import { CookiesProvider, useCookies } from "react-cookie";
 import CustomAppBar from "../src/CustomAppBar";
-import { mdx, MDXProvider } from "@mdx-js/react";
+import { MDXProvider } from "@mdx-js/react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import materialLight from "react-syntax-highlighter/dist/cjs/styles/prism/material-light";
 import colors from "../colors.json";
-import Hint from "../src/Hint";
+import { Alert } from "@material-ui/lab";
+import { frontMatter } from "./**/*.md";
 
 const themeObject = {
 	palette: {
@@ -277,10 +278,9 @@ export default function MinehutXYZ(props) {
 				<SyntaxHighlighter
 					language={props.className.replace("language-", "")}
 					children={props.children}
-					style={{
-						borderBottom:
-							"1px solid " + themeConfig.palette.divider,
-					}}
+					style={
+						theme.palette.type === "dark" ? atomDark : materialLight
+					}
 					className={classes.code}
 				/>
 			);
@@ -304,10 +304,24 @@ export default function MinehutXYZ(props) {
 		.replace("-", " ");
 	if (title) title = title[0].toUpperCase() + title.slice(1);
 
+	const description = frontMatter.find(
+		(f) => f.name === router.asPath.slice(1)
+	).description;
+
 	return (
 		<CookiesProvider>
 			<React.Fragment>
 				<Head>
+					<meta
+						content={"minehut.xyz" + (title ? " | " + title : "")}
+						property="og:title"
+					/>
+					<meta content={description} property="og:description" />
+					<meta content="minehut.xyz" property="og:site_name" />
+					<meta
+						content="https://app.gitbook.com/share/space/thumbnail/-MDvLUELAt3CwagRrh51.png"
+						property="og:image"
+					/>
 					<title>
 						{"minehut.xyz" + (title ? " | " + title : "")}
 					</title>
@@ -338,7 +352,7 @@ export default function MinehutXYZ(props) {
 								<MDXProvider components={components}>
 									<Component {...pageProps} />
 								</MDXProvider>
-								<Hint>
+								<Alert variant="outlined" severity="success">
 									Join our{" "}
 									<Link href="https://discord.gg/TYhH5bK">
 										Discord
@@ -347,7 +361,7 @@ export default function MinehutXYZ(props) {
 									<strong>official writer</strong>,{" "}
 									<strong>site updates</strong>, and{" "}
 									<strong>much more</strong>
-								</Hint>
+								</Alert>
 							</Container>
 						</main>
 						<Tooltip title="Join us on Discord!">

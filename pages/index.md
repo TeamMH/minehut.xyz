@@ -1,8 +1,11 @@
 ---
 description: The leading Minehut support website.
+name: ""
 ---
 
-import Hint from "../src/Hint"
+export const test = {description: "a"}
+
+import Alert from "@material-ui/lab/Alert"
 
 # Home
 
@@ -10,9 +13,9 @@ import Hint from "../src/Hint"
 
 Minehut.xyz is home to the best Minehut-related support you'll find on the web. We aim to provide top quality [Minehut tutorials](https://minehut.xyz/faq/panel), [Plugin tutorials](https://minehut.xyz/plugin/popular), and [Skript tutorials](https://minehut.xyz/skript/basics). Our site is [community driven](contribute.md), and we will continue to make it better and better.
 
-<Hint style="info">
+<Alert variant="outlined" severity="info">
 Utilise our Search function at the top righthand corner of the site, it's so helpful to find your question within our site.
-</Hint>
+</Alert>
 
 ## Every question ever, answered.
 
