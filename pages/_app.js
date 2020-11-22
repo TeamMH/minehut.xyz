@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import CustomDrawer from "../src/CustomDrawer";
@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import {
+	Button,
 	Container,
 	Divider,
 	Drawer,
@@ -40,6 +41,7 @@ import colors from "../colors.json";
 import { Alert } from "@material-ui/lab";
 import { frontMatter } from "./**/*.md";
 import Discord from "../public/discord.svg";
+import { TextsmsSharp } from "@material-ui/icons";
 
 const themeObject = {
 	palette: {
@@ -67,6 +69,7 @@ const useStyles = makeStyles((theme) => {
 		root: {
 			display: "flex",
 			fontSize: "1rem",
+			scrollBehavior: "smooth",
 		},
 		content: {
 			flexGrow: 1,
@@ -353,7 +356,37 @@ export default function MinehutXYZ(props) {
 		<meta content={fm.description} property="og:description" />
 	) : null;
 
-	console.log(fm);
+	// const [selected, setSelected] = React.useState("");
+	// React.useEffect(() => {
+	// 	const els = [];
+
+	// 	// Track all sections that have an `id` applied
+	// 	document.querySelectorAll("h4[id], h5[id]").forEach((li) => {
+	// 		els.push(li);
+	// 	});
+
+	// 	const observer = new IntersectionObserver((entries) => {
+	// 		let selectedTemp = "";
+	// 		entries.forEach((entry) => {
+	// 			const id = entry.target.innerHTML
+	// 				.toLowerCase()
+	// 				.replace(/ +/g, "-");
+	// 			if (entry.intersectionRatio > 0) {
+	// 				selectedTemp = id;
+	// 			}
+	// 			console.log(id, entry.intersectionRatio);
+	// 		});
+
+	// 		if (selectedTemp && selectedTemp !== selected) {
+	// 			console.log(`temp: ${selectedTemp} selected: ${selected}`);
+	// 			setSelected(selectedTemp);
+	// 		}
+	// 	});
+
+	// 	els.reverse().forEach((li) => {
+	// 		observer.observe(li);
+	// 	});
+	// }, [selected]);
 
 	const tableOfContents = fm ? (
 		<List dense className={classes.toc}>
@@ -361,19 +394,32 @@ export default function MinehutXYZ(props) {
 			{fm.contents.map((c, i) => (
 				<ListItem
 					onClick={() => {
-						window.scrollTo(
-							0,
-							document.getElementById(
-								c
-									.replace(/(^|\n)##? /, "")
-									.toLowerCase()
-									.replace(/ +/g, "-")
-							).offsetTop - 112
-						);
+						window.scrollTo({
+							left: 0,
+							top:
+								document.getElementById(
+									c
+										.replace(/(^|\n)##? /, "")
+										.toLowerCase()
+										.replace(/ +/g, "-")
+								).offsetTop - 112,
+							behavior: "smooth",
+						});
 					}}
 					button
 					key={c}
 					color="inherit"
+					id={c
+						.replace(/(^|\n)##? /, "")
+						.toLowerCase()
+						.replace(/ +/g, "-")}
+					// selected={
+					// 	selected ===
+					// 	c
+					// 		.replace(/(^|\n)##? /, "")
+					// 		.toLowerCase()
+					// 		.replace(/ +/g, "-")
+					// }
 				>
 					<ListItemText
 						style={{
@@ -425,7 +471,10 @@ export default function MinehutXYZ(props) {
 						<CustomDrawer open={open} setOpen={setOpen} />
 						<main className={classes.content}>
 							<Toolbar />
-							<Hidden smUp>{tableOfContents}</Hidden>
+							<Hidden smUp>
+								<Button></Button>
+								{tableOfContents}
+							</Hidden>
 							<Container maxWidth="md">
 								<MDXProvider components={components}>
 									<Component {...pageProps} />

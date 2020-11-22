@@ -23,6 +23,7 @@
 		"react": "latest",
 		"react-cookie": "^4.0.3",
 		"react-dom": "latest",
+		"react-scrollspy": "^3.4.3",
 		"react-syntax-highlighter": "^15.3.0"
 	},
 	"scripts": {
