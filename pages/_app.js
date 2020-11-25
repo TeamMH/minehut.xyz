@@ -41,7 +41,7 @@ import colors from "../colors.json";
 import { Alert } from "@material-ui/lab";
 import { frontMatter } from "./**/*.md";
 import Discord from "../public/discord.svg";
-import { TextsmsSharp } from "@material-ui/icons";
+import ScrollSpy from "react-scrollspy";
 
 const themeObject = {
 	palette: {
@@ -95,16 +95,14 @@ const useStyles = makeStyles((theme) => {
 			},
 		},
 		toc: {
-			// [theme.breakpoints.up("md")]: {
-			// 	position: "fixed",
-			// 	right: "0",
-			// 	width: "calc(25% - 20.83px)",
-			// },
-			// [theme.breakpoints.up("lg")]: {
-			// 	position: "fixed",
-			// 	right: "0",
-			// 	width: "calc(16.66% - 20.83px)",
-			// },
+			"& li": {
+				transition: "250ms",
+				borderRadius: "5px 0 0 5px",
+			},
+			"& li.active": {
+				borderLeft: "3px solid white",
+				background: "rgba(255, 255, 255, .12)",
+			},
 		},
 		drawer: {
 			width: 250,
@@ -356,44 +354,33 @@ export default function MinehutXYZ(props) {
 		<meta content={fm.description} property="og:description" />
 	) : null;
 
-	// const [selected, setSelected] = React.useState("");
-	// React.useEffect(() => {
-	// 	const els = [];
-
-	// 	// Track all sections that have an `id` applied
-	// 	document.querySelectorAll("h4[id], h5[id]").forEach((li) => {
-	// 		els.push(li);
-	// 	});
-
-	// 	const observer = new IntersectionObserver((entries) => {
-	// 		let selectedTemp = "";
-	// 		entries.forEach((entry) => {
-	// 			const id = entry.target.innerHTML
-	// 				.toLowerCase()
-	// 				.replace(/ +/g, "-");
-	// 			if (entry.intersectionRatio > 0) {
-	// 				selectedTemp = id;
-	// 			}
-	// 			console.log(id, entry.intersectionRatio);
-	// 		});
-
-	// 		if (selectedTemp && selectedTemp !== selected) {
-	// 			console.log(`temp: ${selectedTemp} selected: ${selected}`);
-	// 			setSelected(selectedTemp);
-	// 		}
-	// 	});
-
-	// 	els.reverse().forEach((li) => {
-	// 		observer.observe(li);
-	// 	});
-	// }, [selected]);
-
 	const tableOfContents = fm ? (
-		<List dense className={classes.toc}>
-			<ListSubheader disableSticky>TABLE OF CONTENTS</ListSubheader>
+		<ScrollSpy
+			items={[
+				"nothing",
+				...fm.contents.map((c) =>
+					c
+						.replace(/(^|\n)##? /, "")
+						.toLowerCase()
+						.replace(/ +/g, "-")
+				),
+			]}
+			currentClassName="active"
+			offset={-112}
+			componentTag={List}
+			dense
+			className={classes.toc}
+		>
+			<ListSubheader component="div" disableSticky>
+				TABLE OF CONTENTS
+			</ListSubheader>
 			{fm.contents.map((c, i) => (
 				<ListItem
-					onClick={() => {
+					button
+					key={c}
+					color="inherit"
+					component="li"
+					onClick={() =>
 						window.scrollTo({
 							left: 0,
 							top:
@@ -404,22 +391,8 @@ export default function MinehutXYZ(props) {
 										.replace(/ +/g, "-")
 								).offsetTop - 112,
 							behavior: "smooth",
-						});
-					}}
-					button
-					key={c}
-					color="inherit"
-					id={c
-						.replace(/(^|\n)##? /, "")
-						.toLowerCase()
-						.replace(/ +/g, "-")}
-					// selected={
-					// 	selected ===
-					// 	c
-					// 		.replace(/(^|\n)##? /, "")
-					// 		.toLowerCase()
-					// 		.replace(/ +/g, "-")
-					// }
+						})
+					}
 				>
 					<ListItemText
 						style={{
@@ -432,7 +405,7 @@ export default function MinehutXYZ(props) {
 					</ListItemText>
 				</ListItem>
 			))}
-		</List>
+		</ScrollSpy>
 	) : null;
 
 	return (
@@ -471,10 +444,12 @@ export default function MinehutXYZ(props) {
 						<CustomDrawer open={open} setOpen={setOpen} />
 						<main className={classes.content}>
 							<Toolbar />
-							<Hidden smUp>
-								<Button></Button>
-								{tableOfContents}
-							</Hidden>
+							{fm ? (
+								<Hidden smUp>
+									<Button></Button>
+									{tableOfContents}
+								</Hidden>
+							) : null}
 							<Container maxWidth="md">
 								<MDXProvider components={components}>
 									<Component {...pageProps} />
@@ -491,19 +466,21 @@ export default function MinehutXYZ(props) {
 								</Alert>
 							</Container>
 						</main>
-						<Hidden xsDown>
-							<Drawer
-								className={classes.drawer}
-								variant="permanent"
-								classes={{
-									paper: classes.drawerPaper,
-								}}
-								anchor="right"
-							>
-								<Toolbar />
-								{tableOfContents}
-							</Drawer>
-						</Hidden>
+						{fm ? (
+							<Hidden xsDown>
+								<Drawer
+									className={classes.drawer}
+									variant="permanent"
+									classes={{
+										paper: classes.drawerPaper,
+									}}
+									anchor="right"
+								>
+									<Toolbar />
+									{tableOfContents}
+								</Drawer>
+							</Hidden>
+						) : null}
 						<Tooltip title="Join us on Discord!">
 							<Fab
 								component={Link}
