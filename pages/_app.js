@@ -43,6 +43,24 @@ import { frontMatter } from "./**/*.md";
 import Discord from "../public/discord.svg";
 import ScrollSpy from "react-scrollspy";
 
+ScrollSpy.prototype._initFromProps = function (_props) {
+	const props = _props ? _props : this.props;
+
+	setTimeout(() => {
+		const targetItems = this._initSpyTarget(props.items);
+
+		this.setState({
+			targetItems,
+		});
+
+		this._spy(targetItems);
+	}, 0);
+};
+
+ScrollSpy.prototype.UNSAFE_componentWillReceiveProps = function (nextProps) {
+	this._initFromProps(nextProps);
+};
+
 const themeObject = {
 	palette: {
 		type: "dark",
@@ -64,64 +82,87 @@ const themeObject = {
 	},
 };
 
-const useStyles = makeStyles((theme) => {
-	return {
-		root: {
-			display: "flex",
-			fontSize: "1rem",
-			scrollBehavior: "smooth",
+function useStyles(theme) {
+	return makeStyles(
+		(theme) => {
+			return {
+				root: {
+					display: "flex",
+					fontSize: "1rem",
+					scrollBehavior: "smooth",
+				},
+				content: {
+					flexGrow: 1,
+					padding: theme.spacing(3, 0),
+				},
+				navTheme: {
+					marginRight: theme.spacing(1),
+				},
+				discordFab: {
+					position: "fixed",
+					bottom: theme.spacing(2),
+					right: theme.spacing(2),
+					fontSize: 26,
+					color: "white",
+				},
+				heading: {
+					margin: theme.spacing(3, 0),
+				},
+				code: {
+					whiteSpace: "pre-line !important",
+					"& code": {
+						whiteSpace: "pre-line !important",
+					},
+				},
+				toc: {
+					width: "100%",
+					"& li": {
+						transition: "250ms",
+						borderRadius: "5px 0 0 5px",
+					},
+					"& li.active": {
+						borderLeft:
+							"3px solid " +
+							(theme.palette.type === "dark"
+								? "#f3f3f3"
+								: "black"),
+						background:
+							theme.palette.type === "dark"
+								? "rgba(255, 255, 255, .12)"
+								: "rgba(0, 0, 0, .12)",
+					},
+				},
+				drawer: {
+					width: 250,
+					maxWidth: "100%",
+					flexShrink: 0,
+				},
+				drawerPaper: {
+					width: 250,
+					maxWidth: "100%",
+					background: "none",
+					border: "none",
+				},
+				drawerContainer: {
+					overflowY: "auto",
+					overflowX: "hidden",
+					marginTop: theme.spacing(4),
+				},
+				tableContainer: {
+					marginBottom: theme.spacing(3),
+				},
+				tableCell: {
+					borderBottom:
+						"1px solid " +
+						(theme.palette.type === "light"
+							? "rgba(0, 0, 0, .12)"
+							: "rgba(255, 255, 255, .12)"),
+				},
+			};
 		},
-		content: {
-			flexGrow: 1,
-			padding: theme.spacing(3, 0),
-		},
-		navTheme: {
-			marginRight: theme.spacing(1),
-		},
-		discordFab: {
-			position: "fixed",
-			bottom: theme.spacing(2),
-			right: theme.spacing(2),
-			fontSize: 26,
-			color: "white",
-		},
-		heading: {
-			margin: theme.spacing(3, 0),
-		},
-		code: {
-			whiteSpace: "pre-line !important",
-			"& code": {
-				whiteSpace: "pre-line !important",
-			},
-		},
-		toc: {
-			"& li": {
-				transition: "250ms",
-				borderRadius: "5px 0 0 5px",
-			},
-			"& li.active": {
-				borderLeft: "3px solid white",
-				background: "rgba(255, 255, 255, .12)",
-			},
-		},
-		drawer: {
-			width: 250,
-			maxWidth: "100%",
-			flexShrink: 0,
-		},
-		drawerPaper: {
-			width: 250,
-			maxWidth: "100%",
-			background: "none",
-			border: "none",
-		},
-		drawerContainer: {
-			overflowY: "auto",
-			overflowX: "hidden",
-			marginTop: theme.spacing(4),
-		},
-	};
-});
+		{ defaultTheme: theme }
+	)();
+}
 
 const useDarkMode = (setCookie) => {
 	const [theme, setTheme] = React.useState(themeObject);
@@ -160,8 +201,6 @@ const useDarkMode = (setCookie) => {
 const appBarTheme = createMuiTheme(themeObject);
 
 export default function MinehutXYZ(props) {
-	const classes = useStyles();
-
 	const [cookies, setCookie] = useCookies(["theme"]);
 	if (!cookies.theme) setCookie("theme", "dark");
 	themeObject.palette.type = cookies.theme || "dark";
@@ -182,6 +221,7 @@ export default function MinehutXYZ(props) {
 
 	const { Component, pageProps } = props;
 	const themeConfig = createMuiTheme(theme);
+	const classes = useStyles(themeConfig);
 
 	const [open, setOpen] = React.useState(false);
 
@@ -274,9 +314,7 @@ export default function MinehutXYZ(props) {
 		table(props) {
 			return (
 				<TableContainer
-					style={{
-						marginBottom: themeConfig.spacing(3),
-					}}
+					className={classes.tableContainer}
 					component={Paper}
 				>
 					<Table {...props} />
@@ -293,29 +331,10 @@ export default function MinehutXYZ(props) {
 			return <TableRow {...props} />;
 		},
 		th(props) {
-			return (
-				<TableCell
-					style={{
-						borderBottom:
-							"1px solid " +
-							(themeConfig.palette.type === "light"
-								? "rgba(0, 0, 0, .12)"
-								: "rgba(255, 255, 255, .12)"),
-					}}
-					{...props}
-				/>
-			);
+			return <TableCell className={classes.tableCell} {...props} />;
 		},
 		td(props) {
-			return (
-				<TableCell
-					style={{
-						borderBottom:
-							"1px solid " + themeConfig.palette.divider,
-					}}
-					{...props}
-				/>
-			);
+			return <TableCell className={classes.tableCell} {...props} />;
 		},
 		code(props) {
 			return (
@@ -354,9 +373,8 @@ export default function MinehutXYZ(props) {
 		<meta content={fm.description} property="og:description" />
 	) : null;
 
-	const tableOfContents = fm ? (
-		<ScrollSpy
-			items={[
+	const items = fm
+		? [
 				"nothing",
 				...fm.contents.map((c) =>
 					c
@@ -364,48 +382,55 @@ export default function MinehutXYZ(props) {
 						.toLowerCase()
 						.replace(/ +/g, "-")
 				),
-			]}
-			currentClassName="active"
-			offset={-112}
-			componentTag={List}
-			dense
-			className={classes.toc}
-		>
-			<ListSubheader component="div" disableSticky>
-				TABLE OF CONTENTS
-			</ListSubheader>
-			{fm.contents.map((c, i) => (
-				<ListItem
-					button
-					key={c}
-					color="inherit"
-					component="li"
-					onClick={() =>
-						window.scrollTo({
-							left: 0,
-							top:
-								document.getElementById(
-									c
-										.replace(/(^|\n)##? /, "")
-										.toLowerCase()
-										.replace(/ +/g, "-")
-								).offsetTop - 112,
-							behavior: "smooth",
-						})
-					}
-				>
-					<ListItemText
-						style={{
-							marginLeft: themeConfig.spacing(
-								c.match(/(^|\n)##/) ? 2 : 0
-							),
-						}}
+		  ]
+		: null;
+
+	const loaded = useLoaded();
+
+	const tableOfContents = fm ? (
+		<List dense className={classes.toc}>
+			<ScrollSpy
+				items={items}
+				currentClassName="active"
+				offset={-112}
+				componentTag="div"
+			>
+				<ListSubheader component="div" disableSticky>
+					TABLE OF CONTENTS
+				</ListSubheader>
+				{fm.contents.map((c, i) => (
+					<ListItem
+						button
+						key={c}
+						color="inherit"
+						component="li"
+						onClick={() =>
+							window.scrollTo({
+								left: 0,
+								top:
+									document.getElementById(
+										c
+											.replace(/(^|\n)##? /, "")
+											.toLowerCase()
+											.replace(/ +/g, "-")
+									).offsetTop - 112,
+								behavior: "smooth",
+							})
+						}
 					>
-						{c.replace(/(^|\n)##? /, "").toUpperCase()}
-					</ListItemText>
-				</ListItem>
-			))}
-		</ScrollSpy>
+						<ListItemText
+							style={{
+								marginLeft: themeConfig.spacing(
+									c.match(/(^|\n)##/) ? 2 : 0
+								),
+							}}
+						>
+							{c.replace(/(^|\n)##? /, "").toUpperCase()}
+						</ListItemText>
+					</ListItem>
+				))}
+			</ScrollSpy>
+		</List>
 	) : null;
 
 	return (
@@ -435,6 +460,7 @@ export default function MinehutXYZ(props) {
 						{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 						<CssBaseline />
 						<CustomAppBar
+							themeConfig={themeConfig}
 							useDarkMode={useDarkMode}
 							appBarTheme={appBarTheme}
 							setOpen={setOpen}
@@ -451,16 +477,18 @@ export default function MinehutXYZ(props) {
 								</Hidden>
 							) : null}
 							<Container maxWidth="md">
-								<MDXProvider components={components}>
-									<Component {...pageProps} />
-								</MDXProvider>
+								{loaded ? (
+									<MDXProvider components={components}>
+										<Component {...pageProps} />
+									</MDXProvider>
+								) : null}
 								<Alert variant="outlined" severity="success">
 									Join our{" "}
 									<Link href="https://discord.gg/TYhH5bK">
 										Discord
 									</Link>{" "}
 									to become an{" "}
-									<strong>official writer</strong>,{" "}
+									<strong>official writer</strong>, get{" "}
 									<strong>site updates</strong>, and{" "}
 									<strong>much more</strong>
 								</Alert>
@@ -518,4 +546,10 @@ function getString(props) {
 				.join("");
 		} else return getString(props.children.props);
 	}
+}
+
+function useLoaded() {
+	const [loaded, setLoaded] = React.useState(false);
+	React.useEffect(() => setLoaded(true), []);
+	return loaded;
 }

@@ -19,6 +19,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Brightness4 from "@material-ui/icons/Brightness4";
+import Brightness7 from "@material-ui/icons/Brightness7";
 import SearchIcon from "@material-ui/icons/Search";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -110,6 +111,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CustomAppBar({
+	themeConfig,
 	appBarTheme,
 	toggleDarkMode,
 	setOpen,
@@ -117,6 +119,7 @@ export default function CustomAppBar({
 }) {
 	const classes = useStyles();
 	const [searching, setSearching] = useState(false);
+	const loaded = useLoaded();
 
 	return (
 		<AppBar position="fixed" className={classes.appBar}>
@@ -169,11 +172,23 @@ export default function CustomAppBar({
 							className={classes.themeButton}
 							onClick={toggleDarkMode}
 						>
-							<Brightness4 />
+							{loaded ? (
+								themeConfig.palette.type === "light" ? (
+									<Brightness4 />
+								) : (
+									<Brightness7 />
+								)
+							) : null}
 						</IconButton>
 					</Tooltip>
 				</Toolbar>
 			</ThemeProvider>
 		</AppBar>
 	);
+}
+
+function useLoaded() {
+	const [loaded, setLoaded] = useState(false);
+	useEffect(() => setLoaded(true), []);
+	return loaded;
 }
