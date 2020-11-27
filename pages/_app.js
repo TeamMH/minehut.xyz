@@ -15,6 +15,7 @@ import {
 	Fab,
 	Grid,
 	Hidden,
+	IconButton,
 	Link,
 	List,
 	ListItem,
@@ -22,6 +23,7 @@ import {
 	ListSubheader,
 	Paper,
 	SvgIcon,
+	SwipeableDrawer,
 	Table,
 	TableBody,
 	TableCell,
@@ -42,6 +44,7 @@ import { Alert } from "@material-ui/lab";
 import { frontMatter } from "./**/*.md";
 import Discord from "../public/discord.svg";
 import ScrollSpy from "react-scrollspy";
+import MenuIcon from "@material-ui/icons/Menu";
 
 ScrollSpy.prototype._initFromProps = function (_props) {
 	const props = _props ? _props : this.props;
@@ -105,6 +108,13 @@ function useStyles(theme) {
 					fontSize: 26,
 					color: "white",
 				},
+				tocFab: {
+					position: "fixed",
+					bottom: theme.spacing(10),
+					right: theme.spacing(2),
+					fontSize: 26,
+					color: "white",
+				},
 				heading: {
 					margin: theme.spacing(3, 0),
 				},
@@ -118,14 +128,18 @@ function useStyles(theme) {
 					width: "100%",
 					"& li": {
 						transition: "250ms",
-						borderRadius: "5px 0 0 5px",
+						[theme.breakpoints.up("sm")]: {
+							borderRadius: "5px 0 0 5px",
+						},
 					},
 					"& li.active": {
-						borderLeft:
-							"3px solid " +
-							(theme.palette.type === "dark"
-								? "#f3f3f3"
-								: "black"),
+						[theme.breakpoints.up("sm")]: {
+							borderLeft:
+								"3px solid " +
+								(theme.palette.type === "dark"
+									? "#f3f3f3"
+									: "black"),
+						},
 						background:
 							theme.palette.type === "dark"
 								? "rgba(255, 255, 255, .12)"
@@ -133,15 +147,23 @@ function useStyles(theme) {
 					},
 				},
 				drawer: {
+					[theme.breakpoints.down("xs")]: {
+						width: "100%",
+					},
 					width: 250,
 					maxWidth: "100%",
 					flexShrink: 0,
 				},
 				drawerPaper: {
+					[theme.breakpoints.down("xs")]: {
+						width: 300,
+					},
 					width: 250,
 					maxWidth: "100%",
-					background: "none",
-					border: "none",
+					[theme.breakpoints.up("sm")]: {
+						background: "none",
+						border: "none",
+					},
 				},
 				drawerContainer: {
 					overflowY: "auto",
@@ -387,6 +409,8 @@ export default function MinehutXYZ(props) {
 
 	const loaded = useLoaded();
 
+	const [tocOpen, setTocOpen] = React.useState(false);
+
 	const tableOfContents = fm ? (
 		<List dense className={classes.toc}>
 			<ScrollSpy
@@ -404,7 +428,7 @@ export default function MinehutXYZ(props) {
 						key={c}
 						color="inherit"
 						component="li"
-						onClick={() =>
+						onClick={() => {
 							window.scrollTo({
 								left: 0,
 								top:
@@ -415,8 +439,9 @@ export default function MinehutXYZ(props) {
 											.replace(/ +/g, "-")
 									).offsetTop - 112,
 								behavior: "smooth",
-							})
-						}
+							});
+							setTocOpen(false);
+						}}
 					>
 						<ListItemText
 							style={{
@@ -472,8 +497,13 @@ export default function MinehutXYZ(props) {
 							<Toolbar />
 							{fm ? (
 								<Hidden smUp>
-									<Button></Button>
-									{tableOfContents}
+									<Fab
+										className={classes.tocFab}
+										onClick={() => setTocOpen(!tocOpen)}
+										color="primary"
+									>
+										<MenuIcon />
+									</Fab>
 								</Hidden>
 							) : null}
 							<Container maxWidth="md">
@@ -495,19 +525,37 @@ export default function MinehutXYZ(props) {
 							</Container>
 						</main>
 						{fm ? (
-							<Hidden xsDown>
-								<Drawer
-									className={classes.drawer}
-									variant="permanent"
-									classes={{
-										paper: classes.drawerPaper,
-									}}
-									anchor="right"
-								>
-									<Toolbar />
-									{tableOfContents}
-								</Drawer>
-							</Hidden>
+							<>
+								<Hidden xsDown>
+									<Drawer
+										className={classes.drawer}
+										variant="permanent"
+										classes={{
+											paper: classes.drawerPaper,
+										}}
+										anchor="right"
+									>
+										<Toolbar />
+										{tableOfContents}
+									</Drawer>
+								</Hidden>
+								<Hidden smUp>
+									<SwipeableDrawer
+										className={classes.drawer}
+										variant="temporary"
+										classes={{
+											paper: classes.drawerPaper,
+										}}
+										anchor="right"
+										open={tocOpen}
+										onClose={() => setTocOpen(false)}
+										onOpen={() => setTocOpen(true)}
+									>
+										<Toolbar />
+										{tableOfContents}
+									</SwipeableDrawer>
+								</Hidden>
+							</>
 						) : null}
 						<Tooltip title="Join us on Discord!">
 							<Fab
