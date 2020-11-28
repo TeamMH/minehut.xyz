@@ -6,16 +6,12 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import {
-	Card,
-	CardActionArea,
-	CardContent,
 	Container,
 	Divider,
 	Drawer,
 	Fab,
-	Grid,
 	Hidden,
 	Link,
 	Paper,
@@ -29,6 +25,7 @@ import {
 	TableRow,
 	Tooltip,
 	Typography,
+	useMediaQuery,
 } from "@material-ui/core";
 import { CookiesProvider, useCookies } from "react-cookie";
 import CustomAppBar from "../src/CustomAppBar";
@@ -43,7 +40,7 @@ import Discord from "../public/discord.svg";
 import MenuIcon from "@material-ui/icons/Menu";
 import TableOfContents from "../src/TableOfContents";
 import routes from "../routes.json";
-import NextLink from "../src/Link";
+import Pagination from "../src/Pagination";
 
 const themeObject = {
 	palette: {
@@ -78,6 +75,7 @@ function useStyles(theme) {
 				content: {
 					flexGrow: 1,
 					padding: theme.spacing(3, 0),
+					maxWidth: "100%",
 				},
 				navTheme: {
 					marginRight: theme.spacing(1),
@@ -88,6 +86,7 @@ function useStyles(theme) {
 					right: theme.spacing(2),
 					fontSize: 26,
 					color: "white",
+					zIndex: 1300,
 				},
 				tocFab: {
 					position: "fixed",
@@ -95,14 +94,17 @@ function useStyles(theme) {
 					right: theme.spacing(2),
 					fontSize: 26,
 					color: "white",
+					zIndex: 1300,
 				},
 				heading: {
 					margin: theme.spacing(3, 0),
 				},
 				code: {
 					whiteSpace: "pre-line !important",
+					overflowWrap: "anywhere",
 					"& code": {
 						whiteSpace: "pre-line !important",
+						overflowWrap: "anywhere",
 					},
 				},
 				drawer: {
@@ -146,9 +148,6 @@ function useStyles(theme) {
 							: "rgb(250, 250, 250)",
 					padding: 3,
 					borderRadius: 5,
-				},
-				navGrid: {
-					marginTop: theme.spacing(2),
 				},
 			};
 		},
@@ -393,6 +392,25 @@ export default function MinehutXYZ(props) {
 		: "404 Not Found";
 	if (title) title = title[0].toUpperCase() + title.slice(1);
 
+	const matches = useMediaQuery(themeConfig.breakpoints.up("sm"));
+
+	React.useEffect(() => {
+		const el =
+			router.asPath.split("#").length > 1
+				? document.getElementById(router.asPath.split("#")[1])
+				: null;
+
+		if (el) {
+			setTimeout(() => {
+				window.scrollTo({
+					top: el.offsetTop - (matches ? 112 : 160),
+					left: 0,
+					behavior: "smooth",
+				});
+			}, 0);
+		}
+	});
+
 	return (
 		<CookiesProvider>
 			<React.Fragment>
@@ -430,18 +448,11 @@ export default function MinehutXYZ(props) {
 						<CustomDrawer open={open} setOpen={setOpen} />
 						<main className={classes.content}>
 							<Toolbar />
-							{fm ? (
-								<Hidden mdUp>
-									<Fab
-										className={classes.tocFab}
-										onClick={() => setTocOpen(!tocOpen)}
-										color="primary"
-									>
-										<MenuIcon />
-									</Fab>
-								</Hidden>
-							) : null}
+
 							<Container maxWidth="md">
+								<Hidden smUp>
+									<Toolbar />
+								</Hidden>
 								{loaded ? (
 									<MDXProvider components={components}>
 										<Component {...pageProps} />
@@ -458,175 +469,10 @@ export default function MinehutXYZ(props) {
 									<strong>much more</strong>
 								</Alert>
 								{current !== -1 ? (
-									<Grid
-										spacing={3}
-										className={classes.navGrid}
-										container
-									>
-										{current ? (
-											<Grid
-												xs={12}
-												sm={
-													current + 1 < rArray.length
-														? 6
-														: 12
-												}
-												item
-											>
-												<Card>
-													<CardActionArea
-														naked
-														component={NextLink}
-														href={
-															rArray[
-																current - 1
-															][1]
-														}
-													>
-														<CardContent>
-															<Typography
-																variant="subtitle1"
-																color="textSecondary"
-															>
-																Previous
-															</Typography>
-															<Typography variant="h5">
-																{
-																	rArray[
-																		current -
-																			1
-																	][0]
-																}
-															</Typography>
-															<Typography
-																variant="subtitle2"
-																color="textSecondary"
-																display="inline"
-															>
-																{rArray[
-																	current - 1
-																][1].split("/")
-																	.length >= 3
-																	? rArray[
-																			current -
-																				1
-																	  ][1]
-																			.split(
-																				"/"
-																			)[1]
-																			.replace(
-																				/-./g,
-																				(
-																					e
-																				) =>
-																					" " +
-																					e[1].toUpperCase()
-																			)
-																			.split(
-																				""
-																			)
-																			.map(
-																				(
-																					c,
-																					i
-																				) =>
-																					i ===
-																					0
-																						? c.toUpperCase()
-																						: c
-																			)
-																			.join(
-																				""
-																			)
-																	: null}
-															</Typography>
-														</CardContent>
-													</CardActionArea>
-												</Card>
-											</Grid>
-										) : null}
-										{current + 1 < rArray.length ? (
-											<Grid
-												xs={12}
-												sm={current ? 6 : 12}
-												item
-											>
-												<Card>
-													<CardActionArea
-														component={NextLink}
-														naked
-														href={
-															rArray[
-																current + 1
-															][1]
-														}
-													>
-														<CardContent>
-															<Typography
-																variant="subtitle1"
-																style={{
-																	color:
-																		"#aaaaaa",
-																}}
-															>
-																Next Up
-															</Typography>
-															<Typography variant="h5">
-																{
-																	rArray[
-																		current +
-																			1
-																	][0]
-																}
-															</Typography>
-															<Typography
-																variant="subtitle2"
-																color="textSecondary"
-																display="inline"
-															>
-																{rArray[
-																	current + 1
-																][1].split("/")
-																	.length >= 3
-																	? rArray[
-																			current +
-																				1
-																	  ][1]
-																			.split(
-																				"/"
-																			)[1]
-																			.replace(
-																				/-./g,
-																				(
-																					e
-																				) =>
-																					" " +
-																					e[1].toUpperCase()
-																			)
-																			.split(
-																				""
-																			)
-																			.map(
-																				(
-																					c,
-																					i
-																				) =>
-																					i ===
-																					0
-																						? c.toUpperCase()
-																						: c
-																			)
-																			.join(
-																				""
-																			)
-																	: null}
-															</Typography>
-														</CardContent>
-													</CardActionArea>
-												</Card>
-											</Grid>
-										) : null}
-									</Grid>
+									<Pagination
+										current={current}
+										rArray={rArray}
+									/>
 								) : null}
 							</Container>
 						</main>
@@ -671,7 +517,23 @@ export default function MinehutXYZ(props) {
 								</Hidden>
 							</>
 						) : null}
-						<Tooltip title="Join us on Discord!">
+						{fm ? (
+							<Hidden mdUp>
+								<Tooltip
+									placement="top"
+									title="Table of contents"
+								>
+									<Fab
+										className={classes.tocFab}
+										onClick={() => setTocOpen(!tocOpen)}
+										color="primary"
+									>
+										<MenuIcon />
+									</Fab>
+								</Tooltip>
+							</Hidden>
+						) : null}
+						<Tooltip placement="top" title="Join us on Discord!">
 							<Fab
 								component={Link}
 								href="https://discord.gg/bS6FMMCVyg"

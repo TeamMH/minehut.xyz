@@ -5,6 +5,7 @@ import {
 	ListItemText,
 	makeStyles,
 	useTheme,
+	useMediaQuery,
 } from "@material-ui/core";
 import ScrollSpy from "react-scrollspy";
 
@@ -64,12 +65,14 @@ export default function TableOfContents({ contents, tocOpen, setTocOpen }) {
 		),
 	];
 
+	const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
 	return (
 		<List dense className={classes.toc}>
 			<ScrollSpy
 				items={items}
 				currentClassName="active"
-				offset={-112}
+				offset={matches ? -112 : -160}
 				componentTag="div"
 			>
 				<ListSubheader component="div" disableSticky>
@@ -90,7 +93,7 @@ export default function TableOfContents({ contents, tocOpen, setTocOpen }) {
 											.replace(/(^|\n)##? /, "")
 											.toLowerCase()
 											.replace(/ +/g, "-")
-									).offsetTop - 112,
+									).offsetTop - (matches ? 112 : 160),
 								behavior: "smooth",
 							});
 							setTocOpen(false);

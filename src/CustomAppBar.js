@@ -8,15 +8,12 @@ import {
 	IconButton,
 	Typography,
 	Tooltip,
-	TextField,
 	InputBase,
 	Paper,
 	ListItemText,
 	List,
 	ListItem,
 	SvgIcon,
-	Grid,
-	Container,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Brightness4 from "@material-ui/icons/Brightness4";
@@ -274,7 +271,7 @@ export default function CustomAppBar({
 					</Tooltip>
 				</Toolbar>
 				<Hidden smUp>
-					<Toolbar maxWidth="md">{search}</Toolbar>
+					<Toolbar>{search}</Toolbar>
 				</Hidden>
 			</ThemeProvider>
 		</AppBar>
