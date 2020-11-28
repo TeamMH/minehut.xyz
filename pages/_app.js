@@ -355,14 +355,6 @@ export default function MinehutXYZ(props) {
 	}, []);
 
 	const router = useRouter();
-	let title = router.asPath
-		.split("/")
-		[router.asPath.split("/").length - 1].replace(
-			/-(.)/g,
-			(e) => ` ${e[1].toUpperCase()}`
-		)
-		.replace("-", " ");
-	if (title) title = title[0].toUpperCase() + title.slice(1);
 
 	const fm = frontMatter.find((f) => f.name === router.asPath.slice(1));
 
@@ -386,6 +378,17 @@ export default function MinehutXYZ(props) {
 
 	const rArray = routesArray(routes);
 	const current = rArray.findIndex((r) => r[1] === router.asPath);
+
+	let title = rArray.find((r) => r[1] === router.asPath)
+		? router.asPath
+				.split("/")
+				[router.asPath.split("/").length - 1].replace(
+					/-(.)/g,
+					(e) => ` ${e[1].toUpperCase()}`
+				)
+				.replace("-", " ")
+		: "404 Not Found";
+	if (title) title = title[0].toUpperCase() + title.slice(1);
 
 	return (
 		<CookiesProvider>
@@ -451,169 +454,177 @@ export default function MinehutXYZ(props) {
 									<strong>site updates</strong>, and{" "}
 									<strong>much more</strong>
 								</Alert>
-								<Grid
-									spacing={3}
-									className={classes.navGrid}
-									container
-								>
-									{current ? (
-										<Grid
-											xs={12}
-											sm={
-												current + 1 < rArray.length
-													? 6
-													: 12
-											}
-											item
-										>
-											<Card>
-												<CardActionArea
-													naked
-													component={NextLink}
-													href={
-														rArray[current - 1][1]
-													}
-												>
-													<CardContent>
-														<Typography
-															variant="subtitle1"
-															color="textSecondary"
-														>
-															Previous
-														</Typography>
-														<Typography variant="h5">
-															{
-																rArray[
-																	current - 1
-																][0]
-															}
-														</Typography>
-														<Typography
-															variant="subtitle2"
-															color="textSecondary"
-															display="inline"
-														>
-															{rArray[
+								{current !== -1 ? (
+									<Grid
+										spacing={3}
+										className={classes.navGrid}
+										container
+									>
+										{current ? (
+											<Grid
+												xs={12}
+												sm={
+													current + 1 < rArray.length
+														? 6
+														: 12
+												}
+												item
+											>
+												<Card>
+													<CardActionArea
+														naked
+														component={NextLink}
+														href={
+															rArray[
 																current - 1
-															][1].split("/")
-																.length >= 3
-																? rArray[
+															][1]
+														}
+													>
+														<CardContent>
+															<Typography
+																variant="subtitle1"
+																color="textSecondary"
+															>
+																Previous
+															</Typography>
+															<Typography variant="h5">
+																{
+																	rArray[
 																		current -
 																			1
-																  ][1]
-																		.split(
-																			"/"
-																		)[1]
-																		.replace(
-																			/-./g,
-																			(
-																				e
-																			) =>
-																				" " +
-																				e[1].toUpperCase()
-																		)
-																		.split(
-																			""
-																		)
-																		.map(
-																			(
-																				c,
-																				i
-																			) =>
-																				i ===
-																				0
-																					? c.toUpperCase()
-																					: c
-																		)
-																		.join(
-																			""
-																		)
-																: null}
-														</Typography>
-													</CardContent>
-												</CardActionArea>
-											</Card>
-										</Grid>
-									) : null}
-									{current + 1 < rArray.length ? (
-										<Grid
-											xs={12}
-											sm={current ? 6 : 12}
-											item
-										>
-											<Card>
-												<CardActionArea
-													component={NextLink}
-													naked
-													href={
-														rArray[current + 1][1]
-													}
-												>
-													<CardContent>
-														<Typography
-															variant="subtitle1"
-															style={{
-																color:
-																	"#aaaaaa",
-															}}
-														>
-															Next Up
-														</Typography>
-														<Typography variant="h5">
-															{
-																rArray[
-																	current + 1
-																][0]
-															}
-														</Typography>
-														<Typography
-															variant="subtitle2"
-															color="textSecondary"
-															display="inline"
-														>
-															{rArray[
+																	][0]
+																}
+															</Typography>
+															<Typography
+																variant="subtitle2"
+																color="textSecondary"
+																display="inline"
+															>
+																{rArray[
+																	current - 1
+																][1].split("/")
+																	.length >= 3
+																	? rArray[
+																			current -
+																				1
+																	  ][1]
+																			.split(
+																				"/"
+																			)[1]
+																			.replace(
+																				/-./g,
+																				(
+																					e
+																				) =>
+																					" " +
+																					e[1].toUpperCase()
+																			)
+																			.split(
+																				""
+																			)
+																			.map(
+																				(
+																					c,
+																					i
+																				) =>
+																					i ===
+																					0
+																						? c.toUpperCase()
+																						: c
+																			)
+																			.join(
+																				""
+																			)
+																	: null}
+															</Typography>
+														</CardContent>
+													</CardActionArea>
+												</Card>
+											</Grid>
+										) : null}
+										{current + 1 < rArray.length ? (
+											<Grid
+												xs={12}
+												sm={current ? 6 : 12}
+												item
+											>
+												<Card>
+													<CardActionArea
+														component={NextLink}
+														naked
+														href={
+															rArray[
 																current + 1
-															][1].split("/")
-																.length >= 3
-																? rArray[
+															][1]
+														}
+													>
+														<CardContent>
+															<Typography
+																variant="subtitle1"
+																style={{
+																	color:
+																		"#aaaaaa",
+																}}
+															>
+																Next Up
+															</Typography>
+															<Typography variant="h5">
+																{
+																	rArray[
 																		current +
 																			1
-																  ][1]
-																		.split(
-																			"/"
-																		)[1]
-																		.replace(
-																			/-./g,
-																			(
-																				e
-																			) =>
-																				" " +
-																				e[1].toUpperCase()
-																		)
-																		.split(
-																			""
-																		)
-																		.map(
-																			(
-																				c,
-																				i
-																			) =>
-																				i ===
-																				0
-																					? c.toUpperCase()
-																					: c
-																		)
-																		.join(
-																			""
-																		)
-																: null}
-														</Typography>
-													</CardContent>
-												</CardActionArea>
-											</Card>
-										</Grid>
-									) : null}
-								</Grid>
+																	][0]
+																}
+															</Typography>
+															<Typography
+																variant="subtitle2"
+																color="textSecondary"
+																display="inline"
+															>
+																{rArray[
+																	current + 1
+																][1].split("/")
+																	.length >= 3
+																	? rArray[
+																			current +
+																				1
+																	  ][1]
+																			.split(
+																				"/"
+																			)[1]
+																			.replace(
+																				/-./g,
+																				(
+																					e
+																				) =>
+																					" " +
+																					e[1].toUpperCase()
+																			)
+																			.split(
+																				""
+																			)
+																			.map(
+																				(
+																					c,
+																					i
+																				) =>
+																					i ===
+																					0
+																						? c.toUpperCase()
+																						: c
+																			)
+																			.join(
+																				""
+																			)
+																	: null}
+															</Typography>
+														</CardContent>
+													</CardActionArea>
+												</Card>
+											</Grid>
+										) : null}
+									</Grid>
+								) : null}
 							</Container>
 						</main>
 						{fm ? (
