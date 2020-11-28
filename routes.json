@@ -1,15 +1,19 @@
 {
-	"Home": "/",
-	"Contribute": "/contribute",
-	"Partnerships": "/partnerships",
-	"Plugin List": "/plugin-list",
-	"Plugin Tutorials": {
-		"Recommended Plugins": "/plugin-tutorials/recommended-plugins"
-	},
-	"Skript": {
-		"Skript": "/skript/skript",
-		"Tutorials": {
-			"Test": "/skript/tutorials/test"
-		}
-	}
+    "Home": "/",
+    "Contribute": "/contribute",
+    "Partnerships": "/partnerships",
+    "Plugin Tutorials": {
+        "Recommended Plugins": "/plugin-tutorials/recommended-plugins"
+    },
+    "Popular Questions": {
+        "Common Errors": {
+            "JSON Read": "/popular-questions/common-errors/json-read"
+        }
+    },
+    "Skript": {
+        "Skript": "/skript/skript",
+        "Tutorials": {
+            "Test": "/skript/tutorials/test"
+        }
+    }
 }

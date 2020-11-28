@@ -1,0 +1,53 @@
+{
+    "Home": [
+        "Home",
+        "Welcome... to minehut.xyz",
+        "Every question ever, answered.",
+        "Our plugin know-how",
+        "Developers",
+        "The team",
+        "About us"
+    ],
+    "Contribute": [
+        "Contribute",
+        "How to contribute",
+        "How to make a pull request"
+    ],
+    "Partnerships": [
+        "Partners",
+        "Azyncraft Network",
+        "Parasite",
+        "GoldenDupe",
+        "Premiums",
+        "Evera",
+        "Idler",
+        "Oictr"
+    ],
+    "Plugin Tutorials": {
+        "Recommended Plugins": [
+            "Recommended Plugins",
+            "SPECIFIC PLUGIN CATGORIES",
+            "SERVER TYPE PLUGINS"
+        ]
+    },
+    "Popular Questions": {
+        "Common Errors": {
+            "JSON Read": [
+                "JSON Read",
+                "OVERVIEW",
+                "ERROR EXAMPLE",
+                "FIX"
+            ]
+        }
+    },
+    "Skript": {
+        "Skript": [
+            "skript"
+        ],
+        "Tutorials": {
+            "Test": [
+                "eeee"
+            ]
+        }
+    }
+}

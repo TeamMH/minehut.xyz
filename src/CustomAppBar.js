@@ -16,15 +16,17 @@ import {
 	ListItem,
 	SvgIcon,
 	Grid,
+	Container,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Brightness4 from "@material-ui/icons/Brightness4";
 import Brightness7 from "@material-ui/icons/Brightness7";
 import SearchIcon from "@material-ui/icons/Search";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import Minehut from "../public/minehut.svg";
 import Link from "./Link";
+import keywords from "../keywords.json";
+import routes from "../routes.json";
 
 const useStyles = makeStyles((theme) => ({
 	menuButton: {
@@ -32,16 +34,19 @@ const useStyles = makeStyles((theme) => ({
 	},
 	appBar: {
 		zIndex: theme.zIndex.drawer + 1,
-		// backgroundColor: "#373b42",
 		background:
 			theme.palette.type === "dark"
 				? "linear-gradient(120deg, #1f3166, #203659)"
 				: "linear-gradient(120deg, #7289da, #66a6ff)",
+		[theme.breakpoints.down("xs")]: {
+			//height: 100,
+		},
 	},
 	title: {
 		color: "white",
 		textDecoration: "none",
 		textAlign: "center",
+		padding: theme.spacing(1),
 		[theme.breakpoints.down("xs")]: {
 			position: "absolute",
 			left: "50%",
@@ -58,12 +63,14 @@ const useStyles = makeStyles((theme) => ({
 		"&:hover": {
 			backgroundColor: fade(theme.palette.common.white, 0.25),
 		},
-		marginLeft: 0,
-		marginRight: theme.spacing(2),
-		width: "100%",
+		margin: 0,
 		[theme.breakpoints.up("sm")]: {
 			marginLeft: theme.spacing(1),
 			width: "auto",
+			marginRight: theme.spacing(2),
+		},
+		[theme.breakpoints.down("xs")]: {
+			flexGrow: 1,
 		},
 	},
 	searchIcon: {
@@ -75,12 +82,12 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: "center",
 		justifyContent: "center",
 	},
+	input: { width: "100%" },
 	inputRoot: {
 		color: "inherit",
 	},
 	inputInput: {
 		padding: theme.spacing(1, 1, 1, 0),
-		// vertical padding + font size from searchIcon
 		paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
 		transition: theme.transitions.create("width"),
 		width: "100%",
@@ -96,11 +103,9 @@ const useStyles = makeStyles((theme) => ({
 		right: 0,
 		left: 0,
 		top: 35,
-		height: 200,
 	},
 	logo: {
-		transform: "translateY(7px)",
-		fontSize: "50px",
+		fontSize: "140%",
 	},
 	themeButton: {
 		[theme.breakpoints.down("xs")]: {
@@ -120,6 +125,107 @@ export default function CustomAppBar({
 	const classes = useStyles();
 	const [searching, setSearching] = useState(false);
 	const loaded = useLoaded();
+	const [searchWord, setSearchWord] = useState("");
+
+	function getKeywords(keywords) {
+		const returnKeywords = [];
+		Object.keys(keywords).forEach((page) => {
+			if (Array.isArray(keywords[page]))
+				returnKeywords.push(...keywords[page].map((k) => [page, k]));
+			else returnKeywords.push(...getKeywords(keywords[page]));
+		});
+		return returnKeywords;
+	}
+
+	function getRoutes(routes) {
+		const returnRoutes = [];
+		Object.keys(routes).forEach((route) => {
+			if (typeof routes[route] === "string")
+				returnRoutes.push([route, routes[route]]);
+			else returnRoutes.push(...getRoutes(routes[route]));
+		});
+		return returnRoutes;
+	}
+
+	const mappedRoutes = getRoutes(routes);
+
+	const filteredKeywords = getKeywords(keywords).filter(
+		(k) =>
+			k[1].toLowerCase().includes(searchWord.toLowerCase()) &&
+			searchWord !== ""
+	);
+
+	filteredKeywords.splice(5, filteredKeywords.length - 5);
+
+	const list = (
+		<List>
+			{filteredKeywords.map((k) => (
+				<ListItem
+					button
+					component={Link}
+					naked
+					href={
+						mappedRoutes.find((r) => r[0] === k[0])[1] +
+						"#" +
+						k[1].toLowerCase().replace(/ +/g, "-")
+					}
+					onClick={() => {
+						setSearchWord("");
+						setSearching(false);
+					}}
+					key={k[1]}
+				>
+					<ListItemText>
+						<Typography variant="subtitle1" color="textSecondary">
+							{k[0]}
+						</Typography>
+						{k[1].toUpperCase()}
+					</ListItemText>
+				</ListItem>
+			))}
+		</List>
+	);
+
+	const search = (
+		<div className={classes.search}>
+			<div className={classes.searchIcon}>
+				<SearchIcon />
+			</div>
+			<InputBase
+				placeholder="Search…"
+				className={classes.input}
+				classes={{
+					root: classes.inputRoot,
+					input: classes.inputInput,
+				}}
+				onChange={(e) => {
+					setSearching(true);
+					setSearchWord(e.target.value);
+				}}
+				onBlur={(e) => {
+					if (!e.nativeEvent.relatedTarget) {
+						setSearching(false);
+						setSearchWord("");
+					}
+				}}
+				value={searchWord}
+			/>
+			<Paper
+				className={classes.paper}
+				style={{
+					display:
+						searching &&
+						searchWord !== "" &&
+						filteredKeywords.length &&
+						!searchWord.match(/^ +$/) > 0
+							? "inline-block"
+							: "none",
+				}}
+			>
+				{list}
+			</Paper>
+		</div>
+	);
 
 	return (
 		<AppBar position="fixed" className={classes.appBar}>
@@ -129,48 +235,33 @@ export default function CustomAppBar({
 						<IconButton
 							onClick={() => setOpen(!open)}
 							className={classes.menuButton}
+							centerRipple={false}
 						>
 							<MenuIcon />
 						</IconButton>
 					</Hidden>
-					<Link href="/" className={classes.title} naked>
+					<IconButton
+						component={Link}
+						href="/"
+						className={classes.title}
+						naked
+						centerRipple={false}
+					>
 						<SvgIcon
 							className={classes.logo}
 							component={Minehut}
-							viewBox="0 0 600 476.6"
+							viewBox="0, 0, 400,400"
 						/>
-					</Link>
+					</IconButton>
 					<Hidden xsDown>
 						<div className={classes.empty} />
+						{search}
 					</Hidden>
-					{/* <div className={classes.search}>
-						<div className={classes.searchIcon}>
-							<SearchIcon />
-						</div>
-						<InputBase
-							placeholder="Search…"
-							classes={{
-								root: classes.inputRoot,
-								input: classes.inputInput,
-							}}
-							onChange={() => {
-								setSearching(true);
-							}}
-							onBlur={() => setSearching(false)}
-						/>
-						<Paper
-							className={classes.paper}
-							style={{
-								display: searching ? "inline-block" : "none",
-							}}
-						>
-							<List></List>
-						</Paper>
-					</div> */}
 					<Tooltip title="Toggle light/dark theme">
 						<IconButton
 							className={classes.themeButton}
 							onClick={toggleDarkMode}
+							centerRipple={false}
 						>
 							{loaded ? (
 								themeConfig.palette.type === "light" ? (
@@ -182,6 +273,9 @@ export default function CustomAppBar({
 						</IconButton>
 					</Tooltip>
 				</Toolbar>
+				<Hidden smUp>
+					<Toolbar maxWidth="md">{search}</Toolbar>
+				</Hidden>
 			</ThemeProvider>
 		</AppBar>
 	);

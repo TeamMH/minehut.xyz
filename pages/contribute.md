@@ -7,11 +7,11 @@ name: contribute
 
 ## How to contribute
 
-You can contribute to minehut.xyz by making a [pull request at our GitHub](https://github.com/TeamMH/minehutxyz). You will need a GitHub account for this.
+You can contribute to minehut.xyz by making a [pull request at our GitHub](https://github.com/TeamMH/minehut.xyz). You will need a GitHub account for this.
 
 ## How to make a pull request
 
-To make a pull request, you need to make a fork of the **minehutxyz** repository.
+To make a pull request, you need to make a fork of the **minehut.xyz** repository.
 
 To fork the repository, click the `Fork` button at the top right of the page.
 

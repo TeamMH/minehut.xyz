@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import CustomDrawer from "../src/CustomDrawer";
@@ -8,10 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import {
-	Button,
 	Card,
 	CardActionArea,
-	CardActions,
 	CardContent,
 	Container,
 	Divider,
@@ -52,7 +50,7 @@ const themeObject = {
 		type: "dark",
 		background: {
 			default: colors.dark.default,
-			paper: colors.dark.default,
+			paper: colors.dark.paper,
 		},
 		primary: {
 			main: "#2196f3",
@@ -356,15 +354,17 @@ export default function MinehutXYZ(props) {
 
 	const router = useRouter();
 
-	const fm = frontMatter.find((f) => f.name === router.asPath.slice(1));
+	const loaded = useLoaded();
+
+	const [tocOpen, setTocOpen] = React.useState(false);
+
+	const fm = frontMatter.find((f) =>
+		f ? f.name === router.asPath.split("#")[0].slice(1) : null
+	);
 
 	const meta = fm ? (
 		<meta content={fm.description} property="og:description" />
 	) : null;
-
-	const loaded = useLoaded();
-
-	const [tocOpen, setTocOpen] = React.useState(false);
 
 	function routesArray(routes) {
 		const array = [];
@@ -377,12 +377,15 @@ export default function MinehutXYZ(props) {
 	}
 
 	const rArray = routesArray(routes);
-	const current = rArray.findIndex((r) => r[1] === router.asPath);
+	const current = rArray.findIndex(
+		(r) => r[1] === router.asPath.split("#")[0]
+	);
 
-	let title = rArray.find((r) => r[1] === router.asPath)
+	let title = rArray.find((r) => r[1] === router.asPath.split("#")[0])
 		? router.asPath
+				.split("#")[0]
 				.split("/")
-				[router.asPath.split("/").length - 1].replace(
+				[router.asPath.split("#")[0].split("/").length - 1].replace(
 					/-(.)/g,
 					(e) => ` ${e[1].toUpperCase()}`
 				)
