@@ -9,18 +9,17 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import {
 	Button,
+	Card,
+	CardActionArea,
+	CardActions,
+	CardContent,
 	Container,
 	Divider,
 	Drawer,
 	Fab,
 	Grid,
 	Hidden,
-	IconButton,
 	Link,
-	List,
-	ListItem,
-	ListItemText,
-	ListSubheader,
 	Paper,
 	SvgIcon,
 	SwipeableDrawer,
@@ -43,26 +42,10 @@ import colors from "../colors.json";
 import { Alert } from "@material-ui/lab";
 import { frontMatter } from "./**/*.md";
 import Discord from "../public/discord.svg";
-import ScrollSpy from "react-scrollspy";
 import MenuIcon from "@material-ui/icons/Menu";
-
-ScrollSpy.prototype._initFromProps = function (_props) {
-	const props = _props ? _props : this.props;
-
-	setTimeout(() => {
-		const targetItems = this._initSpyTarget(props.items);
-
-		this.setState({
-			targetItems,
-		});
-
-		this._spy(targetItems);
-	}, 0);
-};
-
-ScrollSpy.prototype.UNSAFE_componentWillReceiveProps = function (nextProps) {
-	this._initFromProps(nextProps);
-};
+import TableOfContents from "../src/TableOfContents";
+import routes from "../routes.json";
+import NextLink from "../src/Link";
 
 const themeObject = {
 	palette: {
@@ -124,30 +107,8 @@ function useStyles(theme) {
 						whiteSpace: "pre-line !important",
 					},
 				},
-				toc: {
-					width: "100%",
-					"& li": {
-						transition: "250ms",
-						[theme.breakpoints.up("sm")]: {
-							borderRadius: "5px 0 0 5px",
-						},
-					},
-					"& li.active": {
-						[theme.breakpoints.up("sm")]: {
-							borderLeft:
-								"3px solid " +
-								(theme.palette.type === "dark"
-									? "#f3f3f3"
-									: "black"),
-						},
-						background:
-							theme.palette.type === "dark"
-								? "rgba(255, 255, 255, .12)"
-								: "rgba(0, 0, 0, .12)",
-					},
-				},
 				drawer: {
-					[theme.breakpoints.down("xs")]: {
+					[theme.breakpoints.down("sm")]: {
 						width: "100%",
 					},
 					width: 250,
@@ -155,12 +116,12 @@ function useStyles(theme) {
 					flexShrink: 0,
 				},
 				drawerPaper: {
-					[theme.breakpoints.down("xs")]: {
+					[theme.breakpoints.down("sm")]: {
 						width: 300,
 					},
 					width: 250,
 					maxWidth: "100%",
-					[theme.breakpoints.up("sm")]: {
+					[theme.breakpoints.up("md")]: {
 						background: "none",
 						border: "none",
 					},
@@ -179,6 +140,17 @@ function useStyles(theme) {
 						(theme.palette.type === "light"
 							? "rgba(0, 0, 0, .12)"
 							: "rgba(255, 255, 255, .12)"),
+				},
+				inlineCode: {
+					background:
+						theme.palette.type === "dark"
+							? "rgb(29, 31, 33)"
+							: "rgb(250, 250, 250)",
+					padding: 3,
+					borderRadius: 5,
+				},
+				navGrid: {
+					marginTop: theme.spacing(2),
 				},
 			};
 		},
@@ -370,6 +342,9 @@ export default function MinehutXYZ(props) {
 				/>
 			);
 		},
+		inlineCode(props) {
+			return <code {...props} className={classes.inlineCode} />;
+		},
 	};
 
 	React.useEffect(() => {
@@ -395,68 +370,22 @@ export default function MinehutXYZ(props) {
 		<meta content={fm.description} property="og:description" />
 	) : null;
 
-	const items = fm
-		? [
-				"nothing",
-				...fm.contents.map((c) =>
-					c
-						.replace(/(^|\n)##? /, "")
-						.toLowerCase()
-						.replace(/ +/g, "-")
-				),
-		  ]
-		: null;
-
 	const loaded = useLoaded();
 
 	const [tocOpen, setTocOpen] = React.useState(false);
 
-	const tableOfContents = fm ? (
-		<List dense className={classes.toc}>
-			<ScrollSpy
-				items={items}
-				currentClassName="active"
-				offset={-112}
-				componentTag="div"
-			>
-				<ListSubheader component="div" disableSticky>
-					TABLE OF CONTENTS
-				</ListSubheader>
-				{fm.contents.map((c, i) => (
-					<ListItem
-						button
-						key={c}
-						color="inherit"
-						component="li"
-						onClick={() => {
-							window.scrollTo({
-								left: 0,
-								top:
-									document.getElementById(
-										c
-											.replace(/(^|\n)##? /, "")
-											.toLowerCase()
-											.replace(/ +/g, "-")
-									).offsetTop - 112,
-								behavior: "smooth",
-							});
-							setTocOpen(false);
-						}}
-					>
-						<ListItemText
-							style={{
-								marginLeft: themeConfig.spacing(
-									c.match(/(^|\n)##/) ? 2 : 0
-								),
-							}}
-						>
-							{c.replace(/(^|\n)##? /, "").toUpperCase()}
-						</ListItemText>
-					</ListItem>
-				))}
-			</ScrollSpy>
-		</List>
-	) : null;
+	function routesArray(routes) {
+		const array = [];
+		Object.keys(routes).forEach((route) => {
+			if (typeof routes[route] === "string")
+				array.push([route, routes[route]]);
+			else array.push(...routesArray(routes[route]));
+		});
+		return array;
+	}
+
+	const rArray = routesArray(routes);
+	const current = rArray.findIndex((r) => r[1] === router.asPath);
 
 	return (
 		<CookiesProvider>
@@ -496,7 +425,7 @@ export default function MinehutXYZ(props) {
 						<main className={classes.content}>
 							<Toolbar />
 							{fm ? (
-								<Hidden smUp>
+								<Hidden mdUp>
 									<Fab
 										className={classes.tocFab}
 										onClick={() => setTocOpen(!tocOpen)}
@@ -522,11 +451,174 @@ export default function MinehutXYZ(props) {
 									<strong>site updates</strong>, and{" "}
 									<strong>much more</strong>
 								</Alert>
+								<Grid
+									spacing={3}
+									className={classes.navGrid}
+									container
+								>
+									{current ? (
+										<Grid
+											xs={12}
+											sm={
+												current + 1 < rArray.length
+													? 6
+													: 12
+											}
+											item
+										>
+											<Card>
+												<CardActionArea
+													naked
+													component={NextLink}
+													href={
+														rArray[current - 1][1]
+													}
+												>
+													<CardContent>
+														<Typography
+															variant="subtitle1"
+															color="textSecondary"
+														>
+															Previous
+														</Typography>
+														<Typography variant="h5">
+															{
+																rArray[
+																	current - 1
+																][0]
+															}
+														</Typography>
+														<Typography
+															variant="subtitle2"
+															color="textSecondary"
+															display="inline"
+														>
+															{rArray[
+																current - 1
+															][1].split("/")
+																.length >= 3
+																? rArray[
+																		current -
+																			1
+																  ][1]
+																		.split(
+																			"/"
+																		)[1]
+																		.replace(
+																			/-./g,
+																			(
+																				e
+																			) =>
+																				" " +
+																				e[1].toUpperCase()
+																		)
+																		.split(
+																			""
+																		)
+																		.map(
+																			(
+																				c,
+																				i
+																			) =>
+																				i ===
+																				0
+																					? c.toUpperCase()
+																					: c
+																		)
+																		.join(
+																			""
+																		)
+																: null}
+														</Typography>
+													</CardContent>
+												</CardActionArea>
+											</Card>
+										</Grid>
+									) : null}
+									{current + 1 < rArray.length ? (
+										<Grid
+											xs={12}
+											sm={current ? 6 : 12}
+											item
+										>
+											<Card>
+												<CardActionArea
+													component={NextLink}
+													naked
+													href={
+														rArray[current + 1][1]
+													}
+												>
+													<CardContent>
+														<Typography
+															variant="subtitle1"
+															style={{
+																color:
+																	"#aaaaaa",
+															}}
+														>
+															Next Up
+														</Typography>
+														<Typography variant="h5">
+															{
+																rArray[
+																	current + 1
+																][0]
+															}
+														</Typography>
+														<Typography
+															variant="subtitle2"
+															color="textSecondary"
+															display="inline"
+														>
+															{rArray[
+																current + 1
+															][1].split("/")
+																.length >= 3
+																? rArray[
+																		current +
+																			1
+																  ][1]
+																		.split(
+																			"/"
+																		)[1]
+																		.replace(
+																			/-./g,
+																			(
+																				e
+																			) =>
+																				" " +
+																				e[1].toUpperCase()
+																		)
+																		.split(
+																			""
+																		)
+																		.map(
+																			(
+																				c,
+																				i
+																			) =>
+																				i ===
+																				0
+																					? c.toUpperCase()
+																					: c
+																		)
+																		.join(
+																			""
+																		)
+																: null}
+														</Typography>
+													</CardContent>
+												</CardActionArea>
+											</Card>
+										</Grid>
+									) : null}
+								</Grid>
 							</Container>
 						</main>
 						{fm ? (
 							<>
-								<Hidden xsDown>
+								<Hidden smDown>
 									<Drawer
 										className={classes.drawer}
 										variant="permanent"
@@ -536,10 +628,14 @@ export default function MinehutXYZ(props) {
 										anchor="right"
 									>
 										<Toolbar />
-										{tableOfContents}
+										<TableOfContents
+											contents={fm.contents}
+											tocOpen={tocOpen}
+											setTocOpen={setTocOpen}
+										/>
 									</Drawer>
 								</Hidden>
-								<Hidden smUp>
+								<Hidden mdUp>
 									<SwipeableDrawer
 										className={classes.drawer}
 										variant="temporary"
@@ -552,7 +648,11 @@ export default function MinehutXYZ(props) {
 										onOpen={() => setTocOpen(true)}
 									>
 										<Toolbar />
-										{tableOfContents}
+										<TableOfContents
+											contents={fm.contents}
+											tocOpen={tocOpen}
+											setTocOpen={setTocOpen}
+										/>
 									</SwipeableDrawer>
 								</Hidden>
 							</>
