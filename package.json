@@ -27,7 +27,7 @@
 		"react-syntax-highlighter": "^15.3.0"
 	},
 	"scripts": {
-		"dev": "next",
+		"dev": "node buildKeywords.js && next",
 		"build": "node buildKeywords.js && next build",
 		"start": "next start -p $PORT"
 	},

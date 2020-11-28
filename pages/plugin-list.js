@@ -69,7 +69,7 @@ export default function PluginList(props) {
 					property="og:description"
 				/>
 			</Head>
-			<Typography variant="h4" className={classes.text}>
+			<Typography id="plugin-list" variant="h4" className={classes.text}>
 				PLUGIN LIST
 			</Typography>
 			<Divider />

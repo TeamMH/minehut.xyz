@@ -99,6 +99,10 @@ function readDir(directory) {
 }
 
 readFile("./pages", "index.md");
+
+routes["Plugin List"] = "/plugin-list";
+keywords["Plugin List"] = ["PLUGIN LIST"];
+
 readDir("./pages");
 
 fs.writeFileSync("./keywords.json", JSON.stringify(keywords, null, "    "));
