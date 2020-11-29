@@ -21,8 +21,8 @@ On the first line, enter the following:
 
 ```text
 on skript load:
-    login to "(YOUR BOT TOKEN HERE)" with the name "(YOUR BOT NAME HERE)" # This makes the bot online.
-    mark "(Your Bot Name) " as playing "(insert text here)" # This will be the bots status when it is online
+	login to "(YOUR BOT TOKEN HERE)" with the name "(YOUR BOT NAME HERE)" # This makes the bot online.
+	mark "(Your Bot Name) " as playing "(insert text here)" # This will be the bots status when it is online
 ```
 
 \(If you need advice on how to create a discord bot, please check out Minehut's official tutorial: [https://bit.ly/3lDNLHs](https://bit.ly/3lDNLHs)\)

@@ -9,7 +9,7 @@ name: skript/indentation
 
 If you experienced the error **"Error: Indentation error at line X, expected X tabs/spaces, but found X tabs/spaces"** or something similar, and you don't know how to fix it, read this tutorial.
 
-## WHAT IS INDENTATION <a id="1-what-is-indentation"></a>
+## WHAT IS INDENTATION
 
 Indentation is placing text in code further to the right, to allow the parser to know this is a different section of the code. Most programming language don't care about indentation, their parser can handle it correctly without, but Skript can't, because of its rich, English-like syntax.  
 That's why indentation is really important and you should always take care of it. See an example below.
@@ -20,7 +20,7 @@ on script load:
         broadcast "How are you?"  # Here I indentated with two tabs, because this is a section after a condition, that already was indentated.
 ```
 
-## WHEN TO INDENT <a id="2-rules-of-indentation"></a>
+## WHEN TO INDENT
 
 -   After an _event_.
 

@@ -122,20 +122,20 @@ routes["Plugins"]["Plugin List"] = "/plugins/plugin-list";
 function sortRoutes(routes, reverse) {
 	const sortedKeys = Object.keys(routes).sort((a, b) => {
 		if (typeof routes[a] === "object" && typeof routes[b] !== "object")
-			return reverse ? -1 : 1;
+			return 1;
 		else if (
 			(typeof routes[a] === "object" && typeof routes[b] === "object") ||
 			(typeof routes[a] === "string" && typeof routes[b] === "string")
 		)
 			return 0;
-		else return reverse ? 1 : -1;
+		else return -1;
 	});
 
 	const newRoutes = {};
 
 	sortedKeys.forEach((key) => {
 		if (typeof routes[key] === "object")
-			newRoutes[key] = sortRoutes(routes[key], true);
+			newRoutes[key] = sortRoutes(routes[key]);
 		else newRoutes[key] = routes[key];
 	});
 

@@ -13,7 +13,7 @@
         "Permission Plugins": {
             "GroupManager": "/plugins/permission-plugins/groupmanager",
             "LuckPerms": "/plugins/permission-plugins/luckperms",
-            "Permissionsex": "/plugins/permission-plugins/permissionsex"
+            "PermissionsEx": "/plugins/permission-plugins/permissionsex"
         },
         "Popular": {
             "CoreProtect": "/plugins/popular/coreprotect",

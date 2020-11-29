@@ -13,6 +13,7 @@ import {
 	Drawer,
 	Fab,
 	Hidden,
+	IconButton,
 	Link,
 	Paper,
 	SvgIcon,
@@ -31,11 +32,14 @@ import { CookiesProvider, useCookies } from "react-cookie";
 import CustomAppBar from "../src/CustomAppBar";
 import { MDXProvider } from "@mdx-js/react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import materialLight from "react-syntax-highlighter/dist/cjs/styles/prism/material-light";
+import {
+	atomDark,
+	materialLight,
+} from "react-syntax-highlighter/dist/cjs/styles/prism";
 import colors from "../colors.json";
 import { frontMatter } from "./**/*.md";
 import Discord from "../public/discord.svg";
+import ContentCopy from "../public/content_copy.svg";
 import MenuIcon from "@material-ui/icons/Menu";
 import TableOfContents from "../src/TableOfContents";
 import routes from "../routes.json";
@@ -108,17 +112,11 @@ function useStyles(theme) {
 				},
 				heading: {
 					margin: theme.spacing(3, 0),
-					whiteSpace: "pre-line !important",
+					whiteSpace: "pre-wrap !important",
 					wordBreak: "anywhere",
 					overflowWrap: "break-word",
 				},
 				code: {
-					whiteSpace: "pre-line !important",
-					overflowWrap: "anywhere",
-					"& code": {
-						whiteSpace: "pre-line !important",
-						overflowWrap: "anywhere",
-					},
 					borderRadius: theme.shape.borderRadius,
 					boxShadow: theme.shadows[2],
 				},
@@ -157,7 +155,10 @@ function useStyles(theme) {
 					borderBottom: "1px solid " + theme.palette.divider,
 				},
 				inlineCode: {
-					background: theme.palette.background.paper,
+					background:
+						theme.palette.type === "dark"
+							? "rgb(43, 47, 51)"
+							: "rgb(250, 250, 250)",
 					padding: 3,
 					borderRadius: theme.shape.borderRadius,
 					boxShadow: theme.shadows[1],
@@ -383,21 +384,68 @@ export default function MinehutXYZ(props) {
 			return <TableCell className={classes.tableCell} {...props} />;
 		},
 		code(props) {
+			const numberOfLines = props.children.replace(/\n$/, "").split("\n")
+				.length;
 			return (
-				<SyntaxHighlighter
-					language={
-						props.className
-							? props.className.replace("language-", "")
-							: null
-					}
-					children={props.children}
-					style={
-						theme.palette.type === "dark"
-							? materialDark
-							: materialLight
-					}
-					className={classes.code}
-				/>
+				<div style={{ position: "relative" }}>
+					<Tooltip title="Copy code to clipboard">
+						<IconButton
+							style={
+								numberOfLines === 1
+									? {
+											position: "absolute",
+											right: 5,
+											top: "50%",
+											transform: "translateY(-50%)",
+											zIndex: 10,
+									  }
+									: {
+											position: "absolute",
+											top: 5,
+											right: 5,
+											zIndex: 10,
+									  }
+							}
+							onClick={(e) => {
+								const el = document.createElement("textarea");
+								el.value = props.children.replace(/\n$/, "");
+								el.setAttribute("readonly", "");
+								el.style = {
+									position: "absolute",
+									left: "-9999px",
+								};
+								document.body.appendChild(el);
+								el.select();
+								el.setSelectionRange(0, 99999);
+								document.execCommand("copy");
+								document.body.removeChild(el);
+							}}
+						>
+							<SvgIcon
+								component={ContentCopy}
+								viewBox="0 0 24 24"
+							/>
+						</IconButton>
+					</Tooltip>
+					<SyntaxHighlighter
+						showLineNumbers
+						wrapLines
+						wrapLongLines
+						language={
+							props.className
+								? props.className.replace("language-", "")
+								: null
+						}
+						style={
+							theme.palette.type === "dark"
+								? atomDark
+								: materialLight
+						}
+						className={classes.code}
+					>
+						{props.children.replace(/\n$/, "")}
+					</SyntaxHighlighter>
+				</div>
 			);
 		},
 		inlineCode(props) {
@@ -637,7 +685,6 @@ MinehutXYZ.propTypes = {
 };
 
 function getString(props) {
-	console.log(props);
 	if (typeof props.children === "string") return props.children;
 	else {
 		if (Array.isArray(props.children)) {
