@@ -19,7 +19,7 @@ There are 5 types of variables: 'normal' variable, local variable, list variable
 
 Options are 'variables' that you define at the top of your code. It looks like
 
-```text
+```r
 options:
     option1: pogchamp
     option2: hjonk
@@ -27,7 +27,7 @@ options:
 
 They can be used in your code by putting `{@(option name)}`, and they can be more than just strings and numbers. Skript parses them as if they are typed in your code normally. You could put any syntax in there, and if done correctly, Skript will accept it. An example of sending something to a player with an option:
 
-```text
+```r
 options:
     send: send "Hey there!" to player
 
@@ -39,7 +39,7 @@ on join:
 
 Metadata tags can be attached to blocks and entities, and they are flushed after the server restarts. This is the syntax for metadata tags:
 
-```text
+```r
 metadata [(value|tag)[s]] %strings% of %metadataholders%
 %metadataholders%'[s] metadata [(value|tag)[s]] %string%
 ```
@@ -48,7 +48,7 @@ Metadata holders are anything that can hold metadata. \(eg. an entity or block.\
 
 An example of using a metadata tag follows as such:
 
-```text
+```r
 on join:
     set metadata value "name" of player to player's name
     set metadata value "epic" of player to true
@@ -60,7 +60,7 @@ You can use variables like `{yes.no}`, but it is better practice to specify them
 
 Using variables is fairly simple, and I've pretty much already summed it up above.
 
-```text
+```r
 set {_local} to player
 set {_bonk} to "hello!"
 set {greetings::*} to "hi", "hello", "hey", and "howdy"

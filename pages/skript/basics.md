@@ -28,7 +28,7 @@ Firstly we will create a new file, let's name it `example.sk` _\(note, all scrip
 
 Now let's get to coding. We will start with the `on join:` event. This event triggers every time a player joins your server. _\(Read more about events_ [_here_](/skript/events)_\)._ After this, take a new line, then hit the TAB key, to indent one tab in _\(Read more about indentation_ [_here_](/skript/indentation)_\)_. Now, we will want to use the `send "Welcome to the server."` effect. This will send any text we want to the user. Here's how the code will look.
 
-```text
+```r
 on join:
     send "Welcome to the server."
 ```

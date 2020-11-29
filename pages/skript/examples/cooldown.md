@@ -17,7 +17,7 @@ Cooldowns can be used to prevent things such as kit spamming, chat delays and ma
 
 ## CODE
 
-```text
+```r
 command /daily:
   cooldown: 24 hours
   cooldown message: &c%remaining time% left before you can use this command again!

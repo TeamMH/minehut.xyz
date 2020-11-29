@@ -393,10 +393,10 @@
     "Skript": {
         "Addons": [
             "\n# Addons",
-            "\n## **WHAT ARE ADDONS?**",
-            "\n## **WHAT CAN ADDONS DO**",
-            "\n## **WHERE CAN I FIND THEM?**",
-            "\n## **INTERESTING! HOW DO I MAKE ONE?**"
+            "\n## WHAT ARE ADDONS?",
+            "\n## WHAT CAN ADDONS DO",
+            "\n## WHERE CAN I FIND THEM?",
+            "\n## INTERESTING! HOW DO I MAKE ONE?"
         ],
         "Basics": [
             "\n# Basics",
@@ -518,8 +518,8 @@
         "Indentation": [
             "\n# Indentation",
             "\n## OVERVIEW",
-            "\n## WHAT IS INDENTATION <a id=\"1-what-is-indentation\"></a>",
-            "\n## WHEN TO INDENT <a id=\"2-rules-of-indentation\"></a>"
+            "\n## WHAT IS INDENTATION",
+            "\n## WHEN TO INDENT"
         ],
         "Syntax": [
             "\n# Syntax",

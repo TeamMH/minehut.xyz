@@ -11,7 +11,7 @@ This tutorial will show you how to create a custom `/help` command for your serv
 
 ## CODE
 
-```text
+```r
 command /help:
   trigger:
     send "Help.."

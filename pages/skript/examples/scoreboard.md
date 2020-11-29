@@ -13,7 +13,7 @@ Scoreboards are useful tools that can provide players with useful information su
 
 ### SKRAYFALL SCOREBOARD
 
-```text
+```r
 on join:
     set name of sidebar of player to "&6skRayFall"
     set score "First Line" in sidebar of player to 1
@@ -24,7 +24,7 @@ on join:
 
 #### IN ORDER TO USE SKBEE SCOREBOARDS IF YOU HAVE SKRAYFALL DISABLE "FAST SCOREBOARDS" IN THE SKRAYFALL CONFIG
 
-```text
+```r
 on join:
     set title of player's scoreboard to "&6&lServer Info"
     set line 1 of player's scoreboard to "&7• &eOnline: &f%size of all players%"
@@ -32,7 +32,7 @@ on join:
 
 #### SKBEE BASIC STATISTICS SCOREBOARD
 
-```text
+```r
 on join:
     while player is online:
         set {_uuid} to {_p}'s uuid

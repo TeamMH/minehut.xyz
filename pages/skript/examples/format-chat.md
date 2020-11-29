@@ -13,7 +13,7 @@ Instead of having the default Minecraft chat format such as `<Trent>: Hey!`, you
 
 ## CODE
 
-```text
+```r
 on chat:
  set chat format to "%player%: %message%"
 ```

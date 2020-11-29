@@ -9,7 +9,7 @@ name: skript/commands
 
 Registering a command is very simple in Skript. This is what a command in Skript can have:
 
-```text
+```r
 command /name <arguments>: # keep in mind that arguments and the slash before the command name are optional
     (parameters) # parameters are optional, they will be explained in detail later
     trigger:
@@ -48,7 +48,7 @@ There are many types of parameters that you can use with your code. Here's a lis
 
 You can use the syntax below to get the arguments of an entered command!
 
-```text
+```r
 [the] last arg[ument][s]
 [the] arg[ument][s](-| )%number%
 [the] (1st|2nd|3rd|4-90th) arg[ument][s]
@@ -59,13 +59,13 @@ You can use the syntax below to get the arguments of an entered command!
 
 ### **Examples**
 
-```text
+```r
 command discord:
     trigger:
         send "&aYou can join our discord here! https://discord.gg/WjuNvdM"
 ```
 
-```text
+```r
 command cake:
     aliases: /getcake, /receivecake, /givemecake
     description: Receive a cake, only usable once per day!

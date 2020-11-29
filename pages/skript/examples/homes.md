@@ -19,7 +19,7 @@ Homes are a way for you and your server members to easily access their bases and
 
 Examples:
 
-```text
+```r
 command /sethome: #command to sethome
   permission: skript.sethome #permission for sethome
   permission message: &cInsufficient permissions! #message if they dont have permission
@@ -34,7 +34,7 @@ In the above skript, we are making a new command called `/sethome` and having it
 These skripts use `player's uuid`, so even if you change your Minecraft username, your variable will not be last because UUIDs do not change unlike usernames.
 </Hint>
 
-```text
+```r
 command /home: #command to teleport to home
   permission: skript.home #permission for home
   permission message: &cInsufficient permissions! #message if they dont have permission
@@ -52,7 +52,7 @@ In the above skript, we are making a new command `/home` which will teleport us 
 These skripts use `comments`, so that they can explain all/most of the lines to you. These are marked by the `#` symbol, so if you wish to remove them then delete all text after & along with the `#`.
 </Hint>
 
-```text
+```r
 command /delhome:
   permission: skript.delhome
   permission message: &cInsufficient permissions!

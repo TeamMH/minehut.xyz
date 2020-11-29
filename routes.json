@@ -3,6 +3,8 @@
     "Contribute": "/contribute",
     "Partnerships": "/partnerships",
     "Plugins": {
+        "Recommended Plugins": "/plugins/recommended-plugins",
+        "Plugin List": "/plugins/plugin-list",
         "Other": {
             "CombatLogX": "/plugins/other/combatlogx",
             "Dream's Man Hunt": "/plugins/other/dreams-man-hunt",
@@ -21,9 +23,7 @@
             "Multiverse": "/plugins/popular/multiverse",
             "WorldEdit": "/plugins/popular/worldedit",
             "WorldGuard": "/plugins/popular/worldguard"
-        },
-        "Recommended Plugins": "/plugins/recommended-plugins",
-        "Plugin List": "/plugins/plugin-list"
+        }
     },
     "Popular Questions": {
         "Common Errors": {
@@ -81,6 +81,16 @@
         }
     },
     "Skript": {
+        "Addons": "/skript/addons",
+        "Basics": "/skript/basics",
+        "Commands": "/skript/commands",
+        "Comments": "/skript/comments",
+        "Events": "/skript/events",
+        "Formatting": "/skript/formatting",
+        "Functions": "/skript/functions",
+        "Indentation": "/skript/indentation",
+        "Syntax": "/skript/syntax",
+        "Variables": "/skript/variables",
         "Examples": {
             "Bossbar": "/skript/examples/bossbar",
             "Cooldown": "/skript/examples/cooldown",
@@ -96,16 +106,6 @@
             "Spawn": "/skript/examples/spawn",
             "Tablist": "/skript/examples/tablist",
             "Vixio": "/skript/examples/vixio"
-        },
-        "Addons": "/skript/addons",
-        "Basics": "/skript/basics",
-        "Commands": "/skript/commands",
-        "Comments": "/skript/comments",
-        "Events": "/skript/events",
-        "Formatting": "/skript/formatting",
-        "Functions": "/skript/functions",
-        "Indentation": "/skript/indentation",
-        "Syntax": "/skript/syntax",
-        "Variables": "/skript/variables"
+        }
     }
 }

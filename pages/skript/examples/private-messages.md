@@ -13,7 +13,7 @@ This tutorial will go over how to set up a private messaging system on your serv
 
 You can create a messaging system using the [Message effect](https://skripthub.net/docs/?id=1130) in a custom command, here is a basic example:
 
-```text
+```r
 command whisper <player> <text>:
   trigger:
       send "%player% whispers to you: %arg-text%" to arg-player

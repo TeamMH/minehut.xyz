@@ -11,7 +11,7 @@ This error is normally caused by a corrupted json file.
 
 ## ERROR EXAMPLE
 
-```text
+```bash
 [Server thread/ERROR]: Encountered an unexpected exception
 java.lang.NullPointerException: null
     at net.minecraft.server.v1_16_R3.JsonList.load(JsonList.java:192) ~[spigot.jar:git-Paper-261]

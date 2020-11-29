@@ -7,7 +7,7 @@ name: skript/examples/spawn
 
 So, first you need to create the file. Lets name it `spawn.sk`. Once having the file created, enter it. Once entered input this skript:
 
-```text
+```r
 command /spawn:
     permission: spawn.use
     trigger:
@@ -18,7 +18,7 @@ command /spawn:
 
 Once you have that done, we need the `/setspawn` part. Once done with that, in the same file, type the following skript:
 
-```text
+```r
 command /setspawn:
     permission: spawn.set
     trigger:

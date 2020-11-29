@@ -15,7 +15,7 @@ There may be a time where you want to put a hashtag, a double quote, or a percen
 
 Examples:
 
-```text
+```r
 "these are in ""quotes""."
 "_Tarna_ just joined the server (##1543)"
 "You are 90%% of the way there!"

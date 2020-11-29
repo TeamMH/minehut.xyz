@@ -16,7 +16,7 @@ Skript addon <strong>skRayFall</strong> is required!
 
 ## CODE
 
-```text
+```r
 on join:
   set tab header to "" and footer to "" for player
 ```
@@ -27,7 +27,7 @@ Simple add in text between the `""`'s and you're all set. The tab header and foo
 
 ## FUNCTION
 
-```text
+```r
 function tab(header: text, footer: text, P: player):
   set tab header to "%{_header}%" and footer to "%{_footer}%" for {_P}
 ```

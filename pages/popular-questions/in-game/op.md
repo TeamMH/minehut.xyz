@@ -15,7 +15,7 @@ Type `/op (your username)` into the **Server Command** area of the panel. This w
 
 ## HOW TO OP A USER
 
-```text
+```r
 JAVA: /op (username)
 BEDROCK: /op *(username)
 ```
