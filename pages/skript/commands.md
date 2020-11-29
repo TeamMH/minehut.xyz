@@ -16,13 +16,13 @@ command /name <arguments>: # keep in mind that arguments and the slash before th
         # your code
 ```
 
-## **ARGUMENTS \(optional\)**
+## ARGUMENTS \(optional\)
 
 Arguments are parts of a command that a user can type out after the command's name. A argument can be anything from basic text to times of the day. They can be anything that is a `type` in Skript, I won't go into what types are here, but you can find a list of types [here](https://docs.skunity.com/syntax/types). The argument can be plural aswell: string -&gt; strings, integer -&gt; integers. An argument cannot use the `object` type.
 
 To make an argument required, surround it with angle brackets like this: To make an argument optional, surround it with brackets AND angle brackets like this: \[\&lt;\&gt;\]
 
-## **PARAMETERS \(optional\)**
+## PARAMETERS \(optional\)
 
 There are many types of parameters that you can use with your code. Here's a list of most, if not all parameters that you can use:
 
@@ -44,7 +44,7 @@ There are many types of parameters that you can use with your code. Here's a lis
 
 **executable by** - Specifies who can use the command, it can be `console`, `players`, or`console and players`.
 
-## **GETTING INPUTTED ARGUMENTS**
+## GETTING INPUTTED ARGUMENTS
 
 You can use the syntax below to get the arguments of an entered command!
 
@@ -57,7 +57,7 @@ You can use the syntax below to get the arguments of an entered command!
 [the] arg[ument]( |-)%type%[( |-)%number%
 ```
 
-### **Examples**
+### Examples
 
 ```r
 command discord:
@@ -73,9 +73,8 @@ command cake:
     permission message: &cNo cake!
     cooldown: a day
     cooldown message: &cOnly cake once per day!
-    cooldown storage: {cake::%player's uuid%}
+    cooldown storage: { cake::%player's uuid% }
     cooldown bypass: cake.gobble
-    trigger:
-        give player cake
+    trigger: give player cake
         send "&aYou have received cake!"
 ```
