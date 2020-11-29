@@ -6,7 +6,7 @@ import Hint from "../../src/Hint"
 
 # Basics
 
-![](https://github.com/TeamMH/minehutxyz/tree/ce3e90f30569c19e46dc9ce612837688ac56d210/skript/.gitbook/assets/skript.jpg)
+![](/skript.jpg)
 
 <Hint style="warning">
 Visit our <a href="https://www.youtube.com/channel/UCgXFIH9h2Vf9Q1e86n_FVJA">partner YouTube channel</a> for even more tutorials!
