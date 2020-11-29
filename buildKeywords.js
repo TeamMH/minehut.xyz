@@ -5,7 +5,7 @@ const exceptions = [
 	[/Worldguard/g, "WorldGuard"],
 	[/Worldedit/g, "WorldEdit"],
 	[/Groupmanager/g, "GroupManager"],
-	[/Permissionex/g, "PermissionsEx"],
+	[/Permissionsex/g, "PermissionsEx"],
 	[/Luckperms/g, "LuckPerms"],
 	[/Combatlogx/g, "CombatLogX"],
 	[/Dreams Man Hunt/g, "Dream's Man Hunt"],
