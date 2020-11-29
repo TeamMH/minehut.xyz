@@ -167,6 +167,8 @@ function useStyles(theme) {
 					display: "block",
 					maxWidth: "100%",
 					height: "auto",
+					borderRadius: theme.shape.borderRadius,
+					boxShadow: theme.shadows[2],
 				},
 			};
 		},
