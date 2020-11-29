@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 		"& li": {
 			transition: "250ms",
 			[theme.breakpoints.up("md")]: {
-				borderRadius: "5px 0 0 5px",
+				borderRadius: `${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
 			},
 		},
 		"& li.active": {

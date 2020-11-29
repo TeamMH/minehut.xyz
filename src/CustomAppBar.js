@@ -31,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 	appBar: {
 		zIndex: theme.zIndex.drawer + 1,
-		background:
-			theme.palette.type === "dark"
-				? "linear-gradient(120deg, #1f3166, #203659)"
-				: "linear-gradient(120deg, #7289da, #66a6ff)",
+		// background:
+		// 	theme.palette.type === "dark"
+		// 		? "linear-gradient(120deg, #1f3166, #203659)"
+		// 		: "linear-gradient(120deg, #7289da, #66a6ff)",
 		[theme.breakpoints.down("xs")]: {
 			//height: 100,
 		},
@@ -78,11 +78,9 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
+		color: "white",
 	},
 	input: { width: "100%" },
-	inputRoot: {
-		color: "inherit",
-	},
 	inputInput: {
 		padding: theme.spacing(1, 1, 1, 0),
 		paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
@@ -225,8 +223,8 @@ export default function CustomAppBar({
 	);
 
 	return (
-		<AppBar position="fixed" className={classes.appBar}>
-			<ThemeProvider theme={appBarTheme}>
+		<ThemeProvider theme={appBarTheme}>
+			<AppBar position="fixed" color="inherit" className={classes.appBar}>
 				<Toolbar>
 					<Hidden lgUp>
 						<IconButton
@@ -273,8 +271,8 @@ export default function CustomAppBar({
 				<Hidden smUp>
 					<Toolbar>{search}</Toolbar>
 				</Hidden>
-			</ThemeProvider>
-		</AppBar>
+			</AppBar>
+		</ThemeProvider>
 	);
 }
 

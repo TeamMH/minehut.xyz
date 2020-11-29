@@ -3,9 +3,7 @@ description: The leading Minehut support website.
 name: ""
 ---
 
-export const test = {description: "a"}
-
-import Alert from "@material-ui/lab/Alert"
+import Hint from "../src/Hint"
 
 # Home
 
@@ -13,9 +11,9 @@ import Alert from "@material-ui/lab/Alert"
 
 Minehut.xyz is home to the best Minehut-related support you'll find on the web. We aim to provide top quality [Minehut tutorials](https://minehut.xyz/faq/panel), [Plugin tutorials](https://minehut.xyz/plugin/popular), and [Skript tutorials](https://minehut.xyz/skript/basics). Our site is [community driven](contribute.md), and we will continue to make it better and better.
 
-<Alert variant="outlined" severity="info">
+<Hint style="info">
 Utilise our Search function at the top righthand corner of the site, it's so helpful to find your question within our site.
-</Alert>
+</Hint>
 
 ## Every question ever, answered.
 
@@ -40,7 +38,6 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 | Lukas         | Staff Manager, Project Manager and Senior Writer |
 | ---           | ---                                              |
 | Kiko          | Site Developer                                   |
-| Wandose       | Site Developer                                   |
 | ---           | ---                                              |
 | Conutik       | Writer                                           |
 | Houlton       | Writer                                           |

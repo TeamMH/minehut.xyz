@@ -31,7 +31,10 @@ const useStyles = makeStyles((theme) => ({
 	drawerContainer: {
 		overflowY: "auto",
 		overflowX: "hidden",
-		marginTop: theme.spacing(4),
+	},
+	subheader: {
+		marginTop: theme.spacing(2),
+		backgroundColor: theme.palette.background.paper,
 	},
 }));
 
@@ -68,7 +71,7 @@ export default function CustomDrawer({ open, setOpen }) {
 					>
 						<ListItemText
 							style={{
-								marginLeft: `${Math.max(i - 1, 0) * 32 + 8}px`,
+								marginLeft: `${Math.max(i - 1, 0) * 32}px`,
 							}}
 						>
 							{route}
@@ -80,7 +83,7 @@ export default function CustomDrawer({ open, setOpen }) {
 					return (
 						<div key={route + "-div"}>
 							<ListSubheader
-								style={{ margin: "16px 0 0 8px" }}
+								className={classes.subheader}
 								key={route}
 							>
 								<strong>{route.toUpperCase()}</strong>
@@ -103,7 +106,7 @@ export default function CustomDrawer({ open, setOpen }) {
 								<ListItemText
 									style={{
 										marginLeft: `${
-											Math.max(i - 1, 0) * 32 + 8
+											Math.max(i - 1, 0) * 32
 										}px`,
 									}}
 								>

@@ -6,7 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import {
 	Container,
 	Divider,
@@ -31,16 +31,16 @@ import { CookiesProvider, useCookies } from "react-cookie";
 import CustomAppBar from "../src/CustomAppBar";
 import { MDXProvider } from "@mdx-js/react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import materialLight from "react-syntax-highlighter/dist/cjs/styles/prism/material-light";
 import colors from "../colors.json";
-import { Alert } from "@material-ui/lab";
 import { frontMatter } from "./**/*.md";
 import Discord from "../public/discord.svg";
 import MenuIcon from "@material-ui/icons/Menu";
 import TableOfContents from "../src/TableOfContents";
 import routes from "../routes.json";
 import Pagination from "../src/Pagination";
+import Hint from "../src/Hint";
 
 const themeObject = {
 	palette: {
@@ -60,6 +60,15 @@ const themeObject = {
 			dark: "#7289DA",
 		},
 		divider: "rgba(255 255 255 / 12%)",
+	},
+	breakpoints: {
+		values: {
+			xs: 0,
+			sm: 600,
+			md: 830,
+			lg: 1280,
+			xl: 1920,
+		},
 	},
 };
 
@@ -106,6 +115,8 @@ function useStyles(theme) {
 						whiteSpace: "pre-line !important",
 						overflowWrap: "anywhere",
 					},
+					borderRadius: theme.shape.borderRadius,
+					boxShadow: theme.shadows[2],
 				},
 				drawer: {
 					[theme.breakpoints.down("sm")]: {
@@ -134,20 +145,22 @@ function useStyles(theme) {
 				tableContainer: {
 					marginBottom: theme.spacing(3),
 				},
-				tableCell: {
+				tableHeading: {
 					borderBottom:
-						"1px solid " +
-						(theme.palette.type === "light"
-							? "rgba(0, 0, 0, .12)"
-							: "rgba(255, 255, 255, .12)"),
+						"2px solid " + theme.palette.divider + " !important",
+				},
+				tableCell: {
+					borderBottom: "1px solid " + theme.palette.divider,
 				},
 				inlineCode: {
-					background:
-						theme.palette.type === "dark"
-							? "rgb(29, 31, 33)"
-							: "rgb(250, 250, 250)",
+					background: theme.palette.background.paper,
 					padding: 3,
-					borderRadius: 5,
+					borderRadius: theme.shape.borderRadius,
+					boxShadow: theme.shadows[1],
+				},
+				img: {
+					margin: theme.spacing(2) + "px auto 0 auto",
+					display: "block",
 				},
 			};
 		},
@@ -219,16 +232,22 @@ export default function MinehutXYZ(props) {
 	const components = {
 		h1(props) {
 			return (
-				<Typography
-					className={classes.heading}
-					id={getString(props).toLowerCase().replace(/ +/g, "-")}
-					{...props}
-					variant="h4"
-				>
-					{typeof props.children === "string"
-						? props.children.toUpperCase()
-						: props.children}
-				</Typography>
+				<>
+					<Typography
+						className={classes.heading}
+						id={getString(props).toLowerCase().replace(/ +/g, "-")}
+						{...props}
+						variant="h4"
+					>
+						{typeof props.children === "string"
+							? props.children.toUpperCase()
+							: props.children}
+					</Typography>
+					<Typography color="textSecondary" paragraph>
+						{fm ? fm.description : null}
+					</Typography>
+					<Divider />
+				</>
 			);
 		},
 		h2(props) {
@@ -322,7 +341,12 @@ export default function MinehutXYZ(props) {
 			return <TableRow {...props} />;
 		},
 		th(props) {
-			return <TableCell className={classes.tableCell} {...props} />;
+			return (
+				<TableCell
+					className={classes.tableCell + " " + classes.tableHeading}
+					{...props}
+				/>
+			);
 		},
 		td(props) {
 			return <TableCell className={classes.tableCell} {...props} />;
@@ -330,10 +354,16 @@ export default function MinehutXYZ(props) {
 		code(props) {
 			return (
 				<SyntaxHighlighter
-					language={props.className.replace("language-", "")}
+					language={
+						props.className
+							? props.className.replace("language-", "")
+							: null
+					}
 					children={props.children}
 					style={
-						theme.palette.type === "dark" ? atomDark : materialLight
+						theme.palette.type === "dark"
+							? materialDark
+							: materialLight
 					}
 					className={classes.code}
 				/>
@@ -341,6 +371,9 @@ export default function MinehutXYZ(props) {
 		},
 		inlineCode(props) {
 			return <code {...props} className={classes.inlineCode} />;
+		},
+		img(props) {
+			return <img {...props} className={classes.img} />;
 		},
 	};
 
@@ -454,11 +487,22 @@ export default function MinehutXYZ(props) {
 									<Toolbar />
 								</Hidden>
 								{loaded ? (
-									<MDXProvider components={components}>
+									<MDXProvider
+										components={components}
+										style={{
+											marginBottom: themeConfig.spacing(
+												2
+											),
+										}}
+									>
 										<Component {...pageProps} />
 									</MDXProvider>
 								) : null}
-								<Alert variant="outlined" severity="success">
+								<Hint
+									disableMargin
+									variant="outlined"
+									severity="success"
+								>
 									Join our{" "}
 									<Link href="https://discord.gg/TYhH5bK">
 										Discord
@@ -467,7 +511,7 @@ export default function MinehutXYZ(props) {
 									<strong>official writer</strong>, get{" "}
 									<strong>site updates</strong>, and{" "}
 									<strong>much more</strong>
-								</Alert>
+								</Hint>
 								{current !== -1 ? (
 									<Pagination
 										current={current}
@@ -562,10 +606,11 @@ MinehutXYZ.propTypes = {
 };
 
 function getString(props) {
+	console.log(props);
 	if (typeof props.children === "string") return props.children;
 	else {
 		if (Array.isArray(props.children)) {
-			let string = props.children
+			return props.children
 				.map((c) => (typeof c === "string" ? c : getString(c.props)))
 				.join("");
 		} else return getString(props.children.props);

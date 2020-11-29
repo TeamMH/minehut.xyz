@@ -26,7 +26,22 @@
         "Idler",
         "Oictr"
     ],
-    "Plugin Tutorials": {
+    "Plugins": {
+        "Popular": {
+            "CoreProtect": [
+                "CoreProtect",
+                "OVERVIEW",
+                "DEPENDENCIES",
+                "USING THE INSPECT COMMAND",
+                "USING THE ROLLBACK COMMAND",
+                "EXTRA"
+            ],
+            "Essentials": [
+                "Essentials",
+                "OVERVIEW",
+                "ESSENTIALS PERMISSION NODES"
+            ]
+        },
         "Recommended Plugins": [
             "Recommended Plugins",
             "SPECIFIC PLUGIN CATGORIES",
@@ -40,6 +55,225 @@
                 "OVERVIEW",
                 "ERROR EXAMPLE",
                 "FIX"
+            ]
+        },
+        "In-game": {
+            "Download": [
+                "Downloading",
+                "Downloading a World",
+                "Downloading a Schematic"
+            ],
+            "Moderation": [
+                "Moderation",
+                "Banning Users",
+                "Muting Users",
+                "Kicking Users"
+            ],
+            "Op": [
+                "Server Operator",
+                "OVERVIEW",
+                "HOW TO OP YOURSELF",
+                "HOW TO OP A USER",
+                "HOW TO DEOP A USER",
+                "HOW TO GIVE PERMISSIONS"
+            ],
+            "Permissions": [
+                "Permissions",
+                "PERMISSION MANAGERS",
+                "HOW TO USE EACH PERMISSION MANAGER"
+            ],
+            "Timings": [
+                "Timings",
+                "OVERVIEW",
+                "HOW TO USE TIMINGS"
+            ],
+            "Upload": [
+                "Uploading Worlds",
+                "OVERVIEW",
+                "METHOD 1 - INGAME",
+                "METHOD 2 - WEB MANAGER"
+            ],
+            "Void World": [
+                "Creating a Void World",
+                "OVERVIEW",
+                "HOW TO CREATE A VOID WORLD"
+            ],
+            "Whitelist": [
+                "Whitelist",
+                "How to add players to the whitelist"
+            ],
+            "World Border": [
+                "World Border",
+                "OVERVIEW",
+                "COMMANDS"
+            ]
+        },
+        "Making A Server": {
+            "Planning It Out": [
+                "Planning it out",
+                "SERVER PLAN",
+                "An idea",
+                "YOUR STAFF TEAM"
+            ]
+        },
+        "Minehut": {
+            "A Full Tutorial": [
+                "Full Tutorial",
+                "Chapter 1: Getting an account.",
+                "Chapter 2: Making your server.",
+                "Chapter 3: Activating your server.",
+                "Chapter 4: Installing plugins.",
+                "Chapter 5: Server Plans."
+            ],
+            "Account Deletion": [
+                "Account Deletion",
+                "OVERVIEW"
+            ],
+            "Account Linking": [
+                "Linking",
+                "OVERVIEW",
+                "HOW TO LINK YOUR ACCOUNT"
+            ],
+            "Appeal": [
+                "Appeal",
+                "OVERVIEW",
+                "LINKS"
+            ],
+            "Bugs": [
+                "Bugs",
+                "REPORTING A BUG"
+            ],
+            "Clubs": [
+                "Forums Club",
+                "OVERVIEW",
+                "HOW TO CREATE A FORUMS CLUB"
+            ],
+            "Cracked Clients": [
+                "Cracked Minecraft"
+            ],
+            "Disable Messages": [
+                "Disable Messages",
+                "OVERVIEW",
+                "HOW TO DISABLE MESSAGES"
+            ],
+            "Joining": [
+                "Joining",
+                "OVERVIEW",
+                "HOW TO JOIN"
+            ],
+            "Ports": [
+                "Ports",
+                "OVERVIEW",
+                "PORTS"
+            ],
+            "Reporting": [
+                "Report",
+                "OVERVIEW",
+                "HOW TO REPORT"
+            ],
+            "Voting": [
+                "Voting",
+                "OVERVIEW",
+                "HOW VOTING WORKS \\[FREE PREMIUM SERVER\\]",
+                "HOW TO VOTE"
+            ]
+        },
+        "Other Questions": {
+            "Bedrock": [
+                "Bedrock Edition",
+                "OVERVIEW",
+                "HOW TO CONNECT USING BEDROCK"
+            ],
+            "Op Tools": [
+                "OP Tools",
+                "HOW TO CREATE OP TOOLS"
+            ],
+            "Server Version": [
+                "Server Version",
+                "1.16",
+                "ALLOWING OLDER CLIENTS TO JOIN",
+                "1.8 COMBAT"
+            ]
+        },
+        "Panel": {
+            "Backups": [
+                "Backups",
+                "OVERVIEW",
+                "HOW TO GET TO BACKUPS",
+                "SERVER DATA",
+                "SAVED BACKUPS"
+            ],
+            "Custom Seed": [
+                "Custom Seed",
+                "OVERVIEW",
+                "HOW TO SET A CUSTOM SEED"
+            ],
+            "Datapacks": [
+                "Data Packs",
+                "OVERVIEW",
+                "HOW TO UPLOAD YOUR DATAPACK"
+            ],
+            "Default Gamemode": [
+                "Default Gamemode",
+                "OVERVIEW",
+                "HOW TO DO"
+            ],
+            "Default World": [
+                "Default World",
+                "OVERVIEW"
+            ],
+            "Domain": [
+                "Custom Domain",
+                "Overview",
+                "How to connect your domain"
+            ],
+            "Files": [
+                "Allowed File types",
+                "OVERVIEW",
+                "ALLOWED FILE TYPES"
+            ],
+            "Flat World": [
+                "Creating a Flat World",
+                "HOW TO MAKE YOUR WORLD FLAT"
+            ],
+            "Logs": [
+                "Logs",
+                "OVERVIEW",
+                "HOW TO RETRIEVE YOUR LATEST.LOG",
+                "USING PASTEBIN.COM"
+            ],
+            "Plugins": [
+                "Installing Plugins",
+                "INSTALLING PLUGINS",
+                "UNINSTALLING PLUGINS",
+                "RESETTING PLUGIN CONFIGURATIONS",
+                "RESTARTING YOUR SERVER"
+            ],
+            "Rename": [
+                "Rename",
+                "OVERVIEW",
+                "HOW TO RENAME YOUR SERVER"
+            ],
+            "Reset Player": [
+                "Reset Player",
+                "OVERVIEW",
+                "HOW TO RESET PLAYER DATA"
+            ],
+            "Reset World": [
+                "Reset World",
+                "OVERVIEW",
+                "HOW TO RESET YOUR WORLD"
+            ],
+            "Reset": [
+                "Reset Server",
+                "OVERVIEW",
+                "HOW TO RESET YOUR SERVER"
+            ],
+            "Resource Packs": [
+                "Resource Packs",
+                "ONLINE UPLOADING",
+                "PANEL UPLOADING",
+                "TO NOTE"
             ]
         }
     },

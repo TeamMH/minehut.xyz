@@ -1,6 +1,6 @@
 ---
 description: JSON Load Common Error
-name: "popular-questions/common-errors/json-read"
+name: popular-questions/common-errors/json-read
 ---
 
 # JSON Read

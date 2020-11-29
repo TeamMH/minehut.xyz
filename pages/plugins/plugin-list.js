@@ -16,8 +16,6 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/styles";
-import { Pagination } from "@material-ui/lab";
-import Link from "../src/Link";
 import Head from "next/head";
 const useStyles = makeStyles((theme) => ({
 	root: {

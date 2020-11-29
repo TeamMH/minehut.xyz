@@ -1,4 +1,8 @@
-const exceptions = [[/Json/g, "JSON"]];
+const exceptions = [
+	[/Json/g, "JSON"],
+	[/In Game/g, "In-game"],
+	[/Coreprotect/g, "CoreProtect"],
+];
 
 const keywords = {};
 const routes = {};
@@ -19,13 +23,17 @@ function readFile(directory, file) {
 		.reverse()
 		.slice(1)
 		.reverse()
-		.map((p) =>
-			p
+		.map((p) => {
+			let name = p
 				.replace(/-./g, (e) => " " + e[1].toUpperCase())
 				.split("")
 				.map((c, i) => (i === 0 ? c.toUpperCase() : c))
-				.join("")
-		);
+				.join("");
+			exceptions.forEach((exception) => {
+				name = name.replace(exception[0], exception[1]);
+			});
+			return name;
+		});
 	let name = path.basename(file).match(/index\..+$/)
 		? "Home"
 		: path
@@ -100,7 +108,7 @@ function readDir(directory) {
 
 readFile("./pages", "index.md");
 
-routes["Plugin List"] = "/plugin-list";
+routes["Plugin List"] = "/plugins/plugin-list";
 keywords["Plugin List"] = ["PLUGIN LIST"];
 
 readDir("./pages");
