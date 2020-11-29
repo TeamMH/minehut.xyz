@@ -390,6 +390,7 @@ export default function MinehutXYZ(props) {
 				<div style={{ position: "relative" }}>
 					<Tooltip title="Copy code to clipboard">
 						<IconButton
+							centerRipple={false}
 							style={
 								numberOfLines === 1
 									? {
