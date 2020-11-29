@@ -169,6 +169,7 @@ function useStyles(theme) {
 					height: "auto",
 					borderRadius: theme.shape.borderRadius,
 					boxShadow: theme.shadows[2],
+					background: "white",
 				},
 			};
 		},
