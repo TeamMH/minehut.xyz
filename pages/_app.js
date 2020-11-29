@@ -41,6 +41,7 @@ import TableOfContents from "../src/TableOfContents";
 import routes from "../routes.json";
 import Pagination from "../src/Pagination";
 import Hint from "../src/Hint";
+import NextLink from "../src/Link";
 
 const themeObject = {
 	palette: {
@@ -107,6 +108,9 @@ function useStyles(theme) {
 				},
 				heading: {
 					margin: theme.spacing(3, 0),
+					whiteSpace: "pre-line !important",
+					wordBreak: "anywhere",
+					overflowWrap: "break-word",
 				},
 				code: {
 					whiteSpace: "pre-line !important",
@@ -161,6 +165,8 @@ function useStyles(theme) {
 				img: {
 					margin: theme.spacing(2) + "px auto 0 auto",
 					display: "block",
+					maxWidth: "100%",
+					height: "auto",
 				},
 			};
 		},
@@ -235,9 +241,13 @@ export default function MinehutXYZ(props) {
 				<>
 					<Typography
 						className={classes.heading}
-						id={getString(props).toLowerCase().replace(/ +/g, "-")}
+						id={
+							"h1-" +
+							getString(props).toLowerCase().replace(/ +/g, "-")
+						}
 						{...props}
 						variant="h4"
+						component="h1"
 					>
 						{typeof props.children === "string"
 							? props.children.toUpperCase()
@@ -258,7 +268,11 @@ export default function MinehutXYZ(props) {
 						className={classes.heading}
 						{...props}
 						variant="h5"
-						id={getString(props).toLowerCase().replace(/ +/g, "-")}
+						id={
+							"h2-" +
+							getString(props).toLowerCase().replace(/ +/g, "-")
+						}
+						component="h2"
 					>
 						{typeof props.children === "string"
 							? props.children.toUpperCase()
@@ -269,7 +283,16 @@ export default function MinehutXYZ(props) {
 		},
 		h3(props) {
 			return (
-				<Typography className={classes.heading} {...props} variant="h6">
+				<Typography
+					id={
+						"h3-" +
+						getString(props).toLowerCase().replace(/ +/g, "-")
+					}
+					className={classes.heading}
+					{...props}
+					variant="h6"
+					component="h3"
+				>
 					{typeof props.children === "string"
 						? props.children.toUpperCase()
 						: props.children}
@@ -282,6 +305,7 @@ export default function MinehutXYZ(props) {
 					className={classes.heading}
 					{...props}
 					variant="subtitle1"
+					component="h4"
 				>
 					{typeof props.children === "string"
 						? props.children.toUpperCase()
@@ -295,6 +319,7 @@ export default function MinehutXYZ(props) {
 					className={classes.heading}
 					{...props}
 					variant="subtitle2"
+					component="h5"
 				>
 					{typeof props.children === "string"
 						? props.children.toUpperCase()
@@ -308,6 +333,7 @@ export default function MinehutXYZ(props) {
 					className={classes.heading}
 					{...props}
 					variant="button"
+					component="h6"
 				>
 					{typeof props.children === "string"
 						? props.children.toUpperCase()
@@ -319,7 +345,9 @@ export default function MinehutXYZ(props) {
 			return <Typography {...props} variant="body1" paragraph />;
 		},
 		a(props) {
-			return <Link {...props} />;
+			if (props.href && props.href.match(/^https?:\/\//))
+				return <Link target="_blank" {...props} />;
+			else return <NextLink {...props} />;
 		},
 		table(props) {
 			return (

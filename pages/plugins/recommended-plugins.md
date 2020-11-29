@@ -16,9 +16,9 @@ Almost every server, from kitpvp to survival to skygens etc. will need this plug
 
 These are a few plugins I thought would be noteworthy to share when creating a server:
 
--   `World Edit` is an easy-to-use in-game world editor for Minecraft, supporting both single player and multiplayer. Learn more about worldedit [here](https://minehut.xyz/plugin/worldedit).
--   `World Guard` lets you easily create zones in your world that only permit mods or certain players from building within. You can also set additional game rules on your server \(deny mob spawning, block destroying, falling damage, etc.\). Learn more about worldguard [here](https://minehut.xyz/plugin/worldguard).
--   `Core Protect` is a fast, efficient, data logging and anti-griefing tool. Rollback and restore any amount of damage. Learn more about coreprotect [here](https://minehut.xyz/plugin/coreprotect).
+-   `World Edit` is an easy-to-use in-game world editor for Minecraft, supporting both single player and multiplayer. Learn more about worldedit [here](/plugins/worldedit).
+-   `World Guard` lets you easily create zones in your world that only permit mods or certain players from building within. You can also set additional game rules on your server \(deny mob spawning, block destroying, falling damage, etc.\). Learn more about worldguard [here](/plugins/worldguard).
+-   `Core Protect` is a fast, efficient, data logging and anti-griefing tool. Rollback and restore any amount of damage. Learn more about coreprotect [here](/plugins/coreprotect).
 -   `Essentials Chat` lets you format your chat and makes it look really nice! Watch trent from Minehut to learn more about it [here](https://www.youtube.com/watch?v=FU_tK-zYYb4).
 -   `Multiverse` is a complete world management solution, with other plugins like Portals or Inventory. Learn more [here](https://dev.bukkit.org/projects/multiverse-core).
 -   `Skript & addons` This is a plugin that allows you to customize Minecraft's mechanics with simple scripts written in plain English sentences. You can easily create complex custom commands, triggers that execute effects under certain conditions, and scripts that just run periodically - all without having to know even the slightest bit about programming! The \(hopefully\) intuitive language has the advantage that you don't even need to learn much to be able to use Skript.
@@ -30,8 +30,8 @@ These are a few plugins I thought would be noteworthy to share when creating a s
 
 There are a lot of permission plugins on Minehut, but only two that I would consider people use: Luckperms and PermissionsEX. These allow you to specify perms for groups or players, so that you don't have to op all your staff.
 
--   `LuckPerms` Easier for beginners, because of the online editor. The ingame commands are also very similar to permissionEX in that sense, but the online editor allows mass rank management and rank creation. Its also nice to see everything visually. Read more about luckperms [here](https://minehut.xyz/plugin/lp).
--   `PermissionsEX` is another well known permission plugin. While it doesn't have the fancy online editor, PEX is known for being a nice and simple solution for group management without hassle. Read more about how to use PEX [here](https://minehut.xyz/plugin/pex).
+-   `LuckPerms` Easier for beginners, because of the online editor. The ingame commands are also very similar to permissionEX in that sense, but the online editor allows mass rank management and rank creation. Its also nice to see everything visually. Read more about luckperms [here](/plugins/lp).
+-   `PermissionsEX` is another well known permission plugin. While it doesn't have the fancy online editor, PEX is known for being a nice and simple solution for group management without hassle. Read more about how to use PEX [here](/plugins/pex).
 
 ### 1.8 PvP
 

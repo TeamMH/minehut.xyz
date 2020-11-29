@@ -3,7 +3,7 @@ import { Alert } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
 	hint: {
-		marginBottom: theme.spacing(3),
+		margin: theme.spacing(3, 0),
 	},
 }));
 

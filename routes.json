@@ -1,14 +1,29 @@
 {
     "Home": "/",
-    "Plugin List": "/plugins/plugin-list",
     "Contribute": "/contribute",
     "Partnerships": "/partnerships",
     "Plugins": {
+        "Other": {
+            "CombatLogX": "/plugins/other/combatlogx",
+            "Dream's Man Hunt": "/plugins/other/dreams-man-hunt",
+            "ImageOnMap": "/plugins/other/imageonmap",
+            "MineResetLite": "/plugins/other/mineresetlite",
+            "RedProtect": "/plugins/other/redprotect"
+        },
+        "Permission Plugins": {
+            "GroupManager": "/plugins/permission-plugins/groupmanager",
+            "LuckPerms": "/plugins/permission-plugins/luckperms",
+            "Permissionsex": "/plugins/permission-plugins/permissionsex"
+        },
         "Popular": {
             "CoreProtect": "/plugins/popular/coreprotect",
-            "Essentials": "/plugins/popular/essentials"
+            "Essentials": "/plugins/popular/essentials",
+            "Multiverse": "/plugins/popular/multiverse",
+            "WorldEdit": "/plugins/popular/worldedit",
+            "WorldGuard": "/plugins/popular/worldguard"
         },
-        "Recommended Plugins": "/plugins/recommended-plugins"
+        "Recommended Plugins": "/plugins/recommended-plugins",
+        "Plugin List": "/plugins/plugin-list"
     },
     "Popular Questions": {
         "Common Errors": {
@@ -66,9 +81,31 @@
         }
     },
     "Skript": {
-        "Skript": "/skript/skript",
-        "Tutorials": {
-            "Test": "/skript/tutorials/test"
-        }
+        "Examples": {
+            "Bossbar": "/skript/examples/bossbar",
+            "Cooldown": "/skript/examples/cooldown",
+            "Custom Messages": "/skript/examples/custom-messages",
+            "Discord": "/skript/examples/discord",
+            "Format Chat": "/skript/examples/format-chat",
+            "Help": "/skript/examples/help",
+            "Homes": "/skript/examples/homes",
+            "Pagination": "/skript/examples/pagination",
+            "Private Messages": "/skript/examples/private-messages",
+            "Scoreboard": "/skript/examples/scoreboard",
+            "Sleep": "/skript/examples/sleep",
+            "Spawn": "/skript/examples/spawn",
+            "Tablist": "/skript/examples/tablist",
+            "Vixio": "/skript/examples/vixio"
+        },
+        "Addons": "/skript/addons",
+        "Basics": "/skript/basics",
+        "Commands": "/skript/commands",
+        "Comments": "/skript/comments",
+        "Events": "/skript/events",
+        "Formatting": "/skript/formatting",
+        "Functions": "/skript/functions",
+        "Indentation": "/skript/indentation",
+        "Syntax": "/skript/syntax",
+        "Variables": "/skript/variables"
     }
 }

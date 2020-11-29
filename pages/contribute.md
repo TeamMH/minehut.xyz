@@ -31,7 +31,7 @@ import Alert from "@material-ui/lab/Alert";
 # Title
 
 <Alert severity="success">
-This tutorial was made by < name >. Lean how to contribute <a href="#">here</a>.
+This tutorial was made by < name >. Lean how to contribute <a href="/contribute">here</a>.
 </Alert>
 
 ## Section 1

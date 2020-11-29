@@ -3,13 +3,15 @@ description: Learn how to whitelist (allow and disallow certin players) on your 
 name: popular-questions/in-game/whitelist
 ---
 
+import Hint from "../../../src/Hint"
+
 # Whitelist
 
 ## How to add players to the whitelist
 
-{% hint style="warning" %}
+<Hint style="warning">
 If you are not opped, use your minehut dashboard to execute these commands
-{% endhint %}
+</Hint>
 
 First, use `/whitelist add <playername>` to add yourself to the whitelist. for bedrock players, use `/whitelist add *<playername>`. Opped players can bypass the whitelist, so make sure to deop anyone you don't want bypassing the whitelist.
 

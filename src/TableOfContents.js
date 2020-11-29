@@ -57,11 +57,17 @@ export default function TableOfContents({ contents, tocOpen, setTocOpen }) {
 
 	const items = [
 		"nothing",
-		...contents.map((c) =>
-			c
-				.replace(/(^|\n)##? /, "")
-				.toLowerCase()
-				.replace(/ +/g, "-")
+		...contents.map(
+			(c) =>
+				(c.match(/(^|\n)###/)
+					? "h3-"
+					: c.match(/(^|\n)##/)
+					? "h2-"
+					: "h1-") +
+				c
+					.replace(/(^|\n)#{1,3} /, "")
+					.toLowerCase()
+					.replace(/ +/g, "-")
 		),
 	];
 
@@ -89,10 +95,15 @@ export default function TableOfContents({ contents, tocOpen, setTocOpen }) {
 								left: 0,
 								top:
 									document.getElementById(
-										c
-											.replace(/(^|\n)##? /, "")
-											.toLowerCase()
-											.replace(/ +/g, "-")
+										(c.match(/(^|\n)###/)
+											? "h3-"
+											: c.match(/(^|\n)##/)
+											? "h2-"
+											: "h1-") +
+											c
+												.replace(/(^|\n)#{1,3} /, "")
+												.toLowerCase()
+												.replace(/ +/g, "-")
 									).offsetTop - (matches ? 112 : 160),
 								behavior: "smooth",
 							});
@@ -102,11 +113,15 @@ export default function TableOfContents({ contents, tocOpen, setTocOpen }) {
 						<ListItemText
 							style={{
 								marginLeft: theme.spacing(
-									c.match(/(^|\n)##/) ? 2 : 0
+									c.match(/(^|\n)###/)
+										? 4
+										: c.match(/(^|\n)##/)
+										? 2
+										: 0
 								),
 							}}
 						>
-							{c.replace(/(^|\n)##? /, "").toUpperCase()}
+							{c.replace(/(^|\n)#{1,3} /, "").toUpperCase()}
 						</ListItemText>
 					</ListItem>
 				))}

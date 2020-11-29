@@ -2,6 +2,16 @@ const exceptions = [
 	[/Json/g, "JSON"],
 	[/In Game/g, "In-game"],
 	[/Coreprotect/g, "CoreProtect"],
+	[/Worldguard/g, "WorldGuard"],
+	[/Worldedit/g, "WorldEdit"],
+	[/Groupmanager/g, "GroupManager"],
+	[/Permissionex/g, "PermissionsEx"],
+	[/Luckperms/g, "LuckPerms"],
+	[/Combatlogx/g, "CombatLogX"],
+	[/Dreams Man Hunt/g, "Dream's Man Hunt"],
+	[/Imageonmap/g, "ImageOnMap"],
+	[/Mineresetlite/g, "MineResetLite"],
+	[/Redprotect/g, "RedProtect"],
 ];
 
 const keywords = {};
@@ -54,14 +64,12 @@ function readFile(directory, file) {
 
 	src.split(/```/g).forEach((src, i) => {
 		if (i % 2 === 1) return;
-		const regex1 = /((^|\n)##? .+)+?/g;
+		const regex1 = /((^|\n)#{1,3} .+)+?/g;
 		const matched = src.match(regex1);
 		if (matched && matched.length > 0) headings.push(...matched);
 	});
 
-	headings = headings.map((h) =>
-		h.replace(/\[(.+)\]\(.+\)/, (e, g) => g).replace(/(^|\n)##? /, "")
-	);
+	headings = headings.map((h) => h.replace(/\[(.+)\]\(.+\)/, (e, g) => g));
 
 	let keywordDir = keywords;
 
@@ -107,11 +115,35 @@ function readDir(directory) {
 }
 
 readFile("./pages", "index.md");
-
-routes["Plugin List"] = "/plugins/plugin-list";
 keywords["Plugin List"] = ["PLUGIN LIST"];
-
 readDir("./pages");
+routes["Plugins"]["Plugin List"] = "/plugins/plugin-list";
+
+function sortRoutes(routes, reverse) {
+	const sortedKeys = Object.keys(routes).sort((a, b) => {
+		if (typeof routes[a] === "object" && typeof routes[b] !== "object")
+			return reverse ? -1 : 1;
+		else if (
+			(typeof routes[a] === "object" && typeof routes[b] === "object") ||
+			(typeof routes[a] === "string" && typeof routes[b] === "string")
+		)
+			return 0;
+		else return reverse ? 1 : -1;
+	});
+
+	const newRoutes = {};
+
+	sortedKeys.forEach((key) => {
+		if (typeof routes[key] === "object")
+			newRoutes[key] = sortRoutes(routes[key], true);
+		else newRoutes[key] = routes[key];
+	});
+
+	return newRoutes;
+}
 
 fs.writeFileSync("./keywords.json", JSON.stringify(keywords, null, "    "));
-fs.writeFileSync("./routes.json", JSON.stringify(routes, null, "    "));
+fs.writeFileSync(
+	"./routes.json",
+	JSON.stringify(sortRoutes(routes), null, "    ")
+);

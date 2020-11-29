@@ -1,290 +1,538 @@
 {
     "Home": [
-        "Home",
-        "Welcome... to minehut.xyz",
-        "Every question ever, answered.",
-        "Our plugin know-how",
-        "Developers",
-        "The team",
-        "About us"
+        "\n# Home",
+        "\n## Welcome... to minehut.xyz",
+        "\n## Every question ever, answered.",
+        "\n## Our plugin know-how",
+        "\n## Developers",
+        "\n## The team",
+        "\n## About us"
     ],
     "Plugin List": [
         "PLUGIN LIST"
     ],
     "Contribute": [
-        "Contribute",
-        "How to contribute",
-        "How to make a pull request"
+        "\n# Contribute",
+        "\n## How to contribute",
+        "\n## How to make a pull request"
     ],
     "Partnerships": [
-        "Partners",
-        "Azyncraft Network",
-        "Parasite",
-        "GoldenDupe",
-        "Premiums",
-        "Evera",
-        "Idler",
-        "Oictr"
+        "\n# Partners",
+        "\n## Azyncraft Network",
+        "\n## Parasite",
+        "\n## GoldenDupe",
+        "\n## Premiums",
+        "\n## Evera",
+        "\n## Idler",
+        "\n## Oictr"
     ],
     "Plugins": {
+        "Other": {
+            "CombatLogX": [
+                "\n# CombatLogX",
+                "\n## OVERVIEW",
+                "\n## FEATURES",
+                "\n## COMMANDS"
+            ],
+            "Dream's Man Hunt": [
+                "\n# Dream's Manhunt",
+                "\n## OVERVIEW",
+                "\n## HOW TO USE",
+                "\n## CONFIG.YML SETUP"
+            ],
+            "ImageOnMap": [
+                "\n# ImageOnMap",
+                "\n## OVERVIEW",
+                "\n## PLUGIN",
+                "\n### ToMap Command",
+                "\n### Maps Command:"
+            ],
+            "MineResetLite": [
+                "\n# MineResetLite",
+                "\n## OVERVIEW",
+                "\n## HOW TO DO"
+            ],
+            "RedProtect": [
+                "\n# RedProtect",
+                "\n## CREATING A REGION",
+                "\n## ADDING FLAGS TO YOUR REGION",
+                "\n## EXTRA"
+            ]
+        },
+        "Permission Plugins": {
+            "GroupManager": [
+                "\n# GroupManager",
+                "\n## **OVERVIEW**",
+                "\n## **GROUPS**",
+                "\n## **PERMISSIONS**",
+                "\n## **PREFIXES AND SUFFIXES**",
+                "\n## **OTHER COMMANDS**"
+            ],
+            "LuckPerms": [
+                "\n# LuckPerms",
+                "\n## OVERVIEW",
+                "\n## DEPENDENCIES",
+                "\n## SETUP",
+                "\n## CREATING A GROUP",
+                "\n## ADDING A PREFIX",
+                "\n## ADDING PERMISSIONS",
+                "\n## ADDING USERS TO GROUPS",
+                "\n## EXTRA INFORMATION"
+            ],
+            "Permissionsex": [
+                "\n# PermissionsEx",
+                "\n## OVERVIEW",
+                "\n## MUST DO",
+                "\n## CREATING GROUPS",
+                "\n## ADDING AND REMOVING PERMISSIONS",
+                "\n### ADDING AND REMOVING PERMISSIONS - Example",
+                "\n## PREFIXES AND SUFFIXES",
+                "\n### PREFIXES AND SUFFIXES - Examples",
+                "\n## COMMANDS AND PERMISSIONS",
+                "\n### Utility Commands",
+                "\n### World Inheritance Management",
+                "\n### User Commands",
+                "\n### User's Permission Management",
+                "\n### User's Group Management",
+                "\n### Default Groups Management",
+                "\n### Group Commands",
+                "\n### Group's User Management"
+            ]
+        },
         "Popular": {
             "CoreProtect": [
-                "CoreProtect",
-                "OVERVIEW",
-                "DEPENDENCIES",
-                "USING THE INSPECT COMMAND",
-                "USING THE ROLLBACK COMMAND",
-                "EXTRA"
+                "\n# CoreProtect",
+                "\n## OVERVIEW",
+                "\n## DEPENDENCIES",
+                "\n## USING THE INSPECT COMMAND",
+                "\n## USING THE ROLLBACK COMMAND",
+                "\n## EXTRA"
             ],
             "Essentials": [
-                "Essentials",
-                "OVERVIEW",
-                "ESSENTIALS PERMISSION NODES"
+                "\n# Essentials",
+                "\n## OVERVIEW",
+                "\n## ESSENTIALS PERMISSION NODES",
+                "\n### ESSENTIALS SPAWN",
+                "\n### ESSENTIALS KITS"
+            ],
+            "Multiverse": [
+                "\n# Multiverse",
+                "\n## OVERVIEW",
+                "\n## CREATING A WORLD",
+                "\n## TRAVELING TO A WORLD"
+            ],
+            "WorldEdit": [
+                "\n# WorldEdit",
+                "\n## OVERVIEW",
+                "\n## FEATURES",
+                "\n## COMMANDS & PERMISSION NODES"
+            ],
+            "WorldGuard": [
+                "\n# WorldGuard",
+                "\n## OVERVIEW",
+                "\n## DEPENDENCIES",
+                "\n## CREATING REGIONS",
+                "\n## USING REGION FLAGS",
+                "\n## EXTRA"
             ]
         },
         "Recommended Plugins": [
-            "Recommended Plugins",
-            "SPECIFIC PLUGIN CATGORIES",
-            "SERVER TYPE PLUGINS"
+            "\n# Recommended Plugins",
+            "\n### Base Plugin",
+            "\n### Other great plugins",
+            "\n## SPECIFIC PLUGIN CATGORIES",
+            "\n### PERMISSIONS PLUGINS",
+            "\n### 1.8 PvP",
+            "\n### Version Support",
+            "\n## SERVER TYPE PLUGINS",
+            "\n### SURVIVAL SERVER PLUGINS",
+            "\n### PvP Servers",
+            "\n### Minigame Servers"
         ]
     },
     "Popular Questions": {
         "Common Errors": {
             "JSON Read": [
-                "JSON Read",
-                "OVERVIEW",
-                "ERROR EXAMPLE",
-                "FIX"
+                "\n# JSON Read",
+                "\n## OVERVIEW",
+                "\n## ERROR EXAMPLE",
+                "\n## FIX"
             ]
         },
         "In-game": {
             "Download": [
-                "Downloading",
-                "Downloading a World",
-                "Downloading a Schematic"
+                "\n# Downloading",
+                "\n## Downloading a World",
+                "\n### ALTERNATVILY",
+                "\n## Downloading a Schematic",
+                "\n### Downloading it",
+                "\n### Selecting the build"
             ],
             "Moderation": [
-                "Moderation",
-                "Banning Users",
-                "Muting Users",
-                "Kicking Users"
+                "\n# Moderation",
+                "\n## Banning Users",
+                "\n## Muting Users",
+                "\n## Kicking Users"
             ],
             "Op": [
-                "Server Operator",
-                "OVERVIEW",
-                "HOW TO OP YOURSELF",
-                "HOW TO OP A USER",
-                "HOW TO DEOP A USER",
-                "HOW TO GIVE PERMISSIONS"
+                "\n# Server Operator",
+                "\n## OVERVIEW",
+                "\n## HOW TO OP YOURSELF",
+                "\n## HOW TO OP A USER",
+                "\n## HOW TO DEOP A USER",
+                "\n## HOW TO GIVE PERMISSIONS"
             ],
             "Permissions": [
-                "Permissions",
-                "PERMISSION MANAGERS",
-                "HOW TO USE EACH PERMISSION MANAGER"
+                "\n# Permissions",
+                "\n## PERMISSION MANAGERS",
+                "\n## HOW TO USE EACH PERMISSION MANAGER"
             ],
             "Timings": [
-                "Timings",
-                "OVERVIEW",
-                "HOW TO USE TIMINGS"
+                "\n# Timings",
+                "\n## OVERVIEW",
+                "\n## HOW TO USE TIMINGS"
             ],
             "Upload": [
-                "Uploading Worlds",
-                "OVERVIEW",
-                "METHOD 1 - INGAME",
-                "METHOD 2 - WEB MANAGER"
+                "\n# Uploading Worlds",
+                "\n## OVERVIEW",
+                "\n## METHOD 1 - INGAME",
+                "\n## METHOD 2 - WEB MANAGER"
             ],
             "Void World": [
-                "Creating a Void World",
-                "OVERVIEW",
-                "HOW TO CREATE A VOID WORLD"
+                "\n# Creating a Void World",
+                "\n## OVERVIEW",
+                "\n## HOW TO CREATE A VOID WORLD"
             ],
             "Whitelist": [
-                "Whitelist",
-                "How to add players to the whitelist"
+                "\n# Whitelist",
+                "\n## How to add players to the whitelist"
             ],
             "World Border": [
-                "World Border",
-                "OVERVIEW",
-                "COMMANDS"
+                "\n# World Border",
+                "\n## OVERVIEW",
+                "\n## COMMANDS"
             ]
         },
         "Making A Server": {
             "Planning It Out": [
-                "Planning it out",
-                "SERVER PLAN",
-                "An idea",
-                "YOUR STAFF TEAM"
+                "\n# Planning it out",
+                "\n## SERVER PLAN",
+                "\n## An idea",
+                "\n## YOUR STAFF TEAM"
             ]
         },
         "Minehut": {
             "A Full Tutorial": [
-                "Full Tutorial",
-                "Chapter 1: Getting an account.",
-                "Chapter 2: Making your server.",
-                "Chapter 3: Activating your server.",
-                "Chapter 4: Installing plugins.",
-                "Chapter 5: Server Plans."
+                "\n# Full Tutorial",
+                "\n## Chapter 1: Getting an account.",
+                "\n## Chapter 2: Making your server.",
+                "\n## Chapter 3: Activating your server.",
+                "\n## Chapter 4: Installing plugins.",
+                "\n## Chapter 5: Server Plans."
             ],
             "Account Deletion": [
-                "Account Deletion",
-                "OVERVIEW"
+                "\n# Account Deletion",
+                "\n## OVERVIEW"
             ],
             "Account Linking": [
-                "Linking",
-                "OVERVIEW",
-                "HOW TO LINK YOUR ACCOUNT"
+                "\n# Linking",
+                "\n## OVERVIEW",
+                "\n## HOW TO LINK YOUR ACCOUNT"
             ],
             "Appeal": [
-                "Appeal",
-                "OVERVIEW",
-                "LINKS"
+                "\n# Appeal",
+                "\n## OVERVIEW",
+                "\n## LINKS"
             ],
             "Bugs": [
-                "Bugs",
-                "REPORTING A BUG"
+                "\n# Bugs",
+                "\n## REPORTING A BUG"
             ],
             "Clubs": [
-                "Forums Club",
-                "OVERVIEW",
-                "HOW TO CREATE A FORUMS CLUB"
+                "\n# Forums Club",
+                "\n## OVERVIEW",
+                "\n## HOW TO CREATE A FORUMS CLUB"
             ],
             "Cracked Clients": [
-                "Cracked Minecraft"
+                "\n# Cracked Minecraft"
             ],
             "Disable Messages": [
-                "Disable Messages",
-                "OVERVIEW",
-                "HOW TO DISABLE MESSAGES"
+                "\n# Disable Messages",
+                "\n## OVERVIEW",
+                "\n## HOW TO DISABLE MESSAGES"
             ],
             "Joining": [
-                "Joining",
-                "OVERVIEW",
-                "HOW TO JOIN"
+                "\n# Joining",
+                "\n## OVERVIEW",
+                "\n## HOW TO JOIN",
+                "\n### METHOD 1 - INDIRECTLY",
+                "\n### METHOD 2 - DIRECTLY"
             ],
             "Ports": [
-                "Ports",
-                "OVERVIEW",
-                "PORTS"
+                "\n# Ports",
+                "\n## OVERVIEW",
+                "\n## PORTS"
             ],
             "Reporting": [
-                "Report",
-                "OVERVIEW",
-                "HOW TO REPORT"
+                "\n# Report",
+                "\n## OVERVIEW",
+                "\n## HOW TO REPORT"
             ],
             "Voting": [
-                "Voting",
-                "OVERVIEW",
-                "HOW VOTING WORKS \\[FREE PREMIUM SERVER\\]",
-                "HOW TO VOTE"
+                "\n# Voting",
+                "\n## OVERVIEW",
+                "\n## HOW VOTING WORKS \\[FREE PREMIUM SERVER\\]",
+                "\n## HOW TO VOTE"
             ]
         },
         "Other Questions": {
             "Bedrock": [
-                "Bedrock Edition",
-                "OVERVIEW",
-                "HOW TO CONNECT USING BEDROCK"
+                "\n# Bedrock Edition",
+                "\n## OVERVIEW",
+                "\n## HOW TO CONNECT USING BEDROCK"
             ],
             "Op Tools": [
-                "OP Tools",
-                "HOW TO CREATE OP TOOLS"
+                "\n# OP Tools",
+                "\n## HOW TO CREATE OP TOOLS",
+                "\n### WITH ESSENTIALS",
+                "\n### WITHOUT ESSENTIALS"
             ],
             "Server Version": [
-                "Server Version",
-                "1.16",
-                "ALLOWING OLDER CLIENTS TO JOIN",
-                "1.8 COMBAT"
+                "\n# Server Version",
+                "\n## 1.16",
+                "\n## ALLOWING OLDER CLIENTS TO JOIN",
+                "\n### Method One",
+                "\n### Method Two",
+                "\n## 1.8 COMBAT"
             ]
         },
         "Panel": {
             "Backups": [
-                "Backups",
-                "OVERVIEW",
-                "HOW TO GET TO BACKUPS",
-                "SERVER DATA",
-                "SAVED BACKUPS"
+                "\n# Backups",
+                "\n## OVERVIEW",
+                "\n## HOW TO GET TO BACKUPS",
+                "\n## SERVER DATA",
+                "\n## SAVED BACKUPS"
             ],
             "Custom Seed": [
-                "Custom Seed",
-                "OVERVIEW",
-                "HOW TO SET A CUSTOM SEED"
+                "\n# Custom Seed",
+                "\n## OVERVIEW",
+                "\n## HOW TO SET A CUSTOM SEED"
             ],
             "Datapacks": [
-                "Data Packs",
-                "OVERVIEW",
-                "HOW TO UPLOAD YOUR DATAPACK"
+                "\n# Data Packs",
+                "\n## OVERVIEW",
+                "\n## HOW TO UPLOAD YOUR DATAPACK"
             ],
             "Default Gamemode": [
-                "Default Gamemode",
-                "OVERVIEW",
-                "HOW TO DO"
+                "\n# Default Gamemode",
+                "\n## OVERVIEW",
+                "\n## HOW TO DO"
             ],
             "Default World": [
-                "Default World",
-                "OVERVIEW"
+                "\n# Default World",
+                "\n## OVERVIEW"
             ],
             "Domain": [
-                "Custom Domain",
-                "Overview",
-                "How to connect your domain"
+                "\n# Custom Domain",
+                "\n## Overview",
+                "\n## How to connect your domain"
             ],
             "Files": [
-                "Allowed File types",
-                "OVERVIEW",
-                "ALLOWED FILE TYPES"
+                "\n# Allowed File types",
+                "\n## OVERVIEW",
+                "\n## ALLOWED FILE TYPES"
             ],
             "Flat World": [
-                "Creating a Flat World",
-                "HOW TO MAKE YOUR WORLD FLAT"
+                "\n# Creating a Flat World",
+                "\n## HOW TO MAKE YOUR WORLD FLAT"
             ],
             "Logs": [
-                "Logs",
-                "OVERVIEW",
-                "HOW TO RETRIEVE YOUR LATEST.LOG",
-                "USING PASTEBIN.COM"
+                "\n# Logs",
+                "\n## OVERVIEW",
+                "\n## HOW TO RETRIEVE YOUR LATEST.LOG",
+                "\n## USING PASTEBIN.COM"
             ],
             "Plugins": [
-                "Installing Plugins",
-                "INSTALLING PLUGINS",
-                "UNINSTALLING PLUGINS",
-                "RESETTING PLUGIN CONFIGURATIONS",
-                "RESTARTING YOUR SERVER"
+                "\n# Installing Plugins",
+                "\n## INSTALLING PLUGINS",
+                "\n## UNINSTALLING PLUGINS",
+                "\n## RESETTING PLUGIN CONFIGURATIONS",
+                "\n## RESTARTING YOUR SERVER"
             ],
             "Rename": [
-                "Rename",
-                "OVERVIEW",
-                "HOW TO RENAME YOUR SERVER"
+                "\n# Rename",
+                "\n## OVERVIEW",
+                "\n## HOW TO RENAME YOUR SERVER"
             ],
             "Reset Player": [
-                "Reset Player",
-                "OVERVIEW",
-                "HOW TO RESET PLAYER DATA"
+                "\n# Reset Player",
+                "\n## OVERVIEW",
+                "\n## HOW TO RESET PLAYER DATA",
+                "\n### WITH ESSENTIALS",
+                "\n### WITHOUT ESSENTIALS"
             ],
             "Reset World": [
-                "Reset World",
-                "OVERVIEW",
-                "HOW TO RESET YOUR WORLD"
+                "\n# Reset World",
+                "\n## OVERVIEW",
+                "\n## HOW TO RESET YOUR WORLD"
             ],
             "Reset": [
-                "Reset Server",
-                "OVERVIEW",
-                "HOW TO RESET YOUR SERVER"
+                "\n# Reset Server",
+                "\n## OVERVIEW",
+                "\n## HOW TO RESET YOUR SERVER"
             ],
             "Resource Packs": [
-                "Resource Packs",
-                "ONLINE UPLOADING",
-                "PANEL UPLOADING",
-                "TO NOTE"
+                "\n# Resource Packs",
+                "\n## ONLINE UPLOADING",
+                "\n## PANEL UPLOADING",
+                "\n## TO NOTE"
             ]
         }
     },
     "Skript": {
-        "Skript": [
-            "skript"
+        "Addons": [
+            "\n# Addons",
+            "\n## **WHAT ARE ADDONS?**",
+            "\n## **WHAT CAN ADDONS DO**",
+            "\n## **WHERE CAN I FIND THEM?**",
+            "\n## **INTERESTING! HOW DO I MAKE ONE?**"
         ],
-        "Tutorials": {
-            "Test": [
-                "eeee"
+        "Basics": [
+            "\n# Basics",
+            "\n## OVERVIEW",
+            "\n## VIEWING & ADDING SCRIPTS",
+            "\n## SCRIPTING",
+            "\n## RELOADING THE SCRIPT",
+            "\n## TESTING THE SCRIPT"
+        ],
+        "Commands": [
+            "\n# Commands",
+            "\n## HOW TO REGISTER A COMMAND",
+            "\n## **ARGUMENTS \\(optional\\)**",
+            "\n## **PARAMETERS \\(optional\\)**",
+            "\n## **GETTING INPUTTED ARGUMENTS**",
+            "\n### **Examples**"
+        ],
+        "Comments": [
+            "\n# Comments",
+            "\n## What are comments?",
+            "\n## How to put special characters in strings"
+        ],
+        "Events": [
+            "\n# Events",
+            "\n## OVERVIEW & EXAMPLE",
+            "\n## INDENTATION",
+            "\n## ALL EVENTS"
+        ],
+        "Examples": {
+            "Bossbar": [
+                "\n# Example: Bossbar",
+                "\n## OVERVIEW",
+                "\n## CODE",
+                "\n## EXPLAINED"
+            ],
+            "Cooldown": [
+                "\n# Example: Cooldowns",
+                "\n## OVERVIEW",
+                "\n## CODE"
+            ],
+            "Custom Messages": [
+                "\n# Example: Join & Quit Messages",
+                "\n## OVERVIEW",
+                "\n## CODE"
+            ],
+            "Discord": [
+                "\n# Example: /discord",
+                "\n## OVERVIEW",
+                "\n## CODE",
+                "\n## EXPLAINED"
+            ],
+            "Format Chat": [
+                "\n# Example: Format Chat",
+                "\n## OVERVIEW",
+                "\n## CODE"
+            ],
+            "Help": [
+                "\n# Example: /help",
+                "\n## OVERVIEW",
+                "\n## CODE",
+                "\n## EXPLAINED"
+            ],
+            "Homes": [
+                "\n# Example: Homes",
+                "\n## What are homes?"
+            ],
+            "Pagination": [
+                "\n# Example: Pagination",
+                "\n## What is \"pagination\"?"
+            ],
+            "Private Messages": [
+                "\n# Example: Private Messages",
+                "\n## OVERVIEW",
+                "\n## HOW TO SET UP PRIVATE MESSAGING"
+            ],
+            "Scoreboard": [
+                "\n# Example: Scoreboards",
+                "\n## OVERVIEW",
+                "\n## CODE",
+                "\n### SKRAYFALL SCOREBOARD",
+                "\n### SKBEE SCOREBOARD"
+            ],
+            "Sleep": [
+                "\n# Example: One Player Sleep",
+                "\n## OVERVIEW",
+                "\n## CODE",
+                "\n## EXPLAINED"
+            ],
+            "Spawn": [
+                "\n# Example: Spawn"
+            ],
+            "Tablist": [
+                "\n# Example: Tablist",
+                "\n## OVERVIEW",
+                "\n## CODE",
+                "\n## EXPLAINED",
+                "\n## FUNCTION"
+            ],
+            "Vixio": [
+                "\n# Example: Discord Bot W/ Vixio",
+                "\n## OVERVIEW",
+                "\n## HOW TO DO"
             ]
-        }
+        },
+        "Formatting": [
+            "\n# Formatting Text",
+            "\n## Coloring",
+            "\n## Markdown",
+            "\n## Text Attributes"
+        ],
+        "Functions": [
+            "\n# Functions",
+            "\n## **OVERVIEW**",
+            "\n## **WHAT ARE FUNCTIONS**",
+            "\n## **COMPONENTS OF A FUNCTION**",
+            "\n## **HOW TO MAKE FUNCTIONS**",
+            "\n## **EXAMPLES**"
+        ],
+        "Indentation": [
+            "\n# Indentation",
+            "\n## OVERVIEW",
+            "\n## WHAT IS INDENTATION <a id=\"1-what-is-indentation\"></a>",
+            "\n## WHEN TO INDENT <a id=\"2-rules-of-indentation\"></a>"
+        ],
+        "Syntax": [
+            "\n# Syntax",
+            "\n## What is syntax?",
+            "\n## How do I read syntax?",
+            "\n## Examples"
+        ],
+        "Variables": [
+            "\n# Variables",
+            "\n## **WHAT ARE VARIABLES**",
+            "\n## **TYPES OF VARIABLES**",
+            "\n## METADATA TAGS",
+            "\n## **HOW TO USE VARIABLES**"
+        ]
     }
 }

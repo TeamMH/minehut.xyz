@@ -162,7 +162,15 @@ export default function CustomAppBar({
 					href={
 						mappedRoutes.find((r) => r[0] === k[0])[1] +
 						"#" +
-						k[1].toLowerCase().replace(/ +/g, "-")
+						(k[1].match(/(^|\n)### /)
+							? "h3-"
+							: k[1].match(/(^|\n)## /)
+							? "h2-"
+							: "h1-") +
+						k[1]
+							.replace(/(^|\n)#{1,3} /, "")
+							.toLowerCase()
+							.replace(/ +/g, "-")
 					}
 					onClick={() => {
 						setSearchWord("");
@@ -174,7 +182,7 @@ export default function CustomAppBar({
 						<Typography variant="subtitle1" color="textSecondary">
 							{k[0]}
 						</Typography>
-						{k[1].toUpperCase()}
+						{k[1].toUpperCase().replace(/(^|\n)#{1,3} /, "")}
 					</ListItemText>
 				</ListItem>
 			))}

@@ -21,11 +21,11 @@ You only need to install 1 out of 5 permission managers, installing others may c
 Each permission manager has lots more commands than shown below, visit each permission manager's tutorial page.
 </Hint>
 
--   [**LuckPerms**](https://minehut.xyz/plugin/permission-plugins/lp): `/lp user/group <player-name/group> permission set <perm node> true`
+-   [**LuckPerms**](/plugins/permission-plugins/lp): `/lp user/group <player-name/group> permission set <perm node> true`
 
--   [**PermissionsEx**](https://minehut.xyz/plugin/permission-plugins/pex): `/pex [user/group] <player-name/group> add <perm node>`
+-   [**PermissionsEx**](/plugins/permission-plugins/pex): `/pex [user/group] <player-name/group> add <perm node>`
 
--   [Group Manager](https://minehut.xyz/plugin/permission-plugins/gm): `/[manuaddp/mangaddp] <player-name/group> <perm node>`
+-   [Group Manager](/plugins/permission-plugins/gm): `/[manuaddp/mangaddp] <player-name/group> <perm node>`
 
 -   [zPermissions](https://www.spigotmc.org/resources/zpermissions.11736/): `/permissions [user/group] <player-name/group> set <perm node> true`
 
