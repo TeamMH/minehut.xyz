@@ -3,6 +3,8 @@ description: Learn about Skript Addons!
 name: skript/addons
 ---
 
+import Hint from "../../src/Hint"
+
 # Addons
 
 ## WHAT ARE ADDONS?
@@ -19,5 +21,6 @@ Skript addons can be found in various places. You can look on Skript documentati
 
 ## INTERESTING! HOW DO I MAKE ONE?
 
-_Note: Minehut does not support custom plugins, so developing a Skript Addon is not useful when using Minehut_
+<Hint style="warning">Minehut does not support custom plugins, so developing a Skript Addon is not useful when using Minehut</Hint>
+
 While I'm not going to make an entire section on making a Skript addon, you can check out a tutorial [here](https://forums.skunity.com/wiki/addon/).
