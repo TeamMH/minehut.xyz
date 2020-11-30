@@ -202,32 +202,12 @@ function useStyles(props, theme) {
 					top: "50%",
 					transform: "translateY(-50%)",
 					zIndex: 10,
-					background:
-						theme.palette.type === "dark"
-							? "rgb(29, 31, 33)"
-							: "rgb(250, 250, 250)",
-					"&:hover": {
-						background:
-							theme.palette.type === "dark"
-								? "rgba(255, 255, 255, .08)"
-								: "rgba(0, 0, 0, .04)",
-					},
 				},
 				buttonMultiLine: {
 					position: "absolute",
 					top: 5,
 					right: 5,
 					zIndex: 10,
-					background:
-						theme.palette.type === "dark"
-							? "rgb(29, 31, 33)"
-							: "rgb(250, 250, 250)",
-					"&:hover": {
-						background:
-							theme.palette.type === "dark"
-								? "rgba(255, 255, 255, .08)"
-								: "rgba(0, 0, 0, .04)",
-					},
 				},
 				paragraph: {
 					lineHeight: 1.625,
@@ -332,6 +312,13 @@ export default function MinehutXYZ(props) {
 						{fm ? fm.description : null}
 					</Typography>
 					<Divider />
+					{fm && fm.madeBy ? (
+						<Hint style="info">
+							This tutorial was made by {getMadeBy(fm)}. Lean how
+							to contribute{" "}
+							<NextLink href="/contribute">here</NextLink>.
+						</Hint>
+					) : null}
 				</>
 			);
 		},
@@ -765,4 +752,43 @@ function useLoaded() {
 	const [loaded, setLoaded] = React.useState(false);
 	React.useEffect(() => setLoaded(true), []);
 	return loaded;
+}
+
+function getMadeBy(fm) {
+	if (typeof fm.madeBy === "string")
+		return fm.madeByLink ? (
+			fm.madeByLink.match(/^https?:\/\//) ? (
+				<Link href={fm.madeByLink}>{fm.madeBy}</Link>
+			) : (
+				<NextLink href={fm.madeByLink}>{fm.madeBy}</NextLink>
+			)
+		) : (
+			fm.madeBy
+		);
+	else if (Array.isArray(fm.madeBy)) {
+		const array = fm.madeBy.map((author, i) =>
+			fm.madeByLink[i] ? (
+				fm.madeByLink[i].match(/^https?:\/\//) ? (
+					<Link key={author} href={fm.madeByLink[i]}>
+						{author}
+					</Link>
+				) : (
+					<NextLink key={author} href={fm.madeByLink[i]}>
+						{author}
+					</NextLink>
+				)
+			) : (
+				fm.madeBy
+			)
+		);
+
+		return (
+			<>
+				{array.length > 2
+					? array.slice(0, array.length - 2).map((el) => <>{el}, </>)
+					: null}
+				{array[array.length - 2]} and {array[array.length - 1]}
+			</>
+		);
+	}
 }

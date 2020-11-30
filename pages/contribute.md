@@ -3,7 +3,48 @@ description: Learn how to contribute to Minehut.xyz
 name: contribute
 ---
 
+import Hint from "../src/Hint"
+
 # Contribute
+
+## About markdown
+
+Markdown is a simple markup language that is used for formatting text with simple syntax. We use this language because of its simplicity and popularity.
+
+The library the site uses, [MDX](https://mdxjs.com), also lets you add **React components** to the code, giving us lots of new opportunities. This lets us bring in a component called `Hint` that looks like the green box at the bottom of the page. To use it, you first need to import it using:
+
+```jsx
+import Hint from "../src/Hint";
+```
+
+Note, however, that the path depends on the location of the file.
+
+After that, you can type in the following anywhere in your markdown:
+
+```md
+<Hint style="success | info | warning | error">TEXT HERE</Hint>
+```
+
+<Hint style="warning">Inside a hint, only normal HTML will work. For example, instead of doing <inlineCode>**Hello World**</inlineCode>, you'd do <inlineCode>&lt;strong>Hello World&lt;/strong></inlineCode></Hint>
+The `style` attribute will give you different colors and icons:
+
+<Hint style="success">This is a <inlineCode>success</inlineCode> hint</Hint>
+
+<Hint style="info">This is an <inlineCode>info</inlineCode> hint</Hint>
+
+<Hint style="warning">This is a <inlineCode>warning</inlineCode> hint</Hint>
+
+<Hint style="error">This is an <inlineCode>error</inlineCode> hint</Hint>
+
+```md
+<Hint style="success">This is a <inlineCode>success</inlineCode> hint</Hint>
+
+<Hint style="info">This is an <inlineCode>info</inlineCode> hint</Hint>
+
+<Hint style="warning">This is a <inlineCode>warning</inlineCode> hint</Hint>
+
+<Hint style="error">This is an <inlineCode>error</inlineCode> hint</Hint>
+```
 
 ## How to contribute
 
@@ -24,15 +65,15 @@ This is an example page, and this is the source:
 ```md
 ---
 description: Description
+madeBy: NAME **OR** [NAME1, NAME2] FOR MULTIPLE PEOPLE
+madeByLink: LINK **OR** [LINK1, LINK2] FOR MULTIPLE PEOPLE (OPTIONAL)
 ---
 
-import Alert from "@material-ui/lab/Alert";
+<!-- THE PATH TO THE `HINT` ELEMENT, LOCATED IN THE SRC DIRECTORY -->
+
+import Hint from "../src/Hint";
 
 # Title
-
-<Alert severity="success">
-This tutorial was made by < name >. Lean how to contribute <a href="/contribute">here</a>.
-</Alert>
 
 ## Section 1
 
@@ -67,8 +108,6 @@ Put text here
 
 You can, of course, put normal markdown in your page aswell. Once you're done making the page, click `Commit new file`.
 
-Now, for Gitbook to register the page, open a file named SUMMARY.md, and then find the category you're adding a page to, and then under it, put `* [Title of your page](category/file-name.md)`. Then commit the file.
-
-Now you can make a pull request! Go to your repository, then click the button labeled `Pull request`, it should be right next to a `Compare` button. Then, click `Create pull request`. Tada! You have made a pull request to our repository, and your page will appear on the Gitbook if we accept it.
+Now you can make a pull request! Go to your repository, then click the button labeled `Pull request`, it should be right next to a `Compare` button. Then, click `Create pull request`. Tada! You have made a pull request to our repository, and your page will appear on the site if we accept it.
 
 Note that you need to delete your fork and refork it to update it. There is no way to auto update it \(unless your editing loccally, which you can learn how to [here](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork).

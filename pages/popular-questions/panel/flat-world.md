@@ -3,15 +3,10 @@ description: >-
     Minehut allows you to change your world into a flat world, this can be useful
     for a build server!
 name: popular-questions/panel/flat-world
+madeBy: PandaChan
 ---
 
-import Hint from "../../../src/Hint"
-
 # Creating a Flat World
-
-<Hint style="info">
-This tutorial was made by PandaChan. Lean how to contribute <a href="/contribute">here</a>.
-</Hint>
 
 ## HOW TO MAKE YOUR WORLD FLAT
 

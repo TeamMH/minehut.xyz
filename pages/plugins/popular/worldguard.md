@@ -3,15 +3,10 @@ description: >-
     WorldGuard is a well-known plugin used for protecting your builds
     [https://worldguard.enginehub.org/en/latest/]
 name: plugins/popular/worldguard
+madeBy: PandaChan
 ---
 
-import Hint from "../../../src/Hint"
-
 # WorldGuard
-
-<Hint style="info">
-This tutorial was made by PandaChan. Lean how to contribute <a href="/contribute">here</a>.
-</Hint>
 
 ## OVERVIEW
 

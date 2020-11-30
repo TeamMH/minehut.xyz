@@ -11,20 +11,22 @@ Due to security reasons, you cannot upload certain file types to your servers.
 
 ## ALLOWED FILE TYPES
 
-```text
-.yml
-.json
-.txt
-.sk
-.nbt
-.mcfunction
-.schematic
-.properties
-.csv
-.png
-.midi
-.nbs
-.mcmeta
-.dat
-.conf
+-   .yml (YAML)
+-   .json (JSON)
+-   .txt (text)
+-   .sk (Skript)
+-   .nbt (NBT)
+-   .mcfunction (Minecraft function)
+-   .schematic (Schematic)
+-   .properties (Properties file)
+-   .csv (CSV)
+-   .png (PNG)
+-   .midi (MIDI)
+-   .nbs (NBS)
+-   .mcmeta (Minecraft metadata)
+-   .dat (DAT)
+-   .conf (CONF)
+
+```
+
 ```

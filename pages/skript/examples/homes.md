@@ -3,15 +3,13 @@ description: >-
     Learn how to use and make homes for yourself and server members. Including
     permissions, multiple home managment and home deletion.
 name: skript/examples/homes
+madeBy: Rqdioqctive
+madeByLink: https://github.com/Rqdioqctive
 ---
 
 import Hint from "../../../src/Hint"
 
 # Example: Homes
-
-<Hint style="info">
-This tutorial was made by <a href="https://github.com/Rqdioqctive">Rqdioqctive</a>. Lean how to contribute <a href="/contribute">here</a>.
-</Hint>
 
 ## What are homes?
 

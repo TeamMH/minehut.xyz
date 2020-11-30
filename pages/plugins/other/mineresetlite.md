@@ -17,13 +17,13 @@ MineResetLite is a popular plugin avaliable on Minehut that enables you to make 
 
 ## HOW TO DO
 
-Firstly, you need to install MineResetLite, if you do not know how to install a plugin, follow one of our other tutorials.
+First, you need to install MineResetLite, if you do not know how to install a plugin, follow one of our other tutorials.
 
 Once you have installed the plugin, restart your server and it should be there!
 
-**Next, lets dive ingame and do some commands,**
+**Next, let's dive ingame and do some commands,**
 
-Firstly, you want to set your regions, use the commands **/mrl p1** and **/mrl p2** in the spots you want to make your mine, similar to how WorldEdit uses the //pos1 and //pos2 feature.
+First, you want to set your regions, use the commands **/mrl p1** and **/mrl p2** in the spots you want to make your mine, similar to how WorldEdit uses the //pos1 and //pos2 feature.
 
 **Once this is complete, you have created your mine region, time to create the mine.**
 

@@ -4,15 +4,10 @@ description: >-
     features being rollback and inspecting specific blocks!
     [https://gamedb.gg/games/minecraft/coreprotect-commands/]
 name: plugins/popular/coreprotect
+madeBy: PandaChan
 ---
 
-import Hint from "../../../src/Hint"
-
 # CoreProtect
-
-<Hint style="info">
-This tutorial was made by PandaChan. Lean how to contribute [here](../../contribute.md).
-</Hint>
 
 ## OVERVIEW
 

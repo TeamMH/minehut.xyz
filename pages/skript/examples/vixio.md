@@ -11,7 +11,7 @@ Vixio is a skript addon avaliable on Minehut. Using Vixio you can make advanced 
 
 ## HOW TO DO
 
-Firstly, you are going to want to install Vixio. This tutorial will need a basic knowledge of skript. If you do not know how to use Skript, please follow one of our other tutorials.
+First, you are going to want to install Vixio. This tutorial will need a basic knowledge of skript. If you do not know how to use Skript, please follow one of our other tutorials.
 
 [https://i.imgur.com/p5RWtBn.png](https://i.imgur.com/p5RWtBn.png)
 

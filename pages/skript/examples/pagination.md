@@ -3,18 +3,11 @@ description: >-
     Learn how to make a paginated GUI. This allowed people to make "pages" in a
     GUI, and is infinitly expandable.
 name: skript/examples/pagination
+madeBy: [Blocksnmore, ReportCardsMC]
+madeByLink: [https://github.com/Blocksnmore, https://github.com/ReportCardsMC]
 ---
 
-import Hint from "../../../src/Hint"
-
 # Example: Pagination
-
-Blocksnmore
-ReportCardsMC
-
-<Hint style="info">
-This tutorial was made by <a href="https://github.com/Blocksnmore">Blocksnmore</a> and <a href="https://github.com/ReportCardsMC">ReportCardsMC</a>. Lean how to contribute <a href="/contribute">here</a>.
-</Hint>
 
 ## What is "pagination"?
 

@@ -24,7 +24,7 @@ To add/edit scripts, you'll need to navigate to your File Manager. Then, `Plugin
 
 Scripting is the term we use when writing code in any coding language, while Skript itself is not an official code language, we will use this term to reference Skript. **For a very detailed tutorial on scripting, visit our** [**partner YouTube channel**](https://www.youtube.com/channel/UCgXFIH9h2Vf9Q1e86n_FVJA)**.**
 
-Firstly we will create a new file, let's name it `example.sk` _\(note, all scripts must end in **.sk**\)._ From here, we will want to edit this file. In this tutorial, we're going to be creating a welcome message that will be displayed to all users _\(eg, "Welcome {player} to the server!"\)_.
+First we will create a new file, let's name it `example.sk` _\(note, all scripts must end in **.sk**\)._ From here, we will want to edit this file. In this tutorial, we're going to be creating a welcome message that will be displayed to all users _\(eg, "Welcome {player} to the server!"\)_.
 
 Now let's get to coding. We will start with the `on join:` event. This event triggers every time a player joins your server. _\(Read more about events_ [_here_](/skript/events)_\)._ After this, take a new line, then hit the TAB key, to indent one tab in _\(Read more about indentation_ [_here_](/skript/indentation)_\)_. Now, we will want to use the `send "Welcome to the server."` effect. This will send any text we want to the user. Here's how the code will look.
 

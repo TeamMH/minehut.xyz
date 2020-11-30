@@ -13,7 +13,7 @@ Have you ever wanted to view an image on an ingame map? ImageOnMap provides just
 
 ### ToMap Command
 
-Firstly, make sure you have a free inventory slot, as the plugin will give you a map. The main command we will be using is **/tomap** . You can resize the maps by adding the width and height after the keyword resize, for example **/tomap url resize 2 4**. You can also change the scaling method by replacing the resize keyword to **resize-stretched** to stretch the image to the surface _\(the image may be distorted\)_, or **resize-covered** to to ensure the image covers the whole surface _\(the image will never be distorted, but some parts may be lost near the borders\)_. The permission node for this is **imageonmap.new**.
+First, make sure you have a free inventory slot, as the plugin will give you a map. The main command we will be using is **/tomap** . You can resize the maps by adding the width and height after the keyword resize, for example **/tomap url resize 2 4**. You can also change the scaling method by replacing the resize keyword to **resize-stretched** to stretch the image to the surface _\(the image may be distorted\)_, or **resize-covered** to to ensure the image covers the whole surface _\(the image will never be distorted, but some parts may be lost near the borders\)_. The permission node for this is **imageonmap.new**.
 
 ### Maps Command:
 

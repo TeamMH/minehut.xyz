@@ -1,15 +1,11 @@
 ---
 description: Learn how to create and use cooldowns in your commands and skripts.
 name: skript/examples/cooldown
+madeBy: Rqdioqctive
+madeByLink: https://github.com/Rqdioqctive
 ---
 
-import Hint from "../../../src/Hint"
-
 # Example: Cooldowns
-
-<Hint style="info">
-This tutorial was made by <a href="https://github.com/Rqdioqctive">Rqdioqctive</a>. Lean how to contribute <a href="/contribute">here</a>.
-</Hint>
 
 ## OVERVIEW
 
