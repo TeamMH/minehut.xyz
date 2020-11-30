@@ -72,7 +72,3 @@ Now, for Gitbook to register the page, open a file named SUMMARY.md, and then fi
 Now you can make a pull request! Go to your repository, then click the button labeled `Pull request`, it should be right next to a `Compare` button. Then, click `Create pull request`. Tada! You have made a pull request to our repository, and your page will appear on the Gitbook if we accept it.
 
 Note that you need to delete your fork and refork it to update it. There is no way to auto update it \(unless your editing loccally, which you can learn how to [here](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork).
-
-```
-
-```
