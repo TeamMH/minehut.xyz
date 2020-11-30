@@ -207,6 +207,7 @@ function useStyles(theme) {
 				},
 				paragraph: {
 					lineHeight: 1.625,
+					marginTop: theme.spacing(3),
 				},
 			};
 		},
