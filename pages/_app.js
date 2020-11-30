@@ -64,7 +64,7 @@ const themeObject = {
 			light: "#7289DA",
 			dark: "#7289DA",
 		},
-		divider: "rgba(255 255 255 / 12%)",
+		divider: "rgba(255, 255, 255, .12)",
 	},
 	breakpoints: {
 		values: {
@@ -172,6 +172,42 @@ function useStyles(theme) {
 					boxShadow: theme.shadows[2],
 					background: "white",
 				},
+				buttonSingleLine: {
+					position: "absolute",
+					right: 5,
+					top: "50%",
+					transform: "translateY(-50%)",
+					zIndex: 10,
+					background:
+						theme.palette.type === "dark"
+							? "rgb(29, 31, 33)"
+							: "rgb(250, 250, 250)",
+					"&:hover": {
+						background:
+							theme.palette.type === "dark"
+								? "rgba(255, 255, 255, .08)"
+								: "rgba(0, 0, 0, .04)",
+					},
+				},
+				buttonMultiLine: {
+					position: "absolute",
+					top: 5,
+					right: 5,
+					zIndex: 10,
+					background:
+						theme.palette.type === "dark"
+							? "rgb(29, 31, 33)"
+							: "rgb(250, 250, 250)",
+					"&:hover": {
+						background:
+							theme.palette.type === "dark"
+								? "rgba(255, 255, 255, .08)"
+								: "rgba(0, 0, 0, .04)",
+					},
+				},
+				paragraph: {
+					lineHeight: 1.625,
+				},
 			};
 		},
 		{ defaultTheme: theme }
@@ -216,8 +252,8 @@ const appBarTheme = createMuiTheme(themeObject);
 
 export default function MinehutXYZ(props) {
 	const [cookies, setCookie] = useCookies(["theme"]);
-	if (!cookies.theme) setCookie("theme", "dark");
-	themeObject.palette.type = cookies.theme || "dark";
+	if (!cookies.theme) setCookie("theme", "light");
+	themeObject.palette.type = cookies.theme || "light";
 	themeObject.palette.background.default =
 		themeObject.palette.type === "light"
 			? colors.light.default
@@ -346,7 +382,14 @@ export default function MinehutXYZ(props) {
 			);
 		},
 		p(props) {
-			return <Typography {...props} variant="body1" paragraph />;
+			return (
+				<Typography
+					className={classes.paragraph}
+					{...props}
+					variant="body1"
+					paragraph
+				/>
+			);
 		},
 		a(props) {
 			if (props.href && props.href.match(/^https?:\/\//))
@@ -391,22 +434,12 @@ export default function MinehutXYZ(props) {
 					<Tooltip title="Copy code to clipboard">
 						<IconButton
 							centerRipple={false}
-							style={
-								numberOfLines === 1
-									? {
-											position: "absolute",
-											right: 5,
-											top: "50%",
-											transform: "translateY(-50%)",
-											zIndex: 10,
-									  }
-									: {
-											position: "absolute",
-											top: 5,
-											right: 5,
-											zIndex: 10,
-									  }
-							}
+							classes={{
+								root:
+									numberOfLines === 1
+										? classes.buttonSingleLine
+										: classes.buttonMultiLine,
+							}}
 							onClick={(e) => {
 								const el = document.createElement("textarea");
 								el.value = props.children.replace(/\n$/, "");

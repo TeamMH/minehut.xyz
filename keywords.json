@@ -409,10 +409,10 @@
         "Commands": [
             "\n# Commands",
             "\n## HOW TO REGISTER A COMMAND",
-            "\n## **ARGUMENTS \\(optional\\)**",
-            "\n## **PARAMETERS \\(optional\\)**",
-            "\n## **GETTING INPUTTED ARGUMENTS**",
-            "\n### **Examples**"
+            "\n## ARGUMENTS \\(optional\\)",
+            "\n## PARAMETERS \\(optional\\)",
+            "\n## GETTING INPUTTED ARGUMENTS",
+            "\n### Examples"
         ],
         "Comments": [
             "\n# Comments",
