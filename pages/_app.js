@@ -209,6 +209,9 @@ function useStyles(theme) {
 					lineHeight: 1.625,
 					marginTop: theme.spacing(2),
 				},
+				list: {
+					lineHeight: 1.625,
+				},
 			};
 		},
 		{ defaultTheme: theme }
@@ -488,6 +491,9 @@ export default function MinehutXYZ(props) {
 		},
 		img(props) {
 			return <img {...props} className={classes.img} />;
+		},
+		li(props) {
+			return <li {...props} className={classes.list} />;
 		},
 	};
 
