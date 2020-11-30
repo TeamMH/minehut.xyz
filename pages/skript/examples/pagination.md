@@ -22,7 +22,7 @@ Pagination is making interactive GUI that have multiple pages. This is useful fo
 
 Examples:
 
-```r
+```vb
 command /demo-gui [<integer>]:
     trigger:
         set {_p} to player
@@ -42,7 +42,7 @@ command /demo-gui [<integer>]:
             format slot 45 of {_p} with paper named "&bLast Page" to run [make player execute command "/demo-gui"]
 ```
 
-```r
+```vb
 command /demo-shop [<number = 1>]:
   trigger:
     close player's inventory

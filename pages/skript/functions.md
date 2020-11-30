@@ -29,7 +29,7 @@ If you're returning something, there <strong>cannot</strong> be a delay.
 
 The typical function looks like this:
 
-```r
+```vb
 # Do not put [ :: return type] if you aren't returning anything.
 function name(parameter_name: parameter_type) :: return type:
     # code to be ran
@@ -39,7 +39,7 @@ You can call a function in your code by putting `function_name(parameters, if an
 
 ## EXAMPLES
 
-```r
+```vb
 function say_hi(p: player):
     send "Hi there!" to {_p}
 
@@ -47,7 +47,7 @@ on join:
     say_hi(player)
 ```
 
-```r
+```vb
 function kill(victim: player, attacker: player):
     make {_victim} respawn
     add 1 to {deaths::%{_victim}%}

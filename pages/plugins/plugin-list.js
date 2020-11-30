@@ -158,7 +158,7 @@ export default function PluginList(props) {
 								className={classes.accordionDetails}
 							>
 								{plugin.desc.split("\n").map((d) => (
-									<Typography paragraph>
+									<Typography paragraph key={d}>
 										<strong>Description | </strong>
 										{d}
 									</Typography>

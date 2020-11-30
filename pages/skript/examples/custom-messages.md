@@ -11,7 +11,7 @@ Instead of having the default join and quit messages, you can create fancy, cust
 
 ## CODE
 
-```r
+```vb
 on join:
   set join message to "[+] %player%"
 

@@ -11,7 +11,7 @@ We will be creating a `/discord` command that will allow users to click the text
 
 ## CODE
 
-```r
+```vb
 command /discord:
   trigger:
     send "&7> Click <link:DISCORD_INVITE>&c&lHERE<reset>&7to join our discord."

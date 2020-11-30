@@ -17,7 +17,7 @@ A bossbar is useful in many different cases. A bossbar can be found at the very 
 Skript addon <strong>skRayFall</strong> is required!
 </Hint>
 
-```r
+```vb
 on join:
   create bossbar titled "&aWelcome to the server." and id "bossbar::%player's uuid%" for player with progress 100 with colors blue
 ```

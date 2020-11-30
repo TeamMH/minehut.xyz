@@ -14,7 +14,7 @@ If you experienced the error **"Error: Indentation error at line X, expected X t
 Indentation is placing text in code further to the right, to allow the parser to know this is a different section of the code. Most programming language don't care about indentation, their parser can handle it correctly without, but Skript can't, because of its rich, English-like syntax.  
 That's why indentation is really important and you should always take care of it. See an example below.
 
-```r
+```vb
 on script load:
     if 1 = 1:  # Here I indentated with one tab, to clarify this is the section after the event.
         broadcast "How are you?"  # Here I indentated with two tabs, because this is a section after a condition, that already was indentated.
@@ -24,28 +24,28 @@ on script load:
 
 -   After an _event_.
 
-```r
+```vb
 on script load: # Event
     # code
 ```
 
 -   After any _condition_.
 
-```r
+```vb
 if attacker is a player: # Condition
     # code
 ```
 
 -   After any other _section_.
 
-```r
+```vb
 while player is online: # Section
     # code
 ```
 
 -   After any _function_.
 
-```r
+```vb
 function myFunc(): # A function is declared.
     # code
 ```

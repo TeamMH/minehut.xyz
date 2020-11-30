@@ -11,7 +11,7 @@ import Link from "./Link";
 
 const useStyles = makeStyles((theme) => ({
 	navGrid: {
-		marginTop: theme.spacing(2),
+		marginTop: theme.spacing(1),
 	},
 	card: {
 		height: "100%",
@@ -22,7 +22,7 @@ export default function Pagination({ current, rArray }) {
 	const classes = useStyles();
 
 	return (
-		<Grid spacing={3} className={classes.navGrid} container>
+		<Grid spacing={2} className={classes.navGrid} container>
 			{current ? (
 				<Grid xs={12} sm={current + 1 < rArray.length ? 6 : 12} item>
 					<Card className={classes.card}>
@@ -52,7 +52,7 @@ export default function Pagination({ current, rArray }) {
 											.slice(1)
 											.reverse()
 											.map((route) => (
-												<Typography>
+												<Typography key={route}>
 													{route
 														.replace(
 															/-./g,
@@ -107,7 +107,7 @@ export default function Pagination({ current, rArray }) {
 											.slice(1)
 											.reverse()
 											.map((route) => (
-												<Typography>
+												<Typography key={route}>
 													{route
 														.replace(
 															/-./g,

@@ -77,10 +77,24 @@ const themeObject = {
 	},
 };
 
-function useStyles(theme) {
+function useStyles(props, theme) {
 	return makeStyles(
 		(theme) => {
 			return {
+				"@global": {
+					"*::-webkit-scrollbar": {
+						width: theme.spacing(1),
+						height: theme.spacing(1),
+						background: "rgba(0, 0, 0, .15)",
+					},
+					"*::-webkit-scrollbar-thumb": {
+						background:
+							theme.palette.type === "dark"
+								? "rgb(16, 19, 23)"
+								: colors.dark.paper,
+						borderRadius: theme.shape.borderRadius,
+					},
+				},
 				root: {
 					display: "flex",
 					fontSize: "1rem",
@@ -89,7 +103,17 @@ function useStyles(theme) {
 				content: {
 					flexGrow: 1,
 					padding: theme.spacing(3, 0),
-					maxWidth: "100%",
+					[theme.breakpoints.up("lg")]: {
+						maxWidth: (props) =>
+							props.fm ? "calc(100% - 550px)" : "100%",
+					},
+					[theme.breakpoints.only("md")]: {
+						maxWidth: (props) =>
+							props.fm ? "calc(100% - 250px)" : "100%",
+					},
+					[theme.breakpoints.down("sm")]: {
+						maxWidth: "100%",
+					},
 				},
 				navTheme: {
 					marginRight: theme.spacing(1),
@@ -215,7 +239,7 @@ function useStyles(theme) {
 			};
 		},
 		{ defaultTheme: theme }
-	)();
+	)(props);
 }
 
 const useDarkMode = (setCookie) => {
@@ -275,7 +299,14 @@ export default function MinehutXYZ(props) {
 
 	const { Component, pageProps } = props;
 	const themeConfig = createMuiTheme(theme);
-	const classes = useStyles(themeConfig);
+
+	const router = useRouter();
+
+	const fm = frontMatter.find((f) =>
+		f ? f.name === router.asPath.split("#")[0].slice(1) : null
+	);
+
+	const classes = useStyles({ fm }, themeConfig);
 
 	const [open, setOpen] = React.useState(false);
 
@@ -468,7 +499,7 @@ export default function MinehutXYZ(props) {
 					<SyntaxHighlighter
 						showLineNumbers
 						wrapLines
-						wrapLongLines
+						//wrapLongLines
 						language={
 							props.className
 								? props.className.replace("language-", "")
@@ -504,15 +535,9 @@ export default function MinehutXYZ(props) {
 		}
 	}, []);
 
-	const router = useRouter();
-
 	const loaded = useLoaded();
 
 	const [tocOpen, setTocOpen] = React.useState(false);
-
-	const fm = frontMatter.find((f) =>
-		f ? f.name === router.asPath.split("#")[0].slice(1) : null
-	);
 
 	const meta = fm ? (
 		<meta content={fm.description} property="og:description" />

@@ -15,6 +15,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import routes from "../routes.json";
+import colors from "../colors.json";
 
 const drawerWidth = 300;
 
@@ -31,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 	drawerContainer: {
 		overflowY: "auto",
 		overflowX: "hidden",
+		paddingRight: "0 !important",
 	},
 	subheader: {
 		marginTop: theme.spacing(2),

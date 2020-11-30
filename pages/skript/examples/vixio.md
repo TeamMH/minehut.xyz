@@ -19,7 +19,7 @@ Next, go to plugins &gt; skript &gt; scripts Create a new file, call it anything
 
 On the first line, enter the following:
 
-```r
+```vb
 on skript load:
 	login to "(YOUR BOT TOKEN HERE)" with the name "(YOUR BOT NAME HERE)" # This makes the bot online.
 	mark "(Your Bot Name) " as playing "(insert text here)" # This will be the bots status when it is online
@@ -29,7 +29,7 @@ on skript load:
 
 Next, let's assume you want to send your server chat to a channel in discord. Start by creating a dedicated channel for your server chat. Next, right click on your channel and click "Copy ID" Now enter this line of code into your skript file for your bot
 
-```r
+```vb
 on chat:
     send "%player%: %message%" to channel with id "(insert channel ID here" with "(Bot Name Here)"
 ```
@@ -40,7 +40,7 @@ Next, let's make it so whenever someone types a message into your server chat ch
 
 All you need to do for this one is enter this line of code into your skript file
 
-```r
+```vb
 guild message receive seen by "(BOT NAME HERE)":
     set {_chat} to channel with id "(insert channel ID here)"
     if the discord id of event-channel is discord id of {_chat}:
@@ -55,7 +55,7 @@ We are now going to make our bot play music inside a channel, This is very simil
 
 \(Full credit for this part goes to the official Vixio discord server.\)
 
-```r
+```vb
 discord command play <text>:
     prefixes: /
     executable in: guild

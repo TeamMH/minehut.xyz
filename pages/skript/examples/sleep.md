@@ -11,7 +11,7 @@ This tutorial will show you how to allow only one player on your server to sleep
 
 ## CODE
 
-```r
+```vb
 on bed enter:
   cancel event
   set time of event-world to day

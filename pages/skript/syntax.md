@@ -13,7 +13,7 @@ Syntax defines the way to write code with Skript, if you use invalid syntax, you
 
 Let's use the following syntax as an example:
 
-```r
+```vb
 make %players% (say|send [the] message[s]) %strings%
 force %players% to (say|send [the] message[s]) %strings%
 ```
@@ -31,36 +31,36 @@ Note that you can optional parts of syntax in options, and vice versa! This occu
 
 Syntax:
 
-```r
+```vb
 send [the] action bar [with text] %string% to %players%
 ```
 
 Code:
 
-```r
+```vb
 send action bar "hello!" to all players
 ```
 
 Syntax:
 
-```r
+```vb
 break %blocks% [naturally] [using %itemtype%]
 ```
 
 Code:
 
-```r
+```vb
 break target block using player's tool
 ```
 
 Syntax:
 
-```r
+```vb
 broadcast %strings% [(to|in) %worlds%]
 ```
 
 Code:
 
-```r
+```vb
 broadcast "Hey there!" and "Hello!" in world "world"
 ```
