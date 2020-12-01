@@ -41,11 +41,14 @@ import { frontMatter } from "./**/*.md";
 import Discord from "../public/discord.svg";
 import ContentCopy from "../public/content_copy.svg";
 import MenuIcon from "@material-ui/icons/Menu";
+import InsertLinkIcon from "@material-ui/icons/InsertLink";
 import TableOfContents from "../src/TableOfContents";
 import routes from "../routes.json";
 import Pagination from "../src/Pagination";
 import Hint from "../src/Hint";
 import NextLink from "../src/Link";
+import ScrollTop from "../src/ScrollTop";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 
 const themeObject = {
 	palette: {
@@ -137,8 +140,14 @@ function useStyles(props, theme) {
 				heading: {
 					margin: theme.spacing(3, 0),
 					whiteSpace: "pre-wrap !important",
-					wordBreak: "anywhere",
-					overflowWrap: "break-word",
+					overflowWrap: "anywhere",
+					wordBreak: "break-word",
+					"& button": {
+						display: "none",
+					},
+					"&:hover button": {
+						display: "inline-block",
+					},
 				},
 				code: {
 					borderRadius: theme.shape.borderRadius,
@@ -216,6 +225,15 @@ function useStyles(props, theme) {
 				list: {
 					lineHeight: 1.625,
 				},
+				linkCopyButton: {
+					display: "inline-block",
+					height: "100%",
+					width: "auto",
+					position: "relative",
+					bottom: 4,
+					left: 8,
+					margin: "-12px 0",
+				},
 			};
 		},
 		{ defaultTheme: theme }
@@ -283,7 +301,7 @@ export default function MinehutXYZ(props) {
 	const router = useRouter();
 
 	const fm = frontMatter.find((f) =>
-		f ? f.name === router.asPath.split("#")[0].slice(1) : null
+		f ? f.name === router.pathname.slice(1) : null
 	);
 
 	const classes = useStyles({ fm }, themeConfig);
@@ -303,10 +321,29 @@ export default function MinehutXYZ(props) {
 						{...props}
 						variant="h4"
 						component="h1"
+						style={{ position: "relative" }}
 					>
 						{typeof props.children === "string"
 							? props.children.toUpperCase()
 							: props.children}
+						<IconButton
+							className={classes.linkCopyButton}
+							onClick={() =>
+								copyToClipboard(
+									`${window.location.host}${
+										router.pathname
+									}#${
+										"h1-" +
+										getString(props)
+											.toLowerCase()
+											.replace(/ +/g, "-")
+									}`
+								)
+							}
+							centerRipple={false}
+						>
+							<InsertLinkIcon />
+						</IconButton>
 					</Typography>
 					<Typography color="textSecondary" paragraph>
 						{fm ? fm.description : null}
@@ -339,6 +376,24 @@ export default function MinehutXYZ(props) {
 						{typeof props.children === "string"
 							? props.children.toUpperCase()
 							: props.children}
+						<IconButton
+							className={classes.linkCopyButton}
+							onClick={() =>
+								copyToClipboard(
+									`${window.location.host}${
+										router.pathname
+									}#${
+										"h2-" +
+										getString(props)
+											.toLowerCase()
+											.replace(/ +/g, "-")
+									}`
+								)
+							}
+							centerRipple={false}
+						>
+							<InsertLinkIcon />
+						</IconButton>
 					</Typography>
 				</>
 			);
@@ -358,6 +413,22 @@ export default function MinehutXYZ(props) {
 					{typeof props.children === "string"
 						? props.children.toUpperCase()
 						: props.children}
+					<IconButton
+						className={classes.linkCopyButton}
+						onClick={() =>
+							copyToClipboard(
+								`${window.location.host}${router.pathname}#${
+									"h3-" +
+									getString(props)
+										.toLowerCase()
+										.replace(/ +/g, "-")
+								}`
+							)
+						}
+						centerRipple={false}
+					>
+						<InsertLinkIcon />
+					</IconButton>
 				</Typography>
 			);
 		},
@@ -462,20 +533,11 @@ export default function MinehutXYZ(props) {
 										? classes.buttonSingleLine
 										: classes.buttonMultiLine,
 							}}
-							onClick={(e) => {
-								const el = document.createElement("textarea");
-								el.value = props.children.replace(/\n$/, "");
-								el.setAttribute("readonly", "");
-								el.style = {
-									position: "absolute",
-									left: "-9999px",
-								};
-								document.body.appendChild(el);
-								el.select();
-								el.setSelectionRange(0, 99999);
-								document.execCommand("copy");
-								document.body.removeChild(el);
-							}}
+							onClick={(e) =>
+								copyToClipboard(
+									props.children.replace(/\n$/, "")
+								)
+							}
 						>
 							<SvgIcon
 								component={ContentCopy}
@@ -541,15 +603,13 @@ export default function MinehutXYZ(props) {
 	}
 
 	const rArray = routesArray(routes);
-	const current = rArray.findIndex(
-		(r) => r[1] === router.asPath.split("#")[0]
-	);
+	const current = rArray.findIndex((r) => r[1] === router.pathname);
 
-	let title = rArray.find((r) => r[1] === router.asPath.split("#")[0])
+	let title = rArray.find((r) => r[1] === router.pathname)
 		? router.asPath
 				.split("#")[0]
 				.split("/")
-				[router.asPath.split("#")[0].split("/").length - 1].replace(
+				[router.pathname.split("/").length - 1].replace(
 					/-(.)/g,
 					(e) => ` ${e[1].toUpperCase()}`
 				)
@@ -695,10 +755,7 @@ export default function MinehutXYZ(props) {
 						) : null}
 						{fm ? (
 							<Hidden mdUp>
-								<Tooltip
-									placement="top"
-									title="Table of contents"
-								>
+								<Tooltip title="Table of contents">
 									<Fab
 										className={classes.tocFab}
 										onClick={() => setTocOpen(!tocOpen)}
@@ -709,7 +766,14 @@ export default function MinehutXYZ(props) {
 								</Tooltip>
 							</Hidden>
 						) : null}
-						<Tooltip placement="top" title="Join us on Discord!">
+						<ScrollTop>
+							<Tooltip title="Back to top">
+								<Fab color="primary">
+									<KeyboardArrowUpIcon />
+								</Fab>
+							</Tooltip>
+						</ScrollTop>
+						<Tooltip title="Join us on Discord!">
 							<Fab
 								component={Link}
 								href="https://discord.gg/bS6FMMCVyg"
@@ -791,4 +855,19 @@ function getMadeBy(fm) {
 			</>
 		);
 	}
+}
+
+function copyToClipboard(text) {
+	const el = document.createElement("textarea");
+	el.value = text;
+	el.setAttribute("readonly", "");
+	el.style = {
+		position: "absolute",
+		left: "-9999px",
+	};
+	document.body.appendChild(el);
+	el.select();
+	el.setSelectionRange(0, 99999);
+	document.execCommand("copy");
+	document.body.removeChild(el);
 }

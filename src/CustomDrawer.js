@@ -68,7 +68,7 @@ export default function CustomDrawer({ open, setOpen }) {
 						naked
 						href={routes[route]}
 						key={routes[route]}
-						selected={router.asPath.split("#")[0] === routes[route]}
+						selected={router.pathname === routes[route]}
 						onClick={() => setOpen(false)}
 					>
 						<ListItemText

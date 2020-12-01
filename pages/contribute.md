@@ -65,6 +65,8 @@ This is an example page, and this is the source:
 ```md
 ---
 description: Description
+<!-- THE PATH TO THE FILE FROM THE `PAGES` DIRECTORY WITHOUT THE FILENAME AND FIRST SLASH -->
+name: category/subcategory/filename
 madeBy: NAME **OR** [NAME1, NAME2] FOR MULTIPLE PEOPLE
 madeByLink: LINK **OR** [LINK1, LINK2] FOR MULTIPLE PEOPLE (OPTIONAL)
 ---
