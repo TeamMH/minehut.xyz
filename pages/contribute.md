@@ -26,6 +26,7 @@ After that, you can type in the following anywhere in your markdown:
 ```
 
 <Hint style="warning">Inside a hint, only normal HTML will work. For example, instead of doing <inlineCode>**Hello World**</inlineCode>, you'd do <inlineCode>&lt;strong>Hello World&lt;/strong></inlineCode></Hint>
+
 The `style` attribute will give you different colors and icons:
 
 <Hint style="success">This is a <inlineCode>success</inlineCode> hint</Hint>
