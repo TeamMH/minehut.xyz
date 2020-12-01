@@ -67,8 +67,6 @@ export default function CustomDrawer({ open, setOpen }) {
 	useEffect(() => {
 		setStates(routes);
 
-		console.log(tempDropdowns);
-
 		setDropdowns(tempDropdowns);
 	}, [router]);
 

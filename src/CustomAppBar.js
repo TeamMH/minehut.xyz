@@ -161,7 +161,7 @@ export default function CustomAppBar({
 					naked
 					href={
 						mappedRoutes.find((r) => r[0] === k[0])[1] +
-						"#" +
+						"?scrollTo=" +
 						(k[1].match(/(^|\n)### /)
 							? "h3-"
 							: k[1].match(/(^|\n)## /)

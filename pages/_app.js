@@ -608,8 +608,7 @@ export default function MinehutXYZ(props) {
 	const current = rArray.findIndex((r) => r[1] === router.pathname);
 
 	let title = rArray.find((r) => r[1] === router.pathname)
-		? router.asPath
-				.split("#")[0]
+		? router.pathname
 				.split("/")
 				[router.pathname.split("/").length - 1].replace(
 					/-(.)/g,
@@ -622,21 +621,16 @@ export default function MinehutXYZ(props) {
 	const matches = useMediaQuery(themeConfig.breakpoints.up("sm"));
 
 	React.useEffect(() => {
-		const el =
-			router.asPath.split("#").length > 1
-				? document.getElementById(router.asPath.split("#")[1])
-				: null;
-
-		if (el) {
-			setTimeout(() => {
+		if (router.query.scrollTo) {
+			const el = document.getElementById(router.query.scrollTo);
+			if (el)
 				window.scrollTo({
 					top: el.offsetTop - (matches ? 112 : 160),
 					left: 0,
 					behavior: "smooth",
 				});
-			}, 0);
 		}
-	});
+	}, [router]);
 
 	return (
 		<CookiesProvider>

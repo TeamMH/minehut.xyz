@@ -5,11 +5,11 @@ name: skript/variables
 
 # Variables
 
-## **WHAT ARE VARIABLES**
+## WHAT ARE VARIABLES
 
 Variables are Skript's way of storing data, every variable has a name and value \(i.e, stored data\).
 
-## **TYPES OF VARIABLES**
+## TYPES OF VARIABLES
 
 There are 5 types of variables: 'normal' variable, local variable, list variable, an option, and metadata tags.
 
@@ -56,7 +56,7 @@ on join:
 
 You can use variables like `{yes.no}`, but it is better practice to specify them as `{yes::no}`. List variables provide more functionality compared to 'normal' variables because you can do mass deletion, sorting, looping, and more with them.
 
-## **HOW TO USE VARIABLES**
+## HOW TO USE VARIABLES
 
 Using variables is fairly simple, and I've pretty much already summed it up above.
 
