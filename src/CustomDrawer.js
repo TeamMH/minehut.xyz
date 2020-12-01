@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
 	Drawer,
 	Toolbar,
@@ -41,26 +41,51 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CustomDrawer({ open, setOpen }) {
-	const dropdowns = {};
+	const router = useRouter();
+
+	const tempDropdowns = {};
 
 	function setStates(routes) {
 		Object.keys(routes).forEach((route) => {
 			if (typeof routes[route] !== "object") return;
-			const [open, setOpen] = React.useState(false);
-			dropdowns[route] = {};
-			dropdowns[route].open = open;
-			dropdowns[route].setOpen = setOpen;
+
+			tempDropdowns[route] = {
+				open: router.pathname.startsWith(routes[route].__dirroute__),
+				selected: router.pathname.startsWith(
+					routes[route].__dirroute__
+				),
+			};
+
 			setStates(routes[route]);
 		});
 	}
 
 	setStates(routes);
 
-	const router = useRouter();
+	const [dropdowns, setDropdowns] = React.useState(tempDropdowns);
+
+	useEffect(() => {
+		setStates(routes);
+
+		console.log(tempDropdowns);
+
+		setDropdowns(tempDropdowns);
+	}, [router]);
+
+	function updateDropdown(route) {
+		setDropdowns({
+			...dropdowns,
+			[route]: {
+				...dropdowns[route],
+				open: !dropdowns[route].open,
+			},
+		});
+	}
 
 	function mapRoutes(routes, i) {
 		return Object.keys(routes).map((route, index) => {
 			if (typeof routes[route] === "string") {
+				if (route === "__dirroute__") return null;
 				return (
 					<ListItem
 						button
@@ -99,11 +124,10 @@ export default function CustomDrawer({ open, setOpen }) {
 							<ListItem
 								button
 								onClick={() => {
-									dropdowns[route].setOpen(
-										!dropdowns[route].open
-									);
+									updateDropdown(route);
 								}}
 								key={route}
+								selected={dropdowns[route].selected}
 							>
 								<ListItemText
 									style={{

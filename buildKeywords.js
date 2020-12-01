@@ -96,7 +96,13 @@ function readFile(directory, file) {
 	let dir = routes;
 
 	routeParents.forEach((parent) => {
-		if (!dir[parent]) dir[parent] = {};
+		if (!dir[parent])
+			dir[parent] = {
+				__dirroute__: route
+					.split("/")
+					.slice(0, route.split("/").length - 1)
+					.join("/"),
+			};
 		dir = dir[parent];
 	});
 

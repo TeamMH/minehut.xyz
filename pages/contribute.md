@@ -87,6 +87,9 @@ Text
 Text
 ```
 
+<Hint style="warning">Only use 1 <inlineCode>h1</inlineCode> (titles with one <inlineCode>#</inlineCode>) per file</Hint>
+<Hint style="warning">Don't make titles bold or italic, as it'll break some of the site's mechanics</Hint>
+
 To add a **description** to your page, add:
 
 ```md

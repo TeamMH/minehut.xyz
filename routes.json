@@ -3,9 +3,11 @@
     "Contribute": "/contribute",
     "Partnerships": "/partnerships",
     "Plugins": {
+        "__dirroute__": "/plugins/other",
         "Recommended Plugins": "/plugins/recommended-plugins",
         "Plugin List": "/plugins/plugin-list",
         "Other": {
+            "__dirroute__": "/plugins/other",
             "CombatLogX": "/plugins/other/combatlogx",
             "Dream's Man Hunt": "/plugins/other/dreams-man-hunt",
             "ImageOnMap": "/plugins/other/imageonmap",
@@ -13,11 +15,13 @@
             "RedProtect": "/plugins/other/redprotect"
         },
         "Permission Plugins": {
+            "__dirroute__": "/plugins/permission-plugins",
             "GroupManager": "/plugins/permission-plugins/groupmanager",
             "LuckPerms": "/plugins/permission-plugins/luckperms",
             "PermissionsEx": "/plugins/permission-plugins/permissionsex"
         },
         "Popular": {
+            "__dirroute__": "/plugins/popular",
             "CoreProtect": "/plugins/popular/coreprotect",
             "Essentials": "/plugins/popular/essentials",
             "Multiverse": "/plugins/popular/multiverse",
@@ -26,10 +30,13 @@
         }
     },
     "Popular Questions": {
+        "__dirroute__": "/popular-questions/common-errors",
         "Common Errors": {
+            "__dirroute__": "/popular-questions/common-errors",
             "JSON Read": "/popular-questions/common-errors/json-read"
         },
         "In-game": {
+            "__dirroute__": "/popular-questions/in-game",
             "Download": "/popular-questions/in-game/download",
             "Moderation": "/popular-questions/in-game/moderation",
             "Op": "/popular-questions/in-game/op",
@@ -41,9 +48,11 @@
             "World Border": "/popular-questions/in-game/world-border"
         },
         "Making A Server": {
+            "__dirroute__": "/popular-questions/making-a-server",
             "Planning It Out": "/popular-questions/making-a-server/planning-it-out"
         },
         "Minehut": {
+            "__dirroute__": "/popular-questions/minehut",
             "A Full Tutorial": "/popular-questions/minehut/a-full-tutorial",
             "Account Deletion": "/popular-questions/minehut/account-deletion",
             "Account Linking": "/popular-questions/minehut/account-linking",
@@ -58,11 +67,13 @@
             "Voting": "/popular-questions/minehut/voting"
         },
         "Other Questions": {
+            "__dirroute__": "/popular-questions/other-questions",
             "Bedrock": "/popular-questions/other-questions/bedrock",
             "Op Tools": "/popular-questions/other-questions/op-tools",
             "Server Version": "/popular-questions/other-questions/server-version"
         },
         "Panel": {
+            "__dirroute__": "/popular-questions/panel",
             "Backups": "/popular-questions/panel/backups",
             "Custom Seed": "/popular-questions/panel/custom-seed",
             "Datapacks": "/popular-questions/panel/datapacks",
@@ -81,6 +92,7 @@
         }
     },
     "Skript": {
+        "__dirroute__": "/skript",
         "Addons": "/skript/addons",
         "Basics": "/skript/basics",
         "Commands": "/skript/commands",
@@ -92,6 +104,7 @@
         "Syntax": "/skript/syntax",
         "Variables": "/skript/variables",
         "Examples": {
+            "__dirroute__": "/skript/examples",
             "Bossbar": "/skript/examples/bossbar",
             "Cooldown": "/skript/examples/cooldown",
             "Custom Messages": "/skript/examples/custom-messages",
