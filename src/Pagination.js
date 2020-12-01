@@ -25,7 +25,7 @@ export default function Pagination({ current, rArray }) {
 		<Grid spacing={2} className={classes.navGrid} container>
 			{current ? (
 				<Grid xs={12} sm={current + 1 < rArray.length ? 6 : 12} item>
-					<Card className={classes.card}>
+					<Card className={classes.card} elevation={2}>
 						<CardActionArea
 							naked
 							component={Link}
@@ -78,7 +78,7 @@ export default function Pagination({ current, rArray }) {
 			) : null}
 			{current + 1 < rArray.length ? (
 				<Grid xs={12} sm={current ? 6 : 12} item>
-					<Card className={classes.card}>
+					<Card className={classes.card} elevation={2}>
 						<CardActionArea
 							component={Link}
 							naked

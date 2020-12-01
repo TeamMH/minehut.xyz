@@ -11,7 +11,7 @@ export default function Hint({ style, children, disableMargin }) {
 	const classes = useStyles();
 
 	return (
-		<Paper>
+		<Paper elevation={2}>
 			<Alert
 				variant="outlined"
 				severity={style}
