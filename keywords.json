@@ -530,10 +530,10 @@
         ],
         "Variables": [
             "\n# Variables",
-            "\n## **WHAT ARE VARIABLES**",
-            "\n## **TYPES OF VARIABLES**",
+            "\n## WHAT ARE VARIABLES",
+            "\n## TYPES OF VARIABLES",
             "\n## METADATA TAGS",
-            "\n## **HOW TO USE VARIABLES**"
+            "\n## HOW TO USE VARIABLES"
         ]
     }
 }

@@ -328,18 +328,16 @@ export default function MinehutXYZ(props) {
 							: props.children}
 						<IconButton
 							className={classes.linkCopyButton}
-							onClick={() =>
-								copyToClipboard(
-									`${window.location.host}${
-										router.pathname
-									}#${
-										"h1-" +
-										getString(props)
-											.toLowerCase()
-											.replace(/ +/g, "-")
-									}`
-								)
-							}
+							onClick={() => {
+								const url = `${router.pathname}?scrollTo=${
+									"h1-" +
+									getString(props)
+										.toLowerCase()
+										.replace(/ +/g, "-")
+								}`;
+								router.replace(url);
+								copyToClipboard(window.location.host + url);
+							}}
 							centerRipple={false}
 						>
 							<InsertLinkIcon />
@@ -378,18 +376,16 @@ export default function MinehutXYZ(props) {
 							: props.children}
 						<IconButton
 							className={classes.linkCopyButton}
-							onClick={() =>
-								copyToClipboard(
-									`${window.location.host}${
-										router.pathname
-									}#${
-										"h2-" +
-										getString(props)
-											.toLowerCase()
-											.replace(/ +/g, "-")
-									}`
-								)
-							}
+							onClick={() => {
+								const url = `${router.pathname}?scrollTo=${
+									"h1-" +
+									getString(props)
+										.toLowerCase()
+										.replace(/ +/g, "-")
+								}`;
+								router.replace(url);
+								copyToClipboard(window.location.host + url);
+							}}
 							centerRipple={false}
 						>
 							<InsertLinkIcon />
@@ -415,16 +411,16 @@ export default function MinehutXYZ(props) {
 						: props.children}
 					<IconButton
 						className={classes.linkCopyButton}
-						onClick={() =>
-							copyToClipboard(
-								`${window.location.host}${router.pathname}#${
-									"h3-" +
-									getString(props)
-										.toLowerCase()
-										.replace(/ +/g, "-")
-								}`
-							)
-						}
+						onClick={() => {
+							const url = `${router.pathname}?scrollTo=${
+								"h1-" +
+								getString(props)
+									.toLowerCase()
+									.replace(/ +/g, "-")
+							}`;
+							router.replace(url);
+							copyToClipboard(window.location.host + url);
+						}}
 						centerRipple={false}
 					>
 						<InsertLinkIcon />
