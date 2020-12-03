@@ -63,11 +63,11 @@
         "Permission Plugins": {
             "GroupManager": [
                 "\n# GroupManager",
-                "\n## **OVERVIEW**",
-                "\n## **GROUPS**",
-                "\n## **PERMISSIONS**",
-                "\n## **PREFIXES AND SUFFIXES**",
-                "\n## **OTHER COMMANDS**"
+                "\n## OVERVIEW",
+                "\n## GROUPS",
+                "\n## PERMISSIONS",
+                "\n## PREFIXES AND SUFFIXES",
+                "\n## OTHER COMMANDS"
             ],
             "LuckPerms": [
                 "\n# LuckPerms",

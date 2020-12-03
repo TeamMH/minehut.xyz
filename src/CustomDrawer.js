@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 export default function CustomDrawer({ open, setOpen }) {
 	const router = useRouter();
 
-	const tempDropdowns = {};
+	const tempDropdowns = { pathname: router.pathname };
 
 	function setStates(routes) {
 		Object.keys(routes).forEach((route) => {
@@ -67,9 +67,13 @@ export default function CustomDrawer({ open, setOpen }) {
 	const [dropdowns, setDropdowns] = React.useState(tempDropdowns);
 
 	useEffect(() => {
+		if (router.pathname === dropdowns.pathname) return;
 		setStates(routes);
 
-		setDropdowns(tempDropdowns);
+		setDropdowns({
+			...tempDropdowns,
+			pathname: router.pathname,
+		});
 	}, [router]);
 
 	function updateDropdown(route) {
