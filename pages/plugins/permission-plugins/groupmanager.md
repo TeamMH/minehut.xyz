@@ -11,27 +11,27 @@ import Hint from "../../../src/Hint"
 GroupManager is no longer supported; use <a href="/permissionex">PermissionsEx</a> or <a href="/luckperms">LuckPerms</a> instead.
 </Hint>
 
-## **OVERVIEW**
+## OVERVIEW
 
 GroupManager is an easy to use permission manager for controlling your server. You can create groups, assign permissions to groups and user, and much more!
 
-## **GROUPS**
+## GROUPS
 
 You can create a group by performing the command `/mangadd (new group name)`, after we've made the group, we can now modify the group! To give a user a group, run the command `/manuadd (player) (group)`, and to remove a user from a group, run `/manudel (player)` To delete a group, run `/mangdel (group name)`.
 
 To list all the groups you've created, run `/listgroups`.
 
-## **PERMISSIONS**
+## PERMISSIONS
 
 To add permissions to a group, run `/mangaddp (group name) (permission) [permission2] [permission3 ...]`. To remove permissions from a group, run `/mangdelp (group name) (permission) [permission2] [permission3 ...]`.
 
 To add permissions to a user, run `/manuaddp (player) (permission) [permission2] [permission3 ...]`. To remove permissions from a user, run `/manudelp (player) (permission) [permission2] [permission3 ...]`.
 
-#### **MODIFYING PERMISSIONS EXAMPLE**
+#### MODIFYING PERMISSIONS EXAMPLE
 
 `/manuaddp UntitledGoose honk.bonk` `/mangaddp owner permission1 permission2` `/mangdelp owner permission2`
 
-## **PREFIXES AND SUFFIXES**
+## PREFIXES AND SUFFIXES
 
 To add a prefix/suffix to a group, run `/mangaddv (group name) (prefix OR suffix) (value)`. To add a prefix/suffix to a user, run `/manuaddv (player) (prefix OR suffix) (value)`.
 
@@ -39,10 +39,10 @@ To remove a prefix/suffix to a group, run `/mangdelv (group name) (prefix OR suf
 
 For the prefixes and suffixes to show up in chat, you'll need Vault and a chat format plugin. One chat plugin is EssentialsChat, which also requires EssentialsX to work. You can change the chat format in the config.yml for the Essentials folder, located at `/plugins/Essentials/config.yml` in your File Manager, once you edit the config.yml file, you can press Save and then run `/ess reload`.
 
-#### **PREFIXES AND SUFFIXES EXAMPLE**
+#### PREFIXES AND SUFFIXES EXAMPLE
 
 `/manuaddv UntitledGoose prefix &e[&fHONK&e]` `/mangdelv owner suffix &cawesome`
 
-## **OTHER COMMANDS**
+## OTHER COMMANDS
 
 You can get a list of commands [here](https://www.spigotmc.org/resources/groupmanager-1-7-1-16.40615/)!
