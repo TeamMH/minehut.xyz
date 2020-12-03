@@ -8,7 +8,7 @@ import Hint from "../../../src/Hint"
 # Planning it out
 
 <Hint style="info">
-We need your help to improve this! Visit our [contribution tab](/contribute) to help out!
+  We need your help to improve this! Visit our <a href="/contribute">contribution tab</a> to help out!
 </Hint>
 
 ## SERVER PLAN
