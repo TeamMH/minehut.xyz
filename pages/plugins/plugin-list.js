@@ -4,7 +4,6 @@ import {
 	AccordionActions,
 	AccordionDetails,
 	AccordionSummary,
-	Box,
 	Button,
 	Divider,
 	Grid,
@@ -13,10 +12,15 @@ import {
 	TablePagination,
 	TextField,
 	Typography,
+	makeStyles,
+	IconButton,
+	Tooltip,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { makeStyles } from "@material-ui/styles";
 import Head from "next/head";
+import InsertLinkIcon from "@material-ui/icons/InsertLink";
+import { useRouter } from "next/router";
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		width: "100%",
@@ -40,8 +44,27 @@ const useStyles = makeStyles((theme) => ({
 		margin: theme.spacing(2, 0),
 		padding: theme.spacing(2),
 	},
-	text: {
+	heading: {
 		margin: theme.spacing(3, 0),
+		whiteSpace: "pre-wrap !important",
+		overflowWrap: "anywhere",
+		wordBreak: "break-word",
+		position: "relative",
+		"& button": {
+			display: "none",
+		},
+		"&:hover button": {
+			display: "inline-block",
+		},
+	},
+	linkCopyButton: {
+		display: "inline-block",
+		height: "100%",
+		width: "auto",
+		position: "relative",
+		bottom: 4,
+		left: 8,
+		margin: "-12px 0",
 	},
 }));
 
@@ -59,21 +82,42 @@ export default function PluginList(props) {
 
 	const [plugins, setPlugins] = React.useState(props.plugins);
 
+	const router = useRouter();
+
 	return (
 		<div className={classes.root}>
 			<Head>
 				<meta
-					content="Look up all available plugins on Minehut"
+					content="Look up all available plugins on Minehut!"
 					property="og:description"
 				/>
 			</Head>
-			<Typography id="plugin-list" variant="h4" className={classes.text}>
+			<Typography
+				id="plugin-list"
+				variant="h4"
+				className={classes.heading}
+			>
 				PLUGIN LIST
+				<Tooltip title="Copy heading link">
+					<IconButton
+						className={classes.linkCopyButton}
+						onClick={() => {
+							const url = `${
+								router.pathname
+							}?scrollTo=${"h1-plugin-list"}`;
+							router.replace(url);
+							copyToClipboard(window.location.host + url);
+						}}
+						centerRipple={false}
+					>
+						<InsertLinkIcon />
+					</IconButton>
+				</Tooltip>
 			</Typography>
-			<Divider />
-			<Typography className={classes.text}>
+			<Typography color="textSecondary" paragraph>
 				Look up all available plugins on Minehut!
 			</Typography>
+			<Divider />
 			<Paper className={classes.paper}>
 				<TextField
 					className={classes.input}
@@ -210,4 +254,19 @@ export async function getStaticProps() {
 	const { all: plugins } = await res.json();
 
 	return { props: { plugins } };
+}
+
+function copyToClipboard(text) {
+	const el = document.createElement("textarea");
+	el.value = text;
+	el.setAttribute("readonly", "");
+	el.style = {
+		position: "absolute",
+		left: "-9999px",
+	};
+	document.body.appendChild(el);
+	el.select();
+	el.setSelectionRange(0, 99999);
+	document.execCommand("copy");
+	document.body.removeChild(el);
 }

@@ -142,6 +142,7 @@ function useStyles(props, theme) {
 					whiteSpace: "pre-wrap !important",
 					overflowWrap: "anywhere",
 					wordBreak: "break-word",
+					position: "relative",
 					"& button": {
 						display: "none",
 					},
@@ -321,27 +322,28 @@ export default function MinehutXYZ(props) {
 						{...props}
 						variant="h4"
 						component="h1"
-						style={{ position: "relative" }}
 					>
 						{typeof props.children === "string"
 							? props.children.toUpperCase()
 							: props.children}
-						<IconButton
-							className={classes.linkCopyButton}
-							onClick={() => {
-								const url = `${router.pathname}?scrollTo=${
-									"h1-" +
-									getString(props)
-										.toLowerCase()
-										.replace(/ +/g, "-")
-								}`;
-								router.replace(url);
-								copyToClipboard(window.location.host + url);
-							}}
-							centerRipple={false}
-						>
-							<InsertLinkIcon />
-						</IconButton>
+						<Tooltip title="Copy heading link">
+							<IconButton
+								className={classes.linkCopyButton}
+								onClick={() => {
+									const url = `${router.pathname}?scrollTo=${
+										"h1-" +
+										getString(props)
+											.toLowerCase()
+											.replace(/ +/g, "-")
+									}`;
+									router.replace(url);
+									copyToClipboard(window.location.host + url);
+								}}
+								centerRipple={false}
+							>
+								<InsertLinkIcon />
+							</IconButton>
+						</Tooltip>
 					</Typography>
 					<Typography color="textSecondary" paragraph>
 						{fm ? fm.description : null}
@@ -374,22 +376,24 @@ export default function MinehutXYZ(props) {
 						{typeof props.children === "string"
 							? props.children.toUpperCase()
 							: props.children}
-						<IconButton
-							className={classes.linkCopyButton}
-							onClick={() => {
-								const url = `${router.pathname}?scrollTo=${
-									"h1-" +
-									getString(props)
-										.toLowerCase()
-										.replace(/ +/g, "-")
-								}`;
-								router.replace(url);
-								copyToClipboard(window.location.host + url);
-							}}
-							centerRipple={false}
-						>
-							<InsertLinkIcon />
-						</IconButton>
+						<Tooltip title="Copy heading link">
+							<IconButton
+								className={classes.linkCopyButton}
+								onClick={() => {
+									const url = `${router.pathname}?scrollTo=${
+										"h1-" +
+										getString(props)
+											.toLowerCase()
+											.replace(/ +/g, "-")
+									}`;
+									router.replace(url);
+									copyToClipboard(window.location.host + url);
+								}}
+								centerRipple={false}
+							>
+								<InsertLinkIcon />
+							</IconButton>
+						</Tooltip>
 					</Typography>
 				</>
 			);
@@ -409,22 +413,24 @@ export default function MinehutXYZ(props) {
 					{typeof props.children === "string"
 						? props.children.toUpperCase()
 						: props.children}
-					<IconButton
-						className={classes.linkCopyButton}
-						onClick={() => {
-							const url = `${router.pathname}?scrollTo=${
-								"h1-" +
-								getString(props)
-									.toLowerCase()
-									.replace(/ +/g, "-")
-							}`;
-							router.replace(url);
-							copyToClipboard(window.location.host + url);
-						}}
-						centerRipple={false}
-					>
-						<InsertLinkIcon />
-					</IconButton>
+					<Tooltip title="Copy heading link">
+						<IconButton
+							className={classes.linkCopyButton}
+							onClick={() => {
+								const url = `${router.pathname}?scrollTo=${
+									"h1-" +
+									getString(props)
+										.toLowerCase()
+										.replace(/ +/g, "-")
+								}`;
+								router.replace(url);
+								copyToClipboard(window.location.host + url);
+							}}
+							centerRipple={false}
+						>
+							<InsertLinkIcon />
+						</IconButton>
+					</Tooltip>
 				</Typography>
 			);
 		},
