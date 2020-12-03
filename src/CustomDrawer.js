@@ -35,8 +35,10 @@ const useStyles = makeStyles((theme) => ({
 		paddingRight: "0 !important",
 	},
 	subheader: {
-		marginTop: theme.spacing(3),
+		marginTop: theme.spacing(4),
 		backgroundColor: theme.palette.background.paper,
+		fontSize: "1rem",
+		letterSpacing: "1px",
 	},
 }));
 
@@ -96,7 +98,9 @@ export default function CustomDrawer({ open, setOpen }) {
 					>
 						<ListItemText
 							style={{
-								marginLeft: `${Math.max(i - 1, 0) * 32}px`,
+								marginLeft: `${
+									Math.max(i - 1, 0) * 32 + (i === 0 ? 0 : 16)
+								}px`,
 							}}
 						>
 							{route}
@@ -130,7 +134,8 @@ export default function CustomDrawer({ open, setOpen }) {
 								<ListItemText
 									style={{
 										marginLeft: `${
-											Math.max(i - 1, 0) * 32
+											Math.max(i - 1, 0) * 32 +
+											(i === 0 ? 0 : 16)
 										}px`,
 									}}
 								>
