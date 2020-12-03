@@ -25,3 +25,4 @@ We realised there was no dedicated place for Minehut tutorials where the communi
 ## Contribute
 
 You can contribute by making a pull request on this GitHub.
+You may only edit the markdown (.md) files located in the `pages` directory.
