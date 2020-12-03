@@ -88,9 +88,7 @@ export default function Pagination({ current, rArray }) {
 							<CardContent>
 								<Typography
 									variant="subtitle1"
-									style={{
-										color: "#aaaaaa",
-									}}
+									color="textSecondary"
 								>
 									Next Up
 								</Typography>
