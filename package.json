@@ -1,11 +1,12 @@
 {
-	"name": "nextjs",
+	"name": "minehut-xyz",
 	"version": "4.0.0",
 	"private": true,
 	"engines": {
-		"node": "14"
+		"node": "12"
 	},
 	"dependencies": {
+		"@babel/core": "^7.12.9",
 		"@material-ui/core": "latest",
 		"@material-ui/icons": "^4.9.1",
 		"@material-ui/lab": "^4.0.0-alpha.56",
