@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 		paddingRight: "0 !important",
 	},
 	subheader: {
-		marginTop: theme.spacing(2),
+		marginTop: theme.spacing(3),
 		backgroundColor: theme.palette.background.paper,
 	},
 }));

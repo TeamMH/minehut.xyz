@@ -29,7 +29,8 @@
 	"scripts": {
 		"dev": "node buildKeywords.js && next",
 		"build": "node buildKeywords.js && next build",
-		"start": "next start -p $PORT"
+		"start": "next start -p $PORT",
+		"export": "next export"
 	},
 	"cacheDirectories": [
 		".next/cache"
