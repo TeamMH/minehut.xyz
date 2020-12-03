@@ -86,12 +86,6 @@ export default function PluginList(props) {
 
 	return (
 		<div className={classes.root}>
-			<Head>
-				<meta
-					content="Look up all available plugins on Minehut!"
-					property="og:description"
-				/>
-			</Head>
 			<Typography
 				id="plugin-list"
 				variant="h4"

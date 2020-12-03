@@ -595,6 +595,14 @@ export default function MinehutXYZ(props) {
 		<meta content={fm.description} property="og:description" />
 	) : null;
 
+	if (router.pathname === "plugins/plugin-list")
+		meta = (
+			<meta
+				content="Look up all available plugins on Minehut!"
+				property="og:description"
+			/>
+		);
+
 	function routesArray(routes) {
 		const array = [];
 		Object.keys(routes).forEach((route) => {
