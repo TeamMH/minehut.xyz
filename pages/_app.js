@@ -354,7 +354,10 @@ export default function MinehutXYZ(props) {
 						<Hint style="info">
 							This tutorial was made by {getMadeBy(fm)}. Lean how
 							to contribute{" "}
-							<NextLink href="/contribute">here</NextLink>.
+							<NextLink target="_blank" href="/contribute">
+								here
+							</NextLink>
+							.
 						</Hint>
 					) : null}
 				</>

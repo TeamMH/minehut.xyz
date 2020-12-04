@@ -19,5 +19,5 @@ on chat:
 ```
 
 <Hint style="info">
-You can use things such as `%player's prefix%` if you have Essentials & Vault installed.
+You can use things such as <inlineCode>%player's prefix%</inlineCode> if you have Essentials & Vault installed.
 </Hint>
