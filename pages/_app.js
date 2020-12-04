@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import {
+	Backdrop,
 	Container,
 	Divider,
 	Drawer,
@@ -49,6 +50,8 @@ import Hint from "../src/Hint";
 import NextLink from "../src/Link";
 import ScrollTop from "../src/ScrollTop";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
+import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 
 const themeObject = {
 	palette: {
@@ -121,17 +124,9 @@ function useStyles(props, theme) {
 				navTheme: {
 					marginRight: theme.spacing(1),
 				},
-				discordFab: {
+				fab: {
 					position: "fixed",
 					bottom: theme.spacing(2),
-					right: theme.spacing(2),
-					fontSize: 26,
-					color: "white",
-					zIndex: 1300,
-				},
-				tocFab: {
-					position: "fixed",
-					bottom: theme.spacing(10),
 					right: theme.spacing(2),
 					fontSize: 26,
 					color: "white",
@@ -233,7 +228,12 @@ function useStyles(props, theme) {
 					position: "relative",
 					bottom: 4,
 					left: 8,
-					margin: "-12px 0",
+				},
+				backdrop: {
+					zIndex: theme.zIndex.drawer + 1,
+				},
+				dialAction: {
+					width: 130,
 				},
 			};
 		},
@@ -328,6 +328,7 @@ export default function MinehutXYZ(props) {
 							: props.children}
 						<Tooltip title="Copy heading link">
 							<IconButton
+								size="small"
 								className={classes.linkCopyButton}
 								onClick={() => {
 									const url = `${router.pathname}?scrollTo=${
@@ -341,7 +342,7 @@ export default function MinehutXYZ(props) {
 								}}
 								centerRipple={false}
 							>
-								<InsertLinkIcon />
+								<InsertLinkIcon fontSize="small" />
 							</IconButton>
 						</Tooltip>
 					</Typography>
@@ -378,6 +379,7 @@ export default function MinehutXYZ(props) {
 							: props.children}
 						<Tooltip title="Copy heading link">
 							<IconButton
+								size="small"
 								className={classes.linkCopyButton}
 								onClick={() => {
 									const url = `${router.pathname}?scrollTo=${
@@ -391,7 +393,7 @@ export default function MinehutXYZ(props) {
 								}}
 								centerRipple={false}
 							>
-								<InsertLinkIcon />
+								<InsertLinkIcon fontSize="small" />
 							</IconButton>
 						</Tooltip>
 					</Typography>
@@ -415,6 +417,7 @@ export default function MinehutXYZ(props) {
 						: props.children}
 					<Tooltip title="Copy heading link">
 						<IconButton
+							size="small"
 							className={classes.linkCopyButton}
 							onClick={() => {
 								const url = `${router.pathname}?scrollTo=${
@@ -428,7 +431,7 @@ export default function MinehutXYZ(props) {
 							}}
 							centerRipple={false}
 						>
-							<InsertLinkIcon />
+							<InsertLinkIcon fontSize="small" />
 						</IconButton>
 					</Tooltip>
 				</Typography>
@@ -642,6 +645,12 @@ export default function MinehutXYZ(props) {
 		}
 	}, [router]);
 
+	const [speedDialOpen, setSpeedDialOpen] = React.useState(false);
+
+	const speedDialHandleClose = () => setSpeedDialOpen(false);
+
+	const speedDialHandleOpen = () => setSpeedDialOpen(true);
+
 	return (
 		<CookiesProvider>
 			<React.Fragment>
@@ -752,42 +761,96 @@ export default function MinehutXYZ(props) {
 								</Hidden>
 							</>
 						) : null}
-						{fm ? (
-							<Hidden mdUp>
-								<Tooltip title="Table of contents">
-									<Fab
-										className={classes.tocFab}
-										onClick={() => setTocOpen(!tocOpen)}
-										color="primary"
-									>
-										<MenuIcon />
+						<Hidden smDown>
+							<ScrollTop>
+								<Tooltip title="Back to top">
+									<Fab color="primary">
+										<KeyboardArrowUpIcon />
 									</Fab>
 								</Tooltip>
-							</Hidden>
-						) : null}
-						<ScrollTop>
-							<Tooltip title="Back to top">
-								<Fab color="primary">
-									<KeyboardArrowUpIcon />
+							</ScrollTop>
+							<Tooltip title="Join us on Discord!">
+								<Fab
+									component={Link}
+									href="https://discord.gg/bS6FMMCVyg"
+									underline="none"
+									color="secondary"
+									className={classes.fab}
+									rel="noreferrer"
+									target="_blank"
+								>
+									<SvgIcon
+										component={Discord}
+										viewBox="0 0 245 240"
+									/>
 								</Fab>
 							</Tooltip>
-						</ScrollTop>
-						<Tooltip title="Join us on Discord!">
-							<Fab
-								component={Link}
-								href="https://discord.gg/bS6FMMCVyg"
-								underline="none"
-								color="secondary"
-								className={classes.discordFab}
-								rel="noreferrer"
-								target="_blank"
+						</Hidden>
+						<Hidden mdUp>
+							<Backdrop
+								open={speedDialOpen}
+								className={classes.backdrop}
+							/>
+							<SpeedDial
+								ariaLabel="mobile speed dial"
+								className={classes.fab}
+								icon={<SpeedDialIcon />}
+								onClose={speedDialHandleClose}
+								onOpen={speedDialHandleOpen}
+								open={speedDialOpen}
+								FabProps={{
+									size: "medium",
+								}}
 							>
-								<SvgIcon
-									component={Discord}
-									viewBox="0 0 245 240"
+								<SpeedDialAction
+									onClick={speedDialHandleClose}
+									tooltipOpen
+									tooltipTitle="Discord"
+									FabProps={{
+										component: Link,
+										href: "https://discord.gg/bS6FMMCVyg",
+										target: "_blank",
+									}}
+									icon={
+										<SvgIcon
+											viewBox="0 0 245 240"
+											component={Discord}
+										/>
+									}
+									classes={{
+										staticTooltipLabel: classes.dialAction,
+									}}
 								/>
-							</Fab>
-						</Tooltip>
+								<SpeedDialAction
+									onClick={speedDialHandleClose}
+									tooltipOpen
+									tooltipTitle="Table of contents"
+									FabProps={{
+										onClick: () => setTocOpen(!tocOpen),
+									}}
+									icon={<MenuIcon />}
+									classes={{
+										staticTooltipLabel: classes.dialAction,
+									}}
+								/>
+								<SpeedDialAction
+									onClick={() => {
+										speedDialHandleClose();
+										window.scrollTo({
+											top: 0,
+											left: 0,
+											behavior: "smooth",
+										});
+									}}
+									tooltipOpen
+									tooltipTitle="Back to top"
+									icon={<KeyboardArrowUpIcon />}
+									classes={{
+										staticTooltipLabel: classes.dialAction,
+									}}
+								/>
+							</SpeedDial>
+						</Hidden>
 					</div>
 				</ThemeProvider>
 			</React.Fragment>

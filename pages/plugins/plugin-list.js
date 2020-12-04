@@ -64,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
 		position: "relative",
 		bottom: 4,
 		left: 8,
-		margin: "-12px 0",
 	},
 }));
 
@@ -94,6 +93,7 @@ export default function PluginList(props) {
 				PLUGIN LIST
 				<Tooltip title="Copy heading link">
 					<IconButton
+						size="small"
 						className={classes.linkCopyButton}
 						onClick={() => {
 							const url = `${
@@ -104,7 +104,7 @@ export default function PluginList(props) {
 						}}
 						centerRipple={false}
 					>
-						<InsertLinkIcon />
+						<InsertLinkIcon fontSize="small" />
 					</IconButton>
 				</Tooltip>
 			</Typography>
