@@ -11,6 +11,12 @@ export default class MyDocument extends Document {
 						rel="stylesheet"
 						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 					/>
+					<meta content="minehut.xyz" property="og:site_name" />
+					<meta
+						content="https://app.gitbook.com/share/space/thumbnail/-MDvLUELAt3CwagRrh51.png"
+						property="og:image"
+					/>
+					<meta content="#005af7" property="theme-color" />
 				</Head>
 				<body>
 					<Main />

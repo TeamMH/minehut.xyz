@@ -647,18 +647,11 @@ export default function MinehutXYZ(props) {
 			<React.Fragment>
 				<Head>
 					<meta
-						content={"minehut.xyz" + (title ? " | " + title : "")}
+						content={(title || "Home") + " | minehut.xyz"}
 						property="og:title"
 					/>
 					{meta}
-					<meta content="minehut.xyz" property="og:site_name" />
-					<meta
-						content="https://app.gitbook.com/share/space/thumbnail/-MDvLUELAt3CwagRrh51.png"
-						property="og:image"
-					/>
-					<title>
-						{"minehut.xyz" + (title ? " | " + title : "")}
-					</title>
+					<title>{(title || "Home") + " | minehut.xyz"}</title>
 					<meta
 						name="viewport"
 						content="minimum-scale=1, initial-scale=1, width=device-width"
