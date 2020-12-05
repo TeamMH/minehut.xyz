@@ -13,6 +13,10 @@ import Hint from "../src/Hint"
 
 > The **Azyncraft Network** is a network of servers, and a chill and active community. There, you can find friends and we even need builders!
 
+## [Solar Networks](https://discord.gg/QuvmKW4)
+
+> Solar Networks is a network of servers created just over a year ago. Our staff and management team is dedicated to providing you every fun and excitement! Our community has had our ups downs but we are confident we are going in the right path. We currently host 3 servers. All Minecraft servers. All of them are in development. But to make up for the waiting times you can hang around in the Discord and play games with bots and much more!. Join our discord at: https://discord.gg/QuvmKW4
+
 ## [Parasite](https://discord.parasitemc.com/)
 
 > **Parasite** is a zombie rpg server, where you farm for loot, and survive in an abandoned city! Team up with your faction or fight with others.
@@ -27,7 +31,7 @@ import Hint from "../src/Hint"
 
 ## [Evera](https://discord.gg/XfJBzuA)
 
-> Evera is a user friendly, lag free, and non pay to win Prison server.
+> **Evera** is a user friendly, lag free, and non pay to win Prison server.
 
 ## [Idler](https://discord.gg/nV55ptk)
 
