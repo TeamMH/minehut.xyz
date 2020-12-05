@@ -710,7 +710,7 @@ export default function MinehutXYZ(props) {
 									to become an{" "}
 									<strong>official writer</strong>, get{" "}
 									<strong>site updates</strong>, and{" "}
-									<strong>much more</strong>
+									<strong>much more</strong>.
 								</Hint>
 								{current !== -1 ? (
 									<Pagination

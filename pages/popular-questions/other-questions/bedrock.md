@@ -18,12 +18,12 @@ All servers on Minehut supports crossplay on Java and Bedrock Edition.
 ## HOW TO CONNECT USING BEDROCK
 
 ```text
-VERSION: 1.16.3
+VERSION: 1.16.100
 CONNECT: bedrock.minehut.com
 PORT: 19132
 DEVICES: iOS, Android, Windows 10
 ```
 
-_Note, you **cannot** direct connect on Bedrock Edition, you must join the lobby, then use **/join** to get on your server._
+<Hint style="warning">You **cannot** direct connect to a server on Bedrock Edition, you must join the lobby, then use **/join** to get on your server.</Hint>
 
-_Note, Bedrock Emotes are **not** currently supported._
+<Hint style="error">Note, Bedrock Emotes are **not** currently supported.</Hint>
