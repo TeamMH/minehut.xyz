@@ -658,10 +658,7 @@ export default function MinehutXYZ(props) {
 		<CookiesProvider>
 			<React.Fragment>
 				<Head>
-					<meta
-						content={(title || "Home") + " | minehut.xyz"}
-						property="og:title"
-					/>
+					<meta content={title || "Home"} property="og:title" />
 					{meta}
 					<title>{(title || "Home") + " | minehut.xyz"}</title>
 					<meta
