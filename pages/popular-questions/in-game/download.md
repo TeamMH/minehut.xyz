@@ -1,5 +1,5 @@
 ---
-description: "If you want to download your minehut server, it (should be) simple and easy."
+description: "If you want to download your Minehut server, it (should be) simple and easy."
 name: popular-questions/in-game/download
 ---
 

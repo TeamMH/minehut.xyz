@@ -7,7 +7,7 @@ name: popular-questions/in-game/moderation
 
 ## Banning Users
 
-You can ban users on minehut using `/ban <name> [reason]`, as well as temporarily ban them with `/tempban <user> <duration {usually like 1m,1h,1d}> [reason]`. To unban a user is a bit different though, if your using essentials or a ban management plugin like LiteBans, use `/unban <player>`. For vanilla minecraft, use `/pardon <player>` to unban someone.
+You can ban users on Minehut using `/ban <name> [reason]`, as well as temporarily ban them with `/tempban <user> <duration {usually like 1m,1h,1d}> [reason]`. To unban a user is a bit different though, if your using essentials or a ban management plugin like LiteBans, use `/unban <player>`. For vanilla minecraft, use `/pardon <player>` to unban someone.
 
 ## Muting Users
 

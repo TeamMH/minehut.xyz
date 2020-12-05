@@ -1,5 +1,5 @@
 ---
-description: Learn how to make a speedrunner versus hunter gamemode on minehut.
+description: Learn how to make a speedrunner versus hunter gamemode on Minehut.
 name: plugins/other/dreams-man-hunt
 ---
 

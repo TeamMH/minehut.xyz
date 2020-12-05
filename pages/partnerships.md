@@ -19,7 +19,7 @@ import Hint from "../src/Hint"
 
 ## [GoldenDupe](https://discord.gg/4F9yfHf)
 
-> **GoldenDupe** is the **\#1** duping server on minehut, come join today! We have **Raiding**, **PvP**, **Clans**, **an active community** & much more!
+> **GoldenDupe** is the **\#1** duping server on Minehut, come join today! We have **Raiding**, **PvP**, **Clans**, **an active community** & much more!
 
 ## [Premiums](https://discord.gg/vvajrHX)
 
