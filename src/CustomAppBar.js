@@ -19,12 +19,12 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Brightness4 from "@material-ui/icons/Brightness4";
 import Brightness7 from "@material-ui/icons/Brightness7";
 import SearchIcon from "@material-ui/icons/Search";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Minehut from "../public/minehut.svg";
 import Link from "./Link";
 import keywords from "../keywords.json";
 import routes from "../routes.json";
-import { useRouter } from "next/router";
+import { useRouter, withRouter } from "next/router";
 import { debounce } from "debounce";
 
 const useStyles = makeStyles((theme) => ({
@@ -157,21 +157,17 @@ export default function CustomAppBar({
 
 	filteredKeywords.splice(5, filteredKeywords.length - 5);
 
-	const debouncedRoute = useCallback((searchWord, router, url, scrollTo) => {
-		console.log("test");
-		const debounced = debounce(() => {
-			console.log(router);
-			router[url ? "push" : "replace"]({
-				pathname: url || router.pathname,
+	const debouncedRoute = useCallback(
+		debounce((searchWord) => {
+			router.replace({
 				query: removeUndefined({
-					scrollTo: scrollTo || router.query.scrollTo,
+					...router.query,
 					q: searchWord || undefined,
 				}),
 			});
-		}, 1000);
-		debounced();
-		if (scrollTo || url) debounced.flush();
-	}, []);
+		}, 500),
+		[router]
+	);
 
 	const list = (
 		<List>
@@ -181,20 +177,26 @@ export default function CustomAppBar({
 					onClick={() => {
 						setSearchWord("");
 						setSearching(false);
-						debouncedRoute(
-							null,
-							router,
-							mappedRoutes.find((r) => r[0] === k[0])[1],
-							(k[1].match(/(^|\n)### /)
-								? "h3-"
-								: k[1].match(/(^|\n)## /)
-								? "h2-"
-								: "h1-") +
-								k[1]
-									.replace(/(^|\n)#{1,3} /, "")
-									.toLowerCase()
-									.replace(/ +/g, "-")
-						);
+
+						router.push({
+							pathname: mappedRoutes.find(
+								(r) => r[0] === k[0]
+							)[1],
+							query: removeUndefined({
+								...router.query,
+								q: undefined,
+								scrollTo:
+									(k[1].match(/(^|\n)### /)
+										? "h3-"
+										: k[1].match(/(^|\n)## /)
+										? "h2-"
+										: "h1-") +
+									k[1]
+										.replace(/(^|\n)#{1,3} /, "")
+										.toLowerCase()
+										.replace(/ +/g, "-"),
+							}),
+						});
 					}}
 					key={k[0] + "-" + k[1]}
 				>
@@ -225,7 +227,7 @@ export default function CustomAppBar({
 				onChange={(e) => {
 					setSearching(true);
 					setSearchWord(e.target.value);
-					debouncedRoute(e.target.value, router);
+					debouncedRoute(e.target.value);
 				}}
 				onFocus={() => setSearching(true)}
 				onBlur={(e) => {

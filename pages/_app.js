@@ -669,8 +669,11 @@ export default function MinehutXYZ(props) {
 		}
 	}, []);
 
+	const [query, setQuery] = React.useState("");
+
 	React.useEffect(() => {
-		if (router.query.scrollTo) {
+		if (router.query.scrollTo && router.query.scrollTo !== query) {
+			setQuery(router.query.scrollTo);
 			const el = document.getElementById(router.query.scrollTo);
 			if (el)
 				window.scrollTo({
