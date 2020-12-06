@@ -247,7 +247,21 @@ export async function getStaticProps() {
 	const res = await fetch("https://api.minehut.com/plugins_public");
 	const { all: plugins } = await res.json();
 
-	return { props: { plugins } };
+	return {
+		props: {
+			plugins: plugins.sort((a, b) => {
+				var nameA = a.name.toUpperCase();
+				var nameB = b.name.toUpperCase();
+				if (nameA < nameB) {
+					return -1;
+				}
+				if (nameA > nameB) {
+					return 1;
+				}
+				return 0;
+			}),
+		},
+	};
 }
 
 function copyToClipboard(text) {
