@@ -24,6 +24,6 @@ PORT: 19132
 DEVICES: iOS, Android, Windows 10
 ```
 
-<Hint style="warning">You **cannot** direct connect to a server on Bedrock Edition, you must join the lobby, then use **/join** to get on your server.</Hint>
+<Hint style="warning">You <strong>cannot</strong> direct connect to a server on Bedrock Edition, you must join the lobby, then use <strong>/join</strong> to get on your server.</Hint>
 
-<Hint style="error">Note, Bedrock Emotes are **not** currently supported.</Hint>
+<Hint style="error">Note, Bedrock Emotes are <strong>not</strong> currently supported.</Hint>
