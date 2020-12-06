@@ -22,7 +22,11 @@ const useStyles = makeStyles((theme) => ({
 		flexShrink: 0,
 	},
 	drawerPaper: {
-		width: "16.6666667%",
+		width: 300,
+		maxWidth: "100%",
+		[theme.breakpoints.up("lg")]: {
+			width: "16.6666667%",
+		},
 	},
 	drawerContainer: {
 		overflowY: "auto",

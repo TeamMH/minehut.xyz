@@ -150,13 +150,17 @@ function useStyles(props, theme) {
 					height: "100%",
 				},
 				drawerPaper: {
-					width: "16.6666667%",
+					width: 300,
+					maxWidth: "100%",
 					[theme.breakpoints.only("md")]: {
 						width: "25%",
 					},
 					[theme.breakpoints.up("md")]: {
 						background: "none",
 						border: "none",
+					},
+					[theme.breakpoints.up("lg")]: {
+						width: "16.6666667%",
 					},
 				},
 				drawerContainer: {
@@ -688,7 +692,7 @@ export default function MinehutXYZ(props) {
 						<Grid item lg={2}>
 							<CustomDrawer open={open} setOpen={setOpen} />
 						</Grid>
-						<Grid item xs={12} md={fm ? 10 : 12} lg={fm ? 8 : 10}>
+						<Grid item xs={12} md={fm ? 9 : 12} lg={fm ? 8 : 10}>
 							<Toolbar />
 							<Container
 								maxWidth="md"

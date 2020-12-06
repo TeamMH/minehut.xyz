@@ -53,7 +53,7 @@ export function Footer() {
 								minehut.xyz
 							</Typography>
 						</Grid>
-						<Grid item xs={12} md={4}>
+						<Grid item xs={12} sm={4}>
 							<Typography variant="h6">Links</Typography>
 							<Typography>
 								<Link href="/home" color="textSecondary">
@@ -74,7 +74,7 @@ export function Footer() {
 								</Link>
 							</Typography>
 						</Grid>
-						<Grid item xs={12} md={4}>
+						<Grid item xs={12} sm={4}>
 							<Typography variant="h6">Social</Typography>
 							<Typography>
 								<Link
@@ -95,7 +95,7 @@ export function Footer() {
 								</Link>
 							</Typography>
 						</Grid>
-						<Grid item xs={12} md={4}>
+						<Grid item xs={12} sm={4}>
 							<Typography variant="h6">Minehut</Typography>
 							<Typography>
 								<Link
@@ -123,6 +123,11 @@ export function Footer() {
 								>
 									Discord
 								</Link>
+							</Typography>
+						</Grid>
+						<Grid item xs={12}>
+							<Typography>
+								&copy; 2020 minehut.xyz. All rights reserved.
 							</Typography>
 						</Grid>
 					</Grid>
