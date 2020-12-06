@@ -40,7 +40,23 @@ export default function Pagination({ current, rArray }) {
 									Previous
 								</Typography>
 								<Typography variant="h5">
-									{rArray[current - 1][0]}
+									{rArray[current - 1][0] === "__dirroute__"
+										? rArray[current - 1][1]
+												.split("/")
+												.reverse()[0]
+												.replace(
+													/-./g,
+													(e) =>
+														" " + e[1].toUpperCase()
+												)
+												.split("")
+												.map((c, i) =>
+													i === 0
+														? c.toUpperCase()
+														: c
+												)
+												.join("")
+										: rArray[current - 1][0]}
 								</Typography>
 								{rArray[current - 1][1].split("/").length >=
 								3 ? (
@@ -93,7 +109,24 @@ export default function Pagination({ current, rArray }) {
 									Next Up
 								</Typography>
 								<Typography variant="h5">
-									{rArray[current + 1][0]}
+									{console.log(rArray[current + 1][0])}
+									{rArray[current + 1][0] === "__dirroute__"
+										? rArray[current + 1][1]
+												.split("/")
+												.reverse()[0]
+												.replace(
+													/-./g,
+													(e) =>
+														" " + e[1].toUpperCase()
+												)
+												.split("")
+												.map((c, i) =>
+													i === 0
+														? c.toUpperCase()
+														: c
+												)
+												.join("")
+										: rArray[current + 1][0]}
 								</Typography>
 								{rArray[current + 1][1].split("/").length >=
 								3 ? (
