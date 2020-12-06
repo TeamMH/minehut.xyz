@@ -65,7 +65,7 @@ export default function Other() {
 
 		return (
 			<Grid item xs={12} sm={6} key={route}>
-				<Card className={classes.card}>
+				<Card className={classes.card} elevation={2}>
 					<CardActionArea
 						component={Link}
 						naked
