@@ -157,8 +157,9 @@ export default function CustomAppBar({
 
 	filteredKeywords.splice(5, filteredKeywords.length - 5);
 
-	const debouncedRoute = useCallback(
-		debounce((searchWord, router, url, scrollTo) => {
+	const debouncedRoute = useCallback((searchWord, router, url, scrollTo) => {
+		console.log("test");
+		const debounced = debounce(() => {
 			console.log(router);
 			router[url ? "push" : "replace"]({
 				pathname: url || router.pathname,
@@ -167,9 +168,10 @@ export default function CustomAppBar({
 					q: searchWord || undefined,
 				}),
 			});
-		}, 1000),
-		[]
-	);
+		}, 1000);
+		debounced();
+		if (scrollTo || url) debounced.flush();
+	}, []);
 
 	const list = (
 		<List>
