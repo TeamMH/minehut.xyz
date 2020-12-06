@@ -157,31 +157,44 @@ export default function CustomAppBar({
 
 	filteredKeywords.splice(5, filteredKeywords.length - 5);
 
+	const debouncedRoute = useCallback(
+		debounce((searchWord, router, url, scrollTo) => {
+			console.log(router);
+			router[url ? "push" : "replace"]({
+				pathname: url || router.pathname,
+				query: removeUndefined({
+					scrollTo: scrollTo || router.query.scrollTo,
+					q: searchWord || undefined,
+				}),
+			});
+		}, 1000),
+		[]
+	);
+
 	const list = (
 		<List>
 			{filteredKeywords.map((k) => (
 				<ListItem
 					button
-					component={Link}
-					naked
-					href={
-						mappedRoutes.find((r) => r[0] === k[0])[1] +
-						"?scrollTo=" +
-						(k[1].match(/(^|\n)### /)
-							? "h3-"
-							: k[1].match(/(^|\n)## /)
-							? "h2-"
-							: "h1-") +
-						k[1]
-							.replace(/(^|\n)#{1,3} /, "")
-							.toLowerCase()
-							.replace(/ +/g, "-")
-					}
 					onClick={() => {
 						setSearchWord("");
 						setSearching(false);
+						debouncedRoute(
+							null,
+							router,
+							mappedRoutes.find((r) => r[0] === k[0])[1],
+							(k[1].match(/(^|\n)### /)
+								? "h3-"
+								: k[1].match(/(^|\n)## /)
+								? "h2-"
+								: "h1-") +
+								k[1]
+									.replace(/(^|\n)#{1,3} /, "")
+									.toLowerCase()
+									.replace(/ +/g, "-")
+						);
 					}}
-					key={k[1]}
+					key={k[0] + "-" + k[1]}
 				>
 					<ListItemText>
 						<Typography variant="subtitle1" color="textSecondary">
@@ -192,18 +205,6 @@ export default function CustomAppBar({
 				</ListItem>
 			))}
 		</List>
-	);
-
-	const debouncedRoute = useCallback(
-		debounce((e, query) => {
-			router.replace({
-				query: removeUndefined({
-					...query,
-					q: e.target.value || undefined,
-				}),
-			});
-		}, 1000),
-		[]
 	);
 
 	const search = (
@@ -222,7 +223,7 @@ export default function CustomAppBar({
 				onChange={(e) => {
 					setSearching(true);
 					setSearchWord(e.target.value);
-					debouncedRoute(e, router.query);
+					debouncedRoute(e.target.value, router);
 				}}
 				onFocus={() => setSearching(true)}
 				onBlur={(e) => {
