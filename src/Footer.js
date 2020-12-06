@@ -56,7 +56,7 @@ export function Footer() {
 						<Grid item xs={12} sm={4}>
 							<Typography variant="h6">Links</Typography>
 							<Typography>
-								<Link href="/home" color="textSecondary">
+								<Link href="/" color="textSecondary">
 									Home
 								</Link>
 							</Typography>
