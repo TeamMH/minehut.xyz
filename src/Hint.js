@@ -16,7 +16,6 @@ export default function Hint({ style, children, disableMargin }) {
 				variant="outlined"
 				severity={style}
 				className={disableMargin ? null : classes.hint}
-				style={{ lineHeight: 1.625 }}
 			>
 				{children}
 			</Alert>

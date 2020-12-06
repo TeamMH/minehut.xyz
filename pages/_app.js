@@ -13,6 +13,7 @@ import {
 	Divider,
 	Drawer,
 	Fab,
+	Grid,
 	Hidden,
 	IconButton,
 	Link,
@@ -52,6 +53,8 @@ import ScrollTop from "../src/ScrollTop";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
+import { Footer } from "../src/Footer";
+import keywordOverrides from "../keywordOverrides.json";
 
 const themeObject = {
 	palette: {
@@ -78,7 +81,12 @@ const themeObject = {
 			sm: 600,
 			md: 830,
 			lg: 1280,
-			xl: 1920,
+			xl: 1980,
+		},
+	},
+	typography: {
+		body1: {
+			lineHeight: 1.625,
 		},
 	},
 };
@@ -102,25 +110,13 @@ function useStyles(props, theme) {
 					},
 				},
 				root: {
-					display: "flex",
-					fontSize: "1rem",
-					scrollBehavior: "smooth",
+					minHeight: "100vh",
 				},
 				content: {
-					flexGrow: 1,
-					padding: theme.spacing(3, 0),
-					[theme.breakpoints.up("lg")]: {
-						maxWidth: (props) =>
-							props.fm ? "calc(100% - 550px)" : "100%",
-					},
-					[theme.breakpoints.only("md")]: {
-						maxWidth: (props) =>
-							props.fm ? "calc(100% - 250px)" : "100%",
-					},
-					[theme.breakpoints.down("sm")]: {
-						maxWidth: "100%",
-					},
+					paddingTop: theme.spacing(3),
+					paddingBottom: theme.spacing(3),
 				},
+
 				navTheme: {
 					marginRight: theme.spacing(1),
 				},
@@ -150,19 +146,14 @@ function useStyles(props, theme) {
 					boxShadow: theme.shadows[2],
 				},
 				drawer: {
-					[theme.breakpoints.down("sm")]: {
-						width: "100%",
-					},
-					width: 250,
-					maxWidth: "100%",
-					flexShrink: 0,
+					width: "100%",
+					height: "100%",
 				},
 				drawerPaper: {
-					[theme.breakpoints.down("sm")]: {
-						width: 300,
+					width: "16.6666667%",
+					[theme.breakpoints.only("md")]: {
+						width: "25%",
 					},
-					width: 250,
-					maxWidth: "100%",
 					[theme.breakpoints.up("md")]: {
 						background: "none",
 						border: "none",
@@ -215,11 +206,7 @@ function useStyles(props, theme) {
 					zIndex: 10,
 				},
 				paragraph: {
-					lineHeight: 1.625,
 					marginTop: theme.spacing(2),
-				},
-				list: {
-					lineHeight: 1.625,
 				},
 				linkCopyButton: {
 					display: "inline-block",
@@ -582,7 +569,11 @@ export default function MinehutXYZ(props) {
 			return <img {...props} className={classes.img} />;
 		},
 		li(props) {
-			return <li {...props} className={classes.list} />;
+			return (
+				<li {...props}>
+					<Typography>{props.children}</Typography>
+				</li>
+			);
 		},
 	};
 
@@ -632,9 +623,26 @@ export default function MinehutXYZ(props) {
 				)
 				.replace("-", " ")
 		: "404 Not Found";
-	if (title) title = title[0].toUpperCase() + title.slice(1);
+	if (title) {
+		title = title[0].toUpperCase() + title.slice(1);
+		keywordOverrides.forEach((override) => {
+			title = title.replace(new RegExp(override[0], "g"), override[1]);
+		});
+	}
 
 	const matches = useMediaQuery(themeConfig.breakpoints.up("sm"));
+
+	React.useEffect(() => {
+		if (router.query.scrollTo) {
+			const el = document.getElementById(router.query.scrollTo);
+			if (el)
+				window.scrollTo({
+					top: el.offsetTop - (matches ? 112 : 160),
+					left: 0,
+					behavior: "smooth",
+				});
+		}
+	}, []);
 
 	React.useEffect(() => {
 		if (router.query.scrollTo) {
@@ -667,8 +675,7 @@ export default function MinehutXYZ(props) {
 					/>
 				</Head>
 				<ThemeProvider theme={themeConfig}>
-					<div className={classes.root}>
-						{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+					<Grid container className={classes.root}>
 						<CssBaseline />
 						<CustomAppBar
 							themeConfig={themeConfig}
@@ -678,11 +685,15 @@ export default function MinehutXYZ(props) {
 							open={open}
 							toggleDarkMode={toggleDarkMode}
 						/>
-						<CustomDrawer open={open} setOpen={setOpen} />
-						<main className={classes.content}>
+						<Grid item lg={2}>
+							<CustomDrawer open={open} setOpen={setOpen} />
+						</Grid>
+						<Grid item xs={12} md={fm ? 10 : 12} lg={fm ? 8 : 10}>
 							<Toolbar />
-
-							<Container maxWidth="md">
+							<Container
+								maxWidth="md"
+								className={classes.content}
+							>
 								<Hidden smUp>
 									<Toolbar />
 								</Hidden>
@@ -719,9 +730,10 @@ export default function MinehutXYZ(props) {
 									/>
 								) : null}
 							</Container>
-						</main>
+						</Grid>
+
 						{fm ? (
-							<>
+							<Grid item md={3} lg={2}>
 								<Hidden smDown>
 									<Drawer
 										className={classes.drawer}
@@ -759,8 +771,12 @@ export default function MinehutXYZ(props) {
 										/>
 									</SwipeableDrawer>
 								</Hidden>
-							</>
+							</Grid>
 						) : null}
+						<Grid item lg={2} />
+						<Grid item xs={12} lg={10}>
+							<Footer />
+						</Grid>
 						<Hidden smDown>
 							<ScrollTop>
 								<Tooltip title="Back to top">
@@ -851,7 +867,7 @@ export default function MinehutXYZ(props) {
 								/>
 							</SpeedDial>
 						</Hidden>
-					</div>
+					</Grid>
 				</ThemeProvider>
 			</React.Fragment>
 		</CookiesProvider>

@@ -15,19 +15,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import routes from "../routes.json";
-import colors from "../colors.json";
-
-const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
 	drawer: {
-		width: drawerWidth,
-		maxWidth: "100%",
+		width: "100%",
 		flexShrink: 0,
 	},
 	drawerPaper: {
-		width: drawerWidth,
-		maxWidth: "100%",
+		width: "16.6666667%",
 	},
 	drawerContainer: {
 		overflowY: "auto",

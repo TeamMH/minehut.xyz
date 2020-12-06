@@ -1,18 +1,4 @@
-const exceptions = [
-	[/Json/g, "JSON"],
-	[/In Game/g, "In-game"],
-	[/Coreprotect/g, "CoreProtect"],
-	[/Worldguard/g, "WorldGuard"],
-	[/Worldedit/g, "WorldEdit"],
-	[/Groupmanager/g, "GroupManager"],
-	[/Permissionsex/g, "PermissionsEx"],
-	[/Luckperms/g, "LuckPerms"],
-	[/Combatlogx/g, "CombatLogX"],
-	[/Dreams Man Hunt/g, "Dream's Man Hunt"],
-	[/Imageonmap/g, "ImageOnMap"],
-	[/Mineresetlite/g, "MineResetLite"],
-	[/Redprotect/g, "RedProtect"],
-];
+const keywordOverrides = require("./keywordOverrides.json");
 
 const keywords = {};
 const routes = {};
@@ -39,8 +25,11 @@ function readFile(directory, file) {
 				.split("")
 				.map((c, i) => (i === 0 ? c.toUpperCase() : c))
 				.join("");
-			exceptions.forEach((exception) => {
-				name = name.replace(exception[0], exception[1]);
+			keywordOverrides.forEach((exception) => {
+				name = name.replace(
+					new RegExp(exception[0], "g"),
+					exception[1]
+				);
 			});
 			return name;
 		});
@@ -54,8 +43,9 @@ function readFile(directory, file) {
 				.map((c, i) => (i === 0 ? c.toUpperCase() : c))
 				.join("");
 
-	exceptions.forEach(
-		(exception) => (name = name.replace(exception[0], exception[1]))
+	keywordOverrides.forEach(
+		(exception) =>
+			(name = name.replace(new RegExp(exception[0], "g"), exception[1]))
 	);
 
 	const src = fs.readFileSync(path.join(directory, file), "utf-8");

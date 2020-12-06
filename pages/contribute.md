@@ -59,7 +59,7 @@ To fork the repository, click the `Fork` button at the top right of the page.
 
 A category is just a folder with the name of the category, navigate to the category you want to add a page to. From here, click `Add file`, and then `Create new file`. Create a file with a short name, and put `.md` after the name, \(ex. `functions.md`, `download-world.md`, etc.\), and then open the file.
 
-From here, you can edit the file. [_**Here's**_](https://raw.githubusercontent.com/TeamMH/minehutxyz/master/template.md) _**our template you must follow.**_
+From here, you can edit the file. [_**Here's**_](https://raw.githubusercontent.com/TeamMH/minehut.xyz/main/TEMPLATE.md) _**our template you must follow.**_
 
 This is an example page, and this is the source:
 
@@ -113,8 +113,8 @@ To add separate sections for your page, add:
 Put text here
 ```
 
-You can, of course, put normal markdown in your page aswell. Once you're done making the page, click `Commit new file`.
+You can, of course, put normal markdown in your page as well. Once you're done making the page, click `Commit new file`.
 
-Now you can make a pull request! Go to your repository, then click the button labeled `Pull request`, it should be right next to a `Compare` button. Then, click `Create pull request`. Tada! You have made a pull request to our repository, and your page will appear on the site if we accept it.
+Now you can make a pull request! Go to your repository, then click the button labeled `Pull request`. It should be right next to a `Compare` button. Then, click `Create pull request`. Tada! You have now made a pull request to our repository, and your page will appear on the site if we accept it.
 
-Note that you need to delete your fork and refork it to update it. There is no way to auto update it \(unless your editing loccally, which you can learn how to [here](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork).
+Note that you need to delete your fork and refork it to update it. There is no way to auto update it \(unless you're editing loccally, which you can learn how to [here](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/syncing-a-fork).
