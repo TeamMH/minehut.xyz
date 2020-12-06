@@ -322,14 +322,23 @@ export default function MinehutXYZ(props) {
 								size="small"
 								className={classes.linkCopyButton}
 								onClick={() => {
-									const url = `${router.pathname}?scrollTo=${
-										"h1-" +
-										getString(props)
-											.toLowerCase()
-											.replace(/ +/g, "-")
-									}`;
-									router.replace(url);
-									copyToClipboard(window.location.host + url);
+									const { query } = router;
+									router
+										.replace({
+											query: {
+												...query,
+												scrollTo:
+													"h1-" +
+													getString(props)
+														.toLowerCase()
+														.replace(/ +/g, "-"),
+											},
+										})
+										.then(() =>
+											copyToClipboard(
+												window.location.href
+											)
+										);
 								}}
 								centerRipple={false}
 							>
@@ -376,14 +385,23 @@ export default function MinehutXYZ(props) {
 								size="small"
 								className={classes.linkCopyButton}
 								onClick={() => {
-									const url = `${router.pathname}?scrollTo=${
-										"h1-" +
-										getString(props)
-											.toLowerCase()
-											.replace(/ +/g, "-")
-									}`;
-									router.replace(url);
-									copyToClipboard(window.location.host + url);
+									const { query } = router;
+									router
+										.replace({
+											query: {
+												...query,
+												scrollTo:
+													"h2-" +
+													getString(props)
+														.toLowerCase()
+														.replace(/ +/g, "-"),
+											},
+										})
+										.then(() =>
+											copyToClipboard(
+												window.location.href
+											)
+										);
 								}}
 								centerRipple={false}
 							>
@@ -414,14 +432,21 @@ export default function MinehutXYZ(props) {
 							size="small"
 							className={classes.linkCopyButton}
 							onClick={() => {
-								const url = `${router.pathname}?scrollTo=${
-									"h1-" +
-									getString(props)
-										.toLowerCase()
-										.replace(/ +/g, "-")
-								}`;
-								router.replace(url);
-								copyToClipboard(window.location.host + url);
+								const { query } = router;
+								router
+									.replace({
+										query: {
+											...query,
+											scrollTo:
+												"h3-" +
+												getString(props)
+													.toLowerCase()
+													.replace(/ +/g, "-"),
+										},
+									})
+									.then(() =>
+										copyToClipboard(window.location.href)
+									);
 							}}
 							centerRipple={false}
 						>
@@ -573,11 +598,7 @@ export default function MinehutXYZ(props) {
 			return <img {...props} className={classes.img} />;
 		},
 		li(props) {
-			return (
-				<li {...props}>
-					<Typography>{props.children}</Typography>
-				</li>
-			);
+			return <Typography component="li" {...props} />;
 		},
 	};
 

@@ -125,11 +125,6 @@ export function Footer() {
 								</Link>
 							</Typography>
 						</Grid>
-						<Grid item xs={12}>
-							<Typography>
-								&copy; 2020 minehut.xyz. All rights reserved.
-							</Typography>
-						</Grid>
 					</Grid>
 				</Container>
 			</Box>

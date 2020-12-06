@@ -19,11 +19,13 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Brightness4 from "@material-ui/icons/Brightness4";
 import Brightness7 from "@material-ui/icons/Brightness7";
 import SearchIcon from "@material-ui/icons/Search";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Minehut from "../public/minehut.svg";
 import Link from "./Link";
 import keywords from "../keywords.json";
 import routes from "../routes.json";
+import { useRouter } from "next/router";
+import { debounce } from "debounce";
 
 const useStyles = makeStyles((theme) => ({
 	menuButton: {
@@ -31,13 +33,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 	appBar: {
 		zIndex: theme.zIndex.drawer + 1,
-		// background:
-		// 	theme.palette.type === "dark"
-		// 		? "linear-gradient(120deg, #1f3166, #203659)"
-		// 		: "linear-gradient(120deg, #7289da, #66a6ff)",
-		[theme.breakpoints.down("xs")]: {
-			//height: 100,
-		},
 	},
 	title: {
 		color: "white",
@@ -122,6 +117,16 @@ export default function CustomAppBar({
 	const loaded = useLoaded();
 	const [searchWord, setSearchWord] = useState("");
 
+	const router = useRouter();
+
+	useEffect(() => {
+		if (router.query.q) {
+			setSearching(true);
+			setSearchWord(router.query.q);
+			document.getElementById("searchBar").focus();
+		}
+	}, [router]);
+
 	function getKeywords(keywords) {
 		const returnKeywords = [];
 		Object.keys(keywords).forEach((page) => {
@@ -189,6 +194,19 @@ export default function CustomAppBar({
 		</List>
 	);
 
+	const debouncedRoute = useCallback(
+		debounce((e) => {
+			console.log(e.target.value);
+			router.replace({
+				query: removeUndefined({
+					...router.query,
+					q: e.target.value || undefined,
+				}),
+			});
+		}, 1000),
+		[]
+	);
+
 	const search = (
 		<div className={classes.search}>
 			<div className={classes.searchIcon}>
@@ -197,6 +215,7 @@ export default function CustomAppBar({
 			<InputBase
 				placeholder="Search…"
 				className={classes.input}
+				id="searchBar"
 				classes={{
 					root: classes.inputRoot,
 					input: classes.inputInput,
@@ -204,11 +223,12 @@ export default function CustomAppBar({
 				onChange={(e) => {
 					setSearching(true);
 					setSearchWord(e.target.value);
+					debouncedRoute(e);
 				}}
+				onFocus={() => setSearching(true)}
 				onBlur={(e) => {
 					if (!e.nativeEvent.relatedTarget) {
 						setSearching(false);
-						setSearchWord("");
 					}
 				}}
 				value={searchWord}
@@ -288,4 +308,13 @@ function useLoaded() {
 	const [loaded, setLoaded] = useState(false);
 	useEffect(() => setLoaded(true), []);
 	return loaded;
+}
+
+function removeUndefined(o) {
+	return Object.entries(o)
+		.filter(([, val]) => val !== undefined)
+		.reduce((result, [key, val]) => {
+			result[key] = val;
+			return result;
+		}, {});
 }

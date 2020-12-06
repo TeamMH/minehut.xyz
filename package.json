@@ -1,6 +1,6 @@
 {
 	"name": "minehut-xyz",
-	"version": "4.0.0",
+	"version": "1.0.0",
 	"private": true,
 	"engines": {
 		"node": "12"
@@ -17,6 +17,7 @@
 		"@svgr/webpack": "^5.5.0",
 		"babel-plugin-import-glob-array": "^0.2.0",
 		"clsx": "latest",
+		"debounce": "^1.2.0",
 		"gray-matter": "^4.0.2",
 		"next": "latest",
 		"next-mdx-frontmatter": "0.0.3",
