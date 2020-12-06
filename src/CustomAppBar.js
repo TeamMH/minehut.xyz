@@ -195,11 +195,10 @@ export default function CustomAppBar({
 	);
 
 	const debouncedRoute = useCallback(
-		debounce((e) => {
-			console.log(e.target.value);
+		debounce((e, query) => {
 			router.replace({
 				query: removeUndefined({
-					...router.query,
+					...query,
 					q: e.target.value || undefined,
 				}),
 			});
@@ -223,7 +222,7 @@ export default function CustomAppBar({
 				onChange={(e) => {
 					setSearching(true);
 					setSearchWord(e.target.value);
-					debouncedRoute(e);
+					debouncedRoute(e, router.query);
 				}}
 				onFocus={() => setSearching(true)}
 				onBlur={(e) => {
