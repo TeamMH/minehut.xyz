@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 	subheader: {
 		marginTop: theme.spacing(4),
 		backgroundColor: theme.palette.background.paper,
-		fontSize: "1rem",
+		fontSize: ".9rem",
 		letterSpacing: "1px",
 	},
 }));
@@ -98,6 +98,7 @@ export default function CustomDrawer({ open, setOpen }) {
 						key={routes[route]}
 						selected={router.pathname === routes[route]}
 						onClick={() => setOpen(false)}
+						dense
 					>
 						<ListItemText
 							style={{
@@ -117,6 +118,7 @@ export default function CustomDrawer({ open, setOpen }) {
 							<ListSubheader
 								className={classes.subheader}
 								key={route}
+								dense
 							>
 								<strong>{route.toUpperCase()}</strong>
 							</ListSubheader>
@@ -133,6 +135,7 @@ export default function CustomDrawer({ open, setOpen }) {
 								}}
 								key={route}
 								selected={dropdowns[route].selected}
+								dense
 							>
 								<ListItemText
 									style={{
