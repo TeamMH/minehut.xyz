@@ -10,6 +10,7 @@ import {
 import { useRouter } from "next/router";
 import routes from "../routes.json";
 import Link from "./Link";
+import { frontMatter } from "../pages/**/*.md";
 
 const useStyles = makeStyles((theme) => ({
 	grid: {
@@ -21,13 +22,15 @@ const useStyles = makeStyles((theme) => ({
 		whiteSpace: "pre-wrap !important",
 		overflowWrap: "anywhere",
 		wordBreak: "break-word",
-		position: "relative",
-		"& button": {
-			display: "none",
-		},
-		"&:hover button": {
-			display: "inline-block",
-		},
+	},
+	card: {
+		whiteSpace: "pre-wrap !important",
+		overflowWrap: "anywhere",
+		wordBreak: "break-word",
+		height: "100%",
+	},
+	cardActionArea: {
+		height: "100%",
 	},
 }));
 
@@ -55,17 +58,31 @@ export default function Other() {
 
 	const category = currentRoutes[0][2];
 
-	const cards = currentRoutes.map((route) => (
-		<Grid item xs={12} sm={6} key={route}>
-			<Card>
-				<CardActionArea component={Link} naked href={route[1]}>
-					<CardContent>
-						<Typography variant="h5">{route[0]}</Typography>
-					</CardContent>
-				</CardActionArea>
-			</Card>
-		</Grid>
-	));
+	const cards = currentRoutes.map((route) => {
+		const fm = frontMatter.find((f) =>
+			f ? f.name === route[1].slice(1) : false
+		);
+
+		return (
+			<Grid item xs={12} sm={6} key={route}>
+				<Card className={classes.card}>
+					<CardActionArea
+						component={Link}
+						naked
+						href={route[1]}
+						className={classes.cardActionArea}
+					>
+						<CardContent>
+							<Typography variant="h5">{route[0]}</Typography>
+							<Typography color="textSecondary">
+								{fm.description}
+							</Typography>
+						</CardContent>
+					</CardActionArea>
+				</Card>
+			</Grid>
+		);
+	});
 
 	return (
 		<>

@@ -109,7 +109,6 @@ export default function Pagination({ current, rArray }) {
 									Next Up
 								</Typography>
 								<Typography variant="h5">
-									{console.log(rArray[current + 1][0])}
 									{rArray[current + 1][0] === "__dirroute__"
 										? rArray[current + 1][1]
 												.split("/")
