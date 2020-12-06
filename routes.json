@@ -3,7 +3,6 @@
     "Contribute": "/contribute",
     "Partnerships": "/partnerships",
     "Plugins": {
-        "__dirroute__": "/plugins/other",
         "Recommended Plugins": "/plugins/recommended-plugins",
         "Plugin List": "/plugins/plugin-list",
         "Other": {
@@ -30,7 +29,6 @@
         }
     },
     "Popular Questions": {
-        "__dirroute__": "/popular-questions/common-errors",
         "Common Errors": {
             "__dirroute__": "/popular-questions/common-errors",
             "JSON Read": "/popular-questions/common-errors/json-read"
@@ -92,7 +90,6 @@
         }
     },
     "Skript": {
-        "__dirroute__": "/skript",
         "Addons": "/skript/addons",
         "Basics": "/skript/basics",
         "Commands": "/skript/commands",

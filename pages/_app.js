@@ -628,7 +628,6 @@ export default function MinehutXYZ(props) {
 	function routesArray(routes) {
 		const array = [];
 		Object.keys(routes).forEach((route) => {
-			if (route === "__dirroute__") return;
 			if (typeof routes[route] === "string")
 				array.push([route, routes[route]]);
 			else array.push(...routesArray(routes[route]));

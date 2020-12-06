@@ -9,9 +9,12 @@ import {
 	Hidden,
 	SwipeableDrawer,
 	ListSubheader,
+	ListItemSecondaryAction,
+	IconButton,
+	useMediaQuery,
 } from "@material-ui/core";
 import Link from "../src/Link";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import routes from "../routes.json";
@@ -55,6 +58,7 @@ export default function CustomDrawer({ open, setOpen }) {
 				selected: router.pathname.startsWith(
 					routes[route].__dirroute__
 				),
+				href: routes[route].__dirroute__,
 			};
 
 			setStates(routes[route]);
@@ -85,6 +89,10 @@ export default function CustomDrawer({ open, setOpen }) {
 		});
 	}
 
+	const theme = useTheme();
+
+	const matchesMd = useMediaQuery(theme.breakpoints.up("md"));
+
 	function mapRoutes(routes, i) {
 		return Object.keys(routes).map((route, index) => {
 			if (typeof routes[route] === "string") {
@@ -98,7 +106,7 @@ export default function CustomDrawer({ open, setOpen }) {
 						key={routes[route]}
 						selected={router.pathname === routes[route]}
 						onClick={() => setOpen(false)}
-						dense
+						dense={matchesMd}
 					>
 						<ListItemText
 							style={{
@@ -118,7 +126,6 @@ export default function CustomDrawer({ open, setOpen }) {
 							<ListSubheader
 								className={classes.subheader}
 								key={route}
-								dense
 							>
 								<strong>{route.toUpperCase()}</strong>
 							</ListSubheader>
@@ -130,12 +137,13 @@ export default function CustomDrawer({ open, setOpen }) {
 						<div key={route + "-div"}>
 							<ListItem
 								button
-								onClick={() => {
-									updateDropdown(route);
-								}}
+								component={Link}
+								naked
+								href={dropdowns[route].href}
+								onClick={() => setOpen(false)}
 								key={route}
 								selected={dropdowns[route].selected}
-								dense
+								dense={matchesMd}
 							>
 								<ListItemText
 									style={{
@@ -147,11 +155,20 @@ export default function CustomDrawer({ open, setOpen }) {
 								>
 									{route}
 								</ListItemText>
-								{dropdowns[route].open ? (
-									<ExpandLess />
-								) : (
-									<ExpandMore />
-								)}
+								<ListItemSecondaryAction>
+									<IconButton
+										size={matchesMd ? "small" : "medium"}
+										onClick={() => {
+											updateDropdown(route);
+										}}
+									>
+										{dropdowns[route].open ? (
+											<ExpandLess />
+										) : (
+											<ExpandMore />
+										)}
+									</IconButton>
+								</ListItemSecondaryAction>
 							</ListItem>
 							<Collapse
 								key={route + "-dropdown"}
