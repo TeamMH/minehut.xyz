@@ -26,7 +26,3 @@ Due to security reasons, you cannot upload certain file types to your servers.
 -   .mcmeta (Minecraft metadata)
 -   .dat (DAT)
 -   .conf (CONF)
-
-```
-
-```
