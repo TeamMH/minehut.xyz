@@ -115,27 +115,64 @@ export default function Search() {
 					setOpen(!!e.target.value);
 				}}
 				filterOptions={(options, props) => {
-					const inputValue = props.inputValue || query || "";
+					const inputValue = (
+						props.inputValue ||
+						query ||
+						""
+					).toUpperCase();
 					return options
 						.sort((a, b) => {
 							if (
-								a.startsWith(inputValue) &&
-								!b.startsWith(inputValue)
-							)
-								return 1;
-							else if (
-								!a.startsWith(inputValue) &&
-								b.startsWith(inputValue)
+								a
+									.split(" > ")
+									.some((name) => name === inputValue) &&
+								!b
+									.split(" > ")
+									.some((name) => name === inputValue)
 							)
 								return -1;
+							else if (
+								!a
+									.split(" > ")
+									.some((name) => name === inputValue) &&
+								b
+									.split(" > ")
+									.some((name) => name === inputValue)
+							)
+								return 1;
+							else return 0;
+						})
+						.sort((a, b) => {
+							if (
+								a
+									.split(" > ")
+									.some((name) =>
+										name.startsWith(inputValue)
+									) &&
+								!b
+									.split(" > ")
+									.some((name) => name.startsWith(inputValue))
+							)
+								return -1;
+							else if (
+								!a
+									.split(" > ")
+									.some((name) =>
+										name.startsWith(inputValue)
+									) &&
+								b
+									.split(" > ")
+									.some((name) => name.startsWith(inputValue))
+							)
+								return 1;
 							else return 0;
 						})
 						.filter((option) => {
 							const includes =
-								option.includes(inputValue.toUpperCase()) ||
+								option.includes(inputValue) ||
 								option
 									.replace(/ > /g, " ")
-									.includes(inputValue.toUpperCase());
+									.includes(inputValue);
 							return includes;
 						});
 				}}
