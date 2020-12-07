@@ -16,7 +16,7 @@ Almost every server, from kitpvp to survival to skygens etc. will need this plug
 
 These are a few plugins I thought would be noteworthy to share when creating a server:
 
--   `World Edit` is an easy-to-use in-game world editor for Minecraft, supporting both single player and multiplayer. Learn more about worldedit [here](/plugins/worldedit).
+-   `World Edit` is an easy-to-use ingame world editor for Minecraft, supporting both single player and multiplayer. Learn more about worldedit [here](/plugins/worldedit).
 -   `World Guard` lets you easily create zones in your world that only permit mods or certain players from building within. You can also set additional game rules on your server \(deny mob spawning, block destroying, falling damage, etc.\). Learn more about worldguard [here](/plugins/worldguard).
 -   `Core Protect` is a fast, efficient, data logging and anti-griefing tool. Rollback and restore any amount of damage. Learn more about coreprotect [here](/plugins/coreprotect).
 -   `Essentials Chat` lets you format your chat and makes it look really nice! Watch trent from Minehut to learn more about it [here](https://www.youtube.com/watch?v=FU_tK-zYYb4).

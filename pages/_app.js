@@ -54,7 +54,7 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import { Footer } from "../src/Footer";
-import keywordOverrides from "../keywordOverrides.json";
+import routeOverrides from "../routeOverrides.json";
 
 const themeObject = {
 	palette: {
@@ -134,6 +134,7 @@ function useStyles(props, theme) {
 					overflowWrap: "anywhere",
 					wordBreak: "break-word",
 					position: "relative",
+					textTransform: "uppercase",
 					"& button": {
 						display: "none",
 					},
@@ -314,9 +315,7 @@ export default function MinehutXYZ(props) {
 						variant="h4"
 						component="h1"
 					>
-						{typeof props.children === "string"
-							? props.children.toUpperCase()
-							: props.children}
+						{props.children}
 						<Tooltip title="Copy heading link">
 							<IconButton
 								size="small"
@@ -377,9 +376,7 @@ export default function MinehutXYZ(props) {
 						}
 						component="h2"
 					>
-						{typeof props.children === "string"
-							? props.children.toUpperCase()
-							: props.children}
+						{props.children}
 						<Tooltip title="Copy heading link">
 							<IconButton
 								size="small"
@@ -424,9 +421,7 @@ export default function MinehutXYZ(props) {
 					variant="h6"
 					component="h3"
 				>
-					{typeof props.children === "string"
-						? props.children.toUpperCase()
-						: props.children}
+					{props.children}
 					<Tooltip title="Copy heading link">
 						<IconButton
 							size="small"
@@ -646,27 +641,17 @@ export default function MinehutXYZ(props) {
 					(e) => ` ${e[1].toUpperCase()}`
 				)
 				.replace("-", " ")
+		: router.pathname === "/search"
+		? "Search"
 		: "404 Not Found";
 	if (title) {
 		title = title[0].toUpperCase() + title.slice(1);
-		keywordOverrides.forEach((override) => {
+		routeOverrides.forEach((override) => {
 			title = title.replace(new RegExp(override[0], "g"), override[1]);
 		});
 	}
 
 	const matches = useMediaQuery(themeConfig.breakpoints.up("sm"));
-
-	React.useEffect(() => {
-		if (router.query.scrollTo) {
-			const el = document.getElementById(router.query.scrollTo);
-			if (el)
-				window.scrollTo({
-					top: el.offsetTop - (matches ? 112 : 160),
-					left: 0,
-					behavior: "smooth",
-				});
-		}
-	}, []);
 
 	const [query, setQuery] = React.useState("");
 
@@ -725,16 +710,17 @@ export default function MinehutXYZ(props) {
 									<Toolbar />
 								</Hidden>
 								{loaded ? (
-									<MDXProvider
-										components={components}
+									<div
 										style={{
 											marginBottom: themeConfig.spacing(
 												2
 											),
 										}}
 									>
-										<Component {...pageProps} />
-									</MDXProvider>
+										<MDXProvider components={components}>
+											<Component {...pageProps} />
+										</MDXProvider>
+									</div>
 								) : null}
 								<Hint
 									disableMargin

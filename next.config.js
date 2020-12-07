@@ -2,6 +2,7 @@ const withMDX = require("@next/mdx")({
 	extension: /\.mdx?$/,
 });
 
+const { getRedirectStatus } = require("next/dist/lib/load-custom-routes");
 const path = require("path");
 
 module.exports = withMDX({
@@ -20,5 +21,14 @@ module.exports = withMDX({
 		});
 
 		return config;
+	},
+	async redirects() {
+		return [
+			{
+				source: "/home",
+				destination: "/",
+				permanent: true,
+			},
+		];
 	},
 });

@@ -17,4 +17,4 @@ First, make sure you have a free inventory slot, as the plugin will give you a m
 
 ### Maps Command:
 
-**/map**s is another command which opens a GUI to see, retrieve and manage user's maps. You can retrieve any created maps, or manage created maps. Maps can be renamed \(for organization\), deleted \(but they won't render in-game anymore!\), or partially retrieved \(for posters maps containing more than one map\). Permission: **imageonmap.list**, **imageonmap.get**, **imageonmap.rename** and **imageonmap.delete** for actions into the GUI.
+**/map**s is another command which opens a GUI to see, retrieve and manage user's maps. You can retrieve any created maps, or manage created maps. Maps can be renamed \(for organization\), deleted \(but they won't render ingame anymore!\), or partially retrieved \(for posters maps containing more than one map\). Permission: **imageonmap.list**, **imageonmap.get**, **imageonmap.rename** and **imageonmap.delete** for actions into the GUI.

@@ -2,6 +2,67 @@
     "Home": "/",
     "Contribute": "/contribute",
     "Partnerships": "/partnerships",
+    "Popular Questions": {
+        "Common Errors": {
+            "__dirroute__": "/faq/common-errors",
+            "JSON Read": "/faq/common-errors/json-read"
+        },
+        "Ingame": {
+            "__dirroute__": "/faq/ingame",
+            "Download": "/faq/ingame/download",
+            "Moderation": "/faq/ingame/moderation",
+            "Op": "/faq/ingame/op",
+            "Permissions": "/faq/ingame/permissions",
+            "Timings": "/faq/ingame/timings",
+            "Upload": "/faq/ingame/upload",
+            "Void World": "/faq/ingame/void-world",
+            "Whitelist": "/faq/ingame/whitelist",
+            "World Border": "/faq/ingame/world-border"
+        },
+        "Making A Server": {
+            "__dirroute__": "/faq/making-a-server",
+            "Planning It Out": "/faq/making-a-server/planning-it-out"
+        },
+        "Minehut": {
+            "__dirroute__": "/faq/minehut",
+            "A Full Tutorial": "/faq/minehut/a-full-tutorial",
+            "Account Deletion": "/faq/minehut/account-deletion",
+            "Account Linking": "/faq/minehut/account-linking",
+            "Appeal": "/faq/minehut/appeal",
+            "Bugs": "/faq/minehut/bugs",
+            "Clubs": "/faq/minehut/clubs",
+            "Cracked Clients": "/faq/minehut/cracked-clients",
+            "Disable Messages": "/faq/minehut/disable-messages",
+            "Joining": "/faq/minehut/joining",
+            "Ports": "/faq/minehut/ports",
+            "Reporting": "/faq/minehut/reporting",
+            "Voting": "/faq/minehut/voting"
+        },
+        "Other Questions": {
+            "__dirroute__": "/faq/other-questions",
+            "Bedrock": "/faq/other-questions/bedrock",
+            "Op Tools": "/faq/other-questions/op-tools",
+            "Server Version": "/faq/other-questions/server-version"
+        },
+        "Panel": {
+            "__dirroute__": "/faq/panel",
+            "Backups": "/faq/panel/backups",
+            "Custom Seed": "/faq/panel/custom-seed",
+            "Datapacks": "/faq/panel/datapacks",
+            "Default Gamemode": "/faq/panel/default-gamemode",
+            "Default World": "/faq/panel/default-world",
+            "Domain": "/faq/panel/domain",
+            "Files": "/faq/panel/files",
+            "Flat World": "/faq/panel/flat-world",
+            "Logs": "/faq/panel/logs",
+            "Plugins": "/faq/panel/plugins",
+            "Rename": "/faq/panel/rename",
+            "Reset Player": "/faq/panel/reset-player",
+            "Reset World": "/faq/panel/reset-world",
+            "Reset": "/faq/panel/reset",
+            "Resource Packs": "/faq/panel/resource-packs"
+        }
+    },
     "Plugins": {
         "Recommended Plugins": "/plugins/recommended-plugins",
         "Plugin List": "/plugins/plugin-list",
@@ -26,67 +87,6 @@
             "Multiverse": "/plugins/popular/multiverse",
             "WorldEdit": "/plugins/popular/worldedit",
             "WorldGuard": "/plugins/popular/worldguard"
-        }
-    },
-    "Popular Questions": {
-        "Common Errors": {
-            "__dirroute__": "/popular-questions/common-errors",
-            "JSON Read": "/popular-questions/common-errors/json-read"
-        },
-        "In-game": {
-            "__dirroute__": "/popular-questions/in-game",
-            "Download": "/popular-questions/in-game/download",
-            "Moderation": "/popular-questions/in-game/moderation",
-            "Op": "/popular-questions/in-game/op",
-            "Permissions": "/popular-questions/in-game/permissions",
-            "Timings": "/popular-questions/in-game/timings",
-            "Upload": "/popular-questions/in-game/upload",
-            "Void World": "/popular-questions/in-game/void-world",
-            "Whitelist": "/popular-questions/in-game/whitelist",
-            "World Border": "/popular-questions/in-game/world-border"
-        },
-        "Making A Server": {
-            "__dirroute__": "/popular-questions/making-a-server",
-            "Planning It Out": "/popular-questions/making-a-server/planning-it-out"
-        },
-        "Minehut": {
-            "__dirroute__": "/popular-questions/minehut",
-            "A Full Tutorial": "/popular-questions/minehut/a-full-tutorial",
-            "Account Deletion": "/popular-questions/minehut/account-deletion",
-            "Account Linking": "/popular-questions/minehut/account-linking",
-            "Appeal": "/popular-questions/minehut/appeal",
-            "Bugs": "/popular-questions/minehut/bugs",
-            "Clubs": "/popular-questions/minehut/clubs",
-            "Cracked Clients": "/popular-questions/minehut/cracked-clients",
-            "Disable Messages": "/popular-questions/minehut/disable-messages",
-            "Joining": "/popular-questions/minehut/joining",
-            "Ports": "/popular-questions/minehut/ports",
-            "Reporting": "/popular-questions/minehut/reporting",
-            "Voting": "/popular-questions/minehut/voting"
-        },
-        "Other Questions": {
-            "__dirroute__": "/popular-questions/other-questions",
-            "Bedrock": "/popular-questions/other-questions/bedrock",
-            "Op Tools": "/popular-questions/other-questions/op-tools",
-            "Server Version": "/popular-questions/other-questions/server-version"
-        },
-        "Panel": {
-            "__dirroute__": "/popular-questions/panel",
-            "Backups": "/popular-questions/panel/backups",
-            "Custom Seed": "/popular-questions/panel/custom-seed",
-            "Datapacks": "/popular-questions/panel/datapacks",
-            "Default Gamemode": "/popular-questions/panel/default-gamemode",
-            "Default World": "/popular-questions/panel/default-world",
-            "Domain": "/popular-questions/panel/domain",
-            "Files": "/popular-questions/panel/files",
-            "Flat World": "/popular-questions/panel/flat-world",
-            "Logs": "/popular-questions/panel/logs",
-            "Plugins": "/popular-questions/panel/plugins",
-            "Rename": "/popular-questions/panel/rename",
-            "Reset Player": "/popular-questions/panel/reset-player",
-            "Reset World": "/popular-questions/panel/reset-world",
-            "Reset": "/popular-questions/panel/reset",
-            "Resource Packs": "/popular-questions/panel/resource-packs"
         }
     },
     "Skript": {

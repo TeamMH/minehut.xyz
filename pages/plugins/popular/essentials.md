@@ -15,7 +15,7 @@ This tutorial will end up being very long, however we've split it into parts, fo
 
 ## ESSENTIALS PERMISSION NODES
 
-Essentials contains tons of useful commands, [here](https://essinfo.xeya.me/permissions.html) is a list of every command, along with every permission node. For more information on how to allow users to use commands, visit [this](/popular-questions/in-game/permissions) tutorial.
+Essentials contains tons of useful commands, [here](https://essinfo.xeya.me/permissions.html) is a list of every command, along with every permission node. For more information on how to allow users to use commands, visit [this](/faq/ingame/permissions) tutorial.
 
 ### ESSENTIALS SPAWN
 
@@ -25,7 +25,7 @@ This will teach you how to use EssentialsSpawn on your Minehut server!
 
 #### HOW TO SET UP SPAWN
 
-First of all, make sure you are OP _\(follow_ [_this_](/popular-questions/in-game/op) tutorial if you don't know how\), when you are OP, run **/setspawn** in-game to set your spawn point and now you and your players can use **/spawn** to teleport to your new spawnpoint.
+First of all, make sure you are OP _\(follow_ [_this_](/faq/ingame/op) tutorial if you don't know how\), when you are OP, run **/setspawn** ingame to set your spawn point and now you and your players can use **/spawn** to teleport to your new spawnpoint.
 
 #### PERMISSIONS
 

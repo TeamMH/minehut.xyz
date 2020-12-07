@@ -9,7 +9,7 @@ import Hint from "../src/Hint"
 
 ## Welcome... to minehut.xyz
 
-Minehut.xyz is home to the best Minehut-related support you'll find on the web. We aim to provide top quality [Minehut tutorials](/popular-questions/panel), [Plugin tutorials](/plugins/popular), and [Skript tutorials](/skript/basics). Our site is [community driven](/contribute), and we will continue to make it better and better.
+Minehut.xyz is home to the best Minehut-related support you'll find on the web. We aim to provide top quality [Minehut tutorials](/faq/panel), [Plugin tutorials](/plugins/popular), and [Skript tutorials](/skript/basics). Our site is [community driven](/contribute), and we will continue to make it better and better.
 
 <Hint style="info">
 Utilise our Search function at the top righthand corner of the site, it's so helpful to find your question within our site.
@@ -17,7 +17,7 @@ Utilise our Search function at the top righthand corner of the site, it's so hel
 
 ## Every question ever, answered.
 
-**We know Minehut**. We've integrated out knowledge into a **Popular Questions** section, which directed towards questions that are frequently asked. For example ["How do I allow 1.8 clients to join?"](/popular-questions/other-questions/server-version), and ["How do I give my players a permission"](/popular-questions/in-game/permissions). [\[Submit a post\]](/contribute)
+**We know Minehut**. We've integrated out knowledge into a **Popular Questions** section, which directed towards questions that are frequently asked. For example ["How do I allow 1.8 clients to join?"](/faq/other-questions/server-version), and ["How do I give my players a permission"](/faq/ingame/permissions). [\[Submit a post\]](/contribute)
 
 ## Our plugin know-how
 

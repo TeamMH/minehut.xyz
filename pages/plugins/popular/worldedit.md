@@ -11,7 +11,7 @@ import Hint from "../../../src/Hint"
 
 ## OVERVIEW
 
-WorldEdit is an easy-to-use in-game world editor for Minecraft, supporting both single player and multiplayer.
+WorldEdit is an easy-to-use ingame world editor for Minecraft, supporting both single player and multiplayer.
 
 ## FEATURES
 

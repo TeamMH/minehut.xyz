@@ -35,7 +35,7 @@ on join:
 
 ## RELOADING THE SCRIPT
 
-After typing the code, you'll want to save the file _\(save button at the bottom-right of the webpage!\)_. Now, go in-game, and now we need to reload the script. To do this, we run the command `/sk reload (file name)`. In this case, we can use `/sk reload example`. If your code has been written correctly, you'll get a success message, with zero error messages.
+After typing the code, you'll want to save the file _\(save button at the bottom-right of the webpage!\)_. Now, go ingame, and now we need to reload the script. To do this, we run the command `/sk reload (file name)`. In this case, we can use `/sk reload example`. If your code has been written correctly, you'll get a success message, with zero error messages.
 
 ## TESTING THE SCRIPT
 
