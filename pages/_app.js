@@ -697,7 +697,7 @@ export default function MinehutXYZ(props) {
 									<div
 										style={{
 											marginBottom: themeConfig.spacing(
-												2
+												1
 											),
 										}}
 									>
