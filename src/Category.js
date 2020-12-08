@@ -74,9 +74,9 @@ export default function Other() {
 					>
 						<CardContent>
 							<Typography variant="h5">{route[0]}</Typography>
-							<Typography color="textSecondary">
+							{ fm && fm.description ? <Typography color="textSecondary">
 								{fm.description}
-							</Typography>
+							</Typography> : null }
 						</CardContent>
 					</CardActionArea>
 				</Card>
