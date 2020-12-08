@@ -1,5 +1,6 @@
 ---
 description: Learn how to customise your tablist with Skript.
+name: skript/examples/tablist
 ---
 
 import Hint from "../../../src/Hint"
