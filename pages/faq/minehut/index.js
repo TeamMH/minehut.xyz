@@ -1,5 +1,5 @@
 import Category from "../../../src/Category";
 
-export default function Other() {
+export default function Minehut() {
 	return <Category />;
 }

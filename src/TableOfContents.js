@@ -8,6 +8,7 @@ import {
 	useMediaQuery,
 } from "@material-ui/core";
 import ScrollSpy from "react-scrollspy";
+import { startToKebabCase } from "../lib/utils";
 
 ScrollSpy.prototype._initFromProps = function (_props) {
 	const props = _props ? _props : this.props;
@@ -63,11 +64,7 @@ export default function TableOfContents({ contents, tocOpen, setTocOpen }) {
 					? "h3-"
 					: c.match(/(^|\n)##/)
 					? "h2-"
-					: "h1-") +
-				c
-					.replace(/(^|\n)#{1,3} /, "")
-					.toLowerCase()
-					.replace(/ +/g, "-")
+					: "h1-") + startToKebabCase(c.replace(/(^|\n)#{1,3} /, ""))
 		),
 	];
 
@@ -100,10 +97,9 @@ export default function TableOfContents({ contents, tocOpen, setTocOpen }) {
 											: c.match(/(^|\n)##/)
 											? "h2-"
 											: "h1-") +
-											c
-												.replace(/(^|\n)#{1,3} /, "")
-												.toLowerCase()
-												.replace(/ +/g, "-")
+											startToKebabCase(
+												c.replace(/(^|\n)#{1,3} /, "")
+											)
 									).offsetTop - (matches ? 112 : 160),
 								behavior: "smooth",
 							});

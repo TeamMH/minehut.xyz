@@ -2,8 +2,12 @@ import { Divider, makeStyles, TextField, Typography } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import { useRouter } from "next/router";
 import routes from "../routes.json";
-import overrides from "../routeOverrides.json";
 import { useEffect, useState } from "react";
+import {
+	kebabToStartCase,
+	overrideRouteNames,
+	startToKebabCase,
+} from "../lib/utils";
 
 const useStyles = makeStyles((theme) => ({
 	textField: {
@@ -69,32 +73,13 @@ export default function Search() {
 				value={query}
 				options={mappedRoutes.map((r) =>
 					r[1] === "/"
-						? "HOME"
+						? "Home"
 						: r[1]
 								.split("/")
 								.slice(1)
-								.map((name) => {
-									name = name
-										.replace(
-											/-./g,
-											(e) => " " + e[1].toUpperCase()
-										)
-										.split("")
-										.map((c, i) =>
-											i === 0 ? c.toUpperCase() : c
-										)
-										.join("");
-
-									overrides.forEach(
-										(override) =>
-											(name = name.replace(
-												new RegExp(override[0], "g"),
-												override[1]
-											))
-									);
-
-									return name.toUpperCase();
-								})
+								.map((name) =>
+									overrideRouteNames(kebabToStartCase(name))
+								)
 								.join(" > ")
 				)}
 				renderInput={(params) => (
@@ -119,25 +104,37 @@ export default function Search() {
 						props.inputValue ||
 						query ||
 						""
-					).toUpperCase();
+					).toLowerCase();
 					return options
 						.sort((a, b) => {
 							if (
 								a
-									.split(" > ")
-									.some((name) => name === inputValue) &&
+									.split(/( > | )/g)
+									.some(
+										(name) =>
+											name.toLowerCase() === inputValue
+									) &&
 								!b
-									.split(" > ")
-									.some((name) => name === inputValue)
+									.split(/( > | )/g)
+									.some(
+										(name) =>
+											name.toLowerCase() === inputValue
+									)
 							)
 								return -1;
 							else if (
 								!a
-									.split(" > ")
-									.some((name) => name === inputValue) &&
+									.split(/( > | )/g)
+									.some(
+										(name) =>
+											name.toLowerCase() === inputValue
+									) &&
 								b
-									.split(" > ")
-									.some((name) => name === inputValue)
+									.split(/( > | )/g)
+									.some(
+										(name) =>
+											name.toLowerCase() === inputValue
+									)
 							)
 								return 1;
 							else return 0;
@@ -145,52 +142,54 @@ export default function Search() {
 						.sort((a, b) => {
 							if (
 								a
-									.split(" > ")
+									.split(/( > | )/g)
 									.some((name) =>
-										name.startsWith(inputValue)
+										name
+											.toLowerCase()
+											.startsWith(inputValue)
 									) &&
 								!b
-									.split(" > ")
-									.some((name) => name.startsWith(inputValue))
+									.split(/( > | )/g)
+									.some((name) =>
+										name
+											.toLowerCase()
+											.startsWith(inputValue)
+									)
 							)
 								return -1;
 							else if (
 								!a
-									.split(" > ")
+									.split(/( > | )/g)
 									.some((name) =>
-										name.startsWith(inputValue)
+										name
+											.toLowerCase()
+											.startsWith(inputValue)
 									) &&
 								b
-									.split(" > ")
-									.some((name) => name.startsWith(inputValue))
+									.split(/( > | )/g)
+									.some((name) =>
+										name
+											.toLowerCase()
+											.startsWith(inputValue)
+									)
 							)
 								return 1;
 							else return 0;
 						})
 						.filter((option) => {
 							const includes =
-								option.includes(inputValue) ||
+								option.toLowerCase().includes(inputValue) ||
 								option
+									.toLowerCase()
 									.replace(/ > /g, " ")
 									.includes(inputValue);
 							return includes;
 						});
 				}}
 				onChange={(e, v) => {
-					let pathname = `/${v}`;
-
-					overrides.forEach(
-						(override) =>
-							(pathname = pathname.replace(
-								new RegExp(override[1].toUpperCase(), "g"),
-								override[0].toLowerCase()
-							))
-					);
-
-					pathname = pathname
-						.toLowerCase()
-						.replace(/ > /g, "/")
-						.replace(/ +/g, "-");
+					let pathname = `/${startToKebabCase(
+						overrideRouteNames(v.replace(" > ", "/"))
+					)}`;
 
 					if (pathname === "/home") pathname = "/";
 

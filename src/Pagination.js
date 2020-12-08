@@ -41,48 +41,22 @@ export default function Pagination({ current, rArray }) {
 								</Typography>
 								<Typography variant="h5">
 									{rArray[current - 1][0] === "__dirroute__"
-										? rArray[current - 1][1]
+										? rArray[current - 1][2]
 												.split("/")
 												.reverse()[0]
-												.replace(
-													/-./g,
-													(e) =>
-														" " + e[1].toUpperCase()
-												)
-												.split("")
-												.map((c, i) =>
-													i === 0
-														? c.toUpperCase()
-														: c
-												)
-												.join("")
 										: rArray[current - 1][0]}
 								</Typography>
-								{rArray[current - 1][1].split("/").length >=
+								{rArray[current - 1][2].split("/").length >=
 								3 ? (
 									<Breadcrumbs separator=">">
-										{rArray[current - 1][1]
+										{rArray[current - 1][2]
 											.split("/")
-											.slice(1)
 											.reverse()
 											.slice(1)
 											.reverse()
 											.map((route) => (
 												<Typography key={route}>
-													{route
-														.replace(
-															/-./g,
-															(e) =>
-																" " +
-																e[1].toUpperCase()
-														)
-														.split("")
-														.map((c, i) =>
-															i === 0
-																? c.toUpperCase()
-																: c
-														)
-														.join("")}
+													{route}
 												</Typography>
 											))}
 									</Breadcrumbs>
@@ -110,48 +84,22 @@ export default function Pagination({ current, rArray }) {
 								</Typography>
 								<Typography variant="h5">
 									{rArray[current + 1][0] === "__dirroute__"
-										? rArray[current + 1][1]
+										? rArray[current + 1][2]
 												.split("/")
 												.reverse()[0]
-												.replace(
-													/-./g,
-													(e) =>
-														" " + e[1].toUpperCase()
-												)
-												.split("")
-												.map((c, i) =>
-													i === 0
-														? c.toUpperCase()
-														: c
-												)
-												.join("")
 										: rArray[current + 1][0]}
 								</Typography>
-								{rArray[current + 1][1].split("/").length >=
+								{rArray[current + 1][2].split("/").length >=
 								3 ? (
 									<Breadcrumbs separator=">">
-										{rArray[current + 1][1]
+										{rArray[current + 1][2]
 											.split("/")
-											.slice(1)
 											.reverse()
 											.slice(1)
 											.reverse()
 											.map((route) => (
 												<Typography key={route}>
-													{route
-														.replace(
-															/-./g,
-															(e) =>
-																" " +
-																e[1].toUpperCase()
-														)
-														.split("")
-														.map((c, i) =>
-															i === 0
-																? c.toUpperCase()
-																: c
-														)
-														.join("")}
+													{route}
 												</Typography>
 											))}
 									</Breadcrumbs>

@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import routes from "../routes.json";
 import Link from "./Link";
 import { frontMatter } from "../pages/**/*.md";
+import { routesArrayCategory } from "../lib/utils";
 
 const useStyles = makeStyles((theme) => ({
 	grid: {
@@ -34,23 +35,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Other() {
+export default function Category() {
 	const classes = useStyles();
 
 	const router = useRouter();
 
-	function routesArray(routes, dirName) {
-		const array = [];
-		Object.keys(routes).forEach((route) => {
-			if (route === "__dirroute__") return;
-			if (typeof routes[route] === "string")
-				array.push([route, routes[route], dirName]);
-			else array.push(...routesArray(routes[route], route));
-		});
-		return array;
-	}
-
-	const rArray = routesArray(routes);
+	const rArray = routesArrayCategory(routes);
 
 	const currentRoutes = rArray.filter((route) =>
 		route[1].startsWith(router.pathname)
@@ -74,9 +64,11 @@ export default function Other() {
 					>
 						<CardContent>
 							<Typography variant="h5">{route[0]}</Typography>
-							{ fm && fm.description ? <Typography color="textSecondary">
-								{fm.description}
-							</Typography> : null }
+							{fm && fm.description ? (
+								<Typography color="textSecondary">
+									{fm.description}
+								</Typography>
+							) : null}
 						</CardContent>
 					</CardActionArea>
 				</Card>

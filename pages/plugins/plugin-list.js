@@ -20,6 +20,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Head from "next/head";
 import InsertLinkIcon from "@material-ui/icons/InsertLink";
 import { useRouter } from "next/router";
+import { copyToClipboard } from "../../lib/utils";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -262,19 +263,4 @@ export async function getStaticProps() {
 			}),
 		},
 	};
-}
-
-function copyToClipboard(text) {
-	const el = document.createElement("textarea");
-	el.value = text;
-	el.setAttribute("readonly", "");
-	el.style = {
-		position: "absolute",
-		left: "-9999px",
-	};
-	document.body.appendChild(el);
-	el.select();
-	el.setSelectionRange(0, 99999);
-	document.execCommand("copy");
-	document.body.removeChild(el);
 }

@@ -54,7 +54,12 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import { Footer } from "../src/Footer";
-import routeOverrides from "../routeOverrides.json";
+import {
+	copyToClipboard,
+	kebabToStartCase,
+	overrideRouteNames,
+	routesArray,
+} from "../lib/utils";
 
 const themeObject = {
 	palette: {
@@ -568,7 +573,6 @@ export default function MinehutXYZ(props) {
 					<SyntaxHighlighter
 						showLineNumbers
 						wrapLines
-						//wrapLongLines
 						language={
 							props.className
 								? props.className.replace("language-", "")
@@ -620,36 +624,16 @@ export default function MinehutXYZ(props) {
 			/>
 		);
 
-	function routesArray(routes) {
-		const array = [];
-		Object.keys(routes).forEach((route) => {
-			if (typeof routes[route] === "string")
-				array.push([route, routes[route]]);
-			else array.push(...routesArray(routes[route]));
-		});
-		return array;
-	}
-
 	const rArray = routesArray(routes);
 	const current = rArray.findIndex((r) => r[1] === router.pathname);
 
 	let title = rArray.find((r) => r[1] === router.pathname)
-		? router.pathname
-				.split("/")
-				[router.pathname.split("/").length - 1].replace(
-					/-(.)/g,
-					(e) => ` ${e[1].toUpperCase()}`
-				)
-				.replace("-", " ")
+		? overrideRouteNames(
+				kebabToStartCase(router.pathname.split("/").reverse()[0])
+		  )
 		: router.pathname === "/search"
 		? "Search"
 		: "404 Not Found";
-	if (title) {
-		title = title[0].toUpperCase() + title.slice(1);
-		routeOverrides.forEach((override) => {
-			title = title.replace(new RegExp(override[0], "g"), override[1]);
-		});
-	}
 
 	const matches = useMediaQuery(themeConfig.breakpoints.up("sm"));
 
@@ -946,19 +930,4 @@ function getMadeBy(fm) {
 			</>
 		);
 	}
-}
-
-function copyToClipboard(text) {
-	const el = document.createElement("textarea");
-	el.value = text;
-	el.setAttribute("readonly", "");
-	el.style = {
-		position: "absolute",
-		left: "-9999px",
-	};
-	document.body.appendChild(el);
-	el.select();
-	el.setSelectionRange(0, 99999);
-	document.execCommand("copy");
-	document.body.removeChild(el);
 }
