@@ -175,7 +175,7 @@ function useStyles(props, theme) {
 					marginTop: theme.spacing(4),
 				},
 				tableContainer: {
-					marginBottom: theme.spacing(3),
+					marginBottom: theme.spacing(2),
 				},
 				tableHeading: {
 					borderBottom:
