@@ -47,7 +47,7 @@ export default function Pagination({ current, rArray }) {
 										: rArray[current - 1][0]}
 								</Typography>
 								{rArray[current - 1][2].split("/").length >=
-								3 ? (
+								2 ? (
 									<Breadcrumbs separator=">">
 										{rArray[current - 1][2]
 											.split("/")
@@ -90,7 +90,7 @@ export default function Pagination({ current, rArray }) {
 										: rArray[current + 1][0]}
 								</Typography>
 								{rArray[current + 1][2].split("/").length >=
-								3 ? (
+								2 ? (
 									<Breadcrumbs separator=">">
 										{rArray[current + 1][2]
 											.split("/")
