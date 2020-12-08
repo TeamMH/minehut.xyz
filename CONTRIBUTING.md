@@ -35,4 +35,4 @@ The `style` attribute will give you different colors and icons:
 <Hint style="error">This is an <inlineCode>error</inlineCode> hint.</Hint>
 ```
 
-[Here's the template you must follow.](/TEMPLADE.md)
+[Here's the template you must follow.](/TEMPLATE.md)
