@@ -1,9 +1,14 @@
 # Contribute
 
-If you want to write a new article, please read this thoroughly.
-If you want to change code, you don't need to read this.
+Any contribution is welcome, whether it be an article, a typo, or a bug.
+
+Make sure that your issue/pull request is not a duplicate!
 
 ## About markdown
+
+If you want to write a new article, please read this thoroughly.
+
+If you want to change code, you don't need to read this.
 
 Markdown is a simple markup language that is used for formatting text with simple syntax. We use this language because of its simplicity and popularity.
 
