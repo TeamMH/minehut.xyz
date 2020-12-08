@@ -3,9 +3,23 @@
     "Contribute": "/contribute",
     "Partnerships": "/partnerships",
     "Popular Questions": {
-        "Common Errors": {
-            "__dirroute__": "/faq/common-errors",
-            "JSON Read": "/faq/common-errors/json-read"
+        "Panel": {
+            "__dirroute__": "/faq/panel",
+            "Backups": "/faq/panel/backups",
+            "Custom Seed": "/faq/panel/custom-seed",
+            "Datapacks": "/faq/panel/datapacks",
+            "Default Gamemode": "/faq/panel/default-gamemode",
+            "Default World": "/faq/panel/default-world",
+            "Domain": "/faq/panel/domain",
+            "Files": "/faq/panel/files",
+            "Flat World": "/faq/panel/flat-world",
+            "Logs": "/faq/panel/logs",
+            "Plugins": "/faq/panel/plugins",
+            "Rename": "/faq/panel/rename",
+            "Reset Player": "/faq/panel/reset-player",
+            "Reset World": "/faq/panel/reset-world",
+            "Reset": "/faq/panel/reset",
+            "Resource Packs": "/faq/panel/resource-packs"
         },
         "Ingame": {
             "__dirroute__": "/faq/ingame",
@@ -18,10 +32,6 @@
             "Void World": "/faq/ingame/void-world",
             "Whitelist": "/faq/ingame/whitelist",
             "World Border": "/faq/ingame/world-border"
-        },
-        "Making A Server": {
-            "__dirroute__": "/faq/making-a-server",
-            "Planning It Out": "/faq/making-a-server/planning-it-out"
         },
         "Minehut": {
             "__dirroute__": "/faq/minehut",
@@ -44,36 +54,18 @@
             "Op Tools": "/faq/other-questions/op-tools",
             "Server Version": "/faq/other-questions/server-version"
         },
-        "Panel": {
-            "__dirroute__": "/faq/panel",
-            "Backups": "/faq/panel/backups",
-            "Custom Seed": "/faq/panel/custom-seed",
-            "Datapacks": "/faq/panel/datapacks",
-            "Default Gamemode": "/faq/panel/default-gamemode",
-            "Default World": "/faq/panel/default-world",
-            "Domain": "/faq/panel/domain",
-            "Files": "/faq/panel/files",
-            "Flat World": "/faq/panel/flat-world",
-            "Logs": "/faq/panel/logs",
-            "Plugins": "/faq/panel/plugins",
-            "Rename": "/faq/panel/rename",
-            "Reset Player": "/faq/panel/reset-player",
-            "Reset World": "/faq/panel/reset-world",
-            "Reset": "/faq/panel/reset",
-            "Resource Packs": "/faq/panel/resource-packs"
+        "Common Errors": {
+            "__dirroute__": "/faq/common-errors",
+            "JSON Read": "/faq/common-errors/json-read"
+        },
+        "Making A Server": {
+            "__dirroute__": "/faq/making-a-server",
+            "Planning It Out": "/faq/making-a-server/planning-it-out"
         }
     },
     "Plugins": {
         "Recommended Plugins": "/plugins/recommended-plugins",
         "Plugin List": "/plugins/plugin-list",
-        "Other": {
-            "__dirroute__": "/plugins/other",
-            "CombatLogX": "/plugins/other/combatlogx",
-            "Dream's Man Hunt": "/plugins/other/dreams-man-hunt",
-            "ImageOnMap": "/plugins/other/imageonmap",
-            "MineResetLite": "/plugins/other/mineresetlite",
-            "RedProtect": "/plugins/other/redprotect"
-        },
         "Permission Plugins": {
             "__dirroute__": "/plugins/permission-plugins",
             "GroupManager": "/plugins/permission-plugins/groupmanager",
@@ -87,6 +79,14 @@
             "Multiverse": "/plugins/popular/multiverse",
             "WorldEdit": "/plugins/popular/worldedit",
             "WorldGuard": "/plugins/popular/worldguard"
+        },
+        "Other": {
+            "__dirroute__": "/plugins/other",
+            "CombatLogX": "/plugins/other/combatlogx",
+            "Dream's Man Hunt": "/plugins/other/dreams-man-hunt",
+            "ImageOnMap": "/plugins/other/imageonmap",
+            "MineResetLite": "/plugins/other/mineresetlite",
+            "RedProtect": "/plugins/other/redprotect"
         }
     },
     "Skript": {
