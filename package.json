@@ -28,6 +28,7 @@
 		"react-scrollspy": "^3.4.3",
 		"react-syntax-highlighter": "^15.3.0"
 	},
+	"license": "MIT",
 	"scripts": {
 		"dev": "node buildRoutes.js && next",
 		"build": "node buildRoutes.js && next build",
