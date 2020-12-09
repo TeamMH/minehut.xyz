@@ -723,8 +723,7 @@ export default function MinehutXYZ(props) {
 											)
 										)
 										.join(" > ")
-								: "") +
-							" | minehut.xyz"
+								: "")
 						}
 						property="og:title"
 					/>
