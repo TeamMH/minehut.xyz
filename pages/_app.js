@@ -75,11 +75,11 @@ const themeObject = {
 			light: "#64b5f6",
 			dark: "#1976d2",
 		},
-		secondary: {
-			main: "#7289DA",
-			light: "#7289DA",
-			dark: "#7289DA",
-		},
+		// secondary: {
+		// 	main: "#7289DA",
+		// 	light: "#7289DA",
+		// 	dark: "#7289DA",
+		// },
 		divider: "rgba(255, 255, 255, .12)",
 	},
 	breakpoints: {
@@ -132,6 +132,7 @@ function useStyles(props, theme) {
 					bottom: theme.spacing(10),
 					right: theme.spacing(2),
 					zIndex: 1300,
+					background: "#eee",
 				},
 				fab: {
 					position: "fixed",
@@ -140,6 +141,12 @@ function useStyles(props, theme) {
 					fontSize: 26,
 					color: "white",
 					zIndex: 1300,
+				},
+				discord: {
+					background: "#7289DA",
+					"&:hover": {
+						background: "#5f72b6",
+					},
 				},
 				heading: {
 					margin: theme.spacing(3, 0),
@@ -242,9 +249,11 @@ function useStyles(props, theme) {
 				},
 				githubButton: {
 					marginBottom: theme.spacing(2),
+					background: "#eee",
 					[theme.breakpoints.up("sm")]: {
 						float: "right",
 					},
+					zIndex: "1",
 				},
 			};
 		},
@@ -830,8 +839,7 @@ export default function MinehutXYZ(props) {
 									component={Link}
 									href="https://discord.gg/bS6FMMCVyg"
 									underline="none"
-									color="secondary"
-									className={classes.fab}
+									className={`${classes.fab} ${classes.discord}`}
 									rel="noreferrer"
 									target="_blank"
 								>
