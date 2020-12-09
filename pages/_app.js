@@ -706,7 +706,28 @@ export default function MinehutXYZ(props) {
 		<CookiesProvider>
 			<React.Fragment>
 				<Head>
-					<meta content={title || "Home"} property="og:title" />
+					<meta
+						content={
+							(title || "Home") +
+							(router.pathname.split("/").length > 2
+								? " | " +
+								  router.pathname
+										.split("/")
+										.slice(1)
+										.reverse()
+										.slice(1)
+										.reverse()
+										.map((name) =>
+											overrideRouteNames(
+												kebabToStartCase(name)
+											)
+										)
+										.join(" > ")
+								: "") +
+							" | minehut.xyz"
+						}
+						property="og:title"
+					/>
 					{meta}
 					<title>{(title || "Home") + " | minehut.xyz"}</title>
 					<meta
