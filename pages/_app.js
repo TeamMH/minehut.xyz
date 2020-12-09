@@ -9,6 +9,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import {
 	Backdrop,
+	Button,
 	Container,
 	Divider,
 	Drawer,
@@ -60,6 +61,7 @@ import {
 	overrideRouteNames,
 	routesArray,
 } from "../lib/utils";
+import { GitHub } from "@material-ui/icons";
 
 const themeObject = {
 	palette: {
@@ -124,6 +126,12 @@ function useStyles(props, theme) {
 
 				navTheme: {
 					marginRight: theme.spacing(1),
+				},
+				fab2: {
+					position: "fixed",
+					bottom: theme.spacing(10),
+					right: theme.spacing(2),
+					zIndex: 1300,
 				},
 				fab: {
 					position: "fixed",
@@ -232,6 +240,12 @@ function useStyles(props, theme) {
 				dialAction: {
 					width: 130,
 				},
+				githubButton: {
+					marginBottom: theme.spacing(2),
+					[theme.breakpoints.up("sm")]: {
+						float: "right",
+					},
+				},
 			};
 		},
 		{ defaultTheme: theme }
@@ -310,6 +324,17 @@ export default function MinehutXYZ(props) {
 		h1(props) {
 			return (
 				<>
+					<Hidden xsDown>
+						<Button
+							href={getHref(router.pathname)}
+							target="_blank"
+							className={classes.githubButton}
+							variant="contained"
+							startIcon={<GitHub />}
+						>
+							Edit this page on GitHub
+						</Button>
+					</Hidden>
 					<Typography
 						className={classes.heading}
 						id={
@@ -350,9 +375,21 @@ export default function MinehutXYZ(props) {
 							</IconButton>
 						</Tooltip>
 					</Typography>
+					<Hidden smUp>
+						<Button
+							href={getHref(router.pathname)}
+							target="_blank"
+							className={classes.githubButton}
+							variant="contained"
+							startIcon={<GitHub />}
+						>
+							Edit this page on GitHub
+						</Button>
+					</Hidden>
 					<Typography color="textSecondary" paragraph>
 						{fm ? fm.description : null}
 					</Typography>
+
 					<Divider />
 					{fm && fm.madeBy ? (
 						<Hint style="info">
@@ -635,8 +672,6 @@ export default function MinehutXYZ(props) {
 		? "Search"
 		: "404 Not Found";
 
-	const matches = useMediaQuery(themeConfig.breakpoints.up("sm"));
-
 	const [query, setQuery] = React.useState("");
 
 	React.useEffect(() => {
@@ -645,7 +680,7 @@ export default function MinehutXYZ(props) {
 			const el = document.getElementById(router.query.scrollTo);
 			if (el)
 				window.scrollTo({
-					top: el.offsetTop - (matches ? 112 : 160),
+					top: el.offsetTop - 112,
 					left: 0,
 					behavior: "smooth",
 				});
@@ -690,9 +725,6 @@ export default function MinehutXYZ(props) {
 								maxWidth="md"
 								className={classes.content}
 							>
-								<Hidden smUp>
-									<Toolbar />
-								</Hidden>
 								{loaded ? (
 									<div
 										style={{
@@ -728,7 +760,6 @@ export default function MinehutXYZ(props) {
 								) : null}
 							</Container>
 						</Grid>
-
 						{fm ? (
 							<Grid item md={3} lg={2}>
 								<Hidden smDown>
@@ -782,6 +813,18 @@ export default function MinehutXYZ(props) {
 									</Fab>
 								</Tooltip>
 							</ScrollTop>
+							<Tooltip title="GitHub">
+								<Fab
+									component={Link}
+									href="https://github.com/TeamMH/minehut.xyz"
+									underline="none"
+									className={classes.fab2}
+									rel="noreferrer"
+									target="_blank"
+								>
+									<GitHub />
+								</Fab>
+							</Tooltip>
 							<Tooltip title="Join us on Discord!">
 								<Fab
 									component={Link}
@@ -837,15 +880,33 @@ export default function MinehutXYZ(props) {
 								<SpeedDialAction
 									onClick={speedDialHandleClose}
 									tooltipOpen
-									tooltipTitle="Table of contents"
+									tooltipTitle="GitHub"
 									FabProps={{
-										onClick: () => setTocOpen(!tocOpen),
+										component: Link,
+										href:
+											"https://github.com/TeamMH/minehut.xyz",
+										target: "_blank",
 									}}
-									icon={<MenuIcon />}
+									icon={<GitHub />}
 									classes={{
 										staticTooltipLabel: classes.dialAction,
 									}}
 								/>
+								{fm && fm.description ? (
+									<SpeedDialAction
+										onClick={speedDialHandleClose}
+										tooltipOpen
+										tooltipTitle="Table of contents"
+										FabProps={{
+											onClick: () => setTocOpen(!tocOpen),
+										}}
+										icon={<MenuIcon />}
+										classes={{
+											staticTooltipLabel:
+												classes.dialAction,
+										}}
+									/>
+								) : null}
 								<SpeedDialAction
 									onClick={() => {
 										speedDialHandleClose();
@@ -930,4 +991,18 @@ function getMadeBy(fm) {
 			</>
 		);
 	}
+}
+
+function getHref(pathname) {
+	const githubUrl = "https://github.com/TeamMH/minehut.xyz";
+	const branch = "main";
+
+	if (pathname === "/") pathname = "/index";
+
+	pathname +=
+		pathname !== "/search" && pathname !== "/plugins/plugin-list"
+			? ".md"
+			: ".js";
+
+	return `${githubUrl}/tree/${branch}/pages${pathname}`;
 }

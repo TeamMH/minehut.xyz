@@ -68,14 +68,12 @@ export default function TableOfContents({ contents, tocOpen, setTocOpen }) {
 		),
 	];
 
-	const matches = useMediaQuery(theme.breakpoints.up("sm"));
-
 	return (
 		<List dense className={classes.toc}>
 			<ScrollSpy
 				items={items}
 				currentClassName="active"
-				offset={matches ? -112 : -160}
+				offset={112}
 				componentTag="div"
 			>
 				<ListSubheader component="div" disableSticky>
@@ -100,7 +98,7 @@ export default function TableOfContents({ contents, tocOpen, setTocOpen }) {
 											startToKebabCase(
 												c.replace(/(^|\n)#{1,3} /, "")
 											)
-									).offsetTop - (matches ? 112 : 160),
+									).offsetTop - 112,
 								behavior: "smooth",
 							});
 							setTocOpen(false);
