@@ -31,12 +31,12 @@ Minehut is currently experiencing some problems with the download function, if y
 
 For anyone unfamiliar with worldedit schematics, we made this guide for you!
 
-| \#  | Step                                                                                                                                                                                                  |
-| :-- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Get worldedit on your server, learn how [here](https://github.com/TeamMH/minehutxyz/tree/3335a0549e4fc3241ab6af734329278af73b6679/faq/ingame/faq/minehut/full/README.md#chapter-4-installing-plugins) |
-| 2   | Do `//wand` to get the w/e \(worldedit\) wand                                                                                                                                                         |
-| 3   | Selct your build by right and left clicking the points of you build                                                                                                                                   |
-| 4   | Do `//copy`, then `//schem save <name>`                                                                                                                                                               |
-| 5   | Follow the directions above.                                                                                                                                                                          |
+| \#  | Step                                                                |
+| :-- | :------------------------------------------------------------------ |
+| 1   | Get worldedit on your server, learn how [here](/faq/panel/plugins)  |
+| 2   | Do `//wand` to get the w/e \(worldedit\) wand                       |
+| 3   | Selct your build by right and left clicking the points of you build |
+| 4   | Do `//copy`, then `//schem save <name>`                             |
+| 5   | Follow the directions above.                                        |
 
-#### Need a more in depth tutorial? Click [here](https://github.com/TeamMH/minehutxyz/tree/3335a0549e4fc3241ab6af734329278af73b6679/faq/ingame/plugins/popular/worldedit/README.md)!
+#### Need a more in depth tutorial? Click [here](plugins/popular/worldedit)!
