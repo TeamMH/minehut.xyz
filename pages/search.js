@@ -196,8 +196,6 @@ export default function Search() {
 						  )}`
 						: null;
 
-					console.log(pathname);
-
 					if (pathname === "/home") pathname = "/";
 
 					const route = mappedRoutes.find(
