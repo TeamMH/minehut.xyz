@@ -39,4 +39,4 @@ For anyone unfamiliar with worldedit schematics, we made this guide for you!
 | 4   | Do `//copy`, then `//schem save <name>`                             |
 | 5   | Follow the directions above.                                        |
 
-#### Need a more in depth tutorial? Click [here](plugins/popular/worldedit)!
+#### Need a more in depth tutorial? Click [here](/plugins/popular/worldedit)!
