@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import {
 	kebabToStartCase,
 	overrideRouteNames,
+	reverseOverrideRouteNames,
 	startToKebabCase,
 } from "../lib/utils";
 
@@ -187,9 +188,15 @@ export default function Search() {
 						});
 				}}
 				onChange={(e, v) => {
-					let pathname = `/${startToKebabCase(
-						overrideRouteNames(v.replace(" > ", "/"))
-					)}`;
+					let pathname = v
+						? `/${startToKebabCase(
+								reverseOverrideRouteNames(
+									v.replace(/ > /g, "/")
+								)
+						  )}`
+						: null;
+
+					console.log(pathname);
 
 					if (pathname === "/home") pathname = "/";
 
