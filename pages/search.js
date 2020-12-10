@@ -215,6 +215,6 @@ export default function Search() {
 }
 
 // This is here so that I can get the queries at build time
-export async function getStaticProps() {
+export async function getServerSideProps() {
 	return { props: {} };
 }
