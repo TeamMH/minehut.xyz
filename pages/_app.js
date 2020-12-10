@@ -673,10 +673,7 @@ export default function MinehutXYZ(props) {
 	const rArray = routesArray(routes);
 	const current = rArray.findIndex((r) => r[1] === router.pathname);
 
-	const hrefMatches =
-		typeof window === "undefined"
-			? null
-			: window.location.href.match(/(\?|&)q=(.+?)(?=($|&|\/))/);
+	const hrefMatches = router.asPath.match(/(\?|&)q=(.+?)(?=($|&|\/))/);
 
 	let title = rArray.find((r) => r[1] === router.pathname)
 		? overrideRouteNames(
