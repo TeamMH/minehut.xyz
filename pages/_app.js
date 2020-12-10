@@ -673,12 +673,17 @@ export default function MinehutXYZ(props) {
 	const rArray = routesArray(routes);
 	const current = rArray.findIndex((r) => r[1] === router.pathname);
 
+	const hrefMatches =
+		typeof window === "undefined"
+			? null
+			: window.location.href.match(/(\?|&)q=(.+?)(?=($|&|\/))/);
+
 	let title = rArray.find((r) => r[1] === router.pathname)
 		? overrideRouteNames(
 				kebabToStartCase(router.pathname.split("/").reverse()[0])
 		  )
 		: router.pathname === "/search"
-		? "Search" + (router.query.q ? `: ${router.query.q}` : "")
+		? "Search" + (hrefMatches ? ": " + hrefMatches[2] : "")
 		: "404 Not Found";
 
 	const [query, setQuery] = React.useState("");
