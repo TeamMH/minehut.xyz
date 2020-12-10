@@ -7,8 +7,4 @@ assignees: ''
 
 ---
 
-**State why you decided to write this article**
-
-**Tell us your inspirations (optional)**
-
-**Additional context**
+**Reasoning for suggesting this article:**
