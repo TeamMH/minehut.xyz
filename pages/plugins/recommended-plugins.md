@@ -18,8 +18,8 @@ These are a few plugins I thought would be noteworthy to share when creating a s
 
 -   [`WorldEdit`](/plugins/popular/worldedit) is an easy-to-use ingame world editor for Minecraft, supporting both single player and multiplayer.
 -   [`WorldGuard`](/plugins/popular/worldguard) lets you easily create zones in your world that only permit mods or certain players from building within. You can also set additional game rules on your server \(deny mob spawning, block destroying, falling damage, etc.\).
--   [`Core Protect`](/plugins/popular/coreprotect) is a fast, efficient, data logging and anti-griefing tool. Rollback and restore any amount of damage.
--   `Essentials Chat` lets you format your chat and makes it look really nice! Watch trent from Minehut to learn more about it [here](https://www.youtube.com/watch?v=FU_tK-zYYb4).
+-   [`CoreProtect`](/plugins/popular/coreprotect) is a fast, efficient, data logging and anti-griefing tool. Rollback and restore any amount of damage.
+-   `EssentialsChat` lets you format your chat and makes it look really nice! Watch trent from Minehut to learn more about it [here](https://www.youtube.com/watch?v=FU_tK-zYYb4).
 -   [`Multiverse`](/plugins/popular/multiverse) is a complete world management solution, with other plugins like Portals or Inventory.
 -   [`Skript & addons`](/skript/basics) This is a plugin that allows you to customize Minecraft's mechanics with simple scripts written in plain English sentences. You can easily create complex custom commands, triggers that execute effects under certain conditions, and scripts that just run periodically - all without having to know even the slightest bit about programming! The \(hopefully\) intuitive language has the advantage that you don't even need to learn much to be able to use Skript.
 -   `Vault` Dependency for a lot of plugins. Highly recommend you install it.
@@ -51,7 +51,7 @@ Please note that unlike the other sections, this is primarily based on my opinio
 
 Most SMP's don't need many plugins, and can be pretty light-weight compared to minigame servers. But, that isn't to say you don't need any:
 
--   [`Core Protect`](/plugins/popular/coreprotect) - A block management tool that lets you rollback griefing, find who placed/broke blocks, and even logs chests!
+-   [`CoreProtect`](/plugins/popular/coreprotect) - A block management tool that lets you rollback griefing, find who placed/broke blocks, and even logs chests!
 -   [`WorldEdit`](/plugins/popular/worldedit) - Great for taking down griefed buildings, lag machines, etc.
 
 ### PvP Servers
@@ -64,4 +64,4 @@ Most SMP's don't need many plugins, and can be pretty light-weight compared to m
 ### Minigame Servers
 
 -   `Item Editor` - Allows admins to create items wth over the top enchatments and cool names.
--   `Holographic Displays` - Create floating text in your server.
+-   `HolographicDisplays` - Create floating text in your server.
