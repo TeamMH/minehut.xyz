@@ -49,27 +49,32 @@ export default function Search() {
 
 	const router = useRouter();
 
-	const [query, setQuery] = useState(null);
+	const [query, setQuery] = useState("");
 
 	useEffect(() => {
 		const search = document.querySelector("input");
 
 		if (search && query !== router.query.q) {
 			search.focus();
-			setQuery(router.query.q);
+			setQuery(router.query.q || "");
+			setOpen(!!router.query.q);
 		}
-	});
+	}, [router]);
 
 	return (
 		<>
 			<Typography className={classes.heading} variant="h4" component="h1">
 				SEARCH
 			</Typography>
+			<Typography color="textSecondary" paragraph>
+				Search for something on minehut.xyz
+			</Typography>
 			<Divider />
 			<Autocomplete
 				autoComplete
 				autoHighlight
 				freeSolo
+				onOpen={() => setOpen(!open)}
 				open={open}
 				value={query}
 				options={mappedRoutes.map((r) =>
@@ -188,6 +193,8 @@ export default function Search() {
 						});
 				}}
 				onChange={(e, v) => {
+					setQuery(v);
+					setOpen(!!v);
 					let pathname = v
 						? `/${startToKebabCase(
 								reverseOverrideRouteNames(
@@ -207,8 +214,6 @@ export default function Search() {
 							pathname,
 						});
 				}}
-				onInputChange={(e, v) => setOpen(!!v)}
-				defaultValue={query}
 			/>
 		</>
 	);

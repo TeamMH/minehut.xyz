@@ -71,9 +71,12 @@ const useStyles = makeStyles((theme) => ({
 export default function PluginList(props) {
 	const classes = useStyles();
 
+	const router = useRouter();
+
 	const [open, setOpen] = React.useState(-1);
 	const [page, setPage] = React.useState(0);
 	const [rowsPerPage, setRowsPerPage] = React.useState(25);
+	const [value, setValue] = React.useState("");
 
 	const handleChangeRowsPerPage = (event) => {
 		setRowsPerPage(parseInt(event.target.value, 10));
@@ -82,7 +85,23 @@ export default function PluginList(props) {
 
 	const [plugins, setPlugins] = React.useState(props.plugins);
 
-	const router = useRouter();
+	const handleChange = (value) => {
+		setPage(0);
+		setValue(value || "");
+		if (!value) setPlugins(props.plugins);
+		else
+			setPlugins(
+				props.plugins.filter((p) =>
+					p.name.toLowerCase().includes(value.toLowerCase())
+				)
+			);
+	};
+
+	React.useEffect(() => {
+		setValue(router.query.q || "");
+		handleChange(router.query.q);
+		document.querySelector("input").focus();
+	}, [router]);
 
 	return (
 		<div className={classes.root}>
@@ -97,11 +116,17 @@ export default function PluginList(props) {
 						size="small"
 						className={classes.linkCopyButton}
 						onClick={() => {
-							const url = `${
-								router.pathname
-							}?scrollTo=${"h1-plugin-list"}`;
-							router.replace(url);
-							copyToClipboard(window.location.host + url);
+							const { query } = router;
+							router
+								.replace({
+									query: {
+										...query,
+										scrollTo: "h1-plugin-list",
+									},
+								})
+								.then(() =>
+									copyToClipboard(window.location.href)
+								);
 						}}
 						centerRipple={false}
 					>
@@ -115,20 +140,10 @@ export default function PluginList(props) {
 			<Divider />
 			<Paper className={classes.paper}>
 				<TextField
+					value={value}
 					className={classes.input}
 					label="Search for plugins"
-					onChange={(e) => {
-						setPage(0);
-						if (!e.target.value) setPlugins(props.plugins);
-						else
-							setPlugins(
-								props.plugins.filter((p) =>
-									p.name
-										.toLowerCase()
-										.includes(e.target.value.toLowerCase())
-								)
-							);
-					}}
+					onChange={(e) => handleChange(e.target.value)}
 				/>
 				<TablePagination
 					component="div"

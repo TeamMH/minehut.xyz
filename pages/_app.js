@@ -132,7 +132,8 @@ function useStyles(props, theme) {
 					bottom: theme.spacing(10),
 					right: theme.spacing(2),
 					zIndex: 1300,
-					background: "#eee",
+					background: theme.palette.background.paper,
+					color: theme.palette.text.primary,
 				},
 				fab: {
 					position: "fixed",
@@ -249,7 +250,6 @@ function useStyles(props, theme) {
 				},
 				githubButton: {
 					marginBottom: theme.spacing(2),
-					background: "#eee",
 					[theme.breakpoints.up("sm")]: {
 						float: "right",
 					},
@@ -340,6 +340,7 @@ export default function MinehutXYZ(props) {
 							className={classes.githubButton}
 							variant="contained"
 							startIcon={<GitHub />}
+							color="primary"
 						>
 							Edit this page on GitHub
 						</Button>
@@ -391,6 +392,7 @@ export default function MinehutXYZ(props) {
 							className={classes.githubButton}
 							variant="contained"
 							startIcon={<GitHub />}
+							color="primary"
 						>
 							Edit this page on GitHub
 						</Button>
@@ -658,14 +660,21 @@ export default function MinehutXYZ(props) {
 
 	const [tocOpen, setTocOpen] = React.useState(false);
 
-	const meta = fm ? (
+	let meta = fm ? (
 		<meta content={fm.description} property="og:description" />
 	) : null;
 
-	if (router.pathname === "plugins/plugin-list")
+	if (router.pathname === "/plugins/plugin-list")
 		meta = (
 			<meta
 				content="Look up all available plugins on Minehut!"
+				property="og:description"
+			/>
+		);
+	else if (router.pathname === "/search")
+		meta = (
+			<meta
+				content="Search for something on minehut.xyz"
 				property="og:description"
 			/>
 		);
@@ -837,7 +846,7 @@ export default function MinehutXYZ(props) {
 						<Hidden smDown>
 							<ScrollTop>
 								<Tooltip title="Back to top">
-									<Fab color="primary">
+									<Fab color="secondary">
 										<KeyboardArrowUpIcon />
 									</Fab>
 								</Tooltip>
@@ -884,6 +893,7 @@ export default function MinehutXYZ(props) {
 								open={speedDialOpen}
 								FabProps={{
 									size: "medium",
+									color: "secondary",
 								}}
 							>
 								<SpeedDialAction
