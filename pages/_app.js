@@ -678,7 +678,7 @@ export default function MinehutXYZ(props) {
 				kebabToStartCase(router.pathname.split("/").reverse()[0])
 		  )
 		: router.pathname === "/search"
-		? "Search"
+		? "Search" + (router.query.q ? `: ${router.query.q}` : "")
 		: "404 Not Found";
 
 	const [query, setQuery] = React.useState("");
