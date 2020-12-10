@@ -73,7 +73,7 @@ export default function TableOfContents({ contents, tocOpen, setTocOpen }) {
 			<ScrollSpy
 				items={items}
 				currentClassName="active"
-				offset={112}
+				offset={-112}
 				componentTag="div"
 			>
 				<ListSubheader component="div" disableSticky>
