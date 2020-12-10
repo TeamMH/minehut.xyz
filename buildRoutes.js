@@ -95,7 +95,7 @@ readDir("./pages/faq/panel");
 readDir("./pages/faq/ingame");
 readDir("./pages/faq/minehut");
 readDir("./pages/faq/other-questions");
-readDir("./pages/faq/common-errors");
+readDir("./pages/faq/forums");
 readDir("./pages/faq/making-a-server");
 readDir("./pages/plugins/permission-plugins");
 readDir("./pages/plugins/popular");

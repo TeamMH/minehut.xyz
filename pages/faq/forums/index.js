@@ -1,5 +1,5 @@
 import Category from "../../../src/Category";
 
-export default function CommonErrors() {
+export default function Forums() {
 	return <Category />;
 }
