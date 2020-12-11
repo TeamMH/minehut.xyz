@@ -99,7 +99,7 @@ readDir("./pages/faq/forums");
 readDir("./pages/faq/making-a-server");
 readDir("./pages/plugins/permission-plugins");
 readDir("./pages/plugins/popular");
-readFile("./pages/skript/basics.md");
+readFile("./pages/skript", "basics.md");
 readDir("./pages");
 
 routes["Plugins"]["Plugin List"] = "/plugins/plugin-list";
