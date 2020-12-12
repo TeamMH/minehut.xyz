@@ -11,6 +11,7 @@ import {
 import { GitHub, Search } from "@material-ui/icons";
 import Discord from "../public/discord.svg";
 import Minehut from "../public/minehut.svg";
+import Link from "./Link";
 
 const useStyles = makeStyles((theme) => {
 	return {
@@ -150,6 +151,8 @@ export default function Banner() {
 						</Grid>
 						<Grid item xs={12}>
 							<Button
+								component={Link}
+								naked
 								href="/search"
 								color="secondary"
 								size="large"
