@@ -3,7 +3,7 @@ description: The leading Minehut support website.
 name: ""
 ---
 
-import Hint from "../src/Hint"
+import Hint from "./src/Hint"
 
 # Home
 

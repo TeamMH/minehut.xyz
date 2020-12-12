@@ -1,6 +1,7 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
+import { CookiesProvider } from "react-cookie";
 
 export default class MyDocument extends Document {
 	render() {
@@ -16,7 +17,9 @@ export default class MyDocument extends Document {
 					<meta content="#2196f3" property="theme-color" />
 				</Head>
 				<body>
-					<Main />
+					<CookiesProvider>
+						<Main />
+					</CookiesProvider>
 					<NextScript />
 					<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js" />
 

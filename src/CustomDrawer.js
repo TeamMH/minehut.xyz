@@ -190,22 +190,43 @@ export default function CustomDrawer({ open, setOpen }) {
 		</div>
 	);
 
+	const isHome = router.pathname === "/";
+
 	return (
 		<>
-			<Hidden mdDown>
-				<Drawer
-					className={classes.drawer}
-					variant="permanent"
-					classes={{
-						paper: classes.drawerPaper,
-					}}
-					anchor="left"
-				>
-					<Toolbar />
-					{drawer}
-				</Drawer>
-			</Hidden>
-			<Hidden lgUp>
+			{!isHome ? (
+				<>
+					<Hidden mdDown>
+						<Drawer
+							className={classes.drawer}
+							variant="permanent"
+							classes={{
+								paper: classes.drawerPaper,
+							}}
+							anchor="left"
+						>
+							<Toolbar />
+							{drawer}
+						</Drawer>
+					</Hidden>
+
+					<Hidden lgUp>
+						<SwipeableDrawer
+							className={classes.drawer}
+							variant="temporary"
+							open={open}
+							onClose={() => setOpen(false)}
+							onOpen={() => setOpen(true)}
+							classes={{
+								paper: classes.drawerPaper,
+							}}
+							anchor="left"
+						>
+							{drawer}
+						</SwipeableDrawer>
+					</Hidden>
+				</>
+			) : (
 				<SwipeableDrawer
 					className={classes.drawer}
 					variant="temporary"
@@ -219,7 +240,7 @@ export default function CustomDrawer({ open, setOpen }) {
 				>
 					{drawer}
 				</SwipeableDrawer>
-			</Hidden>
+			)}
 		</>
 	);
 }

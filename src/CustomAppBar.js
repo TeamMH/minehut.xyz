@@ -7,6 +7,7 @@ import {
 	IconButton,
 	Tooltip,
 	SvgIcon,
+	NoSsr,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Brightness4 from "@material-ui/icons/Brightness4";
@@ -15,10 +16,11 @@ import SearchIcon from "@material-ui/icons/Search";
 import { useEffect, useState } from "react";
 import Minehut from "../public/minehut.svg";
 import Link from "./Link";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
-		zIndex: theme.zIndex.drawer + 1,
+		zIndex: theme.zIndex.drawer + 2,
 	},
 	toolBar: {
 		[theme.breakpoints.only("xs")]: {
@@ -39,22 +41,27 @@ export default function CustomAppBar({
 }) {
 	const classes = useStyles();
 	const loaded = useLoaded();
+	const router = useRouter();
+
+	const isHome = router.pathname === "/";
+
+	const menuButton = (
+		<Tooltip title="Open menu">
+			<IconButton
+				onClick={() => setOpen(!open)}
+				className={classes.menuButton}
+				centerRipple={false}
+			>
+				<MenuIcon />
+			</IconButton>
+		</Tooltip>
+	);
 
 	return (
 		<ThemeProvider theme={appBarTheme}>
 			<AppBar position="fixed" color="inherit" className={classes.appBar}>
 				<Toolbar className={classes.toolBar}>
-					<Hidden lgUp>
-						<Tooltip title="Open menu">
-							<IconButton
-								onClick={() => setOpen(!open)}
-								className={classes.menuButton}
-								centerRipple={false}
-							>
-								<MenuIcon />
-							</IconButton>
-						</Tooltip>
-					</Hidden>
+					{!isHome ? <Hidden lgUp>{menuButton}</Hidden> : menuButton}
 					<Tooltip title="Back to home">
 						<IconButton
 							component={Link}
@@ -87,13 +94,13 @@ export default function CustomAppBar({
 							onClick={toggleDarkMode}
 							centerRipple={false}
 						>
-							{loaded ? (
-								themeConfig.palette.type === "light" ? (
+							<NoSsr>
+								{themeConfig.palette.type === "light" ? (
 									<Brightness4 />
 								) : (
 									<Brightness7 />
-								)
-							) : null}
+								)}
+							</NoSsr>
 						</IconButton>
 					</Tooltip>
 				</Toolbar>

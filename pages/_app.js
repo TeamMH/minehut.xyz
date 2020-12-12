@@ -18,6 +18,7 @@ import {
 	Hidden,
 	IconButton,
 	Link,
+	NoSsr,
 	Paper,
 	SvgIcon,
 	SwipeableDrawer,
@@ -31,7 +32,7 @@ import {
 	Typography,
 	useMediaQuery,
 } from "@material-ui/core";
-import { CookiesProvider, useCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 import CustomAppBar from "../src/CustomAppBar";
 import { MDXProvider } from "@mdx-js/react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -41,6 +42,7 @@ import {
 } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import colors from "../colors.json";
 import { frontMatter } from "./**/*.md";
+import { frontMatter as homeFm } from "../home.md";
 import Discord from "../public/discord.svg";
 import ContentCopy from "../public/content_copy.svg";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -63,7 +65,7 @@ import {
 } from "../lib/utils";
 import { GitHub } from "@material-ui/icons";
 
-const themeObject = {
+export const themeObject = {
 	palette: {
 		type: "dark",
 		background: {
@@ -75,11 +77,6 @@ const themeObject = {
 			light: "#64b5f6",
 			dark: "#1976d2",
 		},
-		// secondary: {
-		// 	main: "#7289DA",
-		// 	light: "#7289DA",
-		// 	dark: "#7289DA",
-		// },
 		divider: "rgba(255, 255, 255, .12)",
 	},
 	breakpoints: {
@@ -134,6 +131,9 @@ function useStyles(props, theme) {
 					zIndex: 1300,
 					background: theme.palette.background.paper,
 					color: theme.palette.text.primary,
+					"&:hover": {
+						background: theme.palette.background.default,
+					},
 				},
 				fab: {
 					position: "fixed",
@@ -321,9 +321,13 @@ export default function MinehutXYZ(props) {
 
 	const router = useRouter();
 
-	const fm = frontMatter.find((f) =>
+	const isHome = router.pathname === "/";
+
+	let fm = frontMatter.find((f) =>
 		f ? f.name === router.pathname.slice(1) : null
 	);
+
+	if (isHome) fm = homeFm;
 
 	const classes = useStyles({ fm }, themeConfig);
 
@@ -656,8 +660,6 @@ export default function MinehutXYZ(props) {
 		}
 	}, []);
 
-	const loaded = useLoaded();
-
 	const [tocOpen, setTocOpen] = React.useState(false);
 
 	let meta = fm ? (
@@ -712,58 +714,73 @@ export default function MinehutXYZ(props) {
 	const speedDialHandleOpen = () => setSpeedDialOpen(true);
 
 	return (
-		<CookiesProvider>
-			<React.Fragment>
-				<Head>
-					<meta
-						content={
-							(title || "Home") +
-							(router.pathname.split("/").length > 2
-								? " | " +
-								  router.pathname
-										.split("/")
-										.slice(1)
-										.reverse()
-										.slice(1)
-										.reverse()
-										.map((name) =>
-											overrideRouteNames(
-												kebabToStartCase(name)
-											)
+		<React.Fragment>
+			<Head>
+				<meta
+					content={
+						(title || "Home") +
+						(router.pathname.split("/").length > 2
+							? " | " +
+							  router.pathname
+									.split("/")
+									.slice(1)
+									.reverse()
+									.slice(1)
+									.reverse()
+									.map((name) =>
+										overrideRouteNames(
+											kebabToStartCase(name)
 										)
-										.join(" > ")
-								: "")
-						}
-						property="og:title"
+									)
+									.join(" > ")
+							: "")
+					}
+					property="og:title"
+				/>
+				{meta}
+				<title>{(title || "Home") + " | minehut.xyz"}</title>
+				<meta
+					name="viewport"
+					content="minimum-scale=1, initial-scale=1, width=device-width"
+				/>
+			</Head>
+			<ThemeProvider theme={themeConfig}>
+				<Grid container className={classes.root}>
+					<CssBaseline />
+					<CustomAppBar
+						themeConfig={themeConfig}
+						useDarkMode={useDarkMode}
+						appBarTheme={appBarTheme}
+						setOpen={setOpen}
+						open={open}
+						toggleDarkMode={toggleDarkMode}
 					/>
-					{meta}
-					<title>{(title || "Home") + " | minehut.xyz"}</title>
-					<meta
-						name="viewport"
-						content="minimum-scale=1, initial-scale=1, width=device-width"
-					/>
-				</Head>
-				<ThemeProvider theme={themeConfig}>
-					<Grid container className={classes.root}>
-						<CssBaseline />
-						<CustomAppBar
-							themeConfig={themeConfig}
-							useDarkMode={useDarkMode}
-							appBarTheme={appBarTheme}
-							setOpen={setOpen}
-							open={open}
-							toggleDarkMode={toggleDarkMode}
-						/>
-						<Grid item lg={2}>
-							<CustomDrawer open={open} setOpen={setOpen} />
-						</Grid>
-						<Grid item xs={12} md={fm ? 9 : 12} lg={fm ? 8 : 10}>
-							<Toolbar />
-							<Container
-								maxWidth="md"
-								className={classes.content}
-							>
-								{loaded ? (
+					<Grid item lg={!isHome ? 2 : "auto"}>
+						<CustomDrawer open={open} setOpen={setOpen} />
+					</Grid>
+					<Grid
+						item
+						xs={12}
+						md={fm ? 9 : 12}
+						lg={isHome ? 10 : fm ? 8 : 10}
+					>
+						{!isHome ? <Toolbar /> : null}
+						{isHome ? (
+							<NoSsr>
+								<div
+									style={{
+										marginBottom: themeConfig.spacing(1),
+									}}
+								>
+									<MDXProvider components={components}>
+										<Component {...pageProps} />
+									</MDXProvider>
+								</div>
+							</NoSsr>
+						) : null}
+						<Container maxWidth="md" className={classes.content}>
+							{!isHome ? (
+								<NoSsr>
 									<div
 										style={{
 											marginBottom: themeConfig.spacing(
@@ -775,198 +792,193 @@ export default function MinehutXYZ(props) {
 											<Component {...pageProps} />
 										</MDXProvider>
 									</div>
-								) : null}
-								<Hint
-									disableMargin
-									variant="outlined"
-									severity="success"
-								>
-									Join our{" "}
-									<Link href="https://discord.gg/TYhH5bK">
-										Discord
-									</Link>{" "}
-									to become an{" "}
-									<strong>official writer</strong>, get{" "}
-									<strong>site updates</strong>, and{" "}
-									<strong>much more</strong>.
-								</Hint>
-								{current !== -1 ? (
-									<Pagination
-										current={current}
-										rArray={rArray}
-									/>
-								) : null}
-							</Container>
-						</Grid>
-						{fm ? (
-							<Grid item md={3} lg={2}>
-								<Hidden smDown>
-									<Drawer
-										className={classes.drawer}
-										variant="permanent"
-										classes={{
-											paper: classes.drawerPaper,
-										}}
-										anchor="right"
-									>
-										<Toolbar />
-										<TableOfContents
-											contents={fm.contents}
-											tocOpen={tocOpen}
-											setTocOpen={setTocOpen}
-										/>
-									</Drawer>
-								</Hidden>
-								<Hidden mdUp>
-									<SwipeableDrawer
-										className={classes.drawer}
-										variant="temporary"
-										classes={{
-											paper: classes.drawerPaper,
-										}}
-										anchor="right"
-										open={tocOpen}
-										onClose={() => setTocOpen(false)}
-										onOpen={() => setTocOpen(true)}
-									>
-										<Toolbar />
-										<TableOfContents
-											contents={fm.contents}
-											tocOpen={tocOpen}
-											setTocOpen={setTocOpen}
-										/>
-									</SwipeableDrawer>
-								</Hidden>
-							</Grid>
-						) : null}
-						<Grid item lg={2} />
-						<Grid item xs={12} lg={10}>
-							<Footer />
-						</Grid>
-						<Hidden smDown>
-							<ScrollTop>
-								<Tooltip title="Back to top">
-									<Fab color="secondary">
-										<KeyboardArrowUpIcon />
-									</Fab>
-								</Tooltip>
-							</ScrollTop>
-							<Tooltip title="GitHub">
-								<Fab
-									component={Link}
-									href="https://github.com/TeamMH/minehut.xyz"
-									underline="none"
-									className={classes.fab2}
-									rel="noreferrer"
-									target="_blank"
-								>
-									<GitHub />
-								</Fab>
-							</Tooltip>
-							<Tooltip title="Join us on Discord!">
-								<Fab
-									component={Link}
-									href="https://discord.gg/bS6FMMCVyg"
-									underline="none"
-									className={`${classes.fab} ${classes.discord}`}
-									rel="noreferrer"
-									target="_blank"
-								>
-									<SvgIcon
-										component={Discord}
-										viewBox="0 0 245 240"
-									/>
-								</Fab>
-							</Tooltip>
-						</Hidden>
-						<Hidden mdUp>
-							<Backdrop
-								open={speedDialOpen}
-								className={classes.backdrop}
-							/>
-							<SpeedDial
-								ariaLabel="mobile speed dial"
-								className={classes.fab}
-								icon={<SpeedDialIcon />}
-								onClose={speedDialHandleClose}
-								onOpen={speedDialHandleOpen}
-								open={speedDialOpen}
-								FabProps={{
-									size: "medium",
-									color: "secondary",
-								}}
+								</NoSsr>
+							) : null}
+							<Hint
+								disableMargin
+								variant="outlined"
+								severity="success"
 							>
-								<SpeedDialAction
-									onClick={speedDialHandleClose}
-									tooltipOpen
-									tooltipTitle="Discord"
-									FabProps={{
-										component: Link,
-										href: "https://discord.gg/bS6FMMCVyg",
-										target: "_blank",
-									}}
-									icon={
-										<SvgIcon
-											viewBox="0 0 245 240"
-											component={Discord}
-										/>
-									}
-									classes={{
-										staticTooltipLabel: classes.dialAction,
-									}}
-								/>
-								<SpeedDialAction
-									onClick={speedDialHandleClose}
-									tooltipOpen
-									tooltipTitle="GitHub"
-									FabProps={{
-										component: Link,
-										href:
-											"https://github.com/TeamMH/minehut.xyz",
-										target: "_blank",
-									}}
-									icon={<GitHub />}
-									classes={{
-										staticTooltipLabel: classes.dialAction,
-									}}
-								/>
-								{fm && fm.description ? (
-									<SpeedDialAction
-										onClick={speedDialHandleClose}
-										tooltipOpen
-										tooltipTitle="Table of contents"
-										FabProps={{
-											onClick: () => setTocOpen(!tocOpen),
-										}}
-										icon={<MenuIcon />}
-										classes={{
-											staticTooltipLabel:
-												classes.dialAction,
-										}}
-									/>
-								) : null}
-								<SpeedDialAction
-									onClick={() => {
-										speedDialHandleClose();
-										window.scrollTo({
-											top: 0,
-											left: 0,
-											behavior: "smooth",
-										});
-									}}
-									tooltipOpen
-									tooltipTitle="Back to top"
-									icon={<KeyboardArrowUpIcon />}
-									classes={{
-										staticTooltipLabel: classes.dialAction,
-									}}
-								/>
-							</SpeedDial>
-						</Hidden>
+								Join our{" "}
+								<Link href="https://discord.gg/TYhH5bK">
+									Discord
+								</Link>{" "}
+								to become an <strong>official writer</strong>,
+								get <strong>site updates</strong>, and{" "}
+								<strong>much more</strong>.
+							</Hint>
+							{current !== -1 ? (
+								<Pagination current={current} rArray={rArray} />
+							) : null}
+						</Container>
 					</Grid>
-				</ThemeProvider>
-			</React.Fragment>
-		</CookiesProvider>
+					{fm ? (
+						<Grid item md={3} lg={2}>
+							<Hidden smDown>
+								<Drawer
+									className={classes.drawer}
+									variant="permanent"
+									classes={{
+										paper: classes.drawerPaper,
+									}}
+									anchor="right"
+								>
+									<Toolbar />
+									<TableOfContents
+										contents={fm.contents}
+										tocOpen={tocOpen}
+										setTocOpen={setTocOpen}
+									/>
+								</Drawer>
+							</Hidden>
+							<Hidden mdUp>
+								<SwipeableDrawer
+									className={classes.drawer}
+									variant="temporary"
+									classes={{
+										paper: classes.drawerPaper,
+									}}
+									anchor="right"
+									open={tocOpen}
+									onClose={() => setTocOpen(false)}
+									onOpen={() => setTocOpen(true)}
+								>
+									<Toolbar />
+									<TableOfContents
+										contents={fm.contents}
+										tocOpen={tocOpen}
+										setTocOpen={setTocOpen}
+									/>
+								</SwipeableDrawer>
+							</Hidden>
+						</Grid>
+					) : null}
+					<Grid item lg={!isHome ? 2 : "auto"} />
+					<Grid item xs={12} lg={!isHome ? 10 : 12}>
+						<Footer />
+					</Grid>
+					<Hidden smDown>
+						<ScrollTop>
+							<Tooltip title="Back to top">
+								<Fab color="secondary">
+									<KeyboardArrowUpIcon />
+								</Fab>
+							</Tooltip>
+						</ScrollTop>
+						<Tooltip title="GitHub">
+							<Fab
+								component={Link}
+								href="https://github.com/TeamMH/minehut.xyz"
+								underline="none"
+								className={classes.fab2}
+								rel="noreferrer"
+								target="_blank"
+							>
+								<GitHub />
+							</Fab>
+						</Tooltip>
+						<Tooltip title="Join us on Discord!">
+							<Fab
+								component={Link}
+								href="https://discord.gg/bS6FMMCVyg"
+								underline="none"
+								className={`${classes.fab} ${classes.discord}`}
+								rel="noreferrer"
+								target="_blank"
+							>
+								<SvgIcon
+									component={Discord}
+									viewBox="0 0 245 240"
+								/>
+							</Fab>
+						</Tooltip>
+					</Hidden>
+					<Hidden mdUp>
+						<Backdrop
+							open={speedDialOpen}
+							className={classes.backdrop}
+						/>
+						<SpeedDial
+							ariaLabel="mobile speed dial"
+							className={classes.fab}
+							icon={<SpeedDialIcon />}
+							onClose={speedDialHandleClose}
+							onOpen={speedDialHandleOpen}
+							open={speedDialOpen}
+							FabProps={{
+								size: "medium",
+								color: "secondary",
+							}}
+						>
+							<SpeedDialAction
+								onClick={speedDialHandleClose}
+								tooltipOpen
+								tooltipTitle="Discord"
+								FabProps={{
+									component: Link,
+									href: "https://discord.gg/bS6FMMCVyg",
+									target: "_blank",
+								}}
+								icon={
+									<SvgIcon
+										viewBox="0 0 245 240"
+										component={Discord}
+									/>
+								}
+								classes={{
+									staticTooltipLabel: classes.dialAction,
+								}}
+							/>
+							<SpeedDialAction
+								onClick={speedDialHandleClose}
+								tooltipOpen
+								tooltipTitle="GitHub"
+								FabProps={{
+									component: Link,
+									href:
+										"https://github.com/TeamMH/minehut.xyz",
+									target: "_blank",
+								}}
+								icon={<GitHub />}
+								classes={{
+									staticTooltipLabel: classes.dialAction,
+								}}
+							/>
+							{fm && fm.description ? (
+								<SpeedDialAction
+									onClick={speedDialHandleClose}
+									tooltipOpen
+									tooltipTitle="Table of contents"
+									FabProps={{
+										onClick: () => setTocOpen(!tocOpen),
+									}}
+									icon={<MenuIcon />}
+									classes={{
+										staticTooltipLabel: classes.dialAction,
+									}}
+								/>
+							) : null}
+							<SpeedDialAction
+								onClick={() => {
+									speedDialHandleClose();
+									window.scrollTo({
+										top: 0,
+										left: 0,
+										behavior: "smooth",
+									});
+								}}
+								tooltipOpen
+								tooltipTitle="Back to top"
+								icon={<KeyboardArrowUpIcon />}
+								classes={{
+									staticTooltipLabel: classes.dialAction,
+								}}
+							/>
+						</SpeedDial>
+					</Hidden>
+				</Grid>
+			</ThemeProvider>
+		</React.Fragment>
 	);
 }
 
@@ -984,12 +996,6 @@ function getString(props) {
 				.join("");
 		} else return getString(props.children.props);
 	}
-}
-
-function useLoaded() {
-	const [loaded, setLoaded] = React.useState(false);
-	React.useEffect(() => setLoaded(true), []);
-	return loaded;
 }
 
 function getMadeBy(fm) {

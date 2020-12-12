@@ -8,6 +8,7 @@ import {
 	SvgIcon,
 	Typography,
 } from "@material-ui/core";
+import { useRouter } from "next/router";
 import Minehut from "../public/minehut.svg";
 
 const useStyles = makeStyles((theme) => ({
@@ -123,6 +124,13 @@ export function Footer() {
 								>
 									Discord
 								</Link>
+							</Typography>
+						</Grid>
+						<Grid item xs={12}>
+							<Typography color="textSecondary">
+								minehut.xyz is not in any way or form affiliated
+								to Minehut. The Minehut logo is a property of
+								Minehut and we do not own it.
 							</Typography>
 						</Grid>
 					</Grid>

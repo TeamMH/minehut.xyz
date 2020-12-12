@@ -86,8 +86,8 @@
         }
     },
     "Skript": {
-        "Addons": "/skript/addons",
         "Basics": "/skript/basics",
+        "Addons": "/skript/addons",
         "Commands": "/skript/commands",
         "Comments": "/skript/comments",
         "Events": "/skript/events",
