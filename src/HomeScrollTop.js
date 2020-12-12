@@ -17,7 +17,7 @@ export default function ScrollTop({ children }) {
 		typeof window !== "undefined"
 			? useScrollTrigger({
 					disableHysteresis: true,
-					threshold: window.innerHeight - 112,
+					threshold: 300,
 			  })
 			: null;
 
@@ -31,15 +31,13 @@ export default function ScrollTop({ children }) {
 
 	return (
 		<NoSsr>
-			<Zoom in={!trigger}>
-				<div
-					onClick={handleClick}
-					role="presentation"
-					className={classes.root}
-				>
-					{children}
-				</div>
-			</Zoom>
+			<div className={classes.root}>
+				<Zoom in={!trigger}>
+					<div onClick={handleClick} role="presentation">
+						{children}
+					</div>
+				</Zoom>
+			</div>
 		</NoSsr>
 	);
 }
