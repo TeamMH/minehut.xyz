@@ -54,6 +54,7 @@ import Hint from "../src/Hint";
 import NextLink from "../src/Link";
 import ScrollTop from "../src/ScrollTop";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import { Footer } from "../src/Footer";
@@ -64,6 +65,7 @@ import {
 	routesArray,
 } from "../lib/utils";
 import { GitHub } from "@material-ui/icons";
+import HomeScrollTop from "../src/HomeScrollTop";
 
 export const themeObject = {
 	palette: {
@@ -120,7 +122,6 @@ function useStyles(props, theme) {
 					paddingTop: theme.spacing(3),
 					paddingBottom: theme.spacing(3),
 				},
-
 				navTheme: {
 					marginRight: theme.spacing(1),
 				},
@@ -812,6 +813,13 @@ export default function MinehutXYZ(props) {
 							) : null}
 						</Container>
 					</Grid>
+					{isHome ? (
+						<HomeScrollTop>
+							<Fab color="primary">
+								<KeyboardArrowDownIcon />
+							</Fab>
+						</HomeScrollTop>
+					) : null}
 					{fm ? (
 						<Grid item md={3} lg={2}>
 							<Hidden smDown>

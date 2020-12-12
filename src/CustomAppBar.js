@@ -20,7 +20,7 @@ import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
-		zIndex: theme.zIndex.drawer + 2,
+		zIndex: theme.zIndex.drawer + 3,
 	},
 	toolBar: {
 		[theme.breakpoints.only("xs")]: {

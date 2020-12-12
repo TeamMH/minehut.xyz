@@ -14,34 +14,29 @@ import Minehut from "../public/minehut.svg";
 
 const useStyles = makeStyles((theme) => {
 	return {
+		empty: {
+			height: "100vh",
+		},
 		banner: {
 			height: "100vh",
-			position: "relative",
+			position: "absolute",
+			top: 0,
+			left: 0,
+			width: "100%",
 			display: "flex",
 			flexDirection: "column",
 			justifyContent: "center",
 			color: theme.palette.text.primary,
-			marginBottom: theme.spacing(3),
 			zIndex: theme.zIndex.drawer + 1,
-			width: `calc(100vw - ${theme.spacing(1)}px)`,
-		},
-		image: {
-			position: "absolute",
-			top: 0,
-			left: 0,
-			right: 0,
-			bottom: 0,
 			background: "url(/home.png) no-repeat center",
 			backgroundSize: "cover",
-			filter: "brightness(1.1)",
-			zIndex: -1,
 		},
 		heading: {
-			margin: theme.spacing(3, 0),
 			whiteSpace: "pre-wrap !important",
 			overflowWrap: "anywhere",
 			wordBreak: "break-word",
 			position: "relative",
+			zIndex: theme.zIndex.drawer + 2,
 			"& button": {
 				display: "none",
 			},
@@ -51,6 +46,9 @@ const useStyles = makeStyles((theme) => {
 		},
 		headline: {
 			color: "#488AFF",
+			zIndex: theme.zIndex.drawer + 2,
+			marginTop: theme.spacing(1),
+			marginBottom: theme.spacing(3),
 		},
 		discordButton: {
 			background: "#7289DA",
@@ -87,82 +85,84 @@ export default function Banner() {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.banner}>
-			<div className={classes.image} />
-			<Container maxWidth="lg">
-				<Hidden xsDown>
+		<>
+			<div className={classes.empty} />
+			<div className={classes.banner}>
+				<Container maxWidth="lg">
+					<Hidden xsDown>
+						<Typography
+							variant="h2"
+							component="h1"
+							className={classes.heading}
+						>
+							<SvgIcon
+								component={Minehut}
+								viewBox="0 0 400 400"
+								className={classes.logo}
+							/>
+							minehut.xyz
+						</Typography>
+					</Hidden>
+					<Hidden smUp>
+						<Typography
+							variant="h3"
+							component="h1"
+							className={classes.heading}
+						>
+							minehut.xyz
+						</Typography>
+					</Hidden>
 					<Typography
-						variant="h2"
-						component="h1"
-						className={classes.heading}
+						variant="h4"
+						component="h2"
+						className={classes.headline}
+						paragraph
 					>
-						<SvgIcon
-							component={Minehut}
-							viewBox="0 0 400 400"
-							className={classes.logo}
-						/>
-						minehut.xyz
+						The leading Minehut support website.
 					</Typography>
-				</Hidden>
-				<Hidden smUp>
-					<Typography
-						variant="h3"
-						component="h1"
-						className={classes.heading}
-					>
-						minehut.xyz
-					</Typography>
-				</Hidden>
-				<Typography
-					variant="h4"
-					component="h2"
-					className={classes.headline}
-					paragraph
-				>
-					The leading Minehut support website.
-				</Typography>
-				<Grid container className={classes.grid} spacing={1}>
-					<Grid item xs={6}>
-						<Button
-							startIcon={
-								<SvgIcon
-									viewBox="0 0 245 240"
-									component={Discord}
-								/>
-							}
-							className={`${classes.discordButton} ${classes.button}`}
-							variant="contained"
-							href="https://discord.gg/bS6FMMCVyg"
-							target="_blank"
-						>
-							Discord
-						</Button>
+					<Grid container className={classes.grid} spacing={1}>
+						<Grid item xs={6}>
+							<Button
+								startIcon={
+									<SvgIcon
+										viewBox="0 0 245 240"
+										component={Discord}
+									/>
+								}
+								className={`${classes.discordButton} ${classes.button}`}
+								variant="contained"
+								href="https://discord.gg/bS6FMMCVyg"
+								target="_blank"
+							>
+								Discord
+							</Button>
+						</Grid>
+						<Grid item xs={6}>
+							<Button
+								className={`${classes.githubButton} ${classes.button}`}
+								variant="contained"
+								startIcon={<GitHub />}
+								href="https://github.com/TeamMH/minehut.xyz"
+								target="_blank"
+							>
+								GitHub
+							</Button>
+						</Grid>
+						<Grid item xs={12}>
+							<Button
+								href="/search"
+								color="secondary"
+								size="large"
+								startIcon={<Search />}
+								variant="contained"
+								className={classes.button}
+							>
+								Search for an article...
+							</Button>
+						</Grid>
 					</Grid>
-					<Grid item xs={6}>
-						<Button
-							className={`${classes.githubButton} ${classes.button}`}
-							variant="contained"
-							startIcon={<GitHub />}
-							href="https://github.com/TeamMH/minehut.xyz"
-							target="_blank"
-						>
-							GitHub
-						</Button>
-					</Grid>
-					<Grid item xs={12}>
-						<Button
-							href="/search"
-							color="secondary"
-							size="large"
-							startIcon={<Search />}
-							variant="contained"
-							className={classes.button}
-						>
-							Search for an article...
-						</Button>
-					</Grid>
-				</Grid>
-			</Container>
-		</div>
+				</Container>
+			</div>
+		</>
 	);
 }
