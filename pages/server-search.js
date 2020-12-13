@@ -83,7 +83,7 @@ export default function ServerSearch({ plugins }) {
 			setServer(json.server);
 			setError("");
 		} else if (res.status < 200 || res.status >= 300) {
-			setError("An error occurred.");
+			setError("Server not found.");
 			setServer({});
 		}
 	}
