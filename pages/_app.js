@@ -12,9 +12,7 @@ import {
 	Button,
 	Container,
 	Divider,
-	Drawer,
 	Fab,
-	Grid,
 	Hidden,
 	IconButton,
 	Link,
@@ -30,7 +28,6 @@ import {
 	TableRow,
 	Tooltip,
 	Typography,
-	useMediaQuery,
 } from "@material-ui/core";
 import { useCookies } from "react-cookie";
 import CustomAppBar from "../src/CustomAppBar";
@@ -42,7 +39,6 @@ import {
 } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import colors from "../colors.json";
 import { frontMatter } from "./**/*.md";
-import { frontMatter as homeFm } from "../home.md";
 import Discord from "../public/discord.svg";
 import ContentCopy from "../public/content_copy.svg";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -66,8 +62,9 @@ import {
 } from "../lib/utils";
 import { GitHub } from "@material-ui/icons";
 import HomeScrollTop from "../src/HomeScrollTop";
+import Banner from "../src/Banner";
 
-export const themeObject = {
+export const themeTemplate = {
 	palette: {
 		type: "dark",
 		background: {
@@ -117,10 +114,35 @@ function useStyles(props, theme) {
 				},
 				root: {
 					minHeight: "100vh",
+					display: "flex",
+					flexWrap: "wrap",
+				},
+				main: {
+					flexBasis: (props) =>
+						props.isHome ? "100%" : "calc(100% - 300px)",
+					[theme.breakpoints.down("md")]: {
+						flexBasis: "100% !important",
+					},
+					maxWidth: "100%",
 				},
 				content: {
-					paddingTop: theme.spacing(3),
-					paddingBottom: theme.spacing(3),
+					maxWidth: (props) =>
+						props.isHome
+							? "calc(100% - 600px)"
+							: props.fm
+							? "calc(100% - 300px)"
+							: "100%",
+					marginLeft: (props) => (props.isHome ? 300 : 0),
+					[theme.breakpoints.down("md")]: {
+						maxWidth: props.fm
+							? "calc(100% - 300px) !important"
+							: "100%",
+						marginLeft: "0 !important",
+					},
+					[theme.breakpoints.down("sm")]: {
+						maxWidth: "100% !important",
+					},
+					margin: theme.spacing(3, 0),
 				},
 				navTheme: {
 					marginRight: theme.spacing(1),
@@ -169,21 +191,21 @@ function useStyles(props, theme) {
 					boxShadow: theme.shadows[2],
 				},
 				drawer: {
-					width: "100%",
-					height: "100%",
+					width: 300,
+					height: "fit-content",
+					maxHeight: "100vh",
+					overflowY: "auto",
+					position: "sticky",
+					right: 0,
+					top: 0,
+					float: "right",
 				},
 				drawerPaper: {
 					width: 300,
 					maxWidth: "100%",
-					[theme.breakpoints.only("md")]: {
-						width: "25%",
-					},
 					[theme.breakpoints.up("md")]: {
 						background: "none",
 						border: "none",
-					},
-					[theme.breakpoints.up("lg")]: {
-						width: "16.6666667%",
 					},
 				},
 				drawerContainer: {
@@ -257,6 +279,14 @@ function useStyles(props, theme) {
 					},
 					zIndex: "1",
 				},
+				empty: {
+					flexBasis: 300,
+					maxWidth: 300,
+					[theme.breakpoints.down("md")]: {
+						flexBasis: 0,
+						maxWidth: 0,
+					},
+				},
 			};
 		},
 		{ defaultTheme: theme }
@@ -264,7 +294,7 @@ function useStyles(props, theme) {
 }
 
 const useDarkMode = (setCookie) => {
-	const [theme, setTheme] = React.useState(themeObject);
+	const [theme, setTheme] = React.useState(themeTemplate);
 
 	const {
 		palette: { type },
@@ -286,7 +316,7 @@ const useDarkMode = (setCookie) => {
 							: colors.dark.paper,
 				},
 				divider:
-					themeObject.palette.type === "dark"
+					type === "dark"
 						? "rgba(0, 0, 0, .12)"
 						: "rgba(255, 255, 255, .12)",
 			},
@@ -297,12 +327,15 @@ const useDarkMode = (setCookie) => {
 	return [theme, toggleDarkMode];
 };
 
-const appBarTheme = createMuiTheme(themeObject);
+const appBarTheme = createMuiTheme(themeTemplate);
 
 export default function MinehutXYZ(props) {
 	const [cookies, setCookie] = useCookies(["theme"]);
-	if (!cookies.theme) setCookie("theme", "light");
-	themeObject.palette.type = cookies.theme || "light";
+	if (!cookies.theme) setCookie("theme", "dark");
+
+	const themeObject = themeTemplate;
+
+	themeObject.palette.type = cookies.theme || "dark";
 	themeObject.palette.background.default =
 		themeObject.palette.type === "light"
 			? colors.light.default
@@ -329,9 +362,7 @@ export default function MinehutXYZ(props) {
 		f ? f.name === router.pathname.slice(1) : null
 	);
 
-	if (isHome) fm = homeFm;
-
-	const classes = useStyles({ fm }, themeConfig);
+	const classes = useStyles({ fm, isHome }, themeConfig);
 
 	const [open, setOpen] = React.useState(false);
 
@@ -708,9 +739,13 @@ export default function MinehutXYZ(props) {
 
 	const [speedDialOpen, setSpeedDialOpen] = React.useState(false);
 
-	const speedDialHandleClose = () => setSpeedDialOpen(false);
+	const speedDialHandleClose = () => {
+		setSpeedDialOpen(false);
+	};
 
-	const speedDialHandleOpen = () => setSpeedDialOpen(true);
+	const speedDialHandleOpen = () => {
+		setSpeedDialOpen(true);
+	};
 
 	return (
 		<React.Fragment>
@@ -744,7 +779,7 @@ export default function MinehutXYZ(props) {
 				/>
 			</Head>
 			<ThemeProvider theme={themeConfig}>
-				<Grid container className={classes.root}>
+				<div className={classes.root}>
 					<CssBaseline />
 					<CustomAppBar
 						themeConfig={themeConfig}
@@ -754,27 +789,38 @@ export default function MinehutXYZ(props) {
 						open={open}
 						toggleDarkMode={toggleDarkMode}
 					/>
-					<Grid item lg={2}>
-						<CustomDrawer open={open} setOpen={setOpen} />
-					</Grid>
-					<Grid item xs={12} md={fm ? 9 : 12} lg={fm ? 8 : 10}>
-						{!isHome ? <Toolbar /> : null}
-						{isHome ? (
-							<NoSsr>
-								<div
-									style={{
-										marginBottom: themeConfig.spacing(1),
-									}}
-								>
-									<MDXProvider components={components}>
-										<Component {...pageProps} />
-									</MDXProvider>
-								</div>
-							</NoSsr>
-						) : null}
-						<Container maxWidth="md" className={classes.content}>
-							{!isHome ? (
-								<NoSsr>
+					<CustomDrawer open={open} setOpen={setOpen} />
+					<main className={classes.main}>
+						<NoSsr>
+							{isHome ? (
+								<ThemeProvider theme={appBarTheme}>
+									<Banner />
+								</ThemeProvider>
+							) : null}
+							{fm ? (
+								<Hidden smDown>
+									<div
+										className={classes.drawer}
+										variant="permanent"
+										anchor="right"
+									>
+										<Paper
+											className={classes.drawerPaper}
+											elevation={0}
+										>
+											<Toolbar />
+											<TableOfContents
+												contents={fm.contents}
+												tocOpen={tocOpen}
+												setTocOpen={setTocOpen}
+											/>
+										</Paper>
+									</div>
+								</Hidden>
+							) : null}
+							<div className={classes.content}>
+								<Toolbar />
+								<Container maxWidth="md">
 									<div
 										style={{
 											marginBottom: themeConfig.spacing(
@@ -786,26 +832,54 @@ export default function MinehutXYZ(props) {
 											<Component {...pageProps} />
 										</MDXProvider>
 									</div>
-								</NoSsr>
-							) : null}
-							<Hint
-								disableMargin
-								variant="outlined"
-								severity="success"
+									<Hint
+										disableMargin
+										variant="outlined"
+										severity="success"
+									>
+										Join our{" "}
+										<Link href="https://discord.gg/TYhH5bK">
+											Discord
+										</Link>{" "}
+										to become an{" "}
+										<strong>official writer</strong>, get{" "}
+										<strong>site updates</strong>, and{" "}
+										<strong>much more</strong>.
+									</Hint>
+									{current !== -1 ? (
+										<Pagination
+											current={current}
+											rArray={rArray}
+										/>
+									) : null}
+								</Container>
+							</div>
+						</NoSsr>
+					</main>
+					{fm ? (
+						<Hidden mdUp>
+							<SwipeableDrawer
+								className={classes.drawer}
+								variant="temporary"
+								classes={{
+									paper: classes.drawerPaper,
+								}}
+								anchor="right"
+								open={tocOpen}
+								onClose={() => setTocOpen(false)}
+								onOpen={() => setTocOpen(true)}
 							>
-								Join our{" "}
-								<Link href="https://discord.gg/TYhH5bK">
-									Discord
-								</Link>{" "}
-								to become an <strong>official writer</strong>,
-								get <strong>site updates</strong>, and{" "}
-								<strong>much more</strong>.
-							</Hint>
-							{current !== -1 ? (
-								<Pagination current={current} rArray={rArray} />
-							) : null}
-						</Container>
-					</Grid>
+								<Toolbar />
+								<TableOfContents
+									contents={fm.contents}
+									tocOpen={tocOpen}
+									setTocOpen={setTocOpen}
+								/>
+							</SwipeableDrawer>
+						</Hidden>
+					) : null}
+					<div className={classes.empty} />
+					<Footer />
 					{isHome ? (
 						<HomeScrollTop>
 							<Hidden smDown>
@@ -820,51 +894,7 @@ export default function MinehutXYZ(props) {
 							</Hidden>
 						</HomeScrollTop>
 					) : null}
-					{fm ? (
-						<Grid item md={3} lg={2}>
-							<Hidden smDown>
-								<Drawer
-									className={classes.drawer}
-									variant="permanent"
-									classes={{
-										paper: classes.drawerPaper,
-									}}
-									anchor="right"
-								>
-									<Toolbar />
-									<TableOfContents
-										contents={fm.contents}
-										tocOpen={tocOpen}
-										setTocOpen={setTocOpen}
-									/>
-								</Drawer>
-							</Hidden>
-							<Hidden mdUp>
-								<SwipeableDrawer
-									className={classes.drawer}
-									variant="temporary"
-									classes={{
-										paper: classes.drawerPaper,
-									}}
-									anchor="right"
-									open={tocOpen}
-									onClose={() => setTocOpen(false)}
-									onOpen={() => setTocOpen(true)}
-								>
-									<Toolbar />
-									<TableOfContents
-										contents={fm.contents}
-										tocOpen={tocOpen}
-										setTocOpen={setTocOpen}
-									/>
-								</SwipeableDrawer>
-							</Hidden>
-						</Grid>
-					) : null}
-					<Grid item lg={!isHome ? 2 : "auto"} />
-					<Grid item xs={12} lg={!isHome ? 10 : 12}>
-						<Footer />
-					</Grid>
+					{isHome ? <div className={classes.empty} /> : null}
 					<Hidden smDown>
 						<ScrollTop>
 							<Tooltip title="Back to top">
@@ -911,7 +941,9 @@ export default function MinehutXYZ(props) {
 							className={classes.fab}
 							icon={<SpeedDialIcon />}
 							onClose={speedDialHandleClose}
-							onOpen={speedDialHandleOpen}
+							onOpen={(e, r) => {
+								if (r !== "focus") speedDialHandleOpen();
+							}}
 							open={speedDialOpen}
 							FabProps={{
 								size: "medium",
@@ -958,7 +990,7 @@ export default function MinehutXYZ(props) {
 									tooltipOpen
 									tooltipTitle="Table of contents"
 									FabProps={{
-										onClick: () => setTocOpen(!tocOpen),
+										onClick: () => setTocOpen(true),
 									}}
 									icon={<MenuIcon />}
 									classes={{
@@ -984,7 +1016,7 @@ export default function MinehutXYZ(props) {
 							/>
 						</SpeedDial>
 					</Hidden>
-				</Grid>
+				</div>
 			</ThemeProvider>
 		</React.Fragment>
 	);

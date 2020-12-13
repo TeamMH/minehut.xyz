@@ -7,6 +7,7 @@ import {
 	Typography,
 } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
+import { useEffect, useState } from "react";
 import Minehut from "../public/minehut.svg";
 import Link from "./Link";
 
@@ -14,6 +15,7 @@ const useStyles = makeStyles((theme) => {
 	return {
 		empty: {
 			height: "100vh",
+			marginBottom: -theme.spacing(8),
 		},
 		banner: {
 			height: "100%",
@@ -26,12 +28,22 @@ const useStyles = makeStyles((theme) => {
 			justifyContent: "center",
 			color: theme.palette.text.primary,
 			zIndex: theme.zIndex.drawer + 1,
-			background: "url(/home.png) no-repeat center",
-			backgroundSize: "cover",
 			textAlign: "right",
+			overflowY: "hidden",
 			[theme.breakpoints.down("sm")]: {
 				textAlign: "center",
 			},
+		},
+		image: {
+			top: 0,
+			left: 0,
+			right: 0,
+			bottom: 0,
+			position: "absolute",
+			zIndex: "-1",
+			background: "url(/home.png) no-repeat center",
+			backgroundSize: "cover",
+			transform: (props) => `translateY(${props.scrollTop / 4}px)`,
 		},
 		heading: {
 			whiteSpace: "pre-wrap !important",
@@ -81,12 +93,21 @@ const useStyles = makeStyles((theme) => {
 });
 
 export default function Banner() {
-	const classes = useStyles();
+	const [scrollTop, setScrollTop] = useState(0);
+
+	useEffect(() => {
+		window.addEventListener("scroll", () => {
+			setScrollTop(window.pageYOffset);
+		});
+	});
+
+	const classes = useStyles({ scrollTop });
 
 	return (
 		<>
 			<div className={classes.empty} />
 			<div className={classes.banner}>
+				<div className={classes.image} />
 				<Container fixed>
 					<Hidden smDown>
 						<Typography

@@ -21,15 +21,12 @@ import routes from "../routes.json";
 
 const useStyles = makeStyles((theme) => ({
 	drawer: {
-		width: "100%",
+		width: 300,
 		flexShrink: 0,
 	},
 	drawerPaper: {
 		width: 300,
 		maxWidth: "100%",
-		[theme.breakpoints.up("lg")]: {
-			width: "16.6666667%",
-		},
 	},
 	drawerContainer: {
 		overflowY: "auto",

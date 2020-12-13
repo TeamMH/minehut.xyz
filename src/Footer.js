@@ -13,8 +13,11 @@ import Minehut from "../public/minehut.svg";
 
 const useStyles = makeStyles((theme) => ({
 	footer: {
-		height: "100%",
-		width: "100%",
+		maxWidth: "100%",
+		flexBasis: (props) => (props.isHome ? "100%" : "calc(100% - 300px)"),
+		[theme.breakpoints.down("md")]: {
+			flexBasis: "100% !important",
+		},
 		position: "relative",
 		zIndex: theme.zIndex.drawer + 1,
 	},
@@ -22,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
 		background: theme.palette.background.paper,
 		paddingTop: theme.spacing(3),
 		paddingBottom: theme.spacing(3),
-		height: "100%",
 		width: "100%",
+		height: "100%",
 		textAlign: "center",
 	},
 	footerLogo: {
@@ -36,7 +39,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function Footer() {
-	const classes = useStyles();
+	const router = useRouter();
+
+	const isHome = router.pathname === "/";
+
+	const classes = useStyles({ isHome });
 
 	return (
 		<footer className={classes.footer}>
