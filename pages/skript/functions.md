@@ -21,7 +21,7 @@ You have 4 parts of a function: The name, the parameters, the return type, and t
 
 The return type can also be anything, just like a parameter. It also does not need to be specified, but if you are gonna return something, you have to specify.
 
-<Hint style="error">
+<Hint severity="error">
 If you're returning something, there <strong>cannot</strong> be a delay.
 </Hint>
 

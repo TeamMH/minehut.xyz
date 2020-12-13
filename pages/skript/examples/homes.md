@@ -28,7 +28,7 @@ command /sethome: #command to sethome
 
 In the above skript, we are making a new command called `/sethome` and having its permission be `skript.sethome`. It sets a variable, `{home::%player's uuid%}` which stores our location, then sends us a message of confirmation.
 
-<Hint style="warning">
+<Hint severity="warning">
 These skripts use <inlineCode>player's uuid</inlineCode>, so even if you change your Minecraft username, your variable will not be last because UUIDs do not change unlike usernames.
 </Hint>
 
@@ -46,7 +46,7 @@ command /home: #command to teleport to home
 
 In the above skript, we are making a new command `/home` which will teleport us to our location from before and having its permission be `skript.home`. It checks to see if our variable, `{home::%player's uuid%}`, has been set. If yes, then it will teleport us to the location of our home and send us a message of confirmation, however, it will send us an error message if the variable isn't set.
 
-<Hint style="info">
+<Hint severity="info">
 These skripts use `comments`, so that they can explain all/most of the lines to you. These are marked by the `#` symbol, so if you wish to remove them then delete all text after & along with the `#`.
 </Hint>
 

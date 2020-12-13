@@ -13,13 +13,13 @@ Uploading worlds is useful for when you want to upload a previous save or upload
 
 ## METHOD 1 - INGAME
 
-<Hint style="warning">
+<Hint severity="warning">
 The max file size for this method is 500MB.
 </Hint>
 
 You must upload your world to an online media site, for example [file.io](https://www.file.io/), [mediafire](https://app.mediafire.com/myfiles), or [dropbox](https://www.dropbox.com/?_hp=c) \(make sure to change `dl=0` to `dl=1`\).
 
-<Hint style="info">
+<Hint severity="info">
 Mediafire and filo.io don't require sign-in, while dropbox does.
 </Hint>
 
@@ -27,7 +27,7 @@ Once you have a link to your world, run the command `/ul world <name> <link>`. T
 
 ## METHOD 2 - WEB MANAGER
 
-<Hint style="warning">
+<Hint severity="warning">
 The max file size for this method is 50MB.
 </Hint>
 

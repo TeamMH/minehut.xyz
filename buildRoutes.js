@@ -103,6 +103,7 @@ readFile("./pages/skript", "basics.md");
 readDir("./pages");
 
 routes["Plugins"]["Plugin List"] = "/plugins/plugin-list";
+routes["Server Search"] = "/server-search";
 
 function sortRoutes(routes) {
 	const sortedKeys = Object.keys(routes).sort((a, b) => {

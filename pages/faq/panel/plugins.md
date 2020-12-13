@@ -11,7 +11,7 @@ import Hint from "../../../src/Hint"
 
 First, head over to the **Plugins** section on the panel. Now comes the fun part; find the plugins you want to install to make your server better. There are useful plugins such as WorldEdit, or fun plugins such as uSkyBlock. Click the plugin you want to install, and click the **Install** button.
 
-<Hint style="error">
+<Hint severity="error">
 The free plan only allows you to have a max of <strong>12 plugins</strong> installed at one time.
 </Hint>
 

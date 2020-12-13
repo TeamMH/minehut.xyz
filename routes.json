@@ -2,6 +2,7 @@
     "Home": "/",
     "Contribute": "/contribute",
     "Partnerships": "/partnerships",
+    "Server Search": "/server-search",
     "Popular Questions": {
         "Panel": {
             "__dirroute__": "/faq/panel",

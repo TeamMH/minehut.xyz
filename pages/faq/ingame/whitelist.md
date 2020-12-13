@@ -9,7 +9,7 @@ import Hint from "../../../src/Hint"
 
 ## How to add players to the whitelist
 
-<Hint style="warning">
+<Hint severity="warning">
 If you are not opped, use your Minehut dashboard to execute these commands.
 </Hint>
 

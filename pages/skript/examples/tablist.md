@@ -11,7 +11,7 @@ import Hint from "../../../src/Hint"
 
 This tutorial will show you how to create a customised tablist _\(TAB key\)_ on your server using Skript.
 
-<Hint style="info">
+<Hint severity="info">
 Skript addon <strong>skRayFall</strong> is required!
 </Hint>
 

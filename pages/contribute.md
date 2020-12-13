@@ -22,29 +22,29 @@ Note, however, that the path depends on the location of the file.
 After that, you can type in the following anywhere in your markdown:
 
 ```md
-<Hint style="success | info | warning | error">TEXT HERE</Hint>
+<Hint severity="success | info | warning | error">TEXT HERE</Hint>
 ```
 
-<Hint style="warning">Inside a hint, only normal HTML will work. For example, instead of doing <inlineCode>**Hello World**</inlineCode>, you'd do <inlineCode>&lt;strong>Hello World&lt;/strong></inlineCode>.</Hint>
+<Hint severity="warning">Inside a hint, only normal HTML will work. For example, instead of doing <inlineCode>**Hello World**</inlineCode>, you'd do <inlineCode>&lt;strong>Hello World&lt;/strong></inlineCode>.</Hint>
 
 The `style` attribute will give you different colors and icons:
 
-<Hint style="success">This is a <inlineCode>success</inlineCode> hint.</Hint>
+<Hint severity="success">This is a <inlineCode>success</inlineCode> hint.</Hint>
 
-<Hint style="info">This is an <inlineCode>info</inlineCode> hint.</Hint>
+<Hint severity="info">This is an <inlineCode>info</inlineCode> hint.</Hint>
 
-<Hint style="warning">This is a <inlineCode>warning</inlineCode> hint.</Hint>
+<Hint severity="warning">This is a <inlineCode>warning</inlineCode> hint.</Hint>
 
-<Hint style="error">This is an <inlineCode>error</inlineCode> hint.</Hint>
+<Hint severity="error">This is an <inlineCode>error</inlineCode> hint.</Hint>
 
 ```md
-<Hint style="success">This is a <inlineCode>success</inlineCode> hint.</Hint>
+<Hint severity="success">This is a <inlineCode>success</inlineCode> hint.</Hint>
 
-<Hint style="info">This is an <inlineCode>info</inlineCode> hint.</Hint>
+<Hint severity="info">This is an <inlineCode>info</inlineCode> hint.</Hint>
 
-<Hint style="warning">This is a <inlineCode>warning</inlineCode> hint.</Hint>
+<Hint severity="warning">This is a <inlineCode>warning</inlineCode> hint.</Hint>
 
-<Hint style="error">This is an <inlineCode>error</inlineCode> hint.</Hint>
+<Hint severity="error">This is an <inlineCode>error</inlineCode> hint.</Hint>
 ```
 
 ## How to contribute
@@ -87,9 +87,9 @@ Text
 Text
 ```
 
-<Hint style="warning">Only use 1 <inlineCode>h1</inlineCode> (titles with one <inlineCode>#</inlineCode>) per file.</Hint>
+<Hint severity="warning">Only use 1 <inlineCode>h1</inlineCode> (titles with one <inlineCode>#</inlineCode>) per file.</Hint>
 
-<Hint style="warning">Don't make titles bold or italic, as it'll break some of the site's mechanics.</Hint>
+<Hint severity="warning">Don't make titles bold or italic, as it'll break some of the site's mechanics.</Hint>
 
 To add a **description** to your page, add:
 

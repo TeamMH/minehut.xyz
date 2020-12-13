@@ -7,7 +7,7 @@ import Hint from "../../../src/Hint"
 
 # Planning it out
 
-<Hint style="info">
+<Hint severity="info">
   We need your help to improve this! Visit our <a href="/contribute">contribution tab</a> to help out!
 </Hint>
 

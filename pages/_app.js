@@ -256,6 +256,17 @@ function useStyles(props, theme) {
 				},
 				paragraph: {
 					marginTop: theme.spacing(2),
+					margin: theme.spacing(3, 0),
+					whiteSpace: "pre-wrap !important",
+					overflowWrap: "anywhere",
+					wordBreak: "break-word",
+					position: "relative",
+					"& button": {
+						display: "none",
+					},
+					"&:hover button": {
+						display: "inline-block",
+					},
 				},
 				linkCopyButton: {
 					display: "inline-block",
@@ -439,7 +450,7 @@ export default function MinehutXYZ(props) {
 
 					<Divider />
 					{fm && fm.madeBy ? (
-						<Hint style="info">
+						<Hint severity="info">
 							This tutorial was made by {getMadeBy(fm)}. Lean how
 							to contribute{" "}
 							<NextLink target="_blank" href="/contribute">
@@ -820,7 +831,7 @@ export default function MinehutXYZ(props) {
 									<div
 										style={{
 											marginBottom: themeConfig.spacing(
-												1
+												2
 											),
 										}}
 									>

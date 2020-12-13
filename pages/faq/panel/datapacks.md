@@ -18,6 +18,6 @@ The data pack system provides a way for players to further customize their Minec
 3. Find the folder named `datapacks` and enter it.
 4. Create a **new folder** and name it anything, then upload each individual datatapack file within this new folder.
 
-<Hint style="info">
+<Hint severity="info">
 You can't directly upload the <inlineCode>.zip</inlineCode> or <inlineCode>.rar</inlineCode> file, you need to upload the contents individually.
 </Hint>

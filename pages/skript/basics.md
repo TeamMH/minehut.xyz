@@ -9,7 +9,7 @@ import Hint from "../../src/Hint"
 
 ![](/skript.jpg)
 
-<Hint style="warning">
+<Hint severity="warning">
 Visit our <a href="https://www.youtube.com/channel/UCgXFIH9h2Vf9Q1e86n_FVJA">partner YouTube channel</a> for even more tutorials!
 </Hint>
 

@@ -30,6 +30,6 @@ CombatLogX is a easy to use CombatLog plugin if you want your players to be puni
     -   **/combatlogx tag** Forces a player into combat mode.
     -   **/combatlogx untag** Forces a player out of combat mode.
 
-<Hint style="warning">
+<Hint severity="warning">
 More information can be found at the plugin's <a href="https://www.spigotmc.org/wiki/combatlogx/">wiki</a>.
 </Hint>

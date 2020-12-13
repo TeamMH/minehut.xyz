@@ -7,7 +7,7 @@ import Hint from "../../../src/Hint"
 
 # MineResetLite
 
-<Hint style="info">
+<Hint severity="info">
 This tutorial may need the plugin <a href="/plugins/popular/worldedit">WorldEdit</a>.
 </Hint>
 

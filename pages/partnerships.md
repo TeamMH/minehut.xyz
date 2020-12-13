@@ -7,7 +7,7 @@ import Hint from "../src/Hint"
 
 # Partners
 
-<Hint style="info">Want to partner? Join our <a href="https://discord.gg/TYhH5bK">Discord</a> and message a manager or admin.</Hint>
+<Hint severity="info">Want to partner? Join our <a href="https://discord.gg/TYhH5bK">Discord</a> and message a manager or admin.</Hint>
 
 ## [Azyncraft Network](https://discord.gg/tP5KGax)
 

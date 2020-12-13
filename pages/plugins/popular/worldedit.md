@@ -26,7 +26,7 @@ WorldEdit is an easy-to-use ingame world editor for Minecraft, supporting both s
 
 ## COMMANDS & PERMISSION NODES
 
-<Hint style="warning">
+<Hint severity="warning">
 A full list of commands and permissions can be found <a href="https://worldedit.enginehub.org/en/latest/permissions/">here</a>.
 </Hint>
 

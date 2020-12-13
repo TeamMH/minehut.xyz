@@ -11,13 +11,13 @@ import Hint from "../../../src/Hint"
 
 On Minehut, you have a choice of five permission managers:`Permissionsex, Luckperms, Groupmanager, Ultimateperms, zPermissions.` I recommend choosing between lp and pex as those are the most used/stable. Also, please note that the `/perms` command is NOT your current perms.
 
-<Hint style="warning">
+<Hint severity="warning">
 You only need to install 1 out of 5 permission managers, installing others may cause issues.
 </Hint>
 
 ## HOW TO USE EACH PERMISSION MANAGER
 
-<Hint style="info">
+<Hint severity="info">
 Each permission manager has lots more commands than shown below, visit each permission manager's tutorial page.
 </Hint>
 

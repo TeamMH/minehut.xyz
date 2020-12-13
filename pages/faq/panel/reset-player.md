@@ -11,7 +11,7 @@ import Hint from "../../../src/Hint"
 
 This tutorial will explain how to delete specific player's data. This means whenever they join the server it'll be like they're a new player.
 
-<Hint style="error">
+<Hint severity="error">
 This will reset the players <strong>inventory</strong> <strong>ender chest</strong> <strong>money</strong> <strong>homes</strong> and more. Continue at your own risk!
 </Hint>
 

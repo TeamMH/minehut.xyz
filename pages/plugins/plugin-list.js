@@ -225,7 +225,7 @@ export default function PluginList(props) {
 									<strong>Last updated | </strong>{" "}
 									{new Date(
 										plugin.last_updated
-									).toLocaleDateString()}
+									).toUTCString()}
 								</Typography>
 							</AccordionDetails>
 							<Divider />
@@ -235,7 +235,6 @@ export default function PluginList(props) {
 									href={
 										link && link.length > 0 ? link[1] : null
 									}
-									variant="contained"
 									color="primary"
 									target="_blank"
 								>

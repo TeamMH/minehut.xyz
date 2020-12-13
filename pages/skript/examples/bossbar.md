@@ -13,7 +13,7 @@ A bossbar is useful in many different cases. A bossbar can be found at the very 
 
 ## CODE
 
-<Hint style="info">
+<Hint severity="info">
 Skript addon <strong>skRayFall</strong> is required!
 </Hint>
 

@@ -36,7 +36,7 @@ First of all, make sure you are OP _\(follow_ [_this_](/faq/ingame/op) tutorial 
 
 To create a kit, run the command `/kitcreate (kit name) (cooldown)`.
 
-<Hint style="info">
+<Hint severity="info">
 Set <inlineCode>-1</inlineCode> as the cool down for a one time use kit!
 </Hint>
 
@@ -48,6 +48,6 @@ To delete a kit, run the command `/delkit (kit name)`
 2. `essentials.kits.(kit name)` This gives the user access to that particular kit.
 3. `essentials.kits.*` This gives the user access to all kits.
 
-<Hint style="info">
+<Hint severity="info">
 The first permission node is <strong>required</strong> for the second and third nodes to work.
 </Hint>

@@ -7,14 +7,14 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Hint({ style, children, disableMargin }) {
+export default function Hint({ severity, children, disableMargin }) {
 	const classes = useStyles();
 
 	return (
 		<Paper elevation={2}>
 			<Alert
 				variant="outlined"
-				severity={style}
+				severity={severity}
 				className={disableMargin ? null : classes.hint}
 			>
 				{children}

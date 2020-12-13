@@ -23,7 +23,7 @@ You can also download a build schematic, which allows you to select a specific b
 
 Do `/dl schem <name>`. You can find the list of schematics using `/schem list`.
 
-<Hint style="warning">
+<Hint severity="warning">
 Minehut is currently experiencing some problems with the download function, if you have issues, <a href="https://invite.gg/minehutxyz">join our discord</a> and we will work with you to solve the issue.
 </Hint>
 
