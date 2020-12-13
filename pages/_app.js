@@ -242,6 +242,7 @@ function useStyles(props, theme) {
 					position: "relative",
 					bottom: 4,
 					left: 8,
+					margin: "-10px 0",
 				},
 				backdrop: {
 					zIndex: theme.zIndex.drawer + 1,
@@ -363,7 +364,6 @@ export default function MinehutXYZ(props) {
 						{props.children}
 						<Tooltip title="Copy heading link">
 							<IconButton
-								size="small"
 								className={classes.linkCopyButton}
 								onClick={() => {
 									const { query } = router;
@@ -386,7 +386,7 @@ export default function MinehutXYZ(props) {
 								}}
 								centerRipple={false}
 							>
-								<InsertLinkIcon fontSize="small" />
+								<InsertLinkIcon />
 							</IconButton>
 						</Tooltip>
 					</Typography>
@@ -437,7 +437,6 @@ export default function MinehutXYZ(props) {
 						{props.children}
 						<Tooltip title="Copy heading link">
 							<IconButton
-								size="small"
 								className={classes.linkCopyButton}
 								onClick={() => {
 									const { query } = router;
@@ -460,7 +459,7 @@ export default function MinehutXYZ(props) {
 								}}
 								centerRipple={false}
 							>
-								<InsertLinkIcon fontSize="small" />
+								<InsertLinkIcon />
 							</IconButton>
 						</Tooltip>
 					</Typography>
@@ -482,7 +481,6 @@ export default function MinehutXYZ(props) {
 					{props.children}
 					<Tooltip title="Copy heading link">
 						<IconButton
-							size="small"
 							className={classes.linkCopyButton}
 							onClick={() => {
 								const { query } = router;
@@ -503,7 +501,7 @@ export default function MinehutXYZ(props) {
 							}}
 							centerRipple={false}
 						>
-							<InsertLinkIcon fontSize="small" />
+							<InsertLinkIcon />
 						</IconButton>
 					</Tooltip>
 				</Typography>
@@ -756,15 +754,10 @@ export default function MinehutXYZ(props) {
 						open={open}
 						toggleDarkMode={toggleDarkMode}
 					/>
-					<Grid item lg={!isHome ? 2 : "auto"}>
+					<Grid item lg={2}>
 						<CustomDrawer open={open} setOpen={setOpen} />
 					</Grid>
-					<Grid
-						item
-						xs={12}
-						md={fm ? 9 : 12}
-						lg={isHome ? 10 : fm ? 8 : 10}
-					>
+					<Grid item xs={12} md={fm ? 9 : 12} lg={fm ? 8 : 10}>
 						{!isHome ? <Toolbar /> : null}
 						{isHome ? (
 							<NoSsr>
@@ -815,9 +808,16 @@ export default function MinehutXYZ(props) {
 					</Grid>
 					{isHome ? (
 						<HomeScrollTop>
-							<Fab color="primary">
-								<KeyboardArrowDownIcon />
-							</Fab>
+							<Hidden smDown>
+								<Fab color="primary">
+									<KeyboardArrowDownIcon />
+								</Fab>
+							</Hidden>
+							<Hidden mdUp>
+								<Fab color="primary" size="medium">
+									<KeyboardArrowDownIcon />
+								</Fab>
+							</Hidden>
 						</HomeScrollTop>
 					) : null}
 					{fm ? (

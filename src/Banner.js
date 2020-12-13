@@ -1,15 +1,12 @@
 import {
 	Button,
 	Container,
-	Grid,
 	Hidden,
 	makeStyles,
 	SvgIcon,
 	Typography,
-	useTheme,
 } from "@material-ui/core";
-import { GitHub, Search } from "@material-ui/icons";
-import Discord from "../public/discord.svg";
+import { Search } from "@material-ui/icons";
 import Minehut from "../public/minehut.svg";
 import Link from "./Link";
 
@@ -19,7 +16,7 @@ const useStyles = makeStyles((theme) => {
 			height: "100vh",
 		},
 		banner: {
-			height: "100vh",
+			height: "100%",
 			position: "absolute",
 			top: 0,
 			left: 0,
@@ -31,6 +28,10 @@ const useStyles = makeStyles((theme) => {
 			zIndex: theme.zIndex.drawer + 1,
 			background: "url(/home.png) no-repeat center",
 			backgroundSize: "cover",
+			textAlign: "right",
+			[theme.breakpoints.down("sm")]: {
+				textAlign: "center",
+			},
 		},
 		heading: {
 			whiteSpace: "pre-wrap !important",
@@ -65,15 +66,12 @@ const useStyles = makeStyles((theme) => {
 				background: theme.palette.background.default,
 			},
 		},
-		button: {
-			width: "100%",
-		},
-		grid: {
-			width: 300,
-			maxWidth: "100%",
-		},
 		logo: {
 			fontSize: "5rem",
+			[theme.breakpoints.down("sm")]: {
+				fontSize: "4rem",
+				top: 20,
+			},
 			position: "relative",
 			top: 25,
 			margin: theme.spacing(0, 1),
@@ -89,8 +87,8 @@ export default function Banner() {
 		<>
 			<div className={classes.empty} />
 			<div className={classes.banner}>
-				<Container maxWidth="lg">
-					<Hidden xsDown>
+				<Container fixed>
+					<Hidden smDown>
 						<Typography
 							variant="h2"
 							component="h1"
@@ -104,12 +102,17 @@ export default function Banner() {
 							minehut.xyz
 						</Typography>
 					</Hidden>
-					<Hidden smUp>
+					<Hidden mdUp>
 						<Typography
 							variant="h3"
 							component="h1"
 							className={classes.heading}
 						>
+							<SvgIcon
+								component={Minehut}
+								viewBox="0 0 400 400"
+								className={classes.logo}
+							/>
 							minehut.xyz
 						</Typography>
 					</Hidden>
@@ -121,49 +124,18 @@ export default function Banner() {
 					>
 						The leading Minehut support website.
 					</Typography>
-					<Grid container className={classes.grid} spacing={1}>
-						<Grid item xs={6}>
-							<Button
-								startIcon={
-									<SvgIcon
-										viewBox="0 0 245 240"
-										component={Discord}
-									/>
-								}
-								className={`${classes.discordButton} ${classes.button}`}
-								variant="contained"
-								href="https://discord.gg/bS6FMMCVyg"
-								target="_blank"
-							>
-								Discord
-							</Button>
-						</Grid>
-						<Grid item xs={6}>
-							<Button
-								className={`${classes.githubButton} ${classes.button}`}
-								variant="contained"
-								startIcon={<GitHub />}
-								href="https://github.com/TeamMH/minehut.xyz"
-								target="_blank"
-							>
-								GitHub
-							</Button>
-						</Grid>
-						<Grid item xs={12}>
-							<Button
-								component={Link}
-								naked
-								href="/search"
-								color="secondary"
-								size="large"
-								startIcon={<Search />}
-								variant="contained"
-								className={classes.button}
-							>
-								Search for an article...
-							</Button>
-						</Grid>
-					</Grid>
+					<Button
+						component={Link}
+						naked
+						href="/search"
+						color="secondary"
+						size="large"
+						startIcon={<Search />}
+						variant="contained"
+						className={classes.button}
+					>
+						Search for an article...
+					</Button>
 				</Container>
 			</div>
 		</>

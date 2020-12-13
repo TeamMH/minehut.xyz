@@ -40,10 +40,17 @@ export default function CustomAppBar({
 	open,
 }) {
 	const classes = useStyles();
-	const loaded = useLoaded();
 	const router = useRouter();
 
 	const isHome = router.pathname === "/";
+
+	const [scrollTop, setScrollTop] = useState(0);
+
+	useEffect(() => {
+		window.addEventListener("scroll", () => {
+			setScrollTop(window.pageYOffset);
+		});
+	});
 
 	const menuButton = (
 		<Tooltip title="Open menu">
@@ -59,7 +66,13 @@ export default function CustomAppBar({
 
 	return (
 		<ThemeProvider theme={appBarTheme}>
-			<AppBar position="fixed" color="inherit" className={classes.appBar}>
+			<AppBar
+				position="fixed"
+				color="inherit"
+				className={classes.appBar}
+				elevation={scrollTop <= 20 && isHome ? 0 : 4}
+				color={scrollTop <= 20 && isHome ? "transparent" : "inherit"}
+			>
 				<Toolbar className={classes.toolBar}>
 					{!isHome ? <Hidden lgUp>{menuButton}</Hidden> : menuButton}
 					<Tooltip title="Back to home">
@@ -109,8 +122,8 @@ export default function CustomAppBar({
 	);
 }
 
-function useLoaded() {
-	const [loaded, setLoaded] = useState(false);
-	useEffect(() => setLoaded(true), []);
-	return loaded;
-}
+// function useLoaded() {
+// 	const [loaded, setLoaded] = useState(false);
+// 	useEffect(() => setLoaded(true), []);
+// 	return loaded;
+// }
