@@ -792,11 +792,7 @@ export default function MinehutXYZ(props) {
 					<CustomDrawer open={open} setOpen={setOpen} />
 					<main className={classes.main}>
 						<NoSsr>
-							{isHome ? (
-								<ThemeProvider theme={appBarTheme}>
-									<Banner />
-								</ThemeProvider>
-							) : null}
+							{isHome ? <Banner /> : null}
 							{fm ? (
 								<Hidden smDown>
 									<div

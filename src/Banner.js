@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => {
 			display: "flex",
 			flexDirection: "column",
 			justifyContent: "center",
-			color: theme.palette.text.primary,
+			color: "white",
 			zIndex: theme.zIndex.drawer + 1,
 			textAlign: "right",
 			overflowY: "hidden",
@@ -41,9 +41,12 @@ const useStyles = makeStyles((theme) => {
 			bottom: 0,
 			position: "absolute",
 			zIndex: "-1",
-			background: "url(/home.png) no-repeat center",
+			background: `url(/${
+				theme.palette.type === "light" ? "home-light" : "home-dark"
+			}.png) no-repeat center`,
 			backgroundSize: "cover",
 			transform: (props) => `translateY(${props.scrollTop / 4}px)`,
+			filter: theme.palette.type === "light" ? "brightness(.7)" : "none",
 		},
 		heading: {
 			whiteSpace: "pre-wrap !important",
