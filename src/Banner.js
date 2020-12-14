@@ -3,6 +3,7 @@ import {
 	Container,
 	Hidden,
 	makeStyles,
+	Paper,
 	SvgIcon,
 	Typography,
 } from "@material-ui/core";
@@ -15,24 +16,15 @@ const useStyles = makeStyles((theme) => {
 	return {
 		empty: {
 			height: "100vh",
-			marginBottom: -theme.spacing(8),
 		},
 		banner: {
-			height: "100%",
+			height: "100vh",
 			position: "absolute",
 			top: 0,
 			left: 0,
 			width: "100%",
-			display: "flex",
-			flexDirection: "column",
-			justifyContent: "center",
-			color: "white",
 			zIndex: theme.zIndex.drawer + 1,
-			textAlign: "right",
 			overflowY: "hidden",
-			[theme.breakpoints.down("sm")]: {
-				textAlign: "center",
-			},
 		},
 		image: {
 			top: 0,
@@ -47,6 +39,17 @@ const useStyles = makeStyles((theme) => {
 			backgroundSize: "cover",
 			transform: (props) => `translateY(${props.scrollTop / 4}px)`,
 			filter: theme.palette.type === "light" ? "brightness(.7)" : "none",
+		},
+		innerContainer: {
+			height: "85%",
+			display: "flex",
+			flexDirection: "column",
+			justifyContent: "center",
+			color: "white",
+			textAlign: "right",
+			[theme.breakpoints.down("sm")]: {
+				textAlign: "center",
+			},
 		},
 		heading: {
 			whiteSpace: "pre-wrap !important",
@@ -92,6 +95,12 @@ const useStyles = makeStyles((theme) => {
 			margin: theme.spacing(0, 1),
 			fill: "currentColor", // "#488AFF"
 		},
+		divider: {
+			width: "100%",
+			height: theme.spacing(1),
+			background: theme.palette.primary.main,
+			marginBottom: theme.spacing(-8),
+		},
 	};
 });
 
@@ -111,57 +120,60 @@ export default function Banner() {
 			<div className={classes.empty} />
 			<div className={classes.banner}>
 				<div className={classes.image} />
-				<Container fixed>
-					<Hidden smDown>
+				<div className={classes.innerContainer}>
+					<Container fixed>
+						<Hidden smDown>
+							<Typography
+								variant="h2"
+								component="h1"
+								className={classes.heading}
+							>
+								<SvgIcon
+									component={Minehut}
+									viewBox="0 0 400 400"
+									className={classes.logo}
+								/>
+								minehut.xyz
+							</Typography>
+						</Hidden>
+						<Hidden mdUp>
+							<Typography
+								variant="h3"
+								component="h1"
+								className={classes.heading}
+							>
+								<SvgIcon
+									component={Minehut}
+									viewBox="0 0 400 400"
+									className={classes.logo}
+								/>
+								minehut.xyz
+							</Typography>
+						</Hidden>
 						<Typography
-							variant="h2"
-							component="h1"
-							className={classes.heading}
+							variant="h4"
+							component="h2"
+							className={classes.headline}
+							paragraph
 						>
-							<SvgIcon
-								component={Minehut}
-								viewBox="0 0 400 400"
-								className={classes.logo}
-							/>
-							minehut.xyz
+							The leading Minehut support website.
 						</Typography>
-					</Hidden>
-					<Hidden mdUp>
-						<Typography
-							variant="h3"
-							component="h1"
-							className={classes.heading}
+						<Button
+							component={Link}
+							naked
+							href="/search"
+							color="secondary"
+							size="large"
+							startIcon={<Search />}
+							variant="contained"
+							className={classes.button}
 						>
-							<SvgIcon
-								component={Minehut}
-								viewBox="0 0 400 400"
-								className={classes.logo}
-							/>
-							minehut.xyz
-						</Typography>
-					</Hidden>
-					<Typography
-						variant="h4"
-						component="h2"
-						className={classes.headline}
-						paragraph
-					>
-						The leading Minehut support website.
-					</Typography>
-					<Button
-						component={Link}
-						naked
-						href="/search"
-						color="secondary"
-						size="large"
-						startIcon={<Search />}
-						variant="contained"
-						className={classes.button}
-					>
-						Search for an article...
-					</Button>
-				</Container>
+							Search for an article...
+						</Button>
+					</Container>
+				</div>
 			</div>
+			<div square className={classes.divider} />
 		</>
 	);
 }

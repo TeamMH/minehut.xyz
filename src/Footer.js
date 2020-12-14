@@ -61,7 +61,7 @@ export function Footer() {
 								minehut.xyz
 							</Typography>
 						</Grid>
-						<Grid item xs={12} sm={4}>
+						<Grid item xs={4} sm={4}>
 							<Typography variant="h6">Links</Typography>
 							<Typography>
 								<Link href="/" color="textSecondary">
@@ -82,7 +82,7 @@ export function Footer() {
 								</Link>
 							</Typography>
 						</Grid>
-						<Grid item xs={12} sm={4}>
+						<Grid item xs={4} sm={4}>
 							<Typography variant="h6">Social</Typography>
 							<Typography>
 								<Link
@@ -103,7 +103,7 @@ export function Footer() {
 								</Link>
 							</Typography>
 						</Grid>
-						<Grid item xs={12} sm={4}>
+						<Grid item xs={4} sm={4}>
 							<Typography variant="h6">Minehut</Typography>
 							<Typography>
 								<Link
