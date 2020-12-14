@@ -31,13 +31,13 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 
 | Name          | Position                                         |
 | :------------ | :----------------------------------------------- |
-| Adam          | Founder and Senior Writer                        |
+| Adam          | Founder                     |
 | ---           | ---                                              |
-| Tarna         | Founder General Manager and Writer               |
-| Goose         | GitHub Manager and Writer                        |
-| Lukas         | Staff Manager, Project Manager and Senior Writer |
+| Tarna         | Founder, Partnership Manager               |
+| Goose         | GitHub Manager                        |
+| Lukas         | General Manager, Project Manager |
 | ---           | ---                                              |
-| Kiko          | Site Developer                                   |
+| Kiko          | Site Developer                                 |
 | ---           | ---                                              |
 | Conutik       | Writer                                           |
 | Houlton       | Writer                                           |
@@ -47,6 +47,6 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 
 ## About us
 
-Minehut.xyz was founded on _**August 4th, 2020**_ by two members of the Minehut Community, **Tarna** _\(Senior Support @ Minehut\)_ & **Minehut** _\(Adam, Former Senior Support @ Minehut\)_.
+Minehut.xyz was founded on _**August 4th, 2020**_ by two members of the Minehut Community, **Tarna** _\(Helper @ Minehut\)_ & **Minehut** _\(Adam, Former Senior Support @ Minehut\)_.
 
 We realised there was no dedicated place for Minehut tutorials where the community can easily upload their own tutorials, so we made one!
