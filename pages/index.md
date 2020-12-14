@@ -31,13 +31,13 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 
 | Name          | Position                                         |
 | :------------ | :----------------------------------------------- |
-| Adam          | Founder and Senior Writer                        |
+| Adam          | Founder                     |
 | ---           | ---                                              |
-| Tarna         | Founder General Manager and Writer               |
-| Goose         | GitHub Manager and Writer                        |
-| Lukas         | Staff Manager, Project Manager and Senior Writer |
+| Tarna         | Founder, Partnership Manager               |
+| Goose         | GitHub Manager                        |
+| Lukas         | General Manager, Project Manager |
 | ---           | ---                                              |
-| Kiko          | Site Developer                                   |
+| Kiko          | Site Developer                                 |
 | ---           | ---                                              |
 | Conutik       | Writer                                           |
 | Houlton       | Writer                                           |
