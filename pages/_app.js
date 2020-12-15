@@ -706,7 +706,7 @@ export default function MinehutXYZ(props) {
 			projectId: "minehut-xyz",
 			storageBucket: "minehut-xyz.appspot.com",
 			messagingSenderId: "263953233640",
-			appId: process.env.NEXT_PUBLIC_API_KEY,
+			appId: process.env.NEXT_PUBLIC_APP_ID,
 			measurementId: "G-1QLTGB09K6",
 		};
 
