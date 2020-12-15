@@ -716,7 +716,7 @@ export default function MinehutXYZ(props) {
 		setInitialized(true);
 	});
 
-	console.log(process?.env?.TEST_VAR);
+	console.log(process?.env?.NEXT_PUBLIC_API_KEY);
 
 	React.useEffect(() => {
 		const jssStyles = document.querySelector("#jss-server-side");

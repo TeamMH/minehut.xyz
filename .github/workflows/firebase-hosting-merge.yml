@@ -20,4 +20,4 @@ jobs:
                   projectId: minehut-xyz
               env:
                   FIREBASE_CLI_PREVIEWS: hostingchannels
-                  TEST_VAR: "hello world"
+                  NEXT_PUBLIC_API_KEY: "hello world"
