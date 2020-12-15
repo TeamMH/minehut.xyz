@@ -694,7 +694,10 @@ export default function MinehutXYZ(props) {
 		},
 	};
 
+	const [initialized, setInitialized] = React.useState(false);
+
 	React.useEffect(() => {
+		if (initialized) return;
 		// Your web app's Firebase configuration
 		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 		var firebaseConfig = {
@@ -706,9 +709,11 @@ export default function MinehutXYZ(props) {
 			appId: "1:263953233640:web:afc99115fb14a56179fb5d",
 			measurementId: "G-1QLTGB09K6",
 		};
+
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
 		firebase.analytics();
+		setInitialized(true);
 	});
 
 	console.log(process?.env?.TEST_VAR);

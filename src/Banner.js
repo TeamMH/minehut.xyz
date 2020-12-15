@@ -173,7 +173,7 @@ export default function Banner() {
 					</Container>
 				</div>
 			</div>
-			<div square className={classes.divider} />
+			<div className={classes.divider} />
 		</>
 	);
 }
