@@ -5,6 +5,8 @@ const withMDX = require("@next/mdx")({
 const { getRedirectStatus } = require("next/dist/lib/load-custom-routes");
 const path = require("path");
 
+console.log(process.env.TEST_VAR);
+
 module.exports = withMDX({
 	pageExtensions: ["js", "jsx", "mdx", "md"],
 	webpack(config) {
