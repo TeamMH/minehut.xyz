@@ -1,7 +1,9 @@
 {
     "Home": "/",
     "Contribute": "/contribute",
+    "Login": "/login",
     "Partnerships": "/partnerships",
+    "Search": "/search",
     "Server Search": "/server-search",
     "Popular Questions": {
         "Panel": {

@@ -26,11 +26,13 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: theme.spacing(2),
 	},
 	textField: {
-		width: "100%",
+		flexGrow: 1,
 	},
 	button: {
-		width: "100%",
-		height: "100%",
+		flexShrink: 0,
+		[theme.breakpoints.down("xs")]: {
+			width: "100%",
+		},
 	},
 	heading: {
 		margin: theme.spacing(3, 0),
@@ -50,6 +52,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 	serverName: {
 		marginBottom: theme.spacing(1),
+	},
+	form: {
+		display: "flex",
+		gap: 10,
+		[theme.breakpoints.down("xs")]: {
+			flexWrap: "wrap",
+		},
 	},
 }));
 
@@ -184,31 +193,24 @@ export default function ServerSearch({ plugins }) {
 					e.preventDefault();
 					searchServer(document.getElementById("input").value);
 				}}
+				className={classes.form}
 			>
-				<Grid container spacing={2} className={classes.grid}>
-					<Grid item xs={12} sm={9}>
-						<TextField
-							variant="filled"
-							label="Server name or id"
-							className={classes.textField}
-							id="input"
-						/>
-					</Grid>
-					<Grid item xs={12} sm={3}>
-						<Button
-							color="primary"
-							variant="contained"
-							className={classes.button}
-							onClick={() =>
-								searchServer(
-									document.getElementById("input").value
-								)
-							}
-						>
-							Search
-						</Button>
-					</Grid>
-				</Grid>
+				<TextField
+					variant="filled"
+					label="Server name or id"
+					className={classes.textField}
+					id="input"
+				/>
+				<Button
+					color="primary"
+					variant="contained"
+					className={classes.button}
+					onClick={() =>
+						searchServer(document.getElementById("input").value)
+					}
+				>
+					Search
+				</Button>
 			</form>
 			{Object.keys(server).length ? (
 				<>

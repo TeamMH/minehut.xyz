@@ -129,14 +129,15 @@ function useStyles(props, theme) {
 					maxWidth: (props) =>
 						props.isHome
 							? "calc(100% - 600px)"
-							: props.fm
+							: props.fm && !props.fm.hidden
 							? "calc(100% - 300px)"
 							: "100%",
 					marginLeft: (props) => (props.isHome ? 300 : 0),
 					[theme.breakpoints.down("md")]: {
-						maxWidth: props.fm
-							? "calc(100% - 300px) !important"
-							: "100%",
+						maxWidth:
+							props.fm && !props.fm.hidden
+								? "calc(100% - 300px) !important"
+								: "100%",
 						marginLeft: "0 !important",
 					},
 					[theme.breakpoints.down("sm")]: {
@@ -381,18 +382,20 @@ export default function MinehutXYZ(props) {
 		h1(props) {
 			return (
 				<>
-					<Hidden xsDown>
-						<Button
-							href={getHref(router.pathname)}
-							target="_blank"
-							className={classes.githubButton}
-							variant="contained"
-							startIcon={<GitHub />}
-							color="primary"
-						>
-							Edit this page on GitHub
-						</Button>
-					</Hidden>
+					{fm && !fm.hidden ? (
+						<Hidden xsDown>
+							<Button
+								href={getHref(router.pathname)}
+								target="_blank"
+								className={classes.githubButton}
+								variant="contained"
+								startIcon={<GitHub />}
+								color="primary"
+							>
+								Edit this page on GitHub
+							</Button>
+						</Hidden>
+					) : null}
 					<Typography
 						className={classes.heading}
 						id={
@@ -432,18 +435,20 @@ export default function MinehutXYZ(props) {
 							</IconButton>
 						</Tooltip>
 					</Typography>
-					<Hidden smUp>
-						<Button
-							href={getHref(router.pathname)}
-							target="_blank"
-							className={classes.githubButton}
-							variant="contained"
-							startIcon={<GitHub />}
-							color="primary"
-						>
-							Edit this page on GitHub
-						</Button>
-					</Hidden>
+					{fm && !fm.hidden ? (
+						<Hidden smUp>
+							<Button
+								href={getHref(router.pathname)}
+								target="_blank"
+								className={classes.githubButton}
+								variant="contained"
+								startIcon={<GitHub />}
+								color="primary"
+							>
+								Edit this page on GitHub
+							</Button>
+						</Hidden>
+					) : null}
 					<Typography color="textSecondary" paragraph>
 						{fm ? fm.description : null}
 					</Typography>
@@ -451,12 +456,9 @@ export default function MinehutXYZ(props) {
 					<Divider />
 					{fm && fm.madeBy ? (
 						<Hint severity="info">
-							This tutorial was made by {getMadeBy(fm)}. Lean how
+							This tutorial was made by {getMadeBy(fm)}. Learn how
 							to contribute{" "}
-							<NextLink target="_blank" href="/contribute">
-								here
-							</NextLink>
-							.
+							<NextLink href="/contribute">here</NextLink>.
 						</Hint>
 					) : null}
 				</>
@@ -697,9 +699,8 @@ export default function MinehutXYZ(props) {
 	const [initialized, setInitialized] = React.useState(false);
 
 	React.useEffect(() => {
+		if (typeof firebase === "undefined") return;
 		if (initialized) return;
-		// Your web app's Firebase configuration
-		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 		var firebaseConfig = {
 			apiKey: process.env.NEXT_PUBLIC_API_KEY,
 			authDomain: "minehut-xyz.firebaseapp.com",
@@ -710,7 +711,6 @@ export default function MinehutXYZ(props) {
 			measurementId: "G-1QLTGB09K6",
 		};
 
-		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
 		firebase.analytics();
 		setInitialized(true);
@@ -743,15 +743,8 @@ export default function MinehutXYZ(props) {
 				property="og:description"
 			/>
 		);
-	else if (router.pathname === "/search")
-		meta = (
-			<meta
-				content="Search for something on minehut.xyz."
-				property="og:description"
-			/>
-		);
 
-	const rArray = routesArray(routes);
+	const rArray = routesArray(routes, frontMatter);
 	const current = rArray.findIndex((r) => r[1] === router.pathname);
 
 	let title = rArray.find((r) => r[1] === router.pathname)
@@ -833,7 +826,7 @@ export default function MinehutXYZ(props) {
 					<main className={classes.main}>
 						<NoSsr>
 							{isHome ? <Banner /> : null}
-							{fm ? (
+							{fm && !fm.hidden ? (
 								<Hidden smDown>
 									<div
 										className={classes.drawer}
@@ -882,17 +875,25 @@ export default function MinehutXYZ(props) {
 										<strong>site updates</strong>, and{" "}
 										<strong>much more</strong>.
 									</Hint>
-									{current !== -1 ? (
+									{fm && !fm.hidden ? (
 										<Pagination
 											current={current}
-											rArray={rArray}
+											rArray={rArray.filter(
+												(r) =>
+													!frontMatter.find(
+														(f) =>
+															f &&
+															f.name ===
+																r[1].slice(1)
+													)?.hidden
+											)}
 										/>
 									) : null}
 								</Container>
 							</div>
 						</NoSsr>
 					</main>
-					{fm ? (
+					{fm && !fm.hidden ? (
 						<Hidden mdUp>
 							<SwipeableDrawer
 								className={classes.drawer}
