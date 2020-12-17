@@ -45,6 +45,7 @@
             "Logs": "/faq/panel/logs",
             "Plugins": "/faq/panel/plugins",
             "Rename": "/faq/panel/rename",
+            "Repair": "/faq/panel/repair",
             "Reset Player": "/faq/panel/reset-player",
             "Reset World": "/faq/panel/reset-world",
             "Reset": "/faq/panel/reset",

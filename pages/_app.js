@@ -373,7 +373,6 @@ export default function MinehutXYZ(props) {
 	let isHome = router.pathname === "/";
 
 	const rArray = routesArray(routes, frontMatter);
-	const current = rArray.findIndex((r) => r[1] === router.pathname);
 
 	let title = rArray.find((r) => r[1] === router.pathname)
 		? overrideRouteNames(
@@ -880,20 +879,7 @@ export default function MinehutXYZ(props) {
 										<strong>site updates</strong>, and{" "}
 										<strong>much more</strong>.
 									</Hint>
-									{fm && !fm.hidden ? (
-										<Pagination
-											current={current}
-											rArray={rArray.filter(
-												(r) =>
-													!frontMatter.find(
-														(f) =>
-															f &&
-															f.name ===
-																r[1].slice(1)
-													)?.hidden
-											)}
-										/>
-									) : null}
+									{fm && !fm.hidden ? <Pagination /> : null}
 								</Container>
 							</div>
 						</NoSsr>
@@ -1084,7 +1070,9 @@ function getMadeBy(fm) {
 	if (typeof fm.madeBy === "string")
 		return fm.madeByLink ? (
 			fm.madeByLink.match(/^https?:\/\//) ? (
-				<Link href={fm.madeByLink} target="_blank">{fm.madeBy}</Link>
+				<Link href={fm.madeByLink} target="_blank">
+					{fm.madeBy}
+				</Link>
 			) : (
 				<NextLink href={fm.madeByLink}>{fm.madeBy}</NextLink>
 			)

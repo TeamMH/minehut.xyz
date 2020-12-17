@@ -7,7 +7,11 @@ import {
 	Typography,
 	Breadcrumbs,
 } from "@material-ui/core";
+import { routesArray } from "../lib/utils";
 import Link from "./Link";
+import routes from "../routes.json";
+import { useRouter } from "next/router";
+import { frontMatter } from "../pages/**/*.md";
 
 const useStyles = makeStyles((theme) => ({
 	navGrid: {
@@ -18,7 +22,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Pagination({ current, rArray }) {
+export default function Pagination() {
+	const router = useRouter();
+
+	const rArray = routesArray(routes).filter(
+		(r) => !frontMatter.find((f) => f && f.name === r[1].slice(1))?.hidden
+	);
+	const current = rArray.findIndex((r) => r[1] === router.pathname);
 	const classes = useStyles();
 
 	return (
