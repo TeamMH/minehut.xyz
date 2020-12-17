@@ -1084,7 +1084,7 @@ function getMadeBy(fm) {
 	if (typeof fm.madeBy === "string")
 		return fm.madeByLink ? (
 			fm.madeByLink.match(/^https?:\/\//) ? (
-				<Link href={fm.madeByLink}>{fm.madeBy}</Link>
+				<Link href={fm.madeByLink} target="_blank">{fm.madeBy}</Link>
 			) : (
 				<NextLink href={fm.madeByLink}>{fm.madeBy}</NextLink>
 			)
@@ -1095,7 +1095,7 @@ function getMadeBy(fm) {
 		const array = fm.madeBy.map((author, i) =>
 			fm.madeByLink[i] ? (
 				fm.madeByLink[i].match(/^https?:\/\//) ? (
-					<Link key={author} href={fm.madeByLink[i]}>
+					<Link key={author} href={fm.madeByLink[i]} target="_blank">
 						{author}
 					</Link>
 				) : (
