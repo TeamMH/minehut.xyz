@@ -31,5 +31,5 @@ Finally, click the `Repair Files` button on the card on the bottom left:
 
 <Hint severity="warning">Make sure your server is not in a <strong>starting/stopping state</strong>, as that could make the repair not work!</Hint>
 
-And that's it! You should have your server repair its files for you, all with the push of a button (or a few, if you count that we needed to navigate here)!
+And that's it! You should now have your server repair its files for you, all with the push of a button (or a few, if you count that we needed to navigate here)!
 
