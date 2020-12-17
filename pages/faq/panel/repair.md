@@ -13,7 +13,7 @@ import Hint from "../../../src/Hint"
 
 If you have a problem with your Minehut server, one of the first things we recommend you do is a **file repair**. By repairing your server's files, you're fixing potentially corrupted or missing files that are preventing your server from starting.
 
-<Hint severity="warning">Repairing files will not always work. If that's the case for you, we recommend getting support on the [Minehut Discord](https://discord.gg/minehut) with your server's [logs](/faq/panel/logs).</Hint>
+<Hint severity="warning">Repairing files will not always work. If that's the case for you, we recommend getting support on the <a href="https://discord.gg/minehut">Minehut Discord</a> with your server's <a href="/faq/panel/logs">logs</a>.</Hint>
 
 ## How to repair your server's files
 
