@@ -119,7 +119,9 @@ function useStyles(props, theme) {
 				},
 				main: {
 					flexBasis: (props) =>
-						props.isHome ? "100%" : "calc(100% - 300px)",
+						props.isHome || props.is404
+							? "100%"
+							: "calc(100% - 300px)",
 					[theme.breakpoints.down("md")]: {
 						flexBasis: "100% !important",
 					},
@@ -368,13 +370,26 @@ export default function MinehutXYZ(props) {
 
 	const router = useRouter();
 
-	const isHome = router.pathname === "/";
+	let isHome = router.pathname === "/";
+
+	const rArray = routesArray(routes, frontMatter);
+	const current = rArray.findIndex((r) => r[1] === router.pathname);
+
+	let title = rArray.find((r) => r[1] === router.pathname)
+		? overrideRouteNames(
+				kebabToStartCase(router.pathname.split("/").reverse()[0])
+		  )
+		: router.pathname === "/search"
+		? "Search" + (router.query.q ? ": " + router.query.q : "")
+		: "404 Not Found";
+
+	const is404 = title === "404 Not Found";
 
 	let fm = frontMatter.find((f) =>
 		f ? f.name === router.pathname.slice(1) : null
 	);
 
-	const classes = useStyles({ fm, isHome }, themeConfig);
+	const classes = useStyles({ fm, isHome, is404 }, themeConfig);
 
 	const [open, setOpen] = React.useState(false);
 
@@ -744,17 +759,6 @@ export default function MinehutXYZ(props) {
 			/>
 		);
 
-	const rArray = routesArray(routes, frontMatter);
-	const current = rArray.findIndex((r) => r[1] === router.pathname);
-
-	let title = rArray.find((r) => r[1] === router.pathname)
-		? overrideRouteNames(
-				kebabToStartCase(router.pathname.split("/").reverse()[0])
-		  )
-		: router.pathname === "/search"
-		? "Search" + (router.query.q ? ": " + router.query.q : "")
-		: "404 Not Found";
-
 	const [query, setQuery] = React.useState("");
 
 	React.useEffect(() => {
@@ -821,8 +825,9 @@ export default function MinehutXYZ(props) {
 						setOpen={setOpen}
 						open={open}
 						toggleDarkMode={toggleDarkMode}
+						is404={is404}
 					/>
-					<CustomDrawer open={open} setOpen={setOpen} />
+					<CustomDrawer open={open} setOpen={setOpen} is404={is404} />
 					<main className={classes.main}>
 						<NoSsr>
 							{isHome ? <Banner /> : null}
@@ -848,12 +853,12 @@ export default function MinehutXYZ(props) {
 								</Hidden>
 							) : null}
 							<div className={classes.content}>
-								<Toolbar />
+								{!is404 ? <Toolbar /> : null}
 								<Container maxWidth="md">
 									<div
 										style={{
 											marginBottom: themeConfig.spacing(
-												2
+												is404 ? 1 : 2
 											),
 										}}
 									>
@@ -916,7 +921,7 @@ export default function MinehutXYZ(props) {
 						</Hidden>
 					) : null}
 					<div className={classes.empty} />
-					<Footer />
+					<Footer is404={is404} />
 					{isHome ? (
 						<HomeScrollTop>
 							<Hidden smDown>

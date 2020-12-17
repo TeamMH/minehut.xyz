@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function CustomDrawer({ open, setOpen }) {
+export default function CustomDrawer({ open, setOpen, is404 }) {
 	const router = useRouter();
 
 	const tempDropdowns = { pathname: router.pathname };
@@ -196,7 +196,7 @@ export default function CustomDrawer({ open, setOpen }) {
 
 	return (
 		<>
-			{!isHome ? (
+			{!isHome && !is404 ? (
 				<>
 					<Hidden mdDown>
 						<Drawer
@@ -211,7 +211,6 @@ export default function CustomDrawer({ open, setOpen }) {
 							{drawer}
 						</Drawer>
 					</Hidden>
-
 					<Hidden lgUp>
 						<SwipeableDrawer
 							className={classes.drawer}

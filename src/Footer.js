@@ -14,7 +14,8 @@ import Minehut from "../public/minehut.svg";
 const useStyles = makeStyles((theme) => ({
 	footer: {
 		maxWidth: "100%",
-		flexBasis: (props) => (props.isHome ? "100%" : "calc(100% - 300px)"),
+		flexBasis: (props) =>
+			props.isHome || props.is404 ? "100%" : "calc(100% - 300px)",
 		[theme.breakpoints.down("md")]: {
 			flexBasis: "100% !important",
 		},
@@ -38,12 +39,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export function Footer() {
+export function Footer({ is404 }) {
 	const router = useRouter();
 
 	const isHome = router.pathname === "/";
 
-	const classes = useStyles({ isHome });
+	const classes = useStyles({ isHome, is404 });
 
 	return (
 		<footer className={classes.footer}>

@@ -91,14 +91,14 @@ function readDir(directory) {
 }
 
 readFile("./pages", "index.md");
+readDir("./pages/plugins/permission-plugins");
+readDir("./pages/plugins/popular");
 readDir("./pages/faq/panel");
 readDir("./pages/faq/ingame");
 readDir("./pages/faq/minehut");
 readDir("./pages/faq/other-questions");
 readDir("./pages/faq/forums");
 readDir("./pages/faq/making-a-server");
-readDir("./pages/plugins/permission-plugins");
-readDir("./pages/plugins/popular");
 readFile("./pages/skript", "basics.md");
 readDir("./pages");
 

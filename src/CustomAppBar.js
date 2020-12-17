@@ -38,6 +38,7 @@ export default function CustomAppBar({
 	toggleDarkMode,
 	setOpen,
 	open,
+	is404,
 }) {
 	const classes = useStyles();
 	const router = useRouter();
@@ -70,11 +71,19 @@ export default function CustomAppBar({
 				position="fixed"
 				color="inherit"
 				className={classes.appBar}
-				elevation={scrollTop <= 20 && isHome ? 0 : 4}
-				color={scrollTop <= 20 && isHome ? "transparent" : "inherit"}
+				elevation={scrollTop <= 20 && (isHome || is404) ? 0 : 4}
+				color={
+					scrollTop <= 20 && (isHome || is404)
+						? "transparent"
+						: "inherit"
+				}
 			>
 				<Toolbar className={classes.toolBar}>
-					{!isHome ? <Hidden lgUp>{menuButton}</Hidden> : menuButton}
+					{!isHome && !is404 ? (
+						<Hidden lgUp>{menuButton}</Hidden>
+					) : (
+						menuButton
+					)}
 					<Tooltip title="Back to home">
 						<IconButton
 							component={Link}
