@@ -879,7 +879,9 @@ export default function MinehutXYZ(props) {
 										<strong>site updates</strong>, and{" "}
 										<strong>much more</strong>.
 									</Hint>
-									{fm && !fm.hidden ? <Pagination /> : null}
+									{!fm || (fm && !fm.hidden) ? (
+										<Pagination />
+									) : null}
 								</Container>
 							</div>
 						</NoSsr>

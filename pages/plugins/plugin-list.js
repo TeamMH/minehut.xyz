@@ -105,34 +105,8 @@ export default function PluginList(props) {
 
 	return (
 		<div className={classes.root}>
-			<Typography
-				id="plugin-list"
-				variant="h4"
-				className={classes.heading}
-			>
+			<Typography variant="h4" component="h1" className={classes.heading}>
 				PLUGIN LIST
-				<Tooltip title="Copy heading link">
-					<IconButton
-						size="small"
-						className={classes.linkCopyButton}
-						onClick={() => {
-							const { query } = router;
-							router
-								.replace({
-									query: {
-										...query,
-										scrollTo: "h1-plugin-list",
-									},
-								})
-								.then(() =>
-									copyToClipboard(window.location.href)
-								);
-						}}
-						centerRipple={false}
-					>
-						<InsertLinkIcon fontSize="small" />
-					</IconButton>
-				</Tooltip>
 			</Typography>
 			<Typography color="textSecondary" paragraph>
 				Look up all available plugins on Minehut!
