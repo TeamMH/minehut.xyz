@@ -53,19 +53,28 @@ export default function Search() {
 			autoComplete
 			autoHighlight
 			freeSolo
-			onOpen={() => setOpen(!open)}
+			onOpen={() => {}}
 			open={open}
-			value={query}
+			inputValue={query}
 			options={mappedRoutes.map((r) =>
 				r[1] === "/"
 					? "Home"
-					: r[1]
-							.split("/")
-							.slice(1)
-							.map((name) =>
-								overrideRouteNames(kebabToStartCase(name))
-							)
-							.join(" > ")
+					: r[1].replace(/(\/(.+))?\/(.+)$/g, (e, g, g1, g2) => {
+							return `${overrideRouteNames(
+								kebabToStartCase(g2)
+							)}${
+								g1
+									? ` (${g1
+											.split("/")
+											.map((name) =>
+												overrideRouteNames(
+													kebabToStartCase(name)
+												)
+											)
+											.join(" > ")})`
+									: ""
+							}`;
+					  })
 			)}
 			renderInput={(params) => (
 				<TextField
@@ -90,16 +99,17 @@ export default function Search() {
 					query ||
 					""
 				).toLowerCase();
+
 				return options
 					.sort((a, b) => {
 						if (
 							a
-								.split(/( > | )/g)
+								.split(/(\(|\)| > | )/g)
 								.some(
 									(name) => name.toLowerCase() === inputValue
 								) &&
 							!b
-								.split(/( > | )/g)
+								.split(/(\(|\)| > | )/g)
 								.some(
 									(name) => name.toLowerCase() === inputValue
 								)
@@ -107,12 +117,12 @@ export default function Search() {
 							return -1;
 						else if (
 							!a
-								.split(/( > | )/g)
+								.split(/(\(|\)| > | )/g)
 								.some(
 									(name) => name.toLowerCase() === inputValue
 								) &&
 							b
-								.split(/( > | )/g)
+								.split(/(\(|\)| > | )/g)
 								.some(
 									(name) => name.toLowerCase() === inputValue
 								)
@@ -123,12 +133,12 @@ export default function Search() {
 					.sort((a, b) => {
 						if (
 							a
-								.split(/( > | )/g)
+								.split(/(\(|\)| > | )/g)
 								.some((name) =>
 									name.toLowerCase().startsWith(inputValue)
 								) &&
 							!b
-								.split(/( > | )/g)
+								.split(/(\(|\)| > | )/g)
 								.some((name) =>
 									name.toLowerCase().startsWith(inputValue)
 								)
@@ -136,12 +146,12 @@ export default function Search() {
 							return -1;
 						else if (
 							!a
-								.split(/( > | )/g)
+								.split(/(\(|\)| > | )/g)
 								.some((name) =>
 									name.toLowerCase().startsWith(inputValue)
 								) &&
 							b
-								.split(/( > | )/g)
+								.split(/(\(|\)| > | )/g)
 								.some((name) =>
 									name.toLowerCase().startsWith(inputValue)
 								)
@@ -154,7 +164,7 @@ export default function Search() {
 							option.toLowerCase().includes(inputValue) ||
 							option
 								.toLowerCase()
-								.replace(/ > /g, " ")
+								.replace(/( > |\(|\))/g, " ")
 								.includes(inputValue);
 						return includes;
 					});
@@ -164,9 +174,17 @@ export default function Search() {
 				setOpen(!!v);
 				let pathname = v
 					? `/${startToKebabCase(
-							reverseOverrideRouteNames(v.replace(/ > /g, "/"))
+							reverseOverrideRouteNames(
+								v.replace(
+									/^(.+)( \((.+)\))$/g,
+									(e, g1, g2, g3) =>
+										`${g3.replace(/ > /g, "/")}/${g1}`
+								)
+							)
 					  )}`
 					: null;
+
+				console.log(pathname);
 
 				if (pathname === "/home") pathname = "/";
 
@@ -178,6 +196,10 @@ export default function Search() {
 					router.push({
 						pathname,
 					});
+			}}
+			onInputChange={(e, v) => {
+				setQuery(v);
+				setOpen(!!v);
 			}}
 		/>
 	);
