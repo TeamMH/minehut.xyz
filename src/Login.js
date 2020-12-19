@@ -32,7 +32,9 @@ const useStyles = makeStyles((theme) => ({
 		left: 0,
 		height: "110%",
 		right: 0,
-		background: "url(/home-dark.png) no-repeat center",
+		background: `url(${
+			theme.palette.type === "dark" ? "/home-dark.png" : "/home-light.png"
+		}) no-repeat center`,
 		backgroundSize: "cover",
 		zIndex: -1,
 		transform: (props) => `translateY(${props.scrollTop / 4}px)`,
