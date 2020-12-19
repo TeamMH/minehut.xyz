@@ -67,6 +67,7 @@ import Banner from "../src/Banner";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { FirebaseAuthProvider } from "@react-firebase/auth";
+import hiddenRoutes from "../hiddenRoutes.json";
 
 export const themeTemplate = {
 	palette: {
@@ -123,7 +124,7 @@ function useStyles(props, theme) {
 				},
 				main: {
 					flexBasis: (props) =>
-						props.isHome || props.is404
+						props.isHome || props.hideDrawer
 							? "100%"
 							: "calc(100% - 300px)",
 					[theme.breakpoints.down("md")]: {
@@ -378,21 +379,23 @@ export default function MinehutXYZ(props) {
 
 	const rArray = routesArray(routes, frontMatter);
 
-	let title = rArray.find((r) => r[1] === router.pathname)
-		? overrideRouteNames(
-				kebabToStartCase(router.pathname.split("/").reverse()[0])
-		  )
-		: router.pathname === "/search"
-		? "Search" + (router.query.q ? ": " + router.query.q : "")
-		: "404 Not Found";
-
-	const is404 = title === "404 Not Found";
+	let title =
+		hiddenRoutes[router.pathname] ||
+		(rArray.find((r) => r[1] === router.pathname)
+			? overrideRouteNames(
+					kebabToStartCase(router.pathname.split("/").reverse()[0])
+			  )
+			: "404 Not Found");
 
 	let fm = frontMatter.find((f) =>
 		f ? f.name === router.pathname.slice(1) : null
 	);
 
-	const classes = useStyles({ fm, isHome, is404 }, themeConfig);
+	const hideDrawer = fm?.hideDrawer;
+
+	const hideAppBar = fm?.hideAppBar;
+
+	const classes = useStyles({ fm, isHome, hideDrawer }, themeConfig);
 
 	const [open, setOpen] = React.useState(false);
 
@@ -824,12 +827,12 @@ export default function MinehutXYZ(props) {
 							setOpen={setOpen}
 							open={open}
 							toggleDarkMode={toggleDarkMode}
-							is404={is404}
+							hideAppBar={hideAppBar}
 						/>
 						<CustomDrawer
 							open={open}
 							setOpen={setOpen}
-							is404={is404}
+							hideDrawer={hideDrawer}
 						/>
 						<main className={classes.main}>
 							<NoSsr>
@@ -856,12 +859,19 @@ export default function MinehutXYZ(props) {
 									</Hidden>
 								) : null}
 								<div className={classes.content}>
-									{!is404 ? <Toolbar /> : null}
-									<Container maxWidth="md">
+									{!hideAppBar ? <Toolbar /> : null}
+									<Container
+										maxWidth={
+											title === "Login" ||
+											title === "Sign Up"
+												? "xs"
+												: "md"
+										}
+									>
 										<div
 											style={{
 												marginBottom: themeConfig.spacing(
-													is404 ? 1 : 2
+													hideDrawer ? 1 : 2
 												),
 											}}
 										>
@@ -915,7 +925,7 @@ export default function MinehutXYZ(props) {
 							</Hidden>
 						) : null}
 						<div className={classes.empty} />
-						<Footer is404={is404} />
+						<Footer hideDrawer={hideDrawer} />
 						{isHome ? (
 							<HomeScrollTop>
 								<Hidden smDown>

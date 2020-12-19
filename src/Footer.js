@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 	footer: {
 		maxWidth: "100%",
 		flexBasis: (props) =>
-			props.isHome || props.is404 ? "100%" : "calc(100% - 300px)",
+			props.isHome || props.hideDrawer ? "100%" : "calc(100% - 300px)",
 		[theme.breakpoints.down("md")]: {
 			flexBasis: "100% !important",
 		},
@@ -39,12 +39,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export function Footer({ is404 }) {
+export function Footer({ hideDrawer }) {
 	const router = useRouter();
 
 	const isHome = router.pathname === "/";
 
-	const classes = useStyles({ isHome, is404 });
+	const classes = useStyles({ isHome, hideDrawer });
 
 	return (
 		<footer className={classes.footer}>

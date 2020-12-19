@@ -4,6 +4,7 @@
     "Login": "/login",
     "Partnerships": "/partnerships",
     "Search": "/search",
+    "Sign Up": "/signup",
     "Server Search": "/server-search",
     "Plugins": {
         "Recommended Plugins": "/plugins/recommended-plugins",

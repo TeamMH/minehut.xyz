@@ -42,7 +42,7 @@ export default function CustomAppBar({
 	toggleDarkMode,
 	setOpen,
 	open,
-	is404,
+	hideAppBar,
 }) {
 	const classes = useStyles();
 	const router = useRouter();
@@ -75,15 +75,15 @@ export default function CustomAppBar({
 				position="fixed"
 				color="inherit"
 				className={classes.appBar}
-				elevation={scrollTop <= 20 && (isHome || is404) ? 0 : 4}
+				elevation={scrollTop <= 20 && (isHome || hideAppBar) ? 0 : 4}
 				color={
-					scrollTop <= 20 && (isHome || is404)
+					scrollTop <= 20 && (isHome || hideAppBar)
 						? "transparent"
 						: "inherit"
 				}
 			>
 				<Toolbar className={classes.toolBar}>
-					{!isHome && !is404 ? (
+					{!isHome && !hideAppBar ? (
 						<Hidden lgUp>{menuButton}</Hidden>
 					) : (
 						menuButton
@@ -170,6 +170,14 @@ function AccountMenu() {
 									href="/login"
 								>
 									Sign in
+								</MenuItem>
+								<MenuItem
+									onClick={handleClose}
+									component={Link}
+									naked
+									href="/signup"
+								>
+									Sign up
 								</MenuItem>
 							</Menu>
 						);

@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function CustomDrawer({ open, setOpen, is404 }) {
+export default function CustomDrawer({ open, setOpen, hideDrawer }) {
 	const router = useRouter();
 
 	const tempDropdowns = { pathname: router.pathname };
@@ -196,7 +196,7 @@ export default function CustomDrawer({ open, setOpen, is404 }) {
 
 	return (
 		<>
-			{!isHome && !is404 ? (
+			{!isHome && !hideDrawer ? (
 				<>
 					<Hidden mdDown>
 						<Drawer

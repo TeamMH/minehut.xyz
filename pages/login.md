@@ -1,11 +1,10 @@
 ---
-description: Log in to a minehut.xyz account
-name: login
+hideDrawer: true
+hideAppBar: true
 hidden: true
+name: login
 ---
 
 import Login from "../src/Login"
-
-# Login
 
 <Login />

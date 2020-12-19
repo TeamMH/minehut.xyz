@@ -30,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
 		position: "absolute",
 		top: 0,
 		left: 0,
-		height: "110%",
 		right: 0,
+		height: "110%",
 		background: "url(/home-dark.png) no-repeat center",
 		backgroundSize: "cover",
 		zIndex: -1,
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Login() {
+export default function SignUp() {
 	const router = useRouter();
 
 	const [email, setEmail] = useState("");
@@ -58,11 +58,18 @@ export default function Login() {
 	const [showPassword, setShowPassword] = useState(false);
 	const [password, setPassword] = useState("");
 
+	const [showPasswordRepeat, setShowPasswordRepeat] = useState(false);
+	const [passwordRepeat, setPasswordRepeat] = useState("");
+
 	const toggleShowPassword = () => setShowPassword(!showPassword);
+	const toggleShowPasswordRepeat = () =>
+		setShowPasswordRepeat(!showPasswordRepeat);
 
 	const handleEmailChange = (e) => setEmail(e.target.value);
 
 	const handlePasswordChange = (e) => setPassword(e.target.value);
+
+	const handlePasswordRepeatChange = (e) => setPasswordRepeat(e.target.value);
 
 	const [scrollTop, setScrollTop] = useState(0);
 
@@ -79,9 +86,12 @@ export default function Login() {
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
 
+		if (password !== passwordRepeat)
+			return setError("Passwords don't match");
+
 		firebase
 			.auth()
-			.signInWithEmailAndPassword(email, password)
+			.createUserWithEmailAndPassword(email, password)
 			.then(() => setError(""))
 			.catch((e) => setError(e.message));
 	};
@@ -105,10 +115,10 @@ export default function Login() {
 					component="h1"
 					className={classes.heading}
 				>
-					Login
+					Sign up
 				</Typography>
 				<Typography color="textSecondary" paragraph>
-					Login to minehut.xyz.
+					Create a minehut.xyz account
 				</Typography>
 				<Divider />
 				<Hint severity="error">
@@ -145,6 +155,29 @@ export default function Login() {
 							),
 						}}
 					/>
+					<TextField
+						label="Repeat Password"
+						type={showPasswordRepeat ? "text" : "password"}
+						fullWidth
+						value={passwordRepeat}
+						onChange={handlePasswordRepeatChange}
+						variant="filled"
+						InputProps={{
+							endAdornment: (
+								<InputAdornment position="end">
+									<IconButton
+										onClick={toggleShowPasswordRepeat}
+									>
+										{showPassword ? (
+											<Visibility />
+										) : (
+											<VisibilityOff />
+										)}
+									</IconButton>
+								</InputAdornment>
+							),
+						}}
+					/>
 					<Button
 						type="submit"
 						variant="contained"
@@ -152,7 +185,7 @@ export default function Login() {
 						color="primary"
 						size="large"
 					>
-						Login
+						Sign Up
 					</Button>
 				</form>
 				{error && <Hint severity="error">{error}</Hint>}
