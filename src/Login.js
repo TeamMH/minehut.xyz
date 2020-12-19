@@ -4,9 +4,15 @@ import {
 	InputAdornment,
 	makeStyles,
 	TextField,
+	Typography,
 } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { FirebaseAuthConsumer } from "@react-firebase/auth";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import firebase from "firebase/app";
+import "firebase/auth";
+import Hint from "./Hint";
 
 const useStyles = makeStyles((theme) => ({
 	form: {
@@ -21,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
 	const classes = useStyles();
+	const router = useRouter();
 
 	const [email, setEmail] = useState("");
 
@@ -35,50 +42,65 @@ export default function Login() {
 
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
+
+		firebase
+			.auth()
+			.signInWithEmailAndPassword(email, password)
+			.catch(console.error);
 	};
 
 	return (
-		<form
-			onSubmit={(e) => {
-				e.preventDefault();
-				console.log("test");
-			}}
-			className={classes.form}
-		>
-			<TextField
-				label="Email"
-				fullWidth
-				value={email}
-				onChange={handleEmailChange}
-			/>
-			<TextField
-				label="Password"
-				type={showPassword ? "text" : "password"}
-				fullWidth
-				value={password}
-				onChange={handlePasswordChange}
-				InputProps={{
-					endAdornment: (
-						<InputAdornment position="end">
-							<IconButton onClick={toggleShowPassword}>
-								{showPassword ? (
-									<Visibility />
-								) : (
-									<VisibilityOff />
-								)}
-							</IconButton>
-						</InputAdornment>
-					),
+		<>
+			<FirebaseAuthConsumer>
+				{({ isSignedIn, providerId, user }) => {
+					console.log(isSignedIn);
+					if (isSignedIn)
+						router.push({
+							pathname: "/",
+						});
 				}}
-			/>
-			<Button
-				type="submit"
-				variant="contained"
-				style={{ flexShrink: 0 }}
-				color="primary"
-			>
-				Login
-			</Button>
-		</form>
+			</FirebaseAuthConsumer>
+			<Hint severity="error">
+				This feature is still a work-in-progress! Accounts are{" "}
+				<strong>not</strong> currently supported, although we're working
+				to bring them as soon as possible.
+			</Hint>
+			<form onSubmit={handleFormSubmit} className={classes.form}>
+				<TextField
+					label="Email"
+					fullWidth
+					value={email}
+					onChange={handleEmailChange}
+				/>
+				<TextField
+					label="Password"
+					type={showPassword ? "text" : "password"}
+					fullWidth
+					value={password}
+					onChange={handlePasswordChange}
+					InputProps={{
+						endAdornment: (
+							<InputAdornment position="end">
+								<IconButton onClick={toggleShowPassword}>
+									{showPassword ? (
+										<Visibility />
+									) : (
+										<VisibilityOff />
+									)}
+								</IconButton>
+							</InputAdornment>
+						),
+					}}
+				/>
+				<Button
+					type="submit"
+					variant="contained"
+					style={{ flexShrink: 0 }}
+					color="primary"
+				>
+					Login
+				</Button>
+			</form>
+		</>
 	);
 }

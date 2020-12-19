@@ -31,6 +31,8 @@ export default function Pagination() {
 	const current = rArray.findIndex((r) => r[1] === router.pathname);
 	const classes = useStyles();
 
+	if (current === -1) return <></>;
+
 	return (
 		<Grid spacing={2} className={classes.navGrid} container>
 			{current ? (

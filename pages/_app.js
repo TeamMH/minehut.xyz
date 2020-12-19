@@ -56,6 +56,7 @@ import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import { Footer } from "../src/Footer";
 import {
 	copyToClipboard,
+	firebaseConfig,
 	kebabToStartCase,
 	overrideRouteNames,
 	routesArray,
@@ -63,6 +64,9 @@ import {
 import { GitHub } from "@material-ui/icons";
 import HomeScrollTop from "../src/HomeScrollTop";
 import Banner from "../src/Banner";
+import firebase from "firebase/app";
+import "firebase/auth";
+import { FirebaseAuthProvider } from "@react-firebase/auth";
 
 export const themeTemplate = {
 	palette: {
@@ -713,20 +717,15 @@ export default function MinehutXYZ(props) {
 	const [initialized, setInitialized] = React.useState(false);
 
 	React.useEffect(() => {
-		if (typeof firebase === "undefined") return;
+		if (
+			typeof window === "undefined" ||
+			typeof window.firebase === "undefined"
+		)
+			return;
 		if (initialized) return;
-		var firebaseConfig = {
-			apiKey: process.env.NEXT_PUBLIC_API_KEY,
-			authDomain: "minehut-xyz.firebaseapp.com",
-			projectId: "minehut-xyz",
-			storageBucket: "minehut-xyz.appspot.com",
-			messagingSenderId: "263953233640",
-			appId: process.env.NEXT_PUBLIC_APP_ID,
-			measurementId: "G-1QLTGB09K6",
-		};
 
-		firebase.initializeApp(firebaseConfig);
-		firebase.analytics();
+		window.firebase.initializeApp(firebaseConfig);
+		window.firebase.analytics();
 		setInitialized(true);
 	});
 
@@ -814,240 +813,249 @@ export default function MinehutXYZ(props) {
 					content="minimum-scale=1, initial-scale=1, width=device-width"
 				/>
 			</Head>
-			<ThemeProvider theme={themeConfig}>
-				<div className={classes.root}>
-					<CssBaseline />
-					<CustomAppBar
-						themeConfig={themeConfig}
-						useDarkMode={useDarkMode}
-						appBarTheme={appBarTheme}
-						setOpen={setOpen}
-						open={open}
-						toggleDarkMode={toggleDarkMode}
-						is404={is404}
-					/>
-					<CustomDrawer open={open} setOpen={setOpen} is404={is404} />
-					<main className={classes.main}>
-						<NoSsr>
-							{isHome ? <Banner /> : null}
-							{fm && !fm.hidden ? (
-								<Hidden smDown>
-									<div
-										className={classes.drawer}
-										variant="permanent"
-										anchor="right"
-									>
-										<Paper
-											className={classes.drawerPaper}
-											elevation={0}
+			<FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
+				<ThemeProvider theme={themeConfig}>
+					<div className={classes.root}>
+						<CssBaseline />
+						<CustomAppBar
+							themeConfig={themeConfig}
+							useDarkMode={useDarkMode}
+							appBarTheme={appBarTheme}
+							setOpen={setOpen}
+							open={open}
+							toggleDarkMode={toggleDarkMode}
+							is404={is404}
+						/>
+						<CustomDrawer
+							open={open}
+							setOpen={setOpen}
+							is404={is404}
+						/>
+						<main className={classes.main}>
+							<NoSsr>
+								{isHome ? <Banner /> : null}
+								{fm && !fm.hidden ? (
+									<Hidden smDown>
+										<div
+											className={classes.drawer}
+											variant="permanent"
+											anchor="right"
 										>
-											<Toolbar />
-											<TableOfContents
-												contents={fm.contents}
-												tocOpen={tocOpen}
-												setTocOpen={setTocOpen}
-											/>
-										</Paper>
-									</div>
-								</Hidden>
-							) : null}
-							<div className={classes.content}>
-								{!is404 ? <Toolbar /> : null}
-								<Container maxWidth="md">
-									<div
-										style={{
-											marginBottom: themeConfig.spacing(
-												is404 ? 1 : 2
-											),
-										}}
-									>
-										<MDXProvider components={components}>
-											<Component {...pageProps} />
-										</MDXProvider>
-									</div>
-									<Hint
-										disableMargin
-										variant="outlined"
-										severity="success"
-									>
-										Join our{" "}
-										<Link href="https://discord.gg/TYhH5bK">
-											Discord
-										</Link>{" "}
-										to become an{" "}
-										<strong>official writer</strong>, get{" "}
-										<strong>site updates</strong>, and{" "}
-										<strong>much more</strong>.
-									</Hint>
-									{!fm || (fm && !fm.hidden) ? (
-										<Pagination />
-									) : null}
-								</Container>
-							</div>
-						</NoSsr>
-					</main>
-					{fm && !fm.hidden ? (
-						<Hidden mdUp>
-							<SwipeableDrawer
-								className={classes.drawer}
-								variant="temporary"
-								classes={{
-									paper: classes.drawerPaper,
-								}}
-								anchor="right"
-								open={tocOpen}
-								onClose={() => setTocOpen(false)}
-								onOpen={() => setTocOpen(true)}
-							>
-								<Toolbar />
-								<TableOfContents
-									contents={fm.contents}
-									tocOpen={tocOpen}
-									setTocOpen={setTocOpen}
-								/>
-							</SwipeableDrawer>
-						</Hidden>
-					) : null}
-					<div className={classes.empty} />
-					<Footer is404={is404} />
-					{isHome ? (
-						<HomeScrollTop>
-							<Hidden smDown>
-								<Fab color="primary">
-									<KeyboardArrowDownIcon />
-								</Fab>
-							</Hidden>
+											<Paper
+												className={classes.drawerPaper}
+												elevation={0}
+											>
+												<Toolbar />
+												<TableOfContents
+													contents={fm.contents}
+													tocOpen={tocOpen}
+													setTocOpen={setTocOpen}
+												/>
+											</Paper>
+										</div>
+									</Hidden>
+								) : null}
+								<div className={classes.content}>
+									{!is404 ? <Toolbar /> : null}
+									<Container maxWidth="md">
+										<div
+											style={{
+												marginBottom: themeConfig.spacing(
+													is404 ? 1 : 2
+												),
+											}}
+										>
+											<MDXProvider
+												components={components}
+											>
+												<Component {...pageProps} />
+											</MDXProvider>
+										</div>
+										<Hint
+											disableMargin
+											variant="outlined"
+											severity="success"
+										>
+											Join our{" "}
+											<Link href="https://discord.gg/TYhH5bK">
+												Discord
+											</Link>{" "}
+											to become an{" "}
+											<strong>official writer</strong>,
+											get <strong>site updates</strong>,
+											and <strong>much more</strong>.
+										</Hint>
+										{!fm || (fm && !fm.hidden) ? (
+											<Pagination />
+										) : null}
+									</Container>
+								</div>
+							</NoSsr>
+						</main>
+						{fm && !fm.hidden ? (
 							<Hidden mdUp>
-								<Fab color="primary" size="medium">
-									<KeyboardArrowDownIcon />
-								</Fab>
+								<SwipeableDrawer
+									className={classes.drawer}
+									variant="temporary"
+									classes={{
+										paper: classes.drawerPaper,
+									}}
+									anchor="right"
+									open={tocOpen}
+									onClose={() => setTocOpen(false)}
+									onOpen={() => setTocOpen(true)}
+								>
+									<Toolbar />
+									<TableOfContents
+										contents={fm.contents}
+										tocOpen={tocOpen}
+										setTocOpen={setTocOpen}
+									/>
+								</SwipeableDrawer>
 							</Hidden>
-						</HomeScrollTop>
-					) : null}
-					{isHome ? <div className={classes.empty} /> : null}
-					<Hidden smDown>
-						<ScrollTop>
-							<Tooltip title="Back to top">
-								<Fab color="secondary">
-									<KeyboardArrowUpIcon />
+						) : null}
+						<div className={classes.empty} />
+						<Footer is404={is404} />
+						{isHome ? (
+							<HomeScrollTop>
+								<Hidden smDown>
+									<Fab color="primary">
+										<KeyboardArrowDownIcon />
+									</Fab>
+								</Hidden>
+								<Hidden mdUp>
+									<Fab color="primary" size="medium">
+										<KeyboardArrowDownIcon />
+									</Fab>
+								</Hidden>
+							</HomeScrollTop>
+						) : null}
+						{isHome ? <div className={classes.empty} /> : null}
+						<Hidden smDown>
+							<ScrollTop>
+								<Tooltip title="Back to top">
+									<Fab color="secondary">
+										<KeyboardArrowUpIcon />
+									</Fab>
+								</Tooltip>
+							</ScrollTop>
+							<Tooltip title="GitHub">
+								<Fab
+									component={Link}
+									href="https://github.com/TeamMH/minehut.xyz"
+									underline="none"
+									className={classes.fab2}
+									rel="noreferrer"
+									target="_blank"
+								>
+									<GitHub />
 								</Fab>
 							</Tooltip>
-						</ScrollTop>
-						<Tooltip title="GitHub">
-							<Fab
-								component={Link}
-								href="https://github.com/TeamMH/minehut.xyz"
-								underline="none"
-								className={classes.fab2}
-								rel="noreferrer"
-								target="_blank"
-							>
-								<GitHub />
-							</Fab>
-						</Tooltip>
-						<Tooltip title="Join us on Discord!">
-							<Fab
-								component={Link}
-								href="https://discord.gg/bS6FMMCVyg"
-								underline="none"
-								className={`${classes.fab} ${classes.discord}`}
-								rel="noreferrer"
-								target="_blank"
-							>
-								<SvgIcon
-									component={Discord}
-									viewBox="0 0 245 240"
-								/>
-							</Fab>
-						</Tooltip>
-					</Hidden>
-					<Hidden mdUp>
-						<Backdrop
-							open={speedDialOpen}
-							className={classes.backdrop}
-						/>
-						<SpeedDial
-							ariaLabel="mobile speed dial"
-							className={classes.fab}
-							icon={<SpeedDialIcon />}
-							onClose={speedDialHandleClose}
-							onOpen={(e, r) => {
-								if (r !== "focus") speedDialHandleOpen();
-							}}
-							open={speedDialOpen}
-							FabProps={{
-								size: "medium",
-								color: "secondary",
-							}}
-						>
-							<SpeedDialAction
-								onClick={speedDialHandleClose}
-								tooltipOpen
-								tooltipTitle="Discord"
-								FabProps={{
-									component: Link,
-									href: "https://discord.gg/bS6FMMCVyg",
-									target: "_blank",
-								}}
-								icon={
+							<Tooltip title="Join us on Discord!">
+								<Fab
+									component={Link}
+									href="https://discord.gg/bS6FMMCVyg"
+									underline="none"
+									className={`${classes.fab} ${classes.discord}`}
+									rel="noreferrer"
+									target="_blank"
+								>
 									<SvgIcon
-										viewBox="0 0 245 240"
 										component={Discord}
+										viewBox="0 0 245 240"
 									/>
-								}
-								classes={{
-									staticTooltipLabel: classes.dialAction,
-								}}
+								</Fab>
+							</Tooltip>
+						</Hidden>
+						<Hidden mdUp>
+							<Backdrop
+								open={speedDialOpen}
+								className={classes.backdrop}
 							/>
-							<SpeedDialAction
-								onClick={speedDialHandleClose}
-								tooltipOpen
-								tooltipTitle="GitHub"
+							<SpeedDial
+								ariaLabel="mobile speed dial"
+								className={classes.fab}
+								icon={<SpeedDialIcon />}
+								onClose={speedDialHandleClose}
+								onOpen={(e, r) => {
+									if (r !== "focus") speedDialHandleOpen();
+								}}
+								open={speedDialOpen}
 								FabProps={{
-									component: Link,
-									href:
-										"https://github.com/TeamMH/minehut.xyz",
-									target: "_blank",
+									size: "medium",
+									color: "secondary",
 								}}
-								icon={<GitHub />}
-								classes={{
-									staticTooltipLabel: classes.dialAction,
-								}}
-							/>
-							{fm && fm.description ? (
+							>
 								<SpeedDialAction
 									onClick={speedDialHandleClose}
 									tooltipOpen
-									tooltipTitle="Table of contents"
+									tooltipTitle="Discord"
 									FabProps={{
-										onClick: () => setTocOpen(true),
+										component: Link,
+										href: "https://discord.gg/bS6FMMCVyg",
+										target: "_blank",
 									}}
-									icon={<MenuIcon />}
+									icon={
+										<SvgIcon
+											viewBox="0 0 245 240"
+											component={Discord}
+										/>
+									}
 									classes={{
 										staticTooltipLabel: classes.dialAction,
 									}}
 								/>
-							) : null}
-							<SpeedDialAction
-								onClick={() => {
-									speedDialHandleClose();
-									window.scrollTo({
-										top: 0,
-										left: 0,
-										behavior: "smooth",
-									});
-								}}
-								tooltipOpen
-								tooltipTitle="Back to top"
-								icon={<KeyboardArrowUpIcon />}
-								classes={{
-									staticTooltipLabel: classes.dialAction,
-								}}
-							/>
-						</SpeedDial>
-					</Hidden>
-				</div>
-			</ThemeProvider>
+								<SpeedDialAction
+									onClick={speedDialHandleClose}
+									tooltipOpen
+									tooltipTitle="GitHub"
+									FabProps={{
+										component: Link,
+										href:
+											"https://github.com/TeamMH/minehut.xyz",
+										target: "_blank",
+									}}
+									icon={<GitHub />}
+									classes={{
+										staticTooltipLabel: classes.dialAction,
+									}}
+								/>
+								{fm && fm.description ? (
+									<SpeedDialAction
+										onClick={speedDialHandleClose}
+										tooltipOpen
+										tooltipTitle="Table of contents"
+										FabProps={{
+											onClick: () => setTocOpen(true),
+										}}
+										icon={<MenuIcon />}
+										classes={{
+											staticTooltipLabel:
+												classes.dialAction,
+										}}
+									/>
+								) : null}
+								<SpeedDialAction
+									onClick={() => {
+										speedDialHandleClose();
+										window.scrollTo({
+											top: 0,
+											left: 0,
+											behavior: "smooth",
+										});
+									}}
+									tooltipOpen
+									tooltipTitle="Back to top"
+									icon={<KeyboardArrowUpIcon />}
+									classes={{
+										staticTooltipLabel: classes.dialAction,
+									}}
+								/>
+							</SpeedDial>
+						</Hidden>
+					</div>
+				</ThemeProvider>
+			</FirebaseAuthProvider>
 		</React.Fragment>
 	);
 }

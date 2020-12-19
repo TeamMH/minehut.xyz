@@ -24,6 +24,7 @@ export default class MyDocument extends Document {
 					<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js" />
 
 					<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js" />
+					<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js" />
 				</body>
 			</Html>
 		);

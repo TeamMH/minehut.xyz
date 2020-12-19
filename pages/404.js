@@ -97,20 +97,26 @@ export default function Banner404() {
 						</Typography>
 						<Typography variant="h6" component="p">
 							Links:
-							<ul>
-								<li>
+						</Typography>
+						<ul>
+							<li>
+								<Typography variant="h6" component="p">
 									<Link href="/">Home</Link>
-								</li>
-								<li>
+								</Typography>
+							</li>
+							<li>
+								<Typography variant="h6" component="p">
 									<Link href="/plugins/plugin-list">
 										Plugin List
 									</Link>
-								</li>
-								<li>
+								</Typography>
+							</li>
+							<li>
+								<Typography variant="h6" component="p">
 									<Link href="/contribute">Contribute</Link>
-								</li>
-							</ul>
-						</Typography>
+								</Typography>
+							</li>
+						</ul>
 					</Container>
 				</div>
 			</div>
