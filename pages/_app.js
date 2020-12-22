@@ -391,9 +391,9 @@ export default function MinehutXYZ(props) {
 		f ? f.name === router.pathname.slice(1) : null
 	);
 
-	const hideDrawer = fm?.hideDrawer;
+	const hideDrawer = title === "404 Not Found" : fm?.hideDrawer;
 
-	const hideAppBar = fm?.hideAppBar;
+	const hideAppBar = title === "404 Not Found" : fm?.hideAppBar;
 
 	const classes = useStyles({ fm, isHome, hideDrawer }, themeConfig);
 
