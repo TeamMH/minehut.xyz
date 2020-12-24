@@ -18,7 +18,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import routes from "../routes.json";
-import { frontMatter } from "../pages/**/*.md";
+// import { frontMatter } from "../pages/**/*.md";
 
 const useStyles = makeStyles((theme) => ({
 	drawer: {
@@ -94,10 +94,10 @@ export default function CustomDrawer({ open, setOpen, hideDrawer }) {
 	function mapRoutes(routes, i) {
 		return Object.keys(routes).map((route) => {
 			if (typeof routes[route] === "string") {
-				const fm = frontMatter.find(
-					(f) => f && routes[route].slice(1) === f.name
-				);
-				if (fm?.hidden) return;
+				// const fm = frontMatter.find(
+				// 	(f) => f && routes[route].slice(1) === f.name
+				// );
+				// if (fm?.hidden) return;
 				if (route === "__dirroute__") return null;
 				return (
 					<ListItem
