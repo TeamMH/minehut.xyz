@@ -34,7 +34,6 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 | Adam          | Founder                          |
 | ---           | ---                              |
 | Tarna         | Founder, Partnership Manager     |
-| Goose         | GitHub Manager                   |
 | Lukas         | General Manager, Project Manager |
 | ---           | ---                              |
 | Kiko          | Site Developer                   |

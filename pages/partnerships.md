@@ -9,6 +9,10 @@ import Hint from "../src/Hint"
 
 <Hint severity="info">Want to partner? Join our <a href="https://discord.gg/TYhH5bK">Discord</a> and message a manager or admin.</Hint>
 
+## [Solar Networks](https://discord.gg/QuvmKW4)
+
+> **Solar Networks** is a network of servers created just over a year ago. Our staff and management team is dedicated to providing you every fun and excitement! Our community has had our ups downs but we are confident we are going in the right path. We currently host 3 servers. All Minecraft servers. All of them are in development. But to make up for the waiting times you can hang around in the Discord and play games with bots and much more!. Join our discord at: https://discord.gg/QuvmKW4
+
 ## [Azyncraft Network](https://discord.gg/tP5KGax)
 
 > The **Azyncraft Network** is a network of servers, and a chill and active community. There, you can find friends and a welcoming community!
