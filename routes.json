@@ -6,32 +6,6 @@
     "Search": "/search",
     "Sign Up": "/signup",
     "Server Search": "/server-search",
-    "Plugins": {
-        "Recommended Plugins": "/plugins/recommended-plugins",
-        "Plugin List": "/plugins/plugin-list",
-        "Permission Plugins": {
-            "__dirroute__": "/plugins/permission-plugins",
-            "GroupManager": "/plugins/permission-plugins/groupmanager",
-            "LuckPerms": "/plugins/permission-plugins/luckperms",
-            "PermissionsEx": "/plugins/permission-plugins/permissionsex"
-        },
-        "Popular": {
-            "__dirroute__": "/plugins/popular",
-            "CoreProtect": "/plugins/popular/coreprotect",
-            "Essentials": "/plugins/popular/essentials",
-            "Multiverse": "/plugins/popular/multiverse",
-            "WorldEdit": "/plugins/popular/worldedit",
-            "WorldGuard": "/plugins/popular/worldguard"
-        },
-        "Other": {
-            "__dirroute__": "/plugins/other",
-            "CombatLogX": "/plugins/other/combatlogx",
-            "Dream's Man Hunt": "/plugins/other/dreams-man-hunt",
-            "ImageOnMap": "/plugins/other/imageonmap",
-            "MineResetLite": "/plugins/other/mineresetlite",
-            "RedProtect": "/plugins/other/redprotect"
-        }
-    },
     "Popular Questions": {
         "Panel": {
             "__dirroute__": "/faq/panel",
@@ -88,6 +62,32 @@
         "Making A Server": {
             "__dirroute__": "/faq/making-a-server",
             "Planning It Out": "/faq/making-a-server/planning-it-out"
+        }
+    },
+    "Plugins": {
+        "Recommended Plugins": "/plugins/recommended-plugins",
+        "Plugin List": "/plugins/plugin-list",
+        "Permission Plugins": {
+            "__dirroute__": "/plugins/permission-plugins",
+            "GroupManager": "/plugins/permission-plugins/groupmanager",
+            "LuckPerms": "/plugins/permission-plugins/luckperms",
+            "PermissionsEx": "/plugins/permission-plugins/permissionsex"
+        },
+        "Popular": {
+            "__dirroute__": "/plugins/popular",
+            "CoreProtect": "/plugins/popular/coreprotect",
+            "Essentials": "/plugins/popular/essentials",
+            "Multiverse": "/plugins/popular/multiverse",
+            "WorldEdit": "/plugins/popular/worldedit",
+            "WorldGuard": "/plugins/popular/worldguard"
+        },
+        "Other": {
+            "__dirroute__": "/plugins/other",
+            "CombatLogX": "/plugins/other/combatlogx",
+            "Dream's Man Hunt": "/plugins/other/dreams-man-hunt",
+            "ImageOnMap": "/plugins/other/imageonmap",
+            "MineResetLite": "/plugins/other/mineresetlite",
+            "RedProtect": "/plugins/other/redprotect"
         }
     },
     "Skript": {

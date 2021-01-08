@@ -124,9 +124,7 @@ function useStyles(props, theme) {
 				},
 				main: {
 					flexBasis: (props) =>
-						props.isHome || props.hideDrawer
-							? "100%"
-							: "calc(100% - 300px)",
+						props.isHome || props.hideDrawer ? "100%" : "calc(100% - 300px)",
 					[theme.breakpoints.down("md")]: {
 						flexBasis: "100% !important",
 					},
@@ -225,8 +223,7 @@ function useStyles(props, theme) {
 					marginBottom: theme.spacing(2),
 				},
 				tableHeading: {
-					borderBottom:
-						"2px solid " + theme.palette.divider + " !important",
+					borderBottom: "2px solid " + theme.palette.divider + " !important",
 				},
 				tableCell: {
 					borderBottom: "1px solid " + theme.palette.divider,
@@ -325,19 +322,11 @@ const useDarkMode = (setCookie) => {
 				...theme.palette,
 				type: type === "light" ? "dark" : "light",
 				background: {
-					default:
-						type === "dark"
-							? colors.light.default
-							: colors.dark.default,
-					paper:
-						type === "dark"
-							? colors.light.paper
-							: colors.dark.paper,
+					default: type === "dark" ? colors.light.default : colors.dark.default,
+					paper: type === "dark" ? colors.light.paper : colors.dark.paper,
 				},
 				divider:
-					type === "dark"
-						? "rgba(0, 0, 0, .12)"
-						: "rgba(255, 255, 255, .12)",
+					type === "dark" ? "rgba(0, 0, 0, .12)" : "rgba(255, 255, 255, .12)",
 			},
 		};
 		setCookie("theme", type === "dark" ? "light" : "dark");
@@ -419,10 +408,7 @@ export default function MinehutXYZ(props) {
 					) : null}
 					<Typography
 						className={classes.heading}
-						id={
-							"h1-" +
-							getString(props).toLowerCase().replace(/ +/g, "-")
-						}
+						id={"h1-" + getString(props).toLowerCase().replace(/ +/g, "-")}
 						{...props}
 						variant="h4"
 						component="h1"
@@ -439,16 +425,10 @@ export default function MinehutXYZ(props) {
 												...query,
 												scrollTo:
 													"h1-" +
-													getString(props)
-														.toLowerCase()
-														.replace(/ +/g, "-"),
+													getString(props).toLowerCase().replace(/ +/g, "-"),
 											},
 										})
-										.then(() =>
-											copyToClipboard(
-												window.location.href
-											)
-										);
+										.then(() => copyToClipboard(window.location.href));
 								}}
 								centerRipple={false}
 							>
@@ -477,8 +457,7 @@ export default function MinehutXYZ(props) {
 					<Divider />
 					{fm && fm.madeBy ? (
 						<Hint severity="info">
-							This tutorial was made by {getMadeBy(fm)}. Learn how
-							to contribute{" "}
+							This tutorial was made by {getMadeBy(fm)}. Learn how to contribute{" "}
 							<NextLink href="/contribute">here</NextLink>.
 						</Hint>
 					) : null}
@@ -493,10 +472,7 @@ export default function MinehutXYZ(props) {
 						className={classes.heading}
 						{...props}
 						variant="h5"
-						id={
-							"h2-" +
-							getString(props).toLowerCase().replace(/ +/g, "-")
-						}
+						id={"h2-" + getString(props).toLowerCase().replace(/ +/g, "-")}
 						component="h2"
 					>
 						{props.children}
@@ -511,16 +487,10 @@ export default function MinehutXYZ(props) {
 												...query,
 												scrollTo:
 													"h2-" +
-													getString(props)
-														.toLowerCase()
-														.replace(/ +/g, "-"),
+													getString(props).toLowerCase().replace(/ +/g, "-"),
 											},
 										})
-										.then(() =>
-											copyToClipboard(
-												window.location.href
-											)
-										);
+										.then(() => copyToClipboard(window.location.href));
 								}}
 								centerRipple={false}
 							>
@@ -534,10 +504,7 @@ export default function MinehutXYZ(props) {
 		h3(props) {
 			return (
 				<Typography
-					id={
-						"h3-" +
-						getString(props).toLowerCase().replace(/ +/g, "-")
-					}
+					id={"h3-" + getString(props).toLowerCase().replace(/ +/g, "-")}
 					className={classes.heading}
 					{...props}
 					variant="h6"
@@ -555,14 +522,10 @@ export default function MinehutXYZ(props) {
 											...query,
 											scrollTo:
 												"h3-" +
-												getString(props)
-													.toLowerCase()
-													.replace(/ +/g, "-"),
+												getString(props).toLowerCase().replace(/ +/g, "-"),
 										},
 									})
-									.then(() =>
-										copyToClipboard(window.location.href)
-									);
+									.then(() => copyToClipboard(window.location.href));
 							}}
 							centerRipple={false}
 						>
@@ -675,30 +638,19 @@ export default function MinehutXYZ(props) {
 										: classes.buttonMultiLine,
 							}}
 							onClick={(e) =>
-								copyToClipboard(
-									props.children.replace(/\n$/, "")
-								)
+								copyToClipboard(props.children.replace(/\n$/, ""))
 							}
 						>
-							<SvgIcon
-								component={ContentCopy}
-								viewBox="0 0 24 24"
-							/>
+							<SvgIcon component={ContentCopy} viewBox="0 0 24 24" />
 						</IconButton>
 					</Tooltip>
 					<SyntaxHighlighter
 						showLineNumbers
 						wrapLines
 						language={
-							props.className
-								? props.className.replace("language-", "")
-								: null
+							props.className ? props.className.replace("language-", "") : null
 						}
-						style={
-							theme.palette.type === "dark"
-								? atomDark
-								: materialLight
-						}
+						style={theme.palette.type === "dark" ? atomDark : materialLight}
 						className={classes.code}
 					>
 						{props.children.replace(/\n$/, "")}
@@ -716,21 +668,6 @@ export default function MinehutXYZ(props) {
 			return <Typography component="li" {...props} />;
 		},
 	};
-
-	const [initialized, setInitialized] = React.useState(false);
-
-	React.useEffect(() => {
-		if (
-			typeof window === "undefined" ||
-			typeof window.firebase === "undefined"
-		)
-			return;
-		if (initialized) return;
-
-		window.firebase.initializeApp(firebaseConfig);
-		window.firebase.analytics();
-		setInitialized(true);
-	});
 
 	React.useEffect(() => {
 		const jssStyles = document.querySelector("#jss-server-side");
@@ -754,10 +691,7 @@ export default function MinehutXYZ(props) {
 		);
 	else if (router.pathname === "/server-search")
 		meta = (
-			<meta
-				content="Look up a Minehut server."
-				property="og:description"
-			/>
+			<meta content="Look up a Minehut server." property="og:description" />
 		);
 
 	const [query, setQuery] = React.useState("");
@@ -799,11 +733,7 @@ export default function MinehutXYZ(props) {
 									.reverse()
 									.slice(1)
 									.reverse()
-									.map((name) =>
-										overrideRouteNames(
-											kebabToStartCase(name)
-										)
-									)
+									.map((name) => overrideRouteNames(kebabToStartCase(name)))
 									.join(" > ")
 							: "")
 					}
@@ -844,10 +774,7 @@ export default function MinehutXYZ(props) {
 											variant="permanent"
 											anchor="right"
 										>
-											<Paper
-												className={classes.drawerPaper}
-												elevation={0}
-											>
+											<Paper className={classes.drawerPaper} elevation={0}>
 												<Toolbar />
 												<TableOfContents
 													contents={fm.contents}
@@ -862,42 +789,27 @@ export default function MinehutXYZ(props) {
 									{!hideAppBar ? <Toolbar /> : null}
 									<Container
 										maxWidth={
-											title === "Login" ||
-											title === "Sign Up"
-												? "xs"
-												: "md"
+											title === "Login" || title === "Sign Up" ? "xs" : "md"
 										}
 									>
+										<Hint severity="success"></Hint>
 										<div
 											style={{
-												marginBottom: themeConfig.spacing(
-													hideDrawer ? 1 : 2
-												),
+												marginBottom: themeConfig.spacing(hideDrawer ? 1 : 2),
 											}}
 										>
-											<MDXProvider
-												components={components}
-											>
+											<MDXProvider components={components}>
 												<Component {...pageProps} />
 											</MDXProvider>
 										</div>
-										<Hint
-											disableMargin
-											variant="outlined"
-											severity="success"
-										>
+										<Hint disableMargin severity="success">
 											Join our{" "}
-											<Link href="https://discord.gg/TYhH5bK">
-												Discord
-											</Link>{" "}
-											to become an{" "}
-											<strong>official writer</strong>,
-											get <strong>site updates</strong>,
-											and <strong>much more</strong>.
+											<Link href="https://discord.gg/TYhH5bK">Discord</Link> to
+											become an <strong>official writer</strong>, get{" "}
+											<strong>site updates</strong>, and{" "}
+											<strong>much more</strong>.
 										</Hint>
-										{!fm || (fm && !fm.hidden) ? (
-											<Pagination />
-										) : null}
+										{!fm || (fm && !fm.hidden) ? <Pagination /> : null}
 									</Container>
 								</div>
 							</NoSsr>
@@ -970,18 +882,12 @@ export default function MinehutXYZ(props) {
 									rel="noreferrer"
 									target="_blank"
 								>
-									<SvgIcon
-										component={Discord}
-										viewBox="0 0 245 240"
-									/>
+									<SvgIcon component={Discord} viewBox="0 0 245 240" />
 								</Fab>
 							</Tooltip>
 						</Hidden>
 						<Hidden mdUp>
-							<Backdrop
-								open={speedDialOpen}
-								className={classes.backdrop}
-							/>
+							<Backdrop open={speedDialOpen} className={classes.backdrop} />
 							<SpeedDial
 								ariaLabel="mobile speed dial"
 								className={classes.fab}
@@ -1005,12 +911,7 @@ export default function MinehutXYZ(props) {
 										href: "https://discord.gg/bS6FMMCVyg",
 										target: "_blank",
 									}}
-									icon={
-										<SvgIcon
-											viewBox="0 0 245 240"
-											component={Discord}
-										/>
-									}
+									icon={<SvgIcon viewBox="0 0 245 240" component={Discord} />}
 									classes={{
 										staticTooltipLabel: classes.dialAction,
 									}}
@@ -1021,8 +922,7 @@ export default function MinehutXYZ(props) {
 									tooltipTitle="GitHub"
 									FabProps={{
 										component: Link,
-										href:
-											"https://github.com/TeamMH/minehut.xyz",
+										href: "https://github.com/TeamMH/minehut.xyz",
 										target: "_blank",
 									}}
 									icon={<GitHub />}
@@ -1040,8 +940,7 @@ export default function MinehutXYZ(props) {
 										}}
 										icon={<MenuIcon />}
 										classes={{
-											staticTooltipLabel:
-												classes.dialAction,
+											staticTooltipLabel: classes.dialAction,
 										}}
 									/>
 								) : null}
