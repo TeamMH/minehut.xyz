@@ -792,7 +792,13 @@ export default function MinehutXYZ(props) {
 											title === "Login" || title === "Sign Up" ? "xs" : "md"
 										}
 									>
-										<Hint severity="success"></Hint>
+										<Hint disableHint severity="success">
+											Join our{" "}
+											<Link href="https://discord.gg/TYhH5bK">Discord</Link> to
+											become an <strong>official writer</strong>, get{" "}
+											<strong>site updates</strong>, and{" "}
+											<strong>much more</strong>.
+										</Hint>
 										<div
 											style={{
 												marginBottom: themeConfig.spacing(hideDrawer ? 1 : 2),
