@@ -6,21 +6,22 @@ We realised there was no dedicated place for Minehut tutorials where the communi
 
 ## The team
 
-| Name          | Position                                         |
-| :------------ | :----------------------------------------------- |
-| Adam          | Founder and Senior Writer                        |
-| ---           | ---                                              |
-| Tarna         | Founder General Manager and Writer               |
-| Goose         | GitHub Manager and Writer                        |
-| Lukas         | Staff Manager, Project Manager and Senior Writer |
-| ---           | ---                                              |
-| Kiko          | Site Developer                                   |
-| ---           | ---                                              |
-| Conutik       | Writer                                           |
-| Houlton       | Writer                                           |
-| Smelly Burger | Writer                                           |
-| Rqdioqctive   | Writer                                           |
-| Citeful       | Writer                                           |
+
+| Name          | Position                            |
+| :------------ | :---------------------------------- |
+| Adam          | Founder                             |
+| ---           | ---                                 |
+| Tarna         | Founder, Partnership Manager        |
+| Lukas         | General Manager, Project Manager    |
+| Kiko          | Site Developer, Partnership Manager |
+| ---           | ---                                 |
+| Conutik       | Site Developer                      |
+| ---           | ---                                 |
+| Conutik       | Writer                              |
+| Houlton       | Writer                              |
+| Smelly Burger | Writer                              |
+| Rqdioqctive   | Writer                              |
+| Citeful       | Writer                              |
 
 ## Contribute
 
