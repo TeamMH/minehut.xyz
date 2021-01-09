@@ -369,12 +369,17 @@ export default function MinehutXYZ(props) {
 	const rArray = routesArray(routes, frontMatter);
 
 	let title =
-		hiddenRoutes[router.pathname] ||
-		(rArray.find((r) => r[1] === router.pathname)
+		hiddenRoutes[router.pathname] === false
+			? hiddenRoutes[router.pathname]
+			: hiddenRoutes[router.pathname] ||
+			  rArray.find((r) => r[1] === router.pathname)
 			? overrideRouteNames(
 					kebabToStartCase(router.pathname.split("/").reverse()[0])
 			  )
-			: "404 Not Found");
+			: "404 Not Found";
+
+	if (router.pathname === "/search" && router.query.q)
+		title = `Search: ${router.query.q}`;
 
 	let fm = frontMatter.find((f) =>
 		f ? f.name === router.pathname.slice(1) : null
@@ -722,25 +727,29 @@ export default function MinehutXYZ(props) {
 	return (
 		<React.Fragment>
 			<Head>
-				<meta
-					content={
-						(title || "Home") +
-						(router.pathname.split("/").length > 2
-							? " | " +
-							  router.pathname
-									.split("/")
-									.slice(1)
-									.reverse()
-									.slice(1)
-									.reverse()
-									.map((name) => overrideRouteNames(kebabToStartCase(name)))
-									.join(" > ")
-							: "")
-					}
-					property="og:title"
-				/>
+				{title !== false && (
+					<meta
+						content={
+							(title || "Home") +
+							(router.pathname.split("/").length > 2
+								? " | " +
+								  router.pathname
+										.split("/")
+										.slice(1)
+										.reverse()
+										.slice(1)
+										.reverse()
+										.map((name) => overrideRouteNames(kebabToStartCase(name)))
+										.join(" > ")
+								: "")
+						}
+						property="og:title"
+					/>
+				)}
 				{meta}
-				<title>{(title || "Home") + " | minehut.xyz"}</title>
+				{title !== false && (
+					<title>{(title || "Home") + " | minehut.xyz"}</title>
+				)}
 				<meta
 					name="viewport"
 					content="minimum-scale=1, initial-scale=1, width=device-width"

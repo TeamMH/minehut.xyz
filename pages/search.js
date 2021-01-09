@@ -9,6 +9,7 @@ import {
 	reverseOverrideRouteNames,
 	startToKebabCase,
 } from "../lib/utils";
+import Head from "next/head";
 
 const useStyles = makeStyles((theme) => ({
 	textField: {
@@ -60,17 +61,11 @@ export default function Search() {
 				r[1] === "/"
 					? "Home"
 					: r[1].replace(/(\/(.+))?\/(.+)$/g, (e, g, g1, g2) => {
-							return `${overrideRouteNames(
-								kebabToStartCase(g2)
-							)}${
+							return `${overrideRouteNames(kebabToStartCase(g2))}${
 								g1
 									? ` (${g1
 											.split("/")
-											.map((name) =>
-												overrideRouteNames(
-													kebabToStartCase(name)
-												)
-											)
+											.map((name) => overrideRouteNames(kebabToStartCase(name)))
 											.join(" > ")})`
 									: ""
 							}`;
@@ -94,38 +89,26 @@ export default function Search() {
 				setOpen(!!e.target.value);
 			}}
 			filterOptions={(options, props) => {
-				const inputValue = (
-					props.inputValue ||
-					query ||
-					""
-				).toLowerCase();
+				const inputValue = (props.inputValue || query || "").toLowerCase();
 
 				return options
 					.sort((a, b) => {
 						if (
 							a
 								.split(/(\(|\)| > | )/g)
-								.some(
-									(name) => name.toLowerCase() === inputValue
-								) &&
+								.some((name) => name.toLowerCase() === inputValue) &&
 							!b
 								.split(/(\(|\)| > | )/g)
-								.some(
-									(name) => name.toLowerCase() === inputValue
-								)
+								.some((name) => name.toLowerCase() === inputValue)
 						)
 							return -1;
 						else if (
 							!a
 								.split(/(\(|\)| > | )/g)
-								.some(
-									(name) => name.toLowerCase() === inputValue
-								) &&
+								.some((name) => name.toLowerCase() === inputValue) &&
 							b
 								.split(/(\(|\)| > | )/g)
-								.some(
-									(name) => name.toLowerCase() === inputValue
-								)
+								.some((name) => name.toLowerCase() === inputValue)
 						)
 							return 1;
 						else return 0;
@@ -134,27 +117,19 @@ export default function Search() {
 						if (
 							a
 								.split(/(\(|\)| > | )/g)
-								.some((name) =>
-									name.toLowerCase().startsWith(inputValue)
-								) &&
+								.some((name) => name.toLowerCase().startsWith(inputValue)) &&
 							!b
 								.split(/(\(|\)| > | )/g)
-								.some((name) =>
-									name.toLowerCase().startsWith(inputValue)
-								)
+								.some((name) => name.toLowerCase().startsWith(inputValue))
 						)
 							return -1;
 						else if (
 							!a
 								.split(/(\(|\)| > | )/g)
-								.some((name) =>
-									name.toLowerCase().startsWith(inputValue)
-								) &&
+								.some((name) => name.toLowerCase().startsWith(inputValue)) &&
 							b
 								.split(/(\(|\)| > | )/g)
-								.some((name) =>
-									name.toLowerCase().startsWith(inputValue)
-								)
+								.some((name) => name.toLowerCase().startsWith(inputValue))
 						)
 							return 1;
 						else return 0;
@@ -177,8 +152,7 @@ export default function Search() {
 							reverseOverrideRouteNames(
 								v.replace(
 									/^(.+)( \((.+)\))$/g,
-									(e, g1, g2, g3) =>
-										`${g3.replace(/ > /g, "/")}/${g1}`
+									(e, g1, g2, g3) => `${g3.replace(/ > /g, "/")}/${g1}`
 								)
 							)
 					  )}`
@@ -188,9 +162,7 @@ export default function Search() {
 
 				if (pathname === "/home") pathname = "/";
 
-				const route = mappedRoutes.find(
-					(route) => route[1] === pathname
-				);
+				const route = mappedRoutes.find((route) => route[1] === pathname);
 
 				if (route)
 					router.push({
@@ -203,4 +175,8 @@ export default function Search() {
 			}}
 		/>
 	);
+}
+
+export async function getServerSideProps() {
+	return { props: {} };
 }
