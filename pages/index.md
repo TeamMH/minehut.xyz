@@ -29,20 +29,21 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 
 ## The team
 
-| Name          | Position                         |
-| :------------ | :------------------------------- |
-| Adam          | Founder                          |
-| ---           | ---                              |
-| Tarna         | Founder, Partnership Manager     |
-| Lukas         | General Manager, Project Manager |
-| ---           | ---                              |
-| Kiko          | Site Developer                   |
-| ---           | ---                              |
-| Conutik       | Writer                           |
-| Houlton       | Writer                           |
-| Smelly Burger | Writer                           |
-| Rqdioqctive   | Writer                           |
-| Citeful       | Writer                           |
+| Name          | Position                            |
+| :------------ | :---------------------------------- |
+| Adam          | Founder                             |
+| ---           | ---                                 |
+| Tarna         | Founder, Partnership Manager        |
+| Lukas         | General Manager, Project Manager    |
+| Kiko          | Site Developer, Partnership Manager |
+| ---           | ---                                 |
+| Conutik       | Site Developer                      |
+| ---           | ---                                 |
+| Conutik       | Writer                              |
+| Houlton       | Writer                              |
+| Smelly Burger | Writer                              |
+| Rqdioqctive   | Writer                              |
+| Citeful       | Writer                              |
 
 ## About us
 
