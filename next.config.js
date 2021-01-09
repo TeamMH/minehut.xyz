@@ -2,7 +2,6 @@ const withMDX = require("@next/mdx")({
 	extension: /\.mdx?$/,
 });
 
-const { getRedirectStatus } = require("next/dist/lib/load-custom-routes");
 const path = require("path");
 
 module.exports = withMDX({
@@ -11,8 +10,7 @@ module.exports = withMDX({
 		config.module.rules
 			.filter(
 				(r) =>
-					Object.keys(r).includes("use") &&
-					r.test.toString().includes("mdx")
+					Object.keys(r).includes("use") && r.test.toString().includes("mdx")
 			)[0]
 			.use.push(path.join(__dirname, "./lib/fm-loader.js"));
 		config.module.rules.push({

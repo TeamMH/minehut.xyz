@@ -694,6 +694,13 @@ export default function MinehutXYZ(props) {
 				property="og:description"
 			/>
 		);
+	else if (router.pathname === "/search")
+		meta = (
+			<meta
+				content="Search for something on minehut.xyz."
+				property="og:description"
+			/>
+		);
 	else if (router.pathname === "/server-search")
 		meta = (
 			<meta content="Look up a Minehut server." property="og:description" />

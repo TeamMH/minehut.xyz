@@ -88,8 +88,7 @@ export default function SignUp() {
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
 
-		if (password !== passwordRepeat)
-			return setError("Passwords don't match");
+		if (password !== passwordRepeat) return setError("Passwords don't match");
 
 		firebase
 			.auth()
@@ -102,7 +101,6 @@ export default function SignUp() {
 		<>
 			<FirebaseAuthConsumer>
 				{({ isSignedIn, providerId, user }) => {
-					console.log(isSignedIn);
 					if (isSignedIn)
 						router.push({
 							pathname: "/",
@@ -112,11 +110,7 @@ export default function SignUp() {
 			<div className={classes.image} />
 			<Toolbar />
 			<Paper className={classes.paper}>
-				<Typography
-					variant="h4"
-					component="h1"
-					className={classes.heading}
-				>
+				<Typography variant="h4" component="h1" className={classes.heading}>
 					Sign up
 				</Typography>
 				<Typography color="textSecondary" paragraph>
@@ -125,8 +119,8 @@ export default function SignUp() {
 				<Divider />
 				<Hint severity="error">
 					This feature is still a work-in-progress! Accounts are{" "}
-					<strong>not</strong> currently supported, although we're
-					working to bring them as soon as possible.
+					<strong>not</strong> currently supported, although we're working to
+					bring them as soon as possible.
 				</Hint>
 				<form onSubmit={handleFormSubmit} className={classes.form}>
 					<TextField
@@ -147,11 +141,7 @@ export default function SignUp() {
 							endAdornment: (
 								<InputAdornment position="end">
 									<IconButton onClick={toggleShowPassword}>
-										{showPassword ? (
-											<Visibility />
-										) : (
-											<VisibilityOff />
-										)}
+										{showPassword ? <Visibility /> : <VisibilityOff />}
 									</IconButton>
 								</InputAdornment>
 							),
@@ -167,14 +157,8 @@ export default function SignUp() {
 						InputProps={{
 							endAdornment: (
 								<InputAdornment position="end">
-									<IconButton
-										onClick={toggleShowPasswordRepeat}
-									>
-										{showPassword ? (
-											<Visibility />
-										) : (
-											<VisibilityOff />
-										)}
+									<IconButton onClick={toggleShowPasswordRepeat}>
+										{showPassword ? <Visibility /> : <VisibilityOff />}
 									</IconButton>
 								</InputAdornment>
 							),

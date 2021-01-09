@@ -92,7 +92,6 @@ export default function Login() {
 		<>
 			<FirebaseAuthConsumer>
 				{({ isSignedIn, providerId, user }) => {
-					console.log(isSignedIn);
 					if (isSignedIn)
 						router.push({
 							pathname: "/",
@@ -102,11 +101,7 @@ export default function Login() {
 			<div className={classes.image} />
 			<Toolbar />
 			<Paper className={classes.paper}>
-				<Typography
-					variant="h4"
-					component="h1"
-					className={classes.heading}
-				>
+				<Typography variant="h4" component="h1" className={classes.heading}>
 					Login
 				</Typography>
 				<Typography color="textSecondary" paragraph>
@@ -115,8 +110,8 @@ export default function Login() {
 				<Divider />
 				<Hint severity="error">
 					This feature is still a work-in-progress! Accounts are{" "}
-					<strong>not</strong> currently supported, although we're
-					working to bring them as soon as possible.
+					<strong>not</strong> currently supported, although we're working to
+					bring them as soon as possible.
 				</Hint>
 				<form onSubmit={handleFormSubmit} className={classes.form}>
 					<TextField
@@ -137,11 +132,7 @@ export default function Login() {
 							endAdornment: (
 								<InputAdornment position="end">
 									<IconButton onClick={toggleShowPassword}>
-										{showPassword ? (
-											<Visibility />
-										) : (
-											<VisibilityOff />
-										)}
+										{showPassword ? <Visibility /> : <VisibilityOff />}
 									</IconButton>
 								</InputAdornment>
 							),

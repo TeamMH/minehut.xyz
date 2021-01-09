@@ -93,56 +93,79 @@ export default function Search() {
 
 				return options
 					.sort((a, b) => {
+						a = a
+							.toLowerCase()
+							.replace(
+								/^(.+)( \((.+)\))$/g,
+								(e, g1, g2, g3) => `${g3.replace(/ > /g, " ")} ${g1}`
+							);
+						b = b
+							.toLowerCase()
+							.replace(
+								/^(.+)( \((.+)\))$/g,
+								(e, g1, g2, g3) => `${g3.replace(/ > /g, " ")} ${g1}`
+							);
 						if (
-							a
-								.split(/(\(|\)| > | )/g)
-								.some((name) => name.toLowerCase() === inputValue) &&
-							!b
-								.split(/(\(|\)| > | )/g)
-								.some((name) => name.toLowerCase() === inputValue)
+							a.split(" ").some((name) => name.toLowerCase() === inputValue) &&
+							!b.split(" ").some((name) => name.toLowerCase() === inputValue)
 						)
 							return -1;
 						else if (
-							!a
-								.split(/(\(|\)| > | )/g)
-								.some((name) => name.toLowerCase() === inputValue) &&
-							b
-								.split(/(\(|\)| > | )/g)
-								.some((name) => name.toLowerCase() === inputValue)
+							!a.split(" ").some((name) => name.toLowerCase() === inputValue) &&
+							b.split(" ").some((name) => name.toLowerCase() === inputValue)
 						)
 							return 1;
 						else return 0;
 					})
 					.sort((a, b) => {
+						a = a
+							.toLowerCase()
+							.replace(
+								/^(.+)( \((.+)\))$/g,
+								(e, g1, g2, g3) => `${g3.replace(/ > /g, " ")} ${g1}`
+							);
+						b = b
+							.toLowerCase()
+							.replace(
+								/^(.+)( \((.+)\))$/g,
+								(e, g1, g2, g3) => `${g3.replace(/ > /g, " ")} ${g1}`
+							);
 						if (
 							a
-								.split(/(\(|\)| > | )/g)
+								.split(" ")
 								.some((name) => name.toLowerCase().startsWith(inputValue)) &&
 							!b
-								.split(/(\(|\)| > | )/g)
+								.split(" ")
 								.some((name) => name.toLowerCase().startsWith(inputValue))
 						)
 							return -1;
 						else if (
 							!a
-								.split(/(\(|\)| > | )/g)
+								.split(" ")
 								.some((name) => name.toLowerCase().startsWith(inputValue)) &&
 							b
-								.split(/(\(|\)| > | )/g)
+								.split(" ")
 								.some((name) => name.toLowerCase().startsWith(inputValue))
 						)
 							return 1;
 						else return 0;
 					})
-					.filter((option) => {
-						const includes =
-							option.toLowerCase().includes(inputValue) ||
+					.filter(
+						(option) =>
 							option
 								.toLowerCase()
-								.replace(/( > |\(|\))/g, " ")
-								.includes(inputValue);
-						return includes;
-					});
+								.replace(
+									/^(.+)( \((.+)\))$/g,
+									(e, g1, g2, g3) => `${g3.replace(/ > /g, " ")} ${g1}`
+								) === inputValue ||
+							option
+								.toLowerCase()
+								.replace(
+									/^(.+)( \((.+)\))$/g,
+									(e, g1, g2, g3) => `${g3.replace(/ > /g, " ")} ${g1}`
+								)
+								.includes(inputValue)
+					);
 			}}
 			onChange={(e, v) => {
 				setQuery(v);
@@ -157,8 +180,6 @@ export default function Search() {
 							)
 					  )}`
 					: null;
-
-				console.log(pathname);
 
 				if (pathname === "/home") pathname = "/";
 
