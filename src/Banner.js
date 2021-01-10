@@ -108,9 +108,11 @@ export default function Banner() {
 	const [scrollTop, setScrollTop] = useState(0);
 
 	useEffect(() => {
-		window.addEventListener("scroll", () => {
+		const scrollHandler = () => {
 			setScrollTop(window.pageYOffset);
-		});
+		};
+		window.addEventListener("scroll", scrollHandler);
+		return () => window.removeEventListener("scroll", scrollHandler);
 	});
 
 	const classes = useStyles({ scrollTop });

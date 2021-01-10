@@ -71,9 +71,11 @@ export default function Banner404() {
 	const [scrollTop, setScrollTop] = useState(0);
 
 	useEffect(() => {
-		window.addEventListener("scroll", () => {
+		const scrollHandler = () => {
 			setScrollTop(window.pageYOffset);
-		});
+		};
+		window.addEventListener("scroll", scrollHandler);
+		return () => window.removeEventListener("scroll", scrollHandler);
 	});
 
 	const classes = useStyles({ scrollTop });
@@ -85,11 +87,7 @@ export default function Banner404() {
 				<div className={classes.image} />
 				<div className={classes.innerContainer}>
 					<Container fixed>
-						<Typography
-							className={classes.heading}
-							variant="h3"
-							component="h1"
-						>
+						<Typography className={classes.heading} variant="h3" component="h1">
 							404 NOT FOUND
 						</Typography>
 						<Typography variant="h6" component="p">
@@ -106,9 +104,7 @@ export default function Banner404() {
 							</li>
 							<li>
 								<Typography variant="h6" component="p">
-									<Link href="/plugins/plugin-list">
-										Plugin List
-									</Link>
+									<Link href="/plugins/plugin-list">Plugin List</Link>
 								</Typography>
 							</li>
 							<li>

@@ -52,9 +52,11 @@ export default function CustomAppBar({
 	const [scrollTop, setScrollTop] = useState(0);
 
 	useEffect(() => {
-		window.addEventListener("scroll", () => {
+		const scrollHandler = () => {
 			setScrollTop(window.pageYOffset);
-		});
+		};
+		window.addEventListener("scroll", scrollHandler);
+		return () => window.removeEventListener("scroll", scrollHandler);
 	});
 
 	const menuButton = (
@@ -77,9 +79,7 @@ export default function CustomAppBar({
 				className={classes.appBar}
 				elevation={scrollTop <= 20 && (isHome || hideAppBar) ? 0 : 4}
 				color={
-					scrollTop <= 20 && (isHome || hideAppBar)
-						? "transparent"
-						: "inherit"
+					scrollTop <= 20 && (isHome || hideAppBar) ? "transparent" : "inherit"
 				}
 			>
 				<Toolbar className={classes.toolBar}>
@@ -92,12 +92,7 @@ export default function CustomAppBar({
 						<AccountMenu />
 					</Hidden>
 					<Tooltip title="Back to home">
-						<IconButton
-							component={Link}
-							href="/"
-							naked
-							centerRipple={false}
-						>
+						<IconButton component={Link} href="/" naked centerRipple={false}>
 							<SvgIcon
 								component={Minehut}
 								viewBox="0, 0, 400, 400"
@@ -119,10 +114,7 @@ export default function CustomAppBar({
 						</IconButton>
 					</Tooltip>
 					<Tooltip title="Toggle light/dark theme">
-						<IconButton
-							onClick={toggleDarkMode}
-							centerRipple={false}
-						>
+						<IconButton onClick={toggleDarkMode} centerRipple={false}>
 							<NoSsr>
 								{themeConfig.palette.type === "light" ? (
 									<Brightness4 />
@@ -197,9 +189,7 @@ function AccountMenu() {
 								>
 									Sign out
 								</MenuItem>
-								<MenuItem onClick={handleClose}>
-									Account
-								</MenuItem>
+								<MenuItem onClick={handleClose}>Account</MenuItem>
 							</Menu>
 						);
 				}}

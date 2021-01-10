@@ -21,6 +21,8 @@ export default class MyDocument extends Document {
 						<Main />
 					</CookiesProvider>
 					<NextScript />
+					<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+					<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
 				</body>
 			</Html>
 		);

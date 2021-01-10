@@ -13,18 +13,19 @@ import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { FirebaseAuthConsumer } from "@react-firebase/auth";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import firebase from "firebase/app";
+import fb from "firebase/app";
 import "firebase/auth";
 import Hint from "./Hint";
 
 const useStyles = makeStyles((theme) => ({
 	form: {
-		width: "100%",
 		display: "flex",
 		flexWrap: "wrap",
 		justifyContent: "flex-end",
-		gap: theme.spacing(2),
-		margin: theme.spacing(2) + "px auto",
+		margin: theme.spacing(-1),
+		"& > *": {
+			margin: theme.spacing(1),
+		},
 	},
 	image: {
 		position: "absolute",
@@ -69,9 +70,11 @@ export default function Login() {
 	const [scrollTop, setScrollTop] = useState(0);
 
 	useEffect(() => {
-		window.addEventListener("scroll", () => {
+		const scrollHandler = () => {
 			setScrollTop(window.pageYOffset);
-		});
+		};
+		window.addEventListener("scroll", scrollHandler);
+		return () => window.removeEventListener("scroll", scrollHandler);
 	});
 
 	const classes = useStyles({ scrollTop });
@@ -81,8 +84,7 @@ export default function Login() {
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
 
-		firebase
-			.auth()
+		fb.auth()
 			.signInWithEmailAndPassword(email, password)
 			.then(() => setError(""))
 			.catch((e) => setError(e.message));

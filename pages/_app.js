@@ -64,7 +64,7 @@ import {
 import { GitHub } from "@material-ui/icons";
 import HomeScrollTop from "../src/HomeScrollTop";
 import Banner from "../src/Banner";
-import firebase from "firebase/app";
+import fb from "firebase/app";
 import "firebase/auth";
 import { FirebaseAuthProvider } from "@react-firebase/auth";
 import hiddenRoutes from "../hiddenRoutes.json";
@@ -674,6 +674,18 @@ export default function MinehutXYZ(props) {
 		},
 	};
 
+	const [initialized, setInitialized] = React.useState(false);
+
+	React.useEffect(() => {
+		if (typeof window === "undefined" || typeof window.firebase === "undefined")
+			return;
+		if (initialized) return;
+
+		window.firebase.initializeApp(firebaseConfig);
+		window.firebase.analytics();
+		setInitialized(true);
+	});
+
 	React.useEffect(() => {
 		const jssStyles = document.querySelector("#jss-server-side");
 		if (jssStyles) {
@@ -762,7 +774,7 @@ export default function MinehutXYZ(props) {
 					content="minimum-scale=1, initial-scale=1, width=device-width"
 				/>
 			</Head>
-			<FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
+			<FirebaseAuthProvider firebase={fb} {...firebaseConfig}>
 				<ThemeProvider theme={themeConfig}>
 					<div className={classes.root}>
 						<CssBaseline />
