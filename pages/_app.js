@@ -97,6 +97,9 @@ export const themeTemplate = {
 			lineHeight: 1.625,
 		},
 	},
+	shape: {
+		borderRadius: 4,
+	},
 };
 
 function useStyles(props, theme) {
@@ -193,7 +196,7 @@ function useStyles(props, theme) {
 					},
 				},
 				code: {
-					borderRadius: theme.shape.borderRadius,
+					borderRadius: theme.shape.borderRadius + "px !important",
 					boxShadow: theme.shadows[2],
 				},
 				drawer: {

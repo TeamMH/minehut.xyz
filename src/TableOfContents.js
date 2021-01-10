@@ -5,10 +5,10 @@ import {
 	ListItemText,
 	makeStyles,
 	useTheme,
-	useMediaQuery,
 } from "@material-ui/core";
 import ScrollSpy from "react-scrollspy";
 import { startToKebabCase } from "../lib/utils";
+import colors from "../colors.json";
 
 ScrollSpy.prototype._initFromProps = function (_props) {
 	const props = _props ? _props : this.props;
@@ -32,16 +32,20 @@ const useStyles = makeStyles((theme) => ({
 	toc: {
 		width: "100%",
 		"& li": {
-			transition: "250ms",
+			overflow: "hidden",
 			[theme.breakpoints.up("md")]: {
 				borderRadius: `${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
 			},
+			"& > div": {
+				transition: "250ms",
+			},
 		},
-		"& li.active": {
+		"& li.active > div": {
 			[theme.breakpoints.up("md")]: {
 				borderLeft:
-					"3px solid " +
-					(theme.palette.type === "dark" ? "#f3f3f3" : "black"),
+					theme.shape.borderRadius +
+					"px solid " +
+					(theme.palette.type === "dark" ? "#f3f3f3" : colors.dark.paper),
 			},
 			background:
 				theme.palette.type === "dark"
@@ -60,11 +64,8 @@ export default function TableOfContents({ contents, tocOpen, setTocOpen }) {
 		"nothing",
 		...contents.map(
 			(c) =>
-				(c.match(/(^|\n)###/)
-					? "h3-"
-					: c.match(/(^|\n)##/)
-					? "h2-"
-					: "h1-") + startToKebabCase(c.replace(/(^|\n)#{1,3} /, ""))
+				(c.match(/(^|\n)###/) ? "h3-" : c.match(/(^|\n)##/) ? "h2-" : "h1-") +
+				startToKebabCase(c.replace(/(^|\n)#{1,3} /, ""))
 		),
 	];
 
@@ -80,44 +81,39 @@ export default function TableOfContents({ contents, tocOpen, setTocOpen }) {
 					TABLE OF CONTENTS
 				</ListSubheader>
 				{contents.map((c, i) => (
-					<ListItem
-						button
-						key={c}
-						color="inherit"
-						component="li"
-						onClick={() => {
-							window.scrollTo({
-								left: 0,
-								top:
-									document.getElementById(
-										(c.match(/(^|\n)###/)
-											? "h3-"
-											: c.match(/(^|\n)##/)
-											? "h2-"
-											: "h1-") +
-											startToKebabCase(
-												c.replace(/(^|\n)#{1,3} /, "")
-											)
-									).offsetTop - 112,
-								behavior: "smooth",
-							});
-							setTocOpen(false);
-						}}
-					>
-						<ListItemText
-							style={{
-								marginLeft: theme.spacing(
-									c.match(/(^|\n)###/)
-										? 4
-										: c.match(/(^|\n)##/)
-										? 2
-										: 0
-								),
+					<li>
+						<ListItem
+							button
+							key={c}
+							color="inherit"
+							onClick={() => {
+								window.scrollTo({
+									left: 0,
+									top:
+										document.getElementById(
+											(c.match(/(^|\n)###/)
+												? "h3-"
+												: c.match(/(^|\n)##/)
+												? "h2-"
+												: "h1-") +
+												startToKebabCase(c.replace(/(^|\n)#{1,3} /, ""))
+										).offsetTop - 112,
+									behavior: "smooth",
+								});
+								setTocOpen(false);
 							}}
 						>
-							{c.replace(/(^|\n)#{1,3} /, "").toUpperCase()}
-						</ListItemText>
-					</ListItem>
+							<ListItemText
+								style={{
+									marginLeft: theme.spacing(
+										c.match(/(^|\n)###/) ? 4 : c.match(/(^|\n)##/) ? 2 : 0
+									),
+								}}
+							>
+								{c.replace(/(^|\n)#{1,3} /, "").toUpperCase()}
+							</ListItemText>
+						</ListItem>
+					</li>
 				))}
 			</ScrollSpy>
 		</List>

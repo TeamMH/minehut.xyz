@@ -15,7 +15,7 @@ import { routesArrayCategory } from "../lib/utils";
 
 const useStyles = makeStyles((theme) => ({
 	grid: {
-		marginBottom: theme.spacing(1),
+		// marginBottom: theme.spacing(1),
 		marginTop: theme.spacing(1),
 	},
 	heading: {
@@ -65,9 +65,7 @@ export default function Category() {
 						<CardContent>
 							<Typography variant="h5">{route[0]}</Typography>
 							{fm && fm.description ? (
-								<Typography color="textSecondary">
-									{fm.description}
-								</Typography>
+								<Typography color="textSecondary">{fm.description}</Typography>
 							) : null}
 						</CardContent>
 					</CardActionArea>
