@@ -1,5 +1,6 @@
 import {
 	Button,
+	CircularProgress,
 	Container,
 	Hidden,
 	makeStyles,
@@ -8,6 +9,7 @@ import {
 	Typography,
 } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Minehut from "../public/minehut.svg";
 import Link from "./Link";
@@ -107,6 +109,8 @@ const useStyles = makeStyles((theme) => {
 export default function Banner() {
 	const [scrollTop, setScrollTop] = useState(0);
 
+	const router = useRouter();
+
 	useEffect(() => {
 		const scrollHandler = () => {
 			setScrollTop(window.pageYOffset);
@@ -116,6 +120,16 @@ export default function Banner() {
 	});
 
 	const classes = useStyles({ scrollTop });
+
+	const [clicked, setClicked] = useState(false);
+
+	const handler = () => {
+		setClicked(false);
+		router.events.off("routeChangeComplete", handler);
+	};
+
+	if (typeof window !== "undefined")
+		router.events.on("routeChangeComplete", handler);
 
 	return (
 		<>
@@ -160,18 +174,23 @@ export default function Banner() {
 						>
 							The leading Minehut support website.
 						</Typography>
-						<Button
-							component={Link}
-							naked
-							href="/search"
-							color="secondary"
-							size="large"
-							startIcon={<Search />}
-							variant="contained"
-							className={classes.button}
-						>
-							Search for an article...
-						</Button>
+						{clicked ? (
+							<CircularProgress />
+						) : (
+							<Button
+								component={Link}
+								naked
+								href="/search"
+								color="secondary"
+								size="large"
+								startIcon={<Search />}
+								variant="contained"
+								className={classes.button}
+								onClick={() => setClicked(true)}
+							>
+								Search for an article...
+							</Button>
+						)}
 					</Container>
 				</div>
 			</div>

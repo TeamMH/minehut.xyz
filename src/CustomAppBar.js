@@ -10,6 +10,7 @@ import {
 	NoSsr,
 	Menu,
 	MenuItem,
+	CircularProgress,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Brightness4 from "@material-ui/icons/Brightness4";
@@ -50,6 +51,16 @@ export default function CustomAppBar({
 	const isHome = router.pathname === "/";
 
 	const [scrollTop, setScrollTop] = useState(0);
+
+	const [clicked, setClicked] = useState(false);
+
+	const handler = () => {
+		setClicked(false);
+		router.events.off("routeChangeComplete", handler);
+	};
+
+	if (typeof window !== "undefined")
+		router.events.on("routeChangeComplete", handler);
 
 	useEffect(() => {
 		const scrollHandler = () => {
@@ -104,14 +115,19 @@ export default function CustomAppBar({
 						<div className={classes.empty} />
 					</Hidden>
 					<Tooltip title="Search">
-						<IconButton
-							component={Link}
-							naked
-							href="/search"
-							centerRipple={false}
-						>
-							<SearchIcon />
-						</IconButton>
+						{clicked ? (
+							<CircularProgress />
+						) : (
+							<IconButton
+								component={Link}
+								naked
+								href="/search"
+								centerRipple={false}
+								onClick={() => setClicked(true)}
+							>
+								<SearchIcon />
+							</IconButton>
+						)}
 					</Tooltip>
 					<Tooltip title="Toggle light/dark theme">
 						<IconButton onClick={toggleDarkMode} centerRipple={false}>
