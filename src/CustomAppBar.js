@@ -54,14 +54,6 @@ export default function CustomAppBar({
 
 	const [clicked, setClicked] = useState(false);
 
-	const handler = () => {
-		setClicked(false);
-		router.events.off("routeChangeComplete", handler);
-	};
-
-	if (typeof window !== "undefined")
-		router.events.on("routeChangeComplete", handler);
-
 	useEffect(() => {
 		const scrollHandler = () => {
 			setScrollTop(window.pageYOffset);
@@ -69,6 +61,14 @@ export default function CustomAppBar({
 		window.addEventListener("scroll", scrollHandler);
 		return () => window.removeEventListener("scroll", scrollHandler);
 	});
+
+	const handler = () => {
+		setClicked(false);
+		router.events.off("routeChangeComplete", handler);
+	};
+
+	if (typeof window !== "undefined")
+		router.events.on("routeChangeComplete", handler);
 
 	const menuButton = (
 		<Tooltip title="Open menu">
