@@ -178,7 +178,7 @@ function useStyles(props, theme) {
 				discord: {
 					background: "#7289DA",
 					"&:hover": {
-						background: "#5f72b6",
+						background: "#5865F2",
 					},
 				},
 				heading: {
