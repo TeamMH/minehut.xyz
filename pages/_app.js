@@ -680,7 +680,7 @@ export default function MinehutXYZ(props) {
 	const [initialized, setInitialized] = React.useState(false);
 
 	React.useEffect(() => {
-		if (typeof window === "undefined" || typeof window.firebase === "undefined")
+		if (typeof window === "undefined" || typeof window.firebase === "undefined" || firebase.apps.length > 0)
 			return;
 		if (initialized) return;
 
