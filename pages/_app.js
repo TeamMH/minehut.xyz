@@ -176,9 +176,9 @@ function useStyles(props, theme) {
 					zIndex: 1300,
 				},
 				discord: {
-					background: "#7289DA",
+					background: "#5865F2",
 					"&:hover": {
-						background: "#5865F2",
+						background: "#8892fc",
 					},
 				},
 				heading: {
