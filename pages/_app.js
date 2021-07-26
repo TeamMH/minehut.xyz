@@ -912,7 +912,7 @@ export default function MinehutXYZ(props) {
 									rel="noreferrer"
 									target="_blank"
 								>
-									<SvgIcon component={Discord} viewBox="0 0 245 240" />
+									<SvgIcon component={Discord} viewBox="0 0 71 55" />
 								</Fab>
 							</Tooltip>
 						</Hidden>
@@ -941,7 +941,7 @@ export default function MinehutXYZ(props) {
 										href: "https://discord.gg/bS6FMMCVyg",
 										target: "_blank",
 									}}
-									icon={<SvgIcon viewBox="0 0 245 240" component={Discord} />}
+									icon={<SvgIcon viewBox="0 0 71 55" component={Discord} />}
 									classes={{
 										staticTooltipLabel: classes.dialAction,
 									}}
