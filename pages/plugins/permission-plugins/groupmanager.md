@@ -8,7 +8,7 @@ import Hint from "../../../src/Hint"
 # GroupManager
 
 <Hint severity="warning">
-GroupManager is no longer supported; use <a href="/permissionex">PermissionsEx</a> or <a href="/luckperms">LuckPerms</a> instead.
+GroupManager is no longer supported; use <a href="/permission-plugins/permissionsex">PermissionsEx</a> or <a href="/permission-plugins/luckperms">LuckPerms</a> instead.
 </Hint>
 
 ## OVERVIEW
