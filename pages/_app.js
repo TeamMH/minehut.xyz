@@ -332,7 +332,10 @@ const useDarkMode = (setCookie) => {
 					type === "dark" ? "rgba(0, 0, 0, .12)" : "rgba(255, 255, 255, .12)",
 			},
 		};
-		setCookie("theme", type === "dark" ? "light" : "dark");
+		setCookie("theme", type === "dark" ? "light" : "dark", {
+			path: "/",
+			maxAge: 60 * 60 * 24 * 365 * 10,
+		});
 		setTheme(updatedTheme);
 	};
 	return [theme, toggleDarkMode];
