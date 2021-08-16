@@ -381,8 +381,8 @@ export default function MinehutXYZ(props) {
 			  )
 			: "404 Not Found";
 
-	if (router.pathname === "/search" && router.query.q)
-		title = `Search: ${router.query.q}`;
+	if (router.pathname === "/search")
+		title = "Search";
 
 	let fm = frontMatter.find((f) =>
 		f ? f.name === router.pathname.slice(1) : null
