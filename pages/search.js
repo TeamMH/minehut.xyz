@@ -197,7 +197,3 @@ export default function Search() {
 		/>
 	);
 }
-
-export async function getServerSideProps() {
-	return { props: {} };
-}
