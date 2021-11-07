@@ -705,23 +705,12 @@ export default function MinehutXYZ(props) {
 		<meta content={fm.description} property="og:description" />
 	) : null;
 
-	if (router.pathname === "/plugins/plugin-list")
-		meta = (
-			<meta
-				content="Look up all available plugins on Minehut!"
-				property="og:description"
-			/>
-		);
-	else if (router.pathname === "/search")
+	if (router.pathname === "/search")
 		meta = (
 			<meta
 				content="Search for something on minehut.xyz."
 				property="og:description"
 			/>
-		);
-	else if (router.pathname === "/server-search")
-		meta = (
-			<meta content="Look up a Minehut server." property="og:description" />
 		);
 
 	const [query, setQuery] = React.useState("");
