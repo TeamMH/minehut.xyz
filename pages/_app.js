@@ -690,7 +690,7 @@ export default function MinehutXYZ(props) {
 		window.firebase.initializeApp(firebaseConfig);
 		window.firebase.analytics();
 		setInitialized(true);
-	});
+	}, []);
 
 	React.useEffect(() => {
 		const jssStyles = document.querySelector("#jss-server-side");
