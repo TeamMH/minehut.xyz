@@ -4,7 +4,6 @@
     "Login": "/login",
     "Partnerships": "/partnerships",
     "Sign Up": "/signup",
-    "Server Search": "/server-search",
     "Popular Questions": {
         "Panel": {
             "__dirroute__": "/faq/panel",
