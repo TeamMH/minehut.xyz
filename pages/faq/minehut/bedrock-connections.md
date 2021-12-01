@@ -1,5 +1,6 @@
 ---
 description: Connect via Bedrock
+name: faq/minehut/bedrock-connections
 madeBy: Tringlle
 ---
 
