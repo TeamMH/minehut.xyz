@@ -1,9 +1,7 @@
 {
     "Home": "/",
     "Contribute": "/contribute",
-    "Login": "/login",
     "Partnerships": "/partnerships",
-    "Sign Up": "/signup",
     "Popular Questions": {
         "Panel": {
             "__dirroute__": "/faq/panel",
