@@ -62,7 +62,6 @@
     },
     "Plugins": {
         "Recommended Plugins": "/plugins/recommended-plugins",
-        "Plugin List": "/plugins/plugin-list",
         "Permission Plugins": {
             "__dirroute__": "/plugins/permission-plugins",
             "GroupManager": "/plugins/permission-plugins/groupmanager",
