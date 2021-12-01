@@ -1,5 +1,6 @@
 ---
 description: PlotSquared Plugin Walkthrough
+name: plugins/tutorials/plotsquared
 madeBy: Tringlle
 ---
 
