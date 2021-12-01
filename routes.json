@@ -82,6 +82,7 @@
         "Other": {
             "__dirroute__": "/plugins/other",
             "CombatLogX": "/plugins/other/combatlogx",
+            "Craftenhance": "/plugins/other/craftenhance",
             "Dream's Man Hunt": "/plugins/other/dreams-man-hunt",
             "ImageOnMap": "/plugins/other/imageonmap",
             "MineResetLite": "/plugins/other/mineresetlite",
