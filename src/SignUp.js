@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+	return <></>;
 	const router = useRouter();
 
 	const [email, setEmail] = useState("");
