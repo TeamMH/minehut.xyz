@@ -6,7 +6,7 @@ madeBy: DutchJelly
 
 <!-- THE PATH TO THE `HINT` ELEMENT, LOCATED IN THE SRC DIRECTORY -->
 
-import Hint from "../src/Hint";
+import Hint from "../../../src/Hint";
 
 # Craftenhance
 Craftenhance allows you to easily create and modify custom crafting recipes, and also offers an in-game item editor to add custom metadata to your items.
