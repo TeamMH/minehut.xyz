@@ -92,7 +92,7 @@ export default function PluginList(props) {
 		else
 			setPlugins(
 				props.plugins.filter((p) =>
-					p.name.toLowerCase().includes(value.toLowerCase())
+					p.title.toLowerCase().includes(value.toLowerCase())
 				)
 			);
 	};
@@ -135,14 +135,14 @@ export default function PluginList(props) {
 
 					const regex = /Link:\n*(https?:\/\/.+)$/g;
 					const regex2 = /\n*(https?:\/\/.+$)/g;
-					let link = regex.exec(plugin.desc_extended);
+					let link = regex.exec(plugin.description);
 					if (!link || link.length === 0)
-						link = regex2.exec(plugin.desc_extended);
+						link = regex2.exec(plugin.description);
 
 					return (
 						<Accordion
 							TransitionProps={{ unmountOnExit: true }}
-							key={plugin._id}
+							key={plugin.sku}
 							className={classes.accordion}
 							onChange={(e, isExpanded) =>
 								setOpen(isExpanded ? i : -1)
@@ -150,7 +150,7 @@ export default function PluginList(props) {
 							expanded={open === i}
 						>
 							<AccordionSummary
-								key={plugin._id}
+								key={plugin.sku}
 								expandIcon={<ExpandMoreIcon />}
 							>
 								<Grid
@@ -159,30 +159,15 @@ export default function PluginList(props) {
 									justify="space-between"
 									alignItems="center"
 								>
-									<Grid xs={12} sm={9} item>
+									<Grid xs={12} item>
 										<Typography variant="h6">
-											{plugin.name}
+											{plugin.title}
 										</Typography>
-									</Grid>
-									<Grid xs={12} sm={3} item>
-										<Hidden xsDown>
-											<Typography
-												variant="body1"
-												align="right"
-											>
-												{plugin.version}
-											</Typography>
-										</Hidden>
-										<Hidden smUp>
-											<Typography variant="body1">
-												{plugin.version}
-											</Typography>
-										</Hidden>
 									</Grid>
 								</Grid>
 							</AccordionSummary>
 							<AccordionDetails
-								key={plugin._id}
+								key={plugin.sku}
 								className={classes.accordionDetails}
 							>
 								{plugin.desc.split("\n").map((d) => (
@@ -192,13 +177,13 @@ export default function PluginList(props) {
 									</Typography>
 								))}
 								<Typography paragraph>
-									<strong>Version | </strong>
-									{plugin.version}
+									<strong>Created At | </strong>
+									{new Date(plugin.createdAt).toUTCString()}
 								</Typography>
 								<Typography paragraph>
-									<strong>Last updated | </strong>{" "}
+									<strong>Updated at | </strong>{" "}
 									{new Date(
-										plugin.last_updated
+										plugin.updatedAt
 									).toUTCString()}
 								</Typography>
 							</AccordionDetails>
@@ -233,14 +218,15 @@ export default function PluginList(props) {
 }
 
 export async function getStaticProps() {
-	const res = await fetch("https://api.minehut.com/plugins_public");
-	const { all: plugins } = await res.json();
+	const res = await fetch("https://facade-service-prod.superleague.com/facade/v1/client/products").then(res => res.json())
+	
+	const plugins = res.filter(res => res.category === "Plugin")
 
 	return {
 		props: {
 			plugins: plugins.sort((a, b) => {
-				var nameA = a.name.toUpperCase();
-				var nameB = b.name.toUpperCase();
+				var nameA = a.title.toUpperCase();
+				var nameB = b.title.toUpperCase();
 				if (nameA < nameB) {
 					return -1;
 				}
@@ -250,5 +236,6 @@ export async function getStaticProps() {
 				return 0;
 			}),
 		},
+		revalidate: 3600
 	};
 }
