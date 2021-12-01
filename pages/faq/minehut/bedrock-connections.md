@@ -13,5 +13,5 @@ You can connect to Minehut with bedrock edition with these server details:
     
 And you should be in Minehut!
 
-# Cant connect?
+## Cant connect?
 Check that Minehut actually supports your version. As of writing this they support 1.18 connections.
