@@ -46,6 +46,7 @@
             "Clubs": "/faq/minehut/clubs",
             "Cracked Clients": "/faq/minehut/cracked-clients",
             "Disable Messages": "/faq/minehut/disable-messages",
+            "Bedrock Connections: "/faq/minehut/bedrock-connections",
             "Joining": "/faq/minehut/joining",
             "Ports": "/faq/minehut/ports",
             "Reporting": "/faq/minehut/reporting",
@@ -53,7 +54,6 @@
         },
         "Other Questions": {
             "__dirroute__": "/faq/other-questions",
-            "Bedrock": "/faq/other-questions/bedrock",
             "Op Tools": "/faq/other-questions/op-tools",
             "Server Version": "/faq/other-questions/server-version"
         },
@@ -78,6 +78,10 @@
             "Multiverse": "/plugins/popular/multiverse",
             "WorldEdit": "/plugins/popular/worldedit",
             "WorldGuard": "/plugins/popular/worldguard"
+        },
+        "Tutorials": {
+            "__dirroute__": "/plugins/tutorials",
+            "PlotSquared": "/plugins/tutorials/plotsquared"
         },
         "Other": {
             "__dirroute__": "/plugins/other",
