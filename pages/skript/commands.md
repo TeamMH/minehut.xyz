@@ -20,7 +20,7 @@ command /name <arguments>: # keep in mind that arguments and the slash before th
 
 Arguments are parts of a command that a user can type out after the command's name. A argument can be anything from basic text to times of the day. They can be anything that is a `type` in Skript, I won't go into what types are here, but you can find a list of types [here](https://docs.skunity.com/syntax/types). The argument can be plural aswell: string -&gt; strings, integer -&gt; integers. An argument cannot use the `object` type.
 
-To make an argument required, surround it with angle brackets like this: To make an argument optional, surround it with brackets AND angle brackets like this: \[\&lt;\&gt;\]
+To make an argument required, surround it with angle brackets like this: \[\] To make an argument optional, surround it with brackets AND angle brackets like this: \[&lt;&gt;\]
 
 ## PARAMETERS \(optional\)
 
