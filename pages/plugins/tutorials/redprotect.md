@@ -1,14 +1,10 @@
 ---
 description: >-
     RedProtect is a plugin used for protecting your builds! Unlike WorldGuard you
-    don't need any other plugins for it to work.
+    don't need any other plugins for it to work. **This plugin is outdated. Use WorldGuard instead.**
 name: plugins/tutorials/redprotect
 madeBy: PandaChan
 ---
-
-import Hint from "../src/Hint";
-
-<Hint severity="warning">This plugin is outdated. Use WorldGuard instead.</Hint>
 
 # RedProtect
 
