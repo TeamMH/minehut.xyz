@@ -1,6 +1,6 @@
 ---
 description: "A simple, yet in-depth tutorial on the popular plugin MineResetLite."
-name: plugins/other/mineresetlite
+name: plugins/tutorials/mineresetlite
 ---
 
 import Hint from "../../../src/Hint"
