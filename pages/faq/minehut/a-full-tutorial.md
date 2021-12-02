@@ -28,9 +28,9 @@ still can't find one your looking for, check the marketplace!
 
 Minehut servers are free, unless you want to upgrade your server to allow for more players, plugins and ram. A higher server plan is useful if you're planning on making a public server. You can view a list of server plans below.
 
-|                    | Free | Daily | MH20 | MH35  | MH75 | MHUnlimited |
-|--------------------|------|-------|------|-------|------|-------------|
-| RAM                | 1GB  | 2GB   | 2GB  | 3.5GB | 6GB  | 10GB        |
-| MAX PLAYERS        | 10   | 20    | 20   | 35    | 75   | 500         |
-| BACKUP SKLOTS      | 1    | 1     | 2    | 4     | 8    | 25          |
-| TOTAL CREDIT PRICE | 0    | 40    | 720  | 1440  | 2720 | 8800        |
+|                       | Free | Daily | MH20 | MH35  | MH75 | MHUnlimited |
+|-----------------------|------|-------|------|-------|------|-------------|
+| RAM                   | 1GB  | 2GB   | 2GB  | 3.5GB | 6GB  | 10GB        |
+| MAX PLAYERS           | 10   | 20    | 20   | 35    | 75   | 500         |
+| BACKUP SKLOTS         | 1    | 1     | 2    | 4     | 8    | 25          |
+| TOTAL PRICE PER MONTH | 0    | 40    | 720  | 1440  | 2720 | 8800        |
