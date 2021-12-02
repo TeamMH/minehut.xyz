@@ -7,4 +7,4 @@ import Hint from "../../../src/Hint"
 
 # Downloading
 
-World, Schematic, and Player Dowloading has been depricated. Use the **File Manager** at [Minehut Dashboard](https://minehut.com)
+World, Schematic, and Player Dowloading has been deprecated. Use the **File Manager** at [Minehut Dashboard](https://minehut.com)
