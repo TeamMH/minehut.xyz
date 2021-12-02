@@ -7,4 +7,4 @@ import Hint from "../../../src/Hint"
 
 # Uploading Worlds
 
-Uploading Worlds have been Depricated. Use the **File Manager** instead.
+Uploading Worlds have been deprecated. Use the **File Manager** instead.
