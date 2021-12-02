@@ -11,18 +11,4 @@ Due to security reasons, you cannot upload certain file types to your servers.
 
 ## ALLOWED FILE TYPES
 
--   .yml (YAML)
--   .json (JSON)
--   .txt (text)
--   .sk (Skript)
--   .nbt (NBT)
--   .mcfunction (Minecraft function)
--   .schematic (Schematic)
--   .properties (Properties file)
--   .csv (CSV)
--   .png (PNG)
--   .midi (MIDI)
--   .nbs (NBS)
--   .mcmeta (Minecraft metadata)
--   .dat (DAT)
--   .conf (CONF)
+A recent update has permitted full file manager control. There is no file block now. Custom plugins allowed. See [this](../pages/faq/minehut/a-full-tutorial)
