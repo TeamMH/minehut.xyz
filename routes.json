@@ -40,11 +40,11 @@
             "Account Deletion": "/faq/minehut/account-deletion",
             "Account Linking": "/faq/minehut/account-linking",
             "Appeal": "/faq/minehut/appeal",
+            "Bedrock Connections": "/faq/minehut/bedrock-connections",
             "Bugs": "/faq/minehut/bugs",
             "Clubs": "/faq/minehut/clubs",
             "Cracked Clients": "/faq/minehut/cracked-clients",
             "Disable Messages": "/faq/minehut/disable-messages",
-            "Bedrock Connections": "/faq/minehut/bedrock-connections",
             "Joining": "/faq/minehut/joining",
             "Ports": "/faq/minehut/ports",
             "Reporting": "/faq/minehut/reporting",
@@ -62,6 +62,7 @@
     },
     "Plugins": {
         "Recommended Plugins": "/plugins/recommended-plugins",
+        "Plugin List": "/plugins/plugin-list",
         "Permission Plugins": {
             "__dirroute__": "/plugins/permission-plugins",
             "GroupManager": "/plugins/permission-plugins/groupmanager",
@@ -76,10 +77,6 @@
             "WorldEdit": "/plugins/popular/worldedit",
             "WorldGuard": "/plugins/popular/worldguard"
         },
-        "Tutorials": {
-            "__dirroute__": "/plugins/tutorials",
-            "PlotSquared": "/plugins/tutorials/plotsquared"
-        },
         "Other": {
             "__dirroute__": "/plugins/other",
             "CombatLogX": "/plugins/other/combatlogx",
@@ -88,6 +85,10 @@
             "ImageOnMap": "/plugins/other/imageonmap",
             "MineResetLite": "/plugins/other/mineresetlite",
             "RedProtect": "/plugins/other/redprotect"
+        },
+        "Tutorials": {
+            "__dirroute__": "/plugins/tutorials",
+            "Plotsquared": "/plugins/tutorials/plotsquared"
         }
     },
     "Skript": {
