@@ -1,6 +1,6 @@
 ---
 description: Create custom crafting recipes
-name: pages/plugins/other
+name: pages/plugins/tutorials
 madeBy: DutchJelly
 ---
 
