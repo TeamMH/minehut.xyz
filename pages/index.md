@@ -21,11 +21,11 @@ Utilise our Search function at the top righthand corner of the site, it's so hel
 
 ## Our plugin know-how
 
-Our team consists of avid server creators, meaning we know all about the plugins players use most. Our helpful **Plugin Tutorials** section gives users top-notch and informative knowledge on the most used and best plugins out there. [Submit a post](/contribute)
+Our team consists of avid server creators, meaning we know all about the plugins players use most. Our helpful **Plugin Tutorials** section gives users top-notch and informative knowledge on the most used and best plugins out there. [\[Submit a post\]](/contribute)
 
 ## Developers
 
-Minehut's Skripting community has continued to grow throughout the years, so we've adapted our website to help the developers as much as we can. We've teamed up with some of the best Skript developers out there to write the best tutorials and examples we can. \[Submit a post\]\]\(contribute.md\)
+Minehut's Skripting community has continued to grow throughout the years, so we've adapted our website to help the developers as much as we can. We've teamed up with some of the best Skript developers out there to write the best tutorials and examples we can. [\[Submit a post\]](/contribute)
 
 ## The team
 
