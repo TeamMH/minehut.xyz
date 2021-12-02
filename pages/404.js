@@ -91,7 +91,7 @@ export default function Banner404() {
 							404 NOT FOUND
 						</Typography>
 						<Typography variant="h6" component="p">
-							The page you were looking for could not be found.
+							Our engine monkies couldn't find the page you were looking for!
 						</Typography>
 						<Typography variant="h6" component="p">
 							Links:
