@@ -3,4 +3,4 @@ description: This file is not for use. Use the RedProtect file in the Tutorials 
 ---
 
 # Outdated
-Please use [this](plugins/tutorials/redprotect)
+Please use [this](../pages/plugins/tutorials/redprotect)
