@@ -45,7 +45,6 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 | Smelly Burger | Writer                              |
 | Rqdioqctive   | Writer                              |
 | Citeful       | Writer                              |
-| Tringlle      | Writer                              |
 
 ## About us
 
