@@ -21,7 +21,7 @@ Utilise our Search function at the top righthand corner of the site, it's so hel
 
 ## Our plugin know-how
 
-Our team consists of avid server creators, meaning we know all about the plugins players use most. Our helpful **Plugin Tutorials** section gives users top-notch and informative knowledge on the most used and best plugins out there. [\[Submit a post\]](/contribute)
+Our team consists of avid server creators, meaning we know all about the plugins players use most. Our helpful **Plugin Tutorials** section gives users top-notch and informative knowledge on the most used and best plugins out there. [Submit a post](/contribute)
 
 ## Developers
 
