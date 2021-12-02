@@ -1,6 +1,6 @@
 ---
 description: Learn how to use the ImageOnMap plugin.
-name: plugins/other/imageonmap
+name: plugins/tutorials/imageonmap
 ---
 
 # ImageOnMap
