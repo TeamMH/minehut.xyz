@@ -28,7 +28,7 @@ You can add permissions to groups or certain users. `/pex user/group <user/group
 ### ADDING AND REMOVING PERMISSIONS - Example
 
 `/pex user _Tarna_ add essentials.kits.starter (Adds permission to user) /pex user _Tarna_ remove essentials.kits.starter (Removes permission from user)`
-
+``
 `/pex group default add essentials.kits.default (Adds permission to group) /pex group default remove essentials.kits.default (Removes permission from group)`
 
 ## PREFIXES AND SUFFIXES

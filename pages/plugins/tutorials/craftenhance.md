@@ -1,6 +1,6 @@
 ---
 description: Create custom crafting recipes
-name: pages/plugins/other
+name: pages/plugins/tutorials
 madeBy: DutchJelly
 ---
 
@@ -12,9 +12,6 @@ import Hint from "../../../src/Hint";
 Craftenhance allows you to easily create and modify custom crafting recipes, and also offers an in-game item editor to add custom metadata to your items.
 
 ## Features
-<details>
-  <summary>Click to expand</summary>
-
 **Craft with your custom items.**
 This means you can add recipes with enchantments, custom names, a durability, potions or anything you can think of that exists in the game.
 
@@ -36,13 +33,7 @@ There's a gui which you can use to disable all the vanilla recipes you want. No 
 **Edit items in-game.**
 To make cool recipes an item editor is needed. This item editor allows users to set colored lore, set colored names, set the durability, add enchantments, add itemflags or even set the localizedname of items. And for the record: itemflags are the things that allow you to hide enchantments or attributes on items!
 
-</details>
-
 ## Commands
-
-<details>
-  <summary>These are the commands related to custom recipe creation and viewing.</summary>
-
 **/ceh**
 Use tabcompletion on this!
 
@@ -70,10 +61,7 @@ When creating recipes, your custom items get saved to an "items.yml" file. When 
 **/ceh reload**
 Reloads the whole plugin!
 
-</details>
-
-<details>
-  <summary>These are the commands related to item editing.</summary>
+## Item Editing
 
 **/edititem**
 This is the basic command for editing items. Please use tab completion on this.
@@ -93,62 +81,39 @@ Toggle the specified itemflags on your held item.
 **/edititem lore [line_number] [lore]**
 Set the specified line of the lore of your held item to be the specified tekst. The tekst section can be left empty if an empty line needs to be added.​
 
-</details>
-
 ## Permissions
 The permissions are configurable, however, these are the default permissions.
 
 <Hint severity="info">Keep in mind users will still be able to craft the recipes without permission to view the list.</Hint>
 
-<details>
-  <summary>craftenhance.edit</summary>
+## craftenhance.edit
 
 /ceh createrecipe, /ceh cleanitemfile, /ceh reload, /ceh setpermission, /ceh specs, /ceh changekey. This is also the permission required to middleclick recipes to open the editor.
 
-</details>
-<details>
-  <summary>craftenhance.view</summary>
+## craftenhance.view
 
 /ceh viewer, /recipes
 
-</details>
-<details>
-  <summary>craftenhance.edititems</summary>
+## craftenhance.edititem
 
 All commands that start with /edititem.
 
-</details>
-
-## Config
+# Config
 
 Alongside the config.yml, 3 other files will be created: guitemplates.yml, recipes.yml and items.yml.
 
-<details>
-  <summary>guitemplates.yml</summary>
-
+## GuiTemplates.yml
 You can fully customize all the gui's that you see using this file. I think they're faily self-explanatory given the preset files, so I'll only go over the basics. "fill-space" is a range of slot indexes where items can get filled, like the recipes in the recipes viewer. "template" specifies the items that are put into the inventory. Make sure that those don't overlap with fill-space. In template the buttons are also made.
 "buttons" specifies where the buttons are located, where the value is the type of the button. Please refer to the preset file to see your options.
 
-</details>
-
-<details>
-  <summary>recipes.yml</summary>
+## Recipies.yml
 
 You can manually make or edit all your recipes in here. The recipes use item keys of items in the items.yml file. However, because all recipes can be created through gui's, I'll not go over this more in-depth.
 
-</details>
-
-<details>
-  <summary>items.yml</summary>
+## items.yml
 
 Items are stored here with a unique key. This is also managed by the plugin, so there's no real need to touch this.
 
-</details>
-
-
-<details>
-  <summary>config.yml</summary>
+## Config.yml
 
 Some of the messages and permissions are stored in here. One of the important settings is whether you want people to see a recipe that they don't have permissions to.
-
-</details>

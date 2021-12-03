@@ -19,11 +19,9 @@ Every time you, or someone, wants to join your server, it will need to be activa
 
 ## Chapter 4: Installing plugins.
 
-Any plugin on anywhere is usable on minehut. Grab a jar from [spigot](https://spigotmc.org) and drag and drop it into the file manager `/plugins` folder!
-If you cant find a jar you like on spigot, you can look at the `Addons` page which can be found at the top of the page. You need to own the addon.
-You can search for addons with the search bar, there is a wierd bug right now that makes it so you cant search until it has loaded some. If you 
+Any plugin on anywhere is usable on minehut. Grab a jar from [spigot](https://spigotmc.org) and drag and drop it into the file manager `/plugins` folder! If you cant find a jar you like on spigot, you can look at the `Addons` page which can be found at the top of the page. You need to own the addon. You can search for addons with the search bar, there is a wierd bug right now that makes it so you cant search until it has loaded some. If you 
 still can't find one your looking for, check the marketplace!
 
 ## Chapter 5: Server Plans.
 
-Minehut servers are free, unless you want to upgrade your server to allow for more players, plugins and ram. A higher server plan is useful if you're planning on making a public server. You can view a list of server plans [here](https://minehut.com/shop/plans).
+Minehut servers are free, unless you want to upgrade your server to allow for more players, plugins and ram. A higher server plan is useful if you're planning on making a public server. You can view a list of server plans below.

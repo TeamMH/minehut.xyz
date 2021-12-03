@@ -2,7 +2,7 @@
 description: >-
     The basics of CombatLogX
     [https://www.spigotmc.org/resources/combatlogx.31689/]
-name: plugins/other/combatlogx
+name: plugins/tutorials/combatlogx
 ---
 
 import Hint from "../../../src/Hint"

@@ -77,18 +77,15 @@
             "WorldEdit": "/plugins/popular/worldedit",
             "WorldGuard": "/plugins/popular/worldguard"
         },
-        "Other": {
-            "__dirroute__": "/plugins/other",
-            "CombatLogX": "/plugins/other/combatlogx",
-            "Craftenhance": "/plugins/other/craftenhance",
-            "Dream's Man Hunt": "/plugins/other/dreams-man-hunt",
-            "ImageOnMap": "/plugins/other/imageonmap",
-            "MineResetLite": "/plugins/other/mineresetlite",
-            "RedProtect": "/plugins/other/redprotect"
-        },
         "Tutorials": {
             "__dirroute__": "/plugins/tutorials",
-            "Plotsquared": "/plugins/tutorials/plotsquared"
+            "PlotSquared": "/plugins/tutorials/plotsquared",
+            "CombatLogX": "/plugins/tutorials/combatlogx",
+            "Craftenhance": "/plugins/tutorials/craftenhance",
+            "Dream's Man Hunt": "/plugins/tutorials/dreams-man-hunt",
+            "ImageOnMap": "/plugins/tutorials/imageonmap",
+            "MineResetLite": "/plugins/tutorials/mineresetlite",
+            "RedProtect": "/plugins/tutorials/redprotect"
         }
     },
     "Skript": {
