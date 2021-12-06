@@ -5,7 +5,9 @@ description: >-
 name: plugins/tutorials/redprotect
 madeBy: PandaChan
 ---
+import Hint from "../../../src/Hint";
 
+<Hint severity="warning">This plugin outdated. Use WorldGuard instead.</Hint>
 # RedProtect
 
 ## CREATING A REGION
