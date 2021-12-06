@@ -14,8 +14,7 @@ First, you need a .zip of a **FOLDER** containing your world files. Similar to t
       > level.dat
       > session.lock
       > uid.dat
-Now, your folder may not look exactly like this, but create a **.zip** of **folder** not select all the files and zip that, but **zip the FOLDER**, then upload that **{foldername}.zip**
-to minehut. Now select that **.zip** file in the Minehut FileManager and click the **unzip** button at the bottom. Then restart your server.
+Now, your folder may not look exactly like this, but create a **.zip** of **folder** not select all the files and zip that, but **zip the FOLDER**, then upload that **{foldername}.zip** to minehut. Now select that **.zip** file in the Minehut FileManager and click the **unzip** button at the bottom. Then restart your server.
 
 ## Getting to your world
 This is where things get a little tricky. There is not a /worlds command anymore, so unless you want that to be your (default world)[/faq/panel/default-world], you need to install 
