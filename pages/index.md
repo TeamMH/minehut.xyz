@@ -35,19 +35,12 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 | Adam          | Founder                             |
 | ---           | ---                                 |
 | Tarna         | Founder, Partnership Manager        |
-| Lukas         | General Manager, Project Manager    |
 | Kiko          | Site Developer, Partnership Manager |
-| ---           | ---                                 |
-| Conutik       | Site Developer                      |
-| ---           | ---                                 |
-| Conutik       | Writer                              |
-| Houlton       | Writer                              |
-| Smelly Burger | Writer                              |
-| Rqdioqctive   | Writer                              |
-| Citeful       | Writer                              |
 
 ## About us
 
-Minehut.xyz was founded on _**August 4th, 2020**_ by two members of the Minehut Community, **Tarna** _\(Helper @ Minehut\)_ & **Minehut** _\(Adam, Former Senior Support @ Minehut\)_.
+Minehut.xyz was founded on _**August 4th, 2020**_ by two members of the Minehut Community, **Tarna** _\(Former Helper & Senior Support @ Minehut\)_ & **Minehut** _\(Adam, Former Senior Support @ Minehut\)_.
 
 We realised there was no dedicated place for Minehut tutorials where the community can easily upload their own tutorials, so we made one!
+
+Minehut.xyz is not in any way or form affiliated to Minehut. The Minehut logo is a property of Minehut and we do not own it.
