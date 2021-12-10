@@ -88,10 +88,10 @@ export default function Banner404() {
 				<div className={classes.innerContainer}>
 					<Container fixed>
 						<Typography className={classes.heading} variant="h3" component="h1">
-							404 NOT FOUND
+							Wonky, where are you?
 						</Typography>
 						<Typography variant="h6" component="p">
-							Our engine monkies couldn't find the page you were looking for!
+							We've lost you in a pile of internet, where'd you go???
 						</Typography>
 						<Typography variant="h6" component="p">
 							Links:
