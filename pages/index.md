@@ -36,6 +36,8 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 | ---           | ---                                 |
 | Tarna         | Founder, Partnership Manager        |
 | Kiko          | Site Developer, Partnership Manager |
+| ---           | ---                                 |
+| Tringlle      | Writer                              |
 
 ## About us
 
