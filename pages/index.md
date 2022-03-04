@@ -5,6 +5,9 @@ name: ""
 
 import Hint from "../src/Hint"
 
+# SUPPORT UKRAINE
+## Click [here](https://www.unicef.org.uk/donate/donate-now-to-protect-children-in-ukraine/) to donate to those in need.
+
 # Home
 
 ## Welcome... to minehut.xyz
@@ -33,9 +36,8 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 | Name          | Position                            |
 | :------------ | :---------------------------------- |
 | Adam          | Founder                             |
-| ---           | ---                                 |
-| Tarna         | Founder, Partnership Manager        |
-| Kiko          | Site Developer, Partnership Manager |
+| Tarna         | Founder                             |
+| Kiko          | Site Developer                      |
 
 ## About us
 
