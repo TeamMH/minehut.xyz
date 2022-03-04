@@ -7,8 +7,8 @@ import Hint from "../src/Hint"
 
 # Home
 
-# SUPPORT UKRAINE
-## [Here is the official donation link](https://www.unicef.org.uk/donate/donate-now-to-protect-children-in-ukraine/) to donate to those who need it most.
+## SUPPORT UKRAINE
+### [Here is the official donation link](https://www.unicef.org.uk/donate/donate-now-to-protect-children-in-ukraine/) to donate to those who need it most.
 
 ## Welcome... to minehut.xyz
 
