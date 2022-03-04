@@ -5,10 +5,10 @@ name: ""
 
 import Hint from "../src/Hint"
 
-# SUPPORT UKRAINE
-## Click [here](https://www.unicef.org.uk/donate/donate-now-to-protect-children-in-ukraine/) to donate to those in need.
-
 # Home
+
+# SUPPORT UKRAINE
+## [Here is the official donation link](https://www.unicef.org.uk/donate/donate-now-to-protect-children-in-ukraine/) to donate to those who need it most.
 
 ## Welcome... to minehut.xyz
 
