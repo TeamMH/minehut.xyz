@@ -7,6 +7,9 @@ import Hint from "../src/Hint"
 
 # Home
 
+## SUPPORT UKRAINE
+### [Here is the official donation link](https://www.unicef.org.uk/donate/donate-now-to-protect-children-in-ukraine/) to donate to those who need it most.
+
 ## Welcome... to minehut.xyz
 
 Minehut.xyz is home to the best Minehut-related support you'll find on the web. We aim to provide top quality [Minehut tutorials](/faq/panel), [Plugin tutorials](/plugins/popular), and [Skript tutorials](/skript/basics). Our site is [community driven](/contribute), and we will continue to make it better and better.
@@ -33,9 +36,8 @@ Minehut's Skripting community has continued to grow throughout the years, so we'
 | Name          | Position                            |
 | :------------ | :---------------------------------- |
 | Adam          | Founder                             |
-| ---           | ---                                 |
-| Tarna         | Founder, Partnership Manager        |
-| Kiko          | Site Developer, Partnership Manager |
+| Tarna         | Founder                             |
+| Kiko          | Site Developer                      |
 
 ## About us
 
