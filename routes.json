@@ -11,16 +11,19 @@
             "Default Gamemode": "/faq/panel/default-gamemode",
             "Default World": "/faq/panel/default-world",
             "Domain": "/faq/panel/domain",
+            "Download": "/faq/panel/download",
             "Files": "/faq/panel/files",
             "Flat World": "/faq/panel/flat-world",
             "Logs": "/faq/panel/logs",
+            "Mods": "/faq/panel/mods",
             "Plugins": "/faq/panel/plugins",
             "Rename": "/faq/panel/rename",
             "Repair": "/faq/panel/repair",
             "Reset Player": "/faq/panel/reset-player",
             "Reset World": "/faq/panel/reset-world",
             "Reset": "/faq/panel/reset",
-            "Resource Packs": "/faq/panel/resource-packs"
+            "Resource Packs": "/faq/panel/resource-packs",
+            "Upload": "/faq/panel/upload"
         },
         "Ingame": {
             "__dirroute__": "/faq/ingame",
@@ -77,14 +80,18 @@
             "WorldEdit": "/plugins/popular/worldedit",
             "WorldGuard": "/plugins/popular/worldguard"
         },
+        "Other": {
+            "__dirroute__": "/plugins/other",
+            "RedProtect": "/plugins/other/redprotect"
+        },
         "Tutorials": {
             "__dirroute__": "/plugins/tutorials",
-            "PlotSquared": "/plugins/tutorials/plotsquared",
             "CombatLogX": "/plugins/tutorials/combatlogx",
             "Craftenhance": "/plugins/tutorials/craftenhance",
             "Dream's Man Hunt": "/plugins/tutorials/dreams-man-hunt",
             "ImageOnMap": "/plugins/tutorials/imageonmap",
             "MineResetLite": "/plugins/tutorials/mineresetlite",
+            "Plotsquared": "/plugins/tutorials/plotsquared",
             "RedProtect": "/plugins/tutorials/redprotect"
         }
     },

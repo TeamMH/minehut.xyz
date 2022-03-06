@@ -56,6 +56,7 @@ import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import { Footer } from "../src/Footer";
 import {
     copyToClipboard,
+    firebaseConfig,
     kebabToStartCase,
     overrideRouteNames,
     routesArray,
@@ -732,6 +733,22 @@ export default function MinehutXYZ(props) {
     }, []);
 
     const [tocOpen, setTocOpen] = React.useState(false);
+
+    const [initialized, setInitialized] = React.useState(false);
+
+    React.useEffect(() => {
+        if (
+            typeof window === "undefined" ||
+            typeof window.firebase === "undefined" ||
+            firebase.apps.length > 0
+        )
+            return;
+        if (initialized) return;
+
+        window.firebase.initializeApp(firebaseConfig);
+        window.firebase.analytics();
+        setInitialized(true);
+    }, []);
 
     let meta = fm ? (
         <meta content={fm.description} property="og:description" />
