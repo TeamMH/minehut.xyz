@@ -5,7 +5,7 @@ name: faq/other-questions/server-version
 
 # Server Version
 
-## 1.16
+## 1.18.1
 
 You can customize the Version your server runs on in the **Settings** tab. Minehut has to add versions to this list, and **Custom Jars Are NOT SUPPORTED**
 
