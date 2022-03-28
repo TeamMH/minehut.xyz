@@ -13,6 +13,6 @@ Minecraft worlds generate randomly, you may have found a certain world that youâ
 
 1. Go to your servers web panel.
 2. Go to the `World` tab of the panel found at the top of the page.
-3. Scroll down to **World Seed** and type in the seed that you want to upload.
-4. Click **update**.
-5. Then click the **reset world** button and restart your server.
+3. Scroll down to the `World Seed` section and type in the seed that you want to upload.
+4. Click the button labeled `Update`.
+5. Then click the button labeled `Reset World` and restart your server.
