@@ -1,7 +1,8 @@
 ---
 description: Download a world from Minehut
-madeBy: Tringlle
+name: faq/panel/download
 ---
 
 # Downloading a World
-Head over to your Minehut FileManager, select the world (folder) you would like to download. Then click the download button! Its that simple!
+
+You may download a world by navigating to the `File Manager` section on your panel, right clicking on the folder of the world you want to download, and clicking the `Download` button.

@@ -11,16 +11,16 @@ Want to understand Minehut's backup system? Let go and explore it!
 
 ## HOW TO GET TO BACKUPS
 
-To manage your backups, go to your [panel](https://minehut.com/panel/minecraft) (make sure you are signed in) and make sure that the server you want to manage backups on is online, after the server is online, find the "Backups" button, you will find this next to the "World" button.
+To manage your backups, go to your [panel](https://minehut.com/panel/minecraft) (make sure you are signed in) and make sure that the server you want to manage backups on is online. When the server is online, navigate to the "Backups" section at the top of the page.
 
 ## SERVER DATA
 
-You will see two buttons under this, one of them will allow you to force save your server (Minehut auto saves every hour) and the another one will allow you to restore to the latest **save not backup**.
+From here, there are two actions you can perform. You can save the server, though keep in mind Minehut saves hourly, and you can also restore to the latest save.
 
 ## SAVED BACKUPS
 
-This may look confusing, but I'll try to explain it, every server on Minehut will have atleast one backup slot, this means if you have a backup in that slot and backed up your server, it will override that data with the new data. And also, you can get more backup slots by upgrading your server.
+Each server has at least one backup slot, possibly more if the server has a plan.
 
-To backup your server for the first time, click on the blue "BACKUP NOW" button, your server will then begin the backup process, when your server has finished this process, you will see a few new things such as the date the backup was made, a "Delete Backup" button, a "Replace Backup" button along with a "Restore Server" button to restore your server with the backup that you made and also a "description" textbox so you can remind yourself of why you made the backup.
+You can save a backup by pressing the button labeled "Backup Now", which will occupy a slot and last indefinitely unless deleted or overwritten. You can overwrite the backup by pressing the button labeled "Replace Backup", you can delete with the button labeled "Delete Backup", and lastly you can restore a backup with the button labeled "Restore Server".
 
-That's basically you will need to know about Minehut's backup system, once you learned how everything works, you will become a backup professional!
+You may also provide a name and description for a backup for more information when you need the backup later.

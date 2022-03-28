@@ -7,12 +7,13 @@ import Hint from "../src/Hint"
 
 # Home
 
-## SUPPORT UKRAINE
-### [Here is the official donation link](https://www.unicef.org.uk/donate/donate-now-to-protect-children-in-ukraine/) to donate to those who need it most.
+<Hint severity="info">
+  Support Ukraine, and [donate money to those who need it the most](https://www.unicef.org.uk/donate/donate-now-to-protect-children-in-ukraine/).  
+</Hint>
 
 ## Welcome... to minehut.xyz
 
-Minehut.xyz is home to the best Minehut-related support you'll find on the web. We aim to provide top quality [Minehut tutorials](/faq/panel), [Plugin tutorials](/plugins/popular), and [Skript tutorials](/skript/basics). Our site is [community driven](/contribute), and we will continue to make it better and better.
+minehut.xyz is home to the best Minehut-related support you'll find on the web. We aim to provide top quality [Minehut tutorials](/faq/panel), [Plugin tutorials](/plugins/popular), and [Skript tutorials](/skript/basics). Our site is [community driven](/contribute), and we will continue to make it better and better.
 
 <Hint severity="info">
 Utilise our Search function at the top righthand corner of the site, it's so helpful to find your question within our site.
@@ -20,7 +21,7 @@ Utilise our Search function at the top righthand corner of the site, it's so hel
 
 ## Every question ever, answered.
 
-**We know Minehut**. We've integrated out knowledge into a **Popular Questions** section, which directed towards questions that are frequently asked. For example ["How do I allow 1.8 clients to join?"](/faq/other-questions/server-version), and ["How do I give my players a permission"](/faq/ingame/permissions). [\[Submit a post\]](/contribute)
+**We know Minehut**. We've integrated our knowledge into a **Popular Questions** section, which answers questions that are frequently asked. For example, ["How do I allow 1.8 clients to join?"](/faq/other-questions/server-version) and ["How do I give my players a permission"](/faq/ingame/permissions). [\[Submit a post\]](/contribute)
 
 ## Our plugin know-how
 
@@ -28,8 +29,7 @@ Our team consists of avid server creators, meaning we know all about the plugins
 
 ## Developers
 
-
-Minehut's Skripting community has continued to grow throughout the years, so we've adapted our website to help the developers as much as we can. We've teamed up with some of the best Skript developers out there to write the best tutorials and examples we can. [\[Submit a post\]](/contribute)
+Minehut's scripting community has continued to grow throughout the years, so we've adapted our website to help the developers as much as we can. We've teamed up with some of the best Skript developers out there to write the best tutorials and examples we can. [\[Submit a post\]](/contribute)
 
 ## The team
 
