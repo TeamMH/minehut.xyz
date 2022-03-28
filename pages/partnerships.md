@@ -17,9 +17,9 @@ import Hint from "../src/Hint"
 
 > The **Azyncraft Network** is a network of servers, and a chill and active community. There, you can find friends and a welcoming community!
 
-## [Evera](https://discord.gg/XfJBzuA)
+## [Evara](https://discord.gg/XfJBzuA)
 
-> Evera is a user friendly, lag free, and non pay to win Prison server.
+> Evara is a user friendly, lag free, and non pay to win Prison server.
 
 ## [GoldenDupe](https://discord.gg/4F9yfHf)
 
